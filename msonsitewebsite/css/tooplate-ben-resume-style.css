@@ -316,7 +316,8 @@ https://www.tooplate.com/view/2120-ben-resume
   .email-link {
     background: var(--primary-color);
     color: var(--dark-color);
-    font-size: var(--h4-font-size);
+    font-size: 1.6em;
+    /*font-size:*var(--h4-font-size)*/
     padding: 0.5rem 2rem 1rem 2rem;
   }
 
