@@ -1,11 +1,3 @@
-/*
-
-Tooplate 2120 Ben Resume
-
-https://www.tooplate.com/view/2120-ben-resume
-
-*/
-
   @font-face {
       font-family: 'Plain';
       src: url('../localfonts/Plain-Regular.woff2') format('woff2'),
@@ -46,8 +38,8 @@ https://www.tooplate.com/view/2120-ben-resume
 
     --h1-font-size:         56px;
     --h2-font-size:         48px;
-    --h3-font-size:         38px;
-    --h4-font-size:         34px;
+    --h3-font-size:         34px;
+    --h4-font-size:         32px;
     --h5-font-size:         30px;
     --h6-font-size:         24px;
     --p-font-size:          18px;
@@ -84,6 +76,8 @@ https://www.tooplate.com/view/2120-ben-resume
 
   h3 {
     font-size: var(--h3-font-size);
+    font-weight: var(--font-weight-bold);
+    color: #417580;
   }
 
   h4 {
@@ -325,7 +319,6 @@ https://www.tooplate.com/view/2120-ben-resume
     background: var(--dark-color);
     color: var(--white-color);
   }
-
 
   /*---------------------------------------
      ABOUT                
