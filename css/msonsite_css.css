@@ -386,15 +386,27 @@
   }
 
   .customers-image {
-    margin: 0 1rem 1rem 1rem;
+    
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .customers-image img {
     border-radius: var(--border-radius-medium);
+    width: 100%; 
+    height: auto; 
+    max-height: 100%;
   }
 
   .customers-info {
     width: 100%;
+    display: inline-block;
+    margin-top: 10px;
   }
 
   .customers .owl-theme .owl-nav.disabled+.owl-dots {
@@ -415,7 +427,6 @@
   .customers .owl-theme .owl-dots .owl-dot:hover span {
     background: var(--primary-color);
   }
-
 
   /*---------------------------------------
      CONTACT               
