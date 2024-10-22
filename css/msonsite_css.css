@@ -344,14 +344,14 @@
 
 
   /*---------------------------------------
-     FAQ                 
+     Projecten                 
   -----------------------------------------*/
 
-  .faq .card-header {
+  .projecten .card-header {
     padding: 0;
   }
 
-  .faq .btn-link {
+  .projecten .btn-link {
     color: var(--dark-color);
     font-size: var(--h6-font-size);
     text-align: left;
@@ -360,17 +360,17 @@
     padding: 1rem 2rem;
   }
 
-  .faq .btn-link:focus, 
-  .faq .btn-link:hover {
+  .projecten .btn-link:focus, 
+  .projecten .btn-link:hover {
     color: var(--dark-color);
     text-decoration: none;
   }
 
-  .faq .card-body {
+  .projecten .card-body {
     padding: 2rem;
   }
 
-  .faq-info-text {
+  .projecten-info-text {
     font-size: var(--base-font-size);
     display: block;
     margin: 1.5rem 2rem 0 2rem;
