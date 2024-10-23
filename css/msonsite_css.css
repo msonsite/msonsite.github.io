@@ -167,7 +167,7 @@
   -----------------------------------------*/
 
   .navbar {
-    background: var(--white-color); /*transparent*/
+    background: #f9f9f9; /*var(--white-color); /*transparent*/
     padding: 0.3rem 1rem;
     transition: all 300ms ease-in-out;
     position: fixed;
@@ -179,7 +179,7 @@
   }
 
   .navbar.scroll {
-    background: var(--white-color); /* --menu-bg-color */
+    background: #f9f9f9; /*var(--white-color); /* --menu-bg-color */
     padding: 0.5rem 1rem;
     position: fixed;
     opacity: 1;
