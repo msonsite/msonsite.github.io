@@ -260,7 +260,7 @@
 
 
   .navbar-toggler .navbar-toggler-icon {
-    background: black;
+    background: var(--dark-color);
     transition: background 10ms 300ms ease;
     display: block;
     width: 30px;
@@ -276,7 +276,7 @@
     position: absolute;
     right: 0;
     left: 0;
-    background: black;
+    background: var(--dark-color);
     width: 30px;
     height: 2px;
     content: '';
