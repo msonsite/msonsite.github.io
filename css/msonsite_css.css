@@ -276,7 +276,7 @@
     position: absolute;
     right: 0;
     left: 0;
-    background: var(--white-color);
+    background: var(--dark-color);
     width: 30px;
     height: 2px;
     content: '';
