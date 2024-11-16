@@ -603,7 +603,7 @@
   @media screen and (max-width: 768px) {
 
     .hero-text {
-      position: relative;
+      position:relative;
       top: 1.5rem;
     }
   }
