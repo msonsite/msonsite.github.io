@@ -113,51 +113,55 @@
               </div>
           </div>
         
-          <!-- Services Section -->
-          <div class="row about-third">
+      <!-- Services Section -->
+      <div class="row about-third" id="services-container"></div>
+
+      <script>
+      const services = [
+          {
+              title: "📏 Opmetingen",
+              description: "Wij bieden uitgebreide opmetingen aan, inclusief terreinmapping, oppervlaktebepalingen en volumeberekeningen. Onze nauwkeurige metingen ondersteunen een efficiënte en effectieve projectplanning."
+          },
+          {
+              title: "📋 Werfopvolging",
+              description: "Onze werfopvolging biedt een overzichtelijke aanpak met inspecties via luchtfotografie, gedetailleerde plaatsbeschrijvingen en werfinrichtingsplannen. We benutten sociale media voor een effectieve communicatie van uw projectstatus."
+          },
+          {
+              title: "🔍 Inspecties",
+              description: "Wij bieden grondige inspecties van gebouwen, daken, constructies en landbouwprojecten. Onze focus ligt op het waarborgen van kwaliteit en veiligheid in elk aspect van uw project."
+          },
+          {
+              title: "📷 Visuals",
+              description: "Leg de essentie van uw bouwproject vast met adembenemende luchtfoto's en video's. Onze drone-diensten bieden heldere, professionele beelden die uw visie tot leven brengen."
+          },
+          {
+              title: "📊 Projectupdates",
+              description: "Houd stakeholders op de hoogte met visuele voortgangsrapportages. Onze luchtbeelden geven een helder overzicht van de projectstatus en belangrijke mijlpalen."
+          },
+          {
+              title: "🌐 3D Modellen",
+              description: "Wij creëren gedetailleerde 3D-modellen van uw project en leveren deze rechtstreeks aan u. Visualiseer en plan efficiënter met onze nauwkeurige digitale representaties."
+          },
+      ];
+
+      const container = document.getElementById('services-container');
+      services.forEach(service => {
+          const serviceBox = `
               <div class="col-lg-4 col-md-4 col-12" style="padding: 15px;">
-                  <div class="service-box" style="background: #ffffff; border: none; border-radius: 12px; box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1); padding: 40px; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; transition: transform 0.3s;">
-                      <h3 style="font-weight: bold; color: #417580; margin-bottom: 10px; font-size: 1.75em;">📏 Opmetingen</h3>
-                      <p style="color: #34495e; font-size: 1em; line-height: 1.6; margin: 0;">Wij bieden uitgebreide opmetingen aan, inclusief terreinmapping, oppervlaktebepalingen en volumeberekeningen. Onze nauwkeurige metingen ondersteunen een efficiënte en effectieve projectplanning.</p>
+                  <div class="service-box">
+                      <h3 class="service-title">${service.title}</h3>
+                      <p class="service-description">${service.description}</p>
                   </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-12" style="padding: 15px;">
-                <div class="service-box" style="background: #ffffff; border: none; border-radius: 12px; box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1); padding: 40px; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; transition: transform 0.3s;">
-                    <h3 style="font-weight: bold; color: #417580; margin-bottom: 10px; font-size: 1.75em;">📋 Werfopvolging</h3>
-                    <p style="color: #34495e; font-size: 1em; line-height: 1.6; margin: 0;">Onze werfopvolging biedt een overzichtelijke aanpak met inspecties via luchtfotografie, gedetailleerde plaatsbeschrijvingen en werfinrichtingsplannen. We benutten sociale media voor een effectieve communicatie van uw projectstatus.</p>
-                </div>
-            </div>
-              <div class="col-lg-4 col-md-4 col-12" style="padding: 15px;">
-                <div class="service-box" style="background: #ffffff; border: none; border-radius: 12px; box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1); padding: 40px; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; transition: transform 0.3s;">
-                    <h3 style="font-weight: bold; color: #417580; margin-bottom: 10px; font-size: 1.75em;">🔍 Inspecties</h3>
-                    <p style="color: #34495e; font-size: 1em; line-height: 1.6; margin: 0;">Wij bieden grondige inspecties van gebouwen, daken, constructies en landbouwprojecten. Onze focus ligt op het waarborgen van kwaliteit en veiligheid in elk aspect van uw project.</p>
-                </div>
-            </div> 
-              <div class="col-lg-4 col-md-4 col-12" style="padding: 15px;">
-                <div class="service-box" style="background: #ffffff; border: none; border-radius: 12px; box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1); padding: 40px; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; transition: transform 0.3s;">
-                    <h3 style="font-weight: bold; color: #417580; margin-bottom: 10px; font-size: 1.75em;">📷 Visuals</h3>
-                    <p style="color: #34495e; font-size: 1em; line-height: 1.6; margin: 0;">Leg de essentie van uw bouwproject vast met adembenemende luchtfoto's en video's. Onze drone-diensten bieden heldere, professionele beelden die uw visie tot leven brengen.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-12" style="padding: 15px;">
-              <div class="service-box" style="background: #ffffff; border: none; border-radius: 12px; box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1); padding: 40px; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; transition: transform 0.3s;">
-                  <h3 style="font-weight: bold; color: #417580; margin-bottom: 10px; font-size: 1.75em;">📊 Projectupdates</h3>
-                  <p style="color: #34495e; font-size: 1em; line-height: 1.6; margin: 0;">Houd stakeholders op de hoogte met visuele voortgangsrapportages. Onze luchtbeelden geven een helder overzicht van de projectstatus en belangrijke mijlpalen.</p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-12" style="padding: 15px;">
-              <div class="service-box" style="background: #ffffff; border: none; border-radius: 12px; box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1); padding: 40px; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; transition: transform 0.3s;">
-                  <h3 style="font-weight: bold; color: #417580; margin-bottom: 10px; font-size: 1.75em;">🌐 3D Modellen</h3>
-                  <p style="color: #34495e; font-size: 1em; line-height: 1.6; margin: 0;">Wij creëren gedetailleerde 3D-modellen van uw project en leveren deze rechtstreeks aan u. Visualiseer en plan efficiënter met onze nauwkeurige digitale representaties.</p>
-                </div>
-            </div>          
+              </div>`;
+          container.innerHTML += serviceBox;
+      });
+      </script>
+          <!-- FOTO BANNER -->
+            <div class="container-fluid" style="padding: 0; margin-bottom: 10px; margin-top: 20px;">
+              <img src="images/emailbanner.png" alt="MdL Photo" style="width: 100%; height: auto; margin: 0; border-radius: 12px; box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);">
           </div>
 
-          <div class="container-fluid" style="padding: 0; margin-bottom: 10px; margin-top: 20px;">
-            <img src="images/emailbanner.png" alt="MdL Photo" style="width: 100%; height: auto; margin: 0; border-radius: 12px; box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);">
         </div>
-
-      </div>
   </section>
 
     <!-- Samenwerkingen -->
