@@ -39,7 +39,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a href="#intro" class="nav-link smoothScroll">Home</a>
+                        <a href="#banner-carousel" class="nav-link smoothScroll">Home</a>
                     </li>
 
                     <li class="nav-item">
@@ -69,7 +69,42 @@
         </div>
     </nav>
 
-    <!-- VIDEO -->
+
+  <!-- TOP BANNER SCROLL CAROUSEL -->
+
+    <script>
+      window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const image = document.getElementById('scrollImage');
+        const scale = 1 + scrollY / 2000; // tweak denominator for more/less zoom
+        image.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      });
+    </script>
+
+    <!-- AUTO-SCROLLING IMAGE CAROUSEL 
+    <section id="banner-carousel">
+      <div class="carousel-track">
+        <img src="images/emailbanner.png" alt="Image 1">
+        <img src="images/emailbanner.png" alt="Image 2">
+        <img src="images/emailbanner.png" alt="Image 3">
+        <img src="images/emailbanner.png" alt="Image 4">
+        <img src="images/emailbanner.png" alt="Image 1">
+        <img src="images/emailbanner.png" alt="Image 2">
+        <img src="images/emailbanner.png" alt="Image 3">
+        <img src="images/emailbanner.png" alt="Image 4">
+      </div>
+    </section> -->
+
+    top banner picture
+    <section id="banner" style="position: relative; height: 400px; overflow: hidden;">
+    <img id="scrollImage" src="images/emailbanner.png" alt="MdL Photo"
+        style="position: absolute; top: 50%; left: 50%;
+                transform: translate(-50%, -50%) scale(1);
+                width: auto; height: 100%; max-width: none;
+                border-radius: 12px; transition: transform 0.2s ease-out;">
+  </section>
+
+    <!-- VIDEO
     <section id="video">
       <div style="position:relative; height: 400px; overflow:hidden;">
         <video autoplay muted loop 
@@ -77,30 +112,7 @@
             <source src="videos/mavic3E_2.mp4" type="video/mp4">
         </video>
       </div>
-    </section>
-      
-    <!-- HERO -->
-    <section class="hero d-flex flex-column justify-content-center align-items-center" id="intro">
-
-         <div class="container">
-            <div class="row">
-
-                  <div class="mx-auto col-lg-5 col-md-5 col-10">
-                      <img src="images/mdl.jpg" class="img-fluid" alt="MdL Photo" style="width: 60%; height: auto; margin: 0;">
-                  </div>
-
-                   <div class="d-flex flex-column justify-content-center align-items-center col-lg-7 col-md-7 col-12">
-                        <div class="hero-text">
-
-                            <h1 class="hero-title">👷🏼‍♂️ Martin de Lobel</h1>
-
-                            <a class="email-link">
-                              Projectcoördinator & UAS Operator</a>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </section>
+    </section> -->
 
     <section class="about section-padding" id="about" style="background-color: #ffffff;">
       <div class="container">
@@ -156,96 +168,9 @@
           container.innerHTML += serviceBox;
       });
       </script>
-          <!-- FOTO BANNER -->
-            <div class="container-fluid" style="padding: 0; margin-bottom: 10px; margin-top: 20px;">
-              <img src="images/emailbanner.png" alt="MdL Photo" style="width: 100%; height: auto; margin: 0; border-radius: 12px; box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);">
-          </div>
-
-        </div>
   </section>
 
-    <!-- Samenwerkingen -->
-     <section class="customers section-padding" id="customers">
-          <div class="container">
-               <div class="row">
-
-                <div class="col-12">
-                  <h3 class="mb-5 text-center">Samenwerkingen</h3>
-              
-                  <a class="mb-5 text-center" style="font-size: 24px; display: block; text-align: center; margin: 20px 0;">
-                      Met deze <strong>partners</strong> werkten we reeds succesvol samen 🤝
-                  </a>                      
-              
-                  <div class="owl-carousel owl-theme" id="customers-carousel">
-                      <div class="item">
-                          <div class="customers-thumb text-center">
-                              <div class="customers-image">
-                                  <img src="images/customers/groupdecloedt.png" class="img-fluid" alt="customers image">
-                              </div>
-                              <div class="customers-info">
-                                  <h6 class="mb-0">Group De Cloedt</h6>
-                                  <span>Milieubedrijf</span>
-                              </div>
-                          </div>
-                      </div>
-              
-                      <div class="item">
-                          <div class="customers-thumb text-center">
-                              <div class="customers-image">
-                                  <img src="images/customers/agentschapnatuur.png" class="img-fluid" alt="customers image">
-                              </div>
-                              <div class="customers-info">
-                                  <h6 class="mb-0">Agentschap voor Natuur en Bos</h6>
-                                  <span>Natuurbehoud en Ontwikkeling</span>
-                              </div>
-                          </div>
-                      </div>
-              
-                      <div class="item">
-                          <div class="customers-thumb text-center">
-                              <div class="customers-image">
-                                  <img src="images/customers/bioterra.png" class="img-fluid" alt="customers image">
-                              </div>
-                              <div class="customers-info">
-                                  <h6 class="mb-0">Bioterra</h6>
-                                  <span>Bodemsaneringen</span>
-                              </div>
-                          </div>
-                      </div>
-              
-                      <div class="item">
-                          <div class="customers-thumb text-center">
-                              <div class="customers-image">
-                                  <img src="images/customers/vlaamsewaterweg.png" class="img-fluid" alt="customers image">
-                              </div>
-                              <div class="customers-info">
-                                  <h6 class="mb-0">De Vlaamse Waterweg</h6>
-                                  <span>Duurzaam Waterbeheer</span>
-                              </div>
-                          </div>
-                      </div>
-              
-                      <div class="item">
-                          <div class="customers-thumb text-center">
-                              <div class="customers-image">
-                                  <img src="images/customers/hdr.png" class="img-fluid" alt="customers image">
-                              </div>
-                              <div class="customers-info">
-                                  <h6 class="mb-0">Heyrman - De Roeck</h6>
-                                  <span>Waterbouwexpertise</span>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-                            
-
-               </div>
-          </div>
-     </section>
-
-
-     <!-- Projecten -->
+  <!-- Projecten -->
      <section class="projecten section-padding" id = "projecten">
         
         <div class="container">
@@ -381,7 +306,137 @@
         	</div><!-- row -->
         </div><!-- container -->
     </section>
+
+    <!-- Samenwerkingen -->
+  <section class="customers section-padding" id="customers">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3 class="mb-5">Samenwerkingen</h3>
+          <p style="font-size: 24px; margin: 20px 0;">
+            Met deze <strong style="color: #417580;">partners</strong> werkten we reeds succesvol samen 🤝
+          </p>
+
+          <div class="partners-carousel">
+            <div class="carousel-track" id="partners-carousel-track">
+              <!-- Partner items dynamically injected here -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const partners = [
+      {
+        img: "images/customers/groupdecloedt.png",
+        alt: "Group De Cloedt",
+        title: "Group De Cloedt",
+        subtitle: "Milieubedrijf"
+      },
+      {
+        img: "images/customers/agentschapnatuur.png",
+        alt: "Agentschap voor Natuur en Bos",
+        title: "Agentschap voor Natuur en Bos",
+        subtitle: "Natuurbehoud en Ontwikkeling"
+      },
+      {
+        img: "images/customers/bioterra.png",
+        alt: "Bioterra",
+        title: "Bioterra",
+        subtitle: "Bodemsaneringen"
+      },
+      {
+        img: "images/customers/vlaamsewaterweg.png",
+        alt: "De Vlaamse Waterweg",
+        title: "De Vlaamse Waterweg",
+        subtitle: "Duurzaam Waterbeheer"
+      },
+      {
+        img: "images/customers/hdr.png",
+        alt: "Heyrman - De Roeck",
+        title: "Heyrman - De Roeck",
+        subtitle: "Waterbouwexpertise"
+      },
+      {
+        img: "images/customers/test.png",
+        alt: "Company X",
+        title: "Company X",
+        subtitle: "Description X"
+      },
+      {
+        img: "images/customers/test.png",
+        alt: "Company X",
+        title: "Company X",
+        subtitle: "Description X"
+      },
+      {
+        img: "images/customers/test.png",
+        alt: "Company X",
+        title: "Company X",
+        subtitle: "Description X"
+      },
+      {
+        img: "images/customers/test.png",
+        alt: "Company X",
+        title: "Company X",
+        subtitle: "Description X"
+      },
+      {
+        img: "images/customers/test.png",
+        alt: "Company X",
+        title: "Company X",
+        subtitle: "Description X"
+      }
+    ];
+
+    const track = document.getElementById('partners-carousel-track');
+
+    function createPartnerItem(partner) {
+      return `
+        <div class="partner-item">
+          <div class="customers-image">
+            <img src="${partner.img}" alt="${partner.alt}" class="img-fluid">
+          </div>
+          <div class="customers-info">
+            <h6>${partner.title}</h6>
+            <span>${partner.subtitle}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    // Insert partners twice for seamless infinite scroll animation
+    track.innerHTML = partners.map(createPartnerItem).join('') + partners.map(createPartnerItem).join('');
+  </script>
+
     
+    <!-- MDL FOTO -->
+    <section class="hero d-flex flex-column justify-content-center align-items-center">
+
+         <div class="container">
+            <div class="row">
+
+                  <div class="mx-auto col-lg-5 col-md-5 col-10">
+                      <img src="images/mdl.jpg" class="img-fluid" alt="MdL Photo" style="width: 60%; height: auto; margin: 0;">
+                  </div>
+
+                   <div class="d-flex flex-column justify-content-center align-items-center col-lg-7 col-md-7 col-12">
+                        <div class="hero-text">
+
+                            <h1 class="hero-title">👷🏼‍♂️ Martin de Lobel</h1>
+
+                            <a class="email-link">
+                              Projectcoördinator & UAS Operator</a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Contact -->
     <section class="contact section-padding pt-0" id="contact">
       <div class="container">
@@ -451,6 +506,7 @@
       </div>
      
     </section>
+    
      <!-- SCRIPTS -->
      <script src="js/jquery.min.js"></script>
      <script src="js/bootstrap.min.js"></script>

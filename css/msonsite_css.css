@@ -101,8 +101,9 @@
     line-height: 2em;
   }
 
+  /* Margin between sections */
   .section-padding {
-    padding: 6rem 0;
+    padding: 3rem 0;
   }
 
   .custom-icon {
@@ -290,6 +291,46 @@
     top: 8px;
   }
 
+  /*---------------------------------------
+     BANNER CAROUSEL                
+  -----------------------------------------*/
+
+  #banner-carousel {
+  overflow: hidden;
+  width: 100%;
+  height: 300px; /* Adjust as needed */
+  background: #fff;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 30s linear infinite;
+}
+
+.carousel-track img {
+  height: 100%;
+  width: auto;
+  margin-right: 0px;
+  border-radius: 0px;
+  flex-shrink: 0;
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Optional: pause on hover */
+#banner-carousel:hover .carousel-track {
+  animation-play-state: paused;
+}
 
 
   /*---------------------------------------
@@ -349,7 +390,7 @@
       background: #ffffff;
       border: none;
       border-radius: 12px;
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 30px rgba(65, 117, 128, 0.3);
       padding: 40px;
       height: 100%;
       display: flex;
@@ -410,52 +451,88 @@
      CUSTOMERS               
   -----------------------------------------*/
 
-  .customers {
-    background: #f9f9f9;
-  }
+ .partners-carousel {
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
 
-  .customers-image {
-    
-    margin: 0 auto;
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 40s linear infinite;
+}
 
-  .customers-image img {
-    border-radius: var(--border-radius-medium);
-    width: 100%; 
-    height: auto; 
-    max-height: 100%;
-  }
+.partner-item {
+  flex-shrink: 0;
+  width: 150px;          /* container width */
+  margin-right: 90px;    /* spacing between logos */
+  text-align: center;
+  font-family: Arial, sans-serif;
+  color: #34495e;
+}
 
-  .customers-info {
-    width: 100%;
-    display: inline-block;
-    margin-top: 10px;
-  }
+/* Override .customers-image styles to prevent cropping */
+.customers-image {
+  overflow: visible !important; /* allow full logo display */
+  margin: 0 auto;
+  width: 150px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .customers .owl-theme .owl-nav.disabled+.owl-dots {
-    margin-top: 2rem;
-  }
+/* Logos with fixed size and natural proportions */
+.partner-item .customers-image img {
+  border-radius: 0 !important;  /* no circle */
+  width: 150px;                  /* fixed width */
+  height: 100px;                 /* fixed height */
+  object-fit: contain;           /* scale proportionally */
+  display: block;
+  margin: 0 auto;
+}
 
-  .customers .owl-theme .owl-dots .owl-dot {
-    outline: none;
-  }
+/* Clean, consistent text styles */
+.partner-item .customers-info {
+  margin-top: 12px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  color: #34495e;
+}
 
-  .customers .owl-theme .owl-dots .owl-dot span {
-    width: 30px;
-    height: 3px;
-    margin: 5px;
-  }
+.partner-item .customers-info h6 {
+  margin: 0 0 6px 0;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #417580;
+  line-height: 1.2;
+}
 
-  .customers .owl-theme .owl-dots .owl-dot.active span, 
-  .customers .owl-theme .owl-dots .owl-dot:hover span {
-    background: var(--primary-color);
+.partner-item .customers-info span {
+  display: block;
+  font-size: 0.85rem;
+  color: #666666;
+  margin: 0;
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+/* Animation for nonstop horizontal scroll */
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
   }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause scrolling on hover */
+.partners-carousel:hover .carousel-track {
+  animation-play-state: paused;
+}
 
   /*---------------------------------------
      CONTACT               
