@@ -38,9 +38,6 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a href="#banner-carousel" class="nav-link smoothScroll">Home</a>
-                    </li>
 
                     <li class="nav-item">
                         <a href="#about" class="nav-link smoothScroll">Diensten</a>
@@ -95,7 +92,7 @@
       </div>
     </section> -->
 
-    <section id="banner" style="position: relative; height: 400px; overflow: hidden;">
+    <section id="banner" style="position: relative; height: 200px; overflow: hidden;">
     <img id="scrollImage" src="images/emailbanner.png" alt="MdL Photo"
         style="position: absolute; top: 50%; left: 50%;
                 transform: translate(-50%, -50%) scale(1);
@@ -117,10 +114,18 @@
       <div class="container">
           <div class="row">
               <div class="col-lg-12 col-md-12 col-12" style="margin-bottom: 0px;">
-                  <h3 class="mb-4" style="text-align: left; font-weight: bold; font-size: 2em; color: #417580;">🛠️ Onze Diensten</h3>
-                  <p style="text-align: left; font-size: 1.1rem; line-height: 1.6;">M&S Onsite is een specialist in drone-oplossingen die een breed scala aan diensten aanbiedt, zoals volumetrische calculaties, inspecties, terreinfoto's, mapping en luchtbeelden van hoge kwaliteit. 
-                    Dankzij onze keuze voor <img src="images/djienterprise.png" alt="DJI Enterprise Logo" style="height: 60px; vertical-align: middle; margin-left: 0px; margin-right: 0px;"> gebruiken wij 
-                    de nieuwste technologieën om waardevolle diensten te leveren.</p>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                    <h3 style="font-weight: bold; font-size: 2em; color: #417580; margin: 0;">🛠️ Onze Diensten</h3>
+                  </div>
+                  <p style="text-align: left; font-size: 1.1rem; line-height: 1.6;">
+  <img src="images/mavic-3_main_new.png" alt="Drone die zweeft"
+       class="drone-slide"
+       style="float: right; margin-left: 0px; width: 150px; height: auto; object-fit: contain;">
+  M&S Onsite is een specialist in drone-oplossingen die een breed scala aan diensten aanbiedt, zoals volumetrische calculaties, inspecties, terreinfoto's, mapping en luchtbeelden van hoge kwaliteit. 
+  Dankzij onze keuze voor de meest recente drone-oplossingen gebruiken wij 
+  de nieuwste technologieën om waardevolle diensten te leveren.
+</p>
+
               </div>
           </div>
         
@@ -332,62 +337,26 @@
       {
         img: "images/customers/groupdecloedt.png",
         alt: "Group De Cloedt",
-        title: "Group De Cloedt",
-        subtitle: "Milieubedrijf"
       },
       {
         img: "images/customers/agentschapnatuur.png",
         alt: "Agentschap voor Natuur en Bos",
-        title: "Agentschap voor Natuur en Bos",
-        subtitle: "Natuurbehoud en Ontwikkeling"
       },
       {
-        img: "images/customers/bioterra.png",
+        img: "images/customers/bioterra.jpg",
         alt: "Bioterra",
-        title: "Bioterra",
-        subtitle: "Bodemsaneringen"
       },
       {
         img: "images/customers/vlaamsewaterweg.png",
         alt: "De Vlaamse Waterweg",
-        title: "De Vlaamse Waterweg",
-        subtitle: "Duurzaam Waterbeheer"
       },
       {
         img: "images/customers/hdr.png",
         alt: "Heyrman - De Roeck",
-        title: "Heyrman - De Roeck",
-        subtitle: "Waterbouwexpertise"
       },
       {
         img: "images/customers/test.png",
         alt: "Company X",
-        title: "Company X",
-        subtitle: "Description X"
-      },
-      {
-        img: "images/customers/test.png",
-        alt: "Company X",
-        title: "Company X",
-        subtitle: "Description X"
-      },
-      {
-        img: "images/customers/test.png",
-        alt: "Company X",
-        title: "Company X",
-        subtitle: "Description X"
-      },
-      {
-        img: "images/customers/test.png",
-        alt: "Company X",
-        title: "Company X",
-        subtitle: "Description X"
-      },
-      {
-        img: "images/customers/test.png",
-        alt: "Company X",
-        title: "Company X",
-        subtitle: "Description X"
       }
     ];
 
@@ -399,12 +368,13 @@
           <div class="customers-image">
             <img src="${partner.img}" alt="${partner.alt}" class="img-fluid">
           </div>
+          ${''/* 
           <div class="customers-info">
             <h6>${partner.title}</h6>
             <span>${partner.subtitle}</span>
           </div>
-        </div>
-      `;
+          */}
+        </div>`;
     }
 
     // Insert partners twice for seamless infinite scroll animation
