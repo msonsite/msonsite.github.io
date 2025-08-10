@@ -481,7 +481,7 @@
 .carousel-track {
   display: flex;
   width: max-content;
-  animation: scroll-left 40s linear infinite;
+  animation: scroll-left 18s linear infinite;
 }
 
 .partner-item {
