@@ -135,42 +135,50 @@
       <script>
       const services = [
           {
-              title: "📏 Opmetingen",
-              description: "Wij bieden uitgebreide opmetingen aan, inclusief terreinmapping, oppervlaktebepalingen en volumeberekeningen. Onze nauwkeurige metingen ondersteunen een efficiënte en effectieve projectplanning."
+              title: "📏 Opmetingen met Photogrammetrie",
+              subtitle: "Luchtfoto's worden meetpunten",
+              description: "Met photogrammetrie brengen wij uw project razendsnel en tot op de centimeter nauwkeurig in kaart. Wij bieden uitgebreide opmetingen aan, zoals: as-built plannen, oppervlaktebepalingen en volumeberekeningen. Of het nu gaat om bouwprojecten, volumemetingen of erfgoeddocumentatie: met photogrammetrie bespaart u tijd én kosten."
           },
           {
               title: "📋 Werfopvolging",
-              description: "Onze werfopvolging biedt een overzichtelijke aanpak met inspecties via luchtfotografie, gedetailleerde plaatsbeschrijvingen en werfinrichtingsplannen. We benutten sociale media voor een effectieve communicatie van uw projectstatus."
+              subtitle: "Slimme werfopvolging vanuit de lucht",
+              description: "Wij brengen uw werf snel en veilig in beeld. Wij vliegen uw werf op afgesproken momenten, verwerken de beelden tot duidelijke rapportages en leveren overzichtelijke kaarten, 3D-modellen en orthofoto’s."
           },
           {
               title: "🔍 Inspecties",
-              description: "Wij bieden grondige inspecties van gebouwen, daken, constructies en landbouwprojecten. Onze focus ligt op het waarborgen van kwaliteit en veiligheid in elk aspect van uw project."
+              subtitle: "Inspecties sneller, veiliger, slimmer",
+              description: "Wij voeren inspecties uit op moeilijk bereikbare plaatsen, van gebouwen en daken tot industriële installaties en infrastructuur. Zo krijgt u betrouwbare gegevens zonder risico voor personeel en zonder hinder voor uw activiteiten."
           },
           {
               title: "📷 Visuals",
+              subtitle: "Unieke beelden",
               description: "Leg de essentie van uw bouwproject vast met adembenemende luchtfoto's en video's. Onze drone-diensten bieden heldere, professionele beelden die uw visie tot leven brengen."
           },
           {
-              title: "📊 Projectupdates",
+              title: "🌐 Plaats-beschrijvingen met 360° Camera en Drone",
+              subtitle: "Volledige locaties, volledig gedocumenteerd",
               description: "Houd stakeholders op de hoogte met visuele voortgangsrapportages. Onze luchtbeelden geven een helder overzicht van de projectstatus en belangrijke mijlpalen."
           },
           {
-              title: "🌐 3D Modellen",
-              description: "Wij creëren gedetailleerde 3D-modellen van uw project en leveren deze rechtstreeks aan u. Visualiseer en plan efficiënter met onze nauwkeurige digitale representaties."
+              title: "💧 Monitoring i.k.v. Waterbeheersing",
+              subtitle: "Grip op water, vanuit de lucht",
+              description: "preventieve inspecties, continue monitoring of ondersteuning bij incidenten: met drones maken wij waterbeheersing slimmer, veiliger en efficiënter."
           },
       ];
 
       const container = document.getElementById('services-container');
-      services.forEach(service => {
-          const serviceBox = `
-              <div class="col-lg-4 col-md-4 col-12" style="padding: 15px;">
-                  <div class="service-box">
-                      <h3 class="service-title">${service.title}</h3>
-                      <p class="service-description">${service.description}</p>
-                  </div>
-              </div>`;
-          container.innerHTML += serviceBox;
-      });
+    services.forEach(service => {
+    const serviceBox = `
+        <div class="col-lg-4 col-md-4 col-12" style="padding: 15px;">
+            <div class="service-box">
+                <h3 class="service-title">${service.title}</h3>
+                ${service.subtitle ? `<h4 class="service-subtitle">${service.subtitle}</h4>` : ''}
+                <p class="service-description">${service.description}</p>
+            </div>
+        </div>`;
+    container.innerHTML += serviceBox;
+});
+
       </script>
   </section>
 
@@ -189,13 +197,45 @@
                       Klik op de projecten hieronder voor een sneak peek van onze geleverde resultaten.</p>
                     
                     <div class="accordion" id="accordionExample">
+
+                    <!-- script for image expansion -->
+                    <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                      const images = document.querySelectorAll('.projecten .card-body img');
+
+                      // Create lightbox container
+                      const lightbox = document.createElement('div');
+                      lightbox.classList.add('image-lightbox');
+                      lightbox.innerHTML = '<img src="" alt="Expanded image">';
+                      document.body.appendChild(lightbox);
+
+                      const lightboxImg = lightbox.querySelector('img');
+
+                      // Click image → show lightbox with animation
+                      images.forEach(img => {
+                        img.style.cursor = 'zoom-in'; // visual cue
+                        img.addEventListener('click', () => {
+                          lightboxImg.src = img.src;
+                          lightbox.classList.add('show');
+                        });
+                      });
+
+                      // Click overlay → close lightbox
+                      lightbox.addEventListener('click', () => {
+                        lightbox.classList.remove('show');
+                        setTimeout(() => { lightboxImg.src = ''; }, 300); // clean up after fade
+                      });
+                    });
+                    </script>
+
+
                       
                       <!-- Project 1-->
                       <div class="card">
                         <div class="card-header" id="headingOne">
                           <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                              Milieu-monitoring van een Natuurgebied
+                              Uitvoering As-Built Plan Bodemsaneringsproject
                             </button>
                           </h2>
                         </div>
@@ -203,36 +243,24 @@
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                           <div class="card-body">
                               <!-- Title of the project -->
-                              <h6>Drone Photography Project</h6>
+                              <h6>Nauwkeurige meetresultaten voor herhaalbare projecten</h6>
                       
                               <!-- Short description -->
-                              <p>Explore a collection of aerial shots captured using my drone. These images highlight scenic landscapes, architectural marvels, and vibrant city views from unique perspectives.</p>
+                              <p>Voor een vaste klant werd een as-built plan opgesteld van een bodemsaneringsproject via drone-fotogrammetrie. De dronebeelden werden verwerkt tot een 3D-puntenwolk, waarin het leidingtracé en de uitgevoerde sleuven nauwkeurig konden worden opgemeten. De resultaten werden geëxporteerd naar een DXF-bestand voor verdere verwerking in CAD-software. Dankzij deze dataset kunnen de meetpunten later opnieuw worden uitgezet, wat bijdraagt aan een betrouwbare en reproduceerbare oplevering.</p>
                               
                               <!-- Image grid -->
                               <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
                                   <div>
-                                      <img src="image1.jpg" alt="Mountain View" style="width: 100%;">
-                                      <p>Mountain View</p>
+                                      <img src="images/asbuiltplan/Picture1.png" style="width: 100%;">
+                                      <p>As-built</p>
                                   </div>
                                   <div>
-                                      <img src="image2.jpg" alt="Cityscape" style="width: 100%;">
-                                      <p>Cityscape</p>
+                                      <img src="images/asbuiltplan/Picture2.png" style="width: 100%;">
+                                      <p>Leidingtracé</p>
                                   </div>
                                   <div>
-                                      <img src="image3.jpg" alt="Forest Drone Shot" style="width: 100%;">
-                                      <p>Forest Drone Shot</p>
-                                  </div>
-                                  <div>
-                                      <img src="image4.jpg" alt="Beach Overview" style="width: 100%;">
-                                      <p>Beach Overview</p>
-                                  </div>
-                                  <div>
-                                      <img src="image5.jpg" alt="Countryside" style="width: 100%;">
-                                      <p>Countryside</p>
-                                  </div>
-                                  <div>
-                                      <img src="image6.jpg" alt="River" style="width: 100%;">
-                                      <p>River Shot</p>
+                                      <img src="images/asbuiltplan/Picture3.png" style="width: 100%;">
+                                      <p>DXF-export</p>
                                   </div>
                               </div>
                           </div>
@@ -256,7 +284,7 @@
                         </div>
                       </div>
 
-                      <!-- Project 3-->
+                      <!-- Project 3
                       <div class="card">
                         <div class="card-header" id="headingThree">
                           <h2 class="mb-0">
@@ -270,39 +298,7 @@
                             <p>Een luchtinspectie om de staat van bruggen en gebouwen te evalueren en eventuele gebreken te identificeren.</p>
                           </div>
                         </div>
-                      </div>
-
-                    <!-- Project 4-->
-                    <div class="card">
-                        <div class="card-header" id="headingFour">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                              Landschapsinspectie van een Recreatiegebied
-                            </button>
-                          </h2>
-                        </div>
-                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                          <div class="card-body">
-                            <p>Gebruik van drones om het onderhoud en de ontwikkeling van recreatiegebieden te monitoren en te optimaliseren.</p>
-                          </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 5-->
-                    <div class="card">
-                        <div class="card-header" id="headingFive">
-                          <h2 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                              Waterkwaliteit Monitoring van een Rivier
-                            </button>
-                          </h2>
-                        </div>
-                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                          <div class="card-body">
-                            <p>Een project gericht op het verzamelen van data over de waterkwaliteit en ecologische gezondheid van rivieren.</p>
-                          </div>
-                        </div>
-                    </div>
+                      </div> -->
 
                 </div>
 
@@ -353,7 +349,11 @@
       {
         img: "images/customers/hdr.png",
         alt: "Heyrman - De Roeck",
-      }
+      },
+      {
+        img: "images/customers/nhm.webp",
+        alt: "NHM",
+      } 
     ];
 
     const track = document.getElementById('partners-carousel-track');
