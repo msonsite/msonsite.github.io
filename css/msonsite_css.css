@@ -521,6 +521,20 @@
     opacity: 1;
   }
 
+    /* --- Image grid layout --- */
+  .projecten .image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for desktop */
+    gap: 10px;
+  }
+
+  /* Responsive: 1 column on small screens */
+  @media (max-width: 576px) {
+    .projecten .image-grid {
+      grid-template-columns: 1fr; /* stacked on mobile */
+    }
+  }
+
   /*---------------------------------------
      CUSTOMERS               
   -----------------------------------------*/
