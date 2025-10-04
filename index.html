@@ -198,44 +198,14 @@
                     
                     <div class="accordion" id="accordionExample">
 
-                    <!-- script for image expansion -->
-                    <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                      const images = document.querySelectorAll('.projecten .card-body img');
-
-                      // Create lightbox container
-                      const lightbox = document.createElement('div');
-                      lightbox.classList.add('image-lightbox');
-                      lightbox.innerHTML = '<img src="" alt="Expanded image">';
-                      document.body.appendChild(lightbox);
-
-                      const lightboxImg = lightbox.querySelector('img');
-
-                      // Click image → show lightbox with animation
-                      images.forEach(img => {
-                        img.style.cursor = 'zoom-in'; // visual cue
-                        img.addEventListener('click', () => {
-                          lightboxImg.src = img.src;
-                          lightbox.classList.add('show');
-                        });
-                      });
-
-                      // Click overlay → close lightbox
-                      lightbox.addEventListener('click', () => {
-                        lightbox.classList.remove('show');
-                        setTimeout(() => { lightboxImg.src = ''; }, 300); // clean up after fade
-                      });
-                    });
-                    </script>
-
-
+                    <script src="js/scripts.js"></script>
                       
                       <!-- Project 1-->
                       <div class="card">
                         <div class="card-header" id="headingOne">
                           <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                              Uitvoering As-Built Plan Bodemsaneringsproject
+                              Project 1. Uitvoering As-Built Plan Bodemsaneringsproject
                             </button>
                           </h2>
                         </div>
@@ -265,21 +235,31 @@
                               </div>
                           </div>
                       </div>
-                      
-                      </div>
+                   </div>
 
                       <!-- Project 2-->
                       <div class="card">
                         <div class="card-header" id="headingTwo">
                           <h2 class="mb-0">
                             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                              Volumetrische Meting voor een Bouwwerf
+                              Project 2. Volumetrische Meting met Drone
                             </button>
                           </h2>
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                           <div class="card-body">
-                            <p>Precisie metingen om de benodigde materialen en volumes voor een bouwproject te bepalen.</p>
+                              <h6>Snelle en nauwkeurige volumebepaling</h6>
+                              <p>Met drones bepalen we snel en veilig het volume van zand, grind, aarde of andere materialen. 
+                              Luchtfoto’s worden verwerkt tot een 3D-model, waarmee gespecialiseerde software centimeter nauwkeurig berekent hoeveel materiaal aanwezig is of verplaatst moet worden. 
+                              Afhankelijk van de grootte van het project levert M&S Onsite de resultaten vaak binnen één uur na opmeting.</p>
+                              
+                              <!-- Full-width image met inline styling -->
+                              <div>
+                                  <img src="images/project2/fotovolumemeting.jpg" 
+                                      alt="Volumebepaling"
+                                      style="width: 50%; height: auto; object-fit: cover; border-radius: 8px; display: block; margin-bottom: 0.5rem;">
+                                  <p style="text-align: left; margin: 0; font-size: 0.9em; color: #555;">Volumebepaling</p>
+                              </div>
                           </div>
                         </div>
                       </div>
