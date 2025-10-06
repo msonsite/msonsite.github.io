@@ -405,15 +405,15 @@
 .service-header {
     display: flex;
     flex-direction: column;
-    gap: 8px;           /* ruimte tussen title en subtitle */
+    gap: 0px;
 }
 
-/* Gebruik min-height, niet fixed line-height */
+
 .service-title {
     font-weight: bold;
     color: #417580;
     font-size: 1.75em;
-    min-height: 50px;    /* minimale hoogte voor uitlijning */
+    min-height: 50px;
     margin: 0;
 }
 
@@ -421,7 +421,7 @@
     color: #5f8f98;
     font-size: 1.25em;
     font-weight: 500;
-    min-height: 30px;    /* minimale hoogte voor uitlijning */
+    min-height: 30px;
     margin: 0;
     letter-spacing: 0.3px;
 }
@@ -430,10 +430,8 @@
     color: #34495e;
     font-size: 1em;
     line-height: 1.6;
-    margin-top: auto;     /* description begint altijd onderaan de box */
+    margin-top: auto;
 }
-
-
 
   /*---------------------------------------
      PROJECTEN                 
