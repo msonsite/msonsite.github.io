@@ -109,78 +109,77 @@
         </video>
       </div>
     </section> -->
-
-    <section class="about section-padding" id="about" style="background-color: #ffffff;">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-12 col-md-12 col-12" style="margin-bottom: 0px;">
-                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-                    <h3 style="font-weight: bold; font-size: 2em; color: #417580; margin: 0;">🛠️ Onze Diensten</h3>
-                  </div>
-                  <p style="text-align: left; font-size: 1.1rem; line-height: 1.6;">
-  <img src="images/mavic-3_main_new.png" alt="Drone die zweeft"
-       class="drone-slide"
-       style="float: right; margin-left: 0px; width: 150px; height: auto; object-fit: contain;">
-  M&S Onsite is een specialist in drone-oplossingen die een breed scala aan diensten aanbiedt, zoals volumetrische calculaties, inspecties, terreinfoto's, mapping en luchtbeelden van hoge kwaliteit. 
-  Dankzij onze keuze voor de meest recente drone-oplossingen gebruiken wij 
-  de nieuwste technologieën om waardevolle diensten te leveren.
-</p>
-
-              </div>
-          </div>
         
-      <!-- Services Section -->
+  <!-- Services Section -->
+  <section class="about section-padding" id="about" style="background-color: #ffffff;">
+    <div class="container">
+
+      <!-- Titel boven de kaders -->
+      <div class="row" style="margin-bottom: 2rem;">
+        <div class="col-12">
+          <h3 style="font-weight: bold; font-size: 2em; color: #417580; margin-bottom: 0.5rem;">
+            🛠️ Onze Diensten
+          </h3>
+        </div>
+      </div>
+
+      <!-- Services grid -->
       <div class="row about-third" id="services-container"></div>
 
       <script>
-      const services = [
+        const services = [
           {
-              title: "📏 Opmetingen met Photogrammetrie",
-              subtitle: "Luchtfoto's worden meetpunten",
-              description: "Met photogrammetrie brengen wij uw project razendsnel en tot op de centimeter nauwkeurig in kaart. Wij bieden uitgebreide opmetingen aan, zoals: as-built plannen, oppervlaktebepalingen en volumeberekeningen. Of het nu gaat om bouwprojecten, volumemetingen of erfgoeddocumentatie: met photogrammetrie bespaart u tijd én kosten."
+              title: "Opmetingen",
+              subtitle: "Met fotogrammetrie",
+              description: "Wij brengen uw project snel en tot op de centimeter nauwkeurig in kaart. Inclusief as-built plannen, oppervlaktebepalingen en volumeberekeningen. Zo bespaart u tijd én kosten."
           },
           {
-              title: "📋 Werfopvolging",
-              subtitle: "Slimme werfopvolging vanuit de lucht",
-              description: "Wij brengen uw werf snel en veilig in beeld. Wij vliegen uw werf op afgesproken momenten, verwerken de beelden tot duidelijke rapportages en leveren overzichtelijke kaarten, 3D-modellen en orthofoto’s."
+              title: "Werfopvolging",
+              subtitle: "Vanuit de lucht",
+              description: "Dronebeelden geven een duidelijk overzicht van uw werf, met overzichtelijke kaarten, 3D-modellen en rapportages."
           },
           {
-              title: "🔍 Inspecties",
-              subtitle: "Inspecties sneller, veiliger, slimmer",
-              description: "Wij voeren inspecties uit op moeilijk bereikbare plaatsen, van gebouwen en daken tot industriële installaties en infrastructuur. Zo krijgt u betrouwbare gegevens zonder risico voor personeel en zonder hinder voor uw activiteiten."
+              title: "Inspecties",
+              subtitle: "Sneller, veiliger, slimmer",
+              description: "Inspecties op moeilijk bereikbare plaatsen, van gebouwen tot industriële installaties. Betrouwbare gegevens zonder risico voor personeel."
           },
           {
-              title: "📷 Visuals",
+              title: "Visuals",
               subtitle: "Unieke beelden",
-              description: "Leg de essentie van uw bouwproject vast met adembenemende luchtfoto's en video's. Onze drone-diensten bieden heldere, professionele beelden die uw visie tot leven brengen."
+              description: "Leg uw bouwproject vast met professionele luchtfoto's en video's die uw visie tot leven brengen."
           },
           {
-              title: "🌐 Plaats-beschrijvingen met 360° Camera en Drone",
-              subtitle: "Volledige locaties, volledig gedocumenteerd",
-              description: "Houd stakeholders op de hoogte met visuele voortgangsrapportages. Onze luchtbeelden geven een helder overzicht van de projectstatus en belangrijke mijlpalen."
+              title: "Plaatsbeschrijving",
+              subtitle: "Volledig gedocumenteerd",
+              description: "Houd stakeholders op de hoogte met visuele rapportages en overzicht van de projectstatus."
           },
           {
-              title: "💧 Monitoring i.k.v. Waterbeheersing",
-              subtitle: "Grip op water, vanuit de lucht",
-              description: "preventieve inspecties, continue monitoring of ondersteuning bij incidenten: met drones maken wij waterbeheersing slimmer, veiliger en efficiënter."
+              title: "Monitoring",
+              subtitle: "i.k.v. Waterbeheersing",
+              description: "Preventieve inspecties en continue monitoring. Drones maken waterbeheersing slimmer, veiliger en efficiënter."
           },
-      ];
+        ];
 
-      const container = document.getElementById('services-container');
-    services.forEach(service => {
-    const serviceBox = `
-        <div class="col-lg-4 col-md-4 col-12" style="padding: 15px;">
-            <div class="service-box">
-                <h3 class="service-title">${service.title}</h3>
-                ${service.subtitle ? `<h4 class="service-subtitle">${service.subtitle}</h4>` : ''}
-                <p class="service-description">${service.description}</p>
-            </div>
-        </div>`;
-    container.innerHTML += serviceBox;
-});
-
+        const container = document.getElementById('services-container');
+        services.forEach(service => {
+            const serviceBox = `
+                <div class="col-lg-4 col-md-4 col-12" style="padding: 15px;">
+                    <div class="service-box">
+                        <div class="service-header">
+                            <h3 class="service-title">${service.title}</h3>
+                            ${service.subtitle ? `<h4 class="service-subtitle">${service.subtitle}</h4>` : ''}
+                        </div>
+                        <div class="service-body">
+                            <p class="service-description">${service.description}</p>
+                        </div>
+                    </div>
+                </div>`;
+            container.innerHTML += serviceBox;
+        });
       </script>
+  </div>
   </section>
+
 
   <!-- Projecten -->
      <section class="projecten section-padding" id = "projecten">
@@ -205,7 +204,7 @@
                         <div class="card-header" id="headingOne">
                           <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                              Project 1. Uitvoering As-Built Plan Bodemsaneringsproject
+                              <strong>Project 1.</strong> Uitvoering As-Built Plan Bodemsaneringsproject
                             </button>
                           </h2>
                         </div>
@@ -247,7 +246,7 @@
                         <div class="card-header" id="headingTwo">
                           <h2 class="mb-0">
                             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                              Project 2. Volumetrische Meting met Drone
+                              <strong>Project 2.</strong> Volumetrische Meting met Drone
                             </button>
                           </h2>
                         </div>
@@ -268,14 +267,16 @@
 
                               <div class="image-grid">
                                   <div>
-                                      <img src="images/project2/Picture1.png" style="width: 100%;">                              
+                                      <img src="images/project2/Picture1.png" style="width: 100%;"> 
+                                      <p>Puntenwolk</p>                             
                                   </div>
                                   <div>
                                       <img src="images/project2/Picture2.png" style="width: 100%;">
-
+                                      <p>Gradiëntkaart</p>
                                   </div>
                                   <div>
                                       <img src="images/project2/fotovolumemeting.jpg" style="width: 100%;">
+                                      <p>Volumeberekeningen</p>
                                   </div>
                               </div>
                           </div>
@@ -285,14 +286,14 @@
 
                       <!-- Project 3-->
                         <div class="card">
-                          <div class="card-header" id="headingTwo">
+                          <div class="card-header" id="headingThree">
                             <h2 class="mb-0">
-                              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Project 3. Werfopvolging Bodemsaneringsproject
+                              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <strong>Project 3.</strong> Werfopvolging Bodemsaneringsproject
                               </button>
                             </h2>
                           </div>
-                          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                             <div class="card-body">
                                 <h6>Nauwkeurige opvolging en rapportage vanuit de lucht</h6>
                                 <p>Bij een complexe <strong>bodemsanering met rasterontgraving</strong> werd onze drone ingezet voor nauwkeurige <em>GPS-gestuurde uitvoering</em> en overzichtelijke <strong>werfopvolging</strong>. Via <strong>photogrammetrie</strong> werden op verschillende momenten puntenwolken gemaakt  voor snelle <strong>oppervlakte-</strong> en <strong>volumeberekeningen</strong>.  De laatste vlucht leverde een gedetailleerd <strong>as-built plan</strong> op.</p>
@@ -390,7 +391,7 @@
         alt: "De Vlaamse Waterweg",
       },
       {
-        img: "images/customers/hdr.png",
+        img: "images/customers/hdr.jpg",
         alt: "Heyrman - De Roeck",
       },
       {
@@ -434,10 +435,8 @@
                    <div class="d-flex flex-column justify-content-center align-items-center col-lg-7 col-md-7 col-12">
                         <div class="hero-text">
 
-                            <h1 class="hero-title">👷🏼‍♂️ Martin de Lobel</h1>
-
-                            <a class="email-link">
-                              Projectcoördinator & UAS Operator</a>
+                            <h1 class="hero-title" style="margin-bottom: 20px;">👷🏼‍♂️ Martin de Lobel</h1>
+                            <h6 class="hero-subtitle" style="color: #417580;">Projectcoördinator & UAS Operator</h6>
                         </div>
                     </div>
             </div>

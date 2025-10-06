@@ -359,7 +359,7 @@
 
   .email-link {
     background: var(--primary-color);
-    color: var(--dark-color);
+    color: #ffffff;
     font-size: 1.6em;
     /*font-size:*var(--h4-font-size)*/
     padding: 0.5rem 2rem 1rem 2rem;
@@ -390,56 +390,50 @@
   /*---------------------------------------
      DIENSTEN KADERS              
   -----------------------------------------*/
-    /*floating moving drone */
-    @keyframes droneSlide {
-  0%   { transform: translate(0px, 0px) rotate(0deg); }
-  20%  { transform: translate(-8px, -30px) rotate(-1.5deg); }
-  40%  { transform: translate(14px, -45px) rotate(1.5deg); }
-  60%  { transform: translate(-5px, -30px) rotate(-1.2deg); }
-  80%  { transform: translate(8px, -20px) rotate(1deg); }
-  100% { transform: translate(0px, 0px) rotate(0deg); }
+.service-box {
+    background: #ffffff;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 6px 30px rgba(65, 117, 128, 0.3);
+    padding: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s;
 }
 
+.service-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;           /* ruimte tussen title en subtitle */
+}
 
-    .drone-slide {
-      animation: droneSlide 10s ease-in-out infinite;
-      will-change: transform;
-    }
+/* Gebruik min-height, niet fixed line-height */
+.service-title {
+    font-weight: bold;
+    color: #417580;
+    font-size: 1.75em;
+    min-height: 50px;    /* minimale hoogte voor uitlijning */
+    margin: 0;
+}
 
-    .service-box {
-      background: #ffffff;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 6px 30px rgba(65, 117, 128, 0.3);
-      padding: 40px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      transition: transform 0.3s;
-  }
-
-  .service-title {
-      font-weight: bold;
-      color: #417580;
-      margin-bottom: 10px;
-      font-size: 1.75em;
-  }
-
-  .service-subtitle {
+.service-subtitle {
     color: #5f8f98;
     font-size: 1.25em;
     font-weight: 500;
-    margin: -5px 0 8px 0;
+    min-height: 30px;    /* minimale hoogte voor uitlijning */
+    margin: 0;
     letter-spacing: 0.3px;
 }
 
-  .service-description {
-      color: #34495e;
-      font-size: 1em;
-      line-height: 1.6;
-      margin: 0;
-  }
+.service-description {
+    color: #34495e;
+    font-size: 1em;
+    line-height: 1.6;
+    margin-top: auto;     /* description begint altijd onderaan de box */
+}
+
+
 
   /*---------------------------------------
      PROJECTEN                 
@@ -549,7 +543,7 @@
 .carousel-track {
   display: flex;
   width: max-content;
-  animation: scroll-left 18s linear infinite;
+  animation: scroll-left 45s linear infinite;
 }
 
 .partner-item {

@@ -22,4 +22,3 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => { lightboxImg.src = ''; }, 300);
     });
 });
-
