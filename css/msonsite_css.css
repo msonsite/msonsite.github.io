@@ -353,7 +353,7 @@
     color: var(--white-color);
     display: inline-block;
     margin: 0.5rem 0;
-    padding: 0.5rem 2rem 1.5rem 2rem;
+    padding: 0.5rem 2rem 1rem 2rem;
 	font-size: 2.2em;
   }
 
@@ -413,7 +413,7 @@
     font-weight: bold;
     color: #417580;
     font-size: 1.75em;
-    min-height: 50px;
+    min-height: 40px;
     margin: 0;
 }
 
@@ -421,7 +421,7 @@
     color: #5f8f98;
     font-size: 1.25em;
     font-weight: 500;
-    min-height: 30px;
+    min-height: 35px;
     margin: 0;
     letter-spacing: 0.3px;
 }
