@@ -1,4 +1,4 @@
-const WHATSAPP_PHONE = "32493772634";
+const WHATSAPP_PHONE = "32491150887";
 
 /**
  * Bouwt een gestructureerd WhatsApp-bericht op
