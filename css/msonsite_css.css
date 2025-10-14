@@ -407,13 +407,14 @@
 .service-box {
     background: #ffffff;
     border: none;
-    border-radius: 12px;
+    border-radius: var(--border-radius-small);
     box-shadow: 0 6px 30px rgba(65, 117, 128, 0.3);
     padding: 40px;
     height: 100%;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s;
+    font-family: var(--base-font-family);
 }
 
 .service-header {
@@ -422,19 +423,18 @@
     gap: 0px;
 }
 
-
 .service-title {
-    font-weight: bold;
+    font-weight: var(--font-weight-bold);
     color: #417580;
-    font-size: 1.75em;
+    font-size: var(--h5-font-size); /* was h4 */
     min-height: 40px;
     margin: 0;
 }
 
 .service-subtitle {
     color: #5f8f98;
-    font-size: 1.25em;
-    font-weight: 500;
+    font-size: var(--h6-font-size); /* was h5 */
+    font-weight: var(--font-weight-normal);
     min-height: 35px;
     margin: 0;
     letter-spacing: 0.3px;
@@ -442,10 +442,12 @@
 
 .service-description {
     color: #34495e;
-    font-size: 1em;
+    font-size: var(--base-font-size); /* was p-font-size */
     line-height: 1.6;
     margin-top: auto;
 }
+
+
 
   /*---------------------------------------
      PROJECTEN                 
