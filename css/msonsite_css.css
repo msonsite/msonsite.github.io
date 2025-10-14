@@ -427,7 +427,7 @@
     font-weight: var(--font-weight-bold);
     color: #417580;
     font-size: var(--h5-font-size); /* was h4 */
-    min-height: 40px;
+    min-height: 30px;
     margin: 0;
 }
 
@@ -435,7 +435,7 @@
     color: #5f8f98;
     font-size: var(--h6-font-size); /* was h5 */
     font-weight: var(--font-weight-normal);
-    min-height: 35px;
+    min-height: 30px;
     margin: 0;
     letter-spacing: 0.3px;
 }
