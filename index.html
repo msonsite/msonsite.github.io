@@ -71,8 +71,8 @@
                 </ul>
 
                 <div class="mt-lg-0 mt-3 mb-4 mb-lg-0">
-                  <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank" class="custom-btn btn" download>
-                    M&S Onsite <i class="fab fa-linkedin"></i>
+                  <a href="https://wa.me/32491150887" target="_blank" class="custom-btn btn" download>
+                    WhatsApp Ons  <i class="fab fa-whatsapp"></i>
                 </a>                
                 </div>
             </div>
@@ -469,7 +469,7 @@
                   
                   <p class="mb-1" style="margin-left: 0; font-family: Arial, sans-serif; color: #333;">
                     Voor nadere informatie over onze oplossingen staan wij u graag te woord. 
-                    U kunt vrijblijvend contact met <strong style="color: #417580;">M&S Onsite</strong> opnemen via de onderstaande gegevens.
+                    U kunt vrijblijvend contact met ons opnemen via de onderstaande gegevens of ons WhatsApp-formulier.
                 </p>
                 
                 <ul class="mt-4 mb-5 mb-lg-0 profile-list list-unstyled" style="margin-left: 0; font-family: Arial, sans-serif; color: #333;">
@@ -496,7 +496,6 @@
                     <br>
                 </ul>
                 
-                
                               <ul class="social-links mt-2" style="list-style-type: none; padding-left: 0; margin-left: 0;">
                   <li style="display: inline; margin-right: 20px;">
                       <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank" rel="noopener" 
@@ -518,23 +517,43 @@
                 
               </div>
   
-              <!-- Right Column: Location Map -->
-              <div class="col-lg-6 col-md-6 col-12" style="text-align: left; padding-left: 20px; padding-right: 20px; margin: auto;">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.994909298234!2d3.2300637765311504!3d50.92381117168641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c339d4fc42aa87%3A0x71538158849a457!2sIngelmunstersestraat%2037%2C%208870%20Izegem!5e0!3m2!1snl!2sbe!4v1729623654846!5m2!1snl!2sbe" 
-                    width="100%" 
-                    height="350" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+              <!-- Right Column: WhatsApp Contact Form -->
+              <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-center" style="margin: auto; padding-left: 20px; padding-right: 20px;">
+                <div class="whatsapp-form-container">
+                  <h6 class="contact-title">Stuur ons een bericht</h6>
+                  <p class="contact-subtitle">Vul je gegevens in en start meteen een WhatsApp-chat met ons.</p>
+
+                  <form id="whatsappForm" class="contact-form">
+                    <div class="form-group">
+                      <label for="name" class="webform-label">Naam:</label>
+                      <input type="text" id="name" class="form-control" placeholder=" " required>
+                      
+                    </div>
+
+                    <div class="form-group">
+                      <label for="project" class="webform-label">Onderwerp:</label>
+                      <input type="text" id="project" class="form-control" placeholder=" " required>
+                      
+                    </div>
+
+                    <div class="form-group">
+                      <label for="message" class="webform-label">Bericht:</label>
+                      <textarea id="message" class="form-control" placeholder=" " rows="3" required></textarea>
+                    </div>
+
+                    <button type="submit" id="submit-button" class="whatsapp-submit">
+                      <i class="fab fa-whatsapp"></i> Verstuur
+                    </button>
+                  </form>
+                </div>
               </div>
+
+          <script src="js/whatsapp.js"></script>
+
           </div>
           <p class="copyright-text mt-5 pt-3" style="margin-left: 0;">&copy; 2025 M&S Onsite. All rights reserved.</p>
           <p style="margin-left: 0;">🧑‍💻 Design by <a href="https://www.linkedin.com/in/sanderdelobel/" target="_blank" style="color: #417580; text-decoration: none;">Sander de Lobel</a></p>        
       </div>
-     
     </section>
     
      <!-- SCRIPTS -->
