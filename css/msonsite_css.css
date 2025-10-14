@@ -720,50 +720,63 @@
     font-size: var(--base-font-size);
   }
 
-/* WhatsApp form gelijk aan linkerpaneel */
+/* WhatsApp form container */
 .whatsapp-form-container {
   background: rgba(65, 117, 128, 0.05);
   border-radius: var(--border-radius-small);
   padding: 2rem;
-  max-width: 100%; /* volledige kolombreedte */
   width: 100%;
+  max-width: 100%;
   box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-sizing: border-box; /* Zorgt dat padding altijd binnen width valt */
 }
 
-@media (min-width: 992px) { 
-  .whatsapp-form-container {
-    max-width: 100%; 
-  }
-}
-
+/* Titels */
 .whatsapp-form-container .contact-title,
 .whatsapp-form-container .contact-subtitle {
   text-align: left;
 }
 
+/* Submit knop */
 .whatsapp-submit {
-  display: inline-block;       /* knop wordt zo breed als de inhoud */
-  margin: 1.5rem 0 0 0;       /* ruimte boven */
-  background-color: #25D366 !important;
+  display: inline-block; 
+  margin: 1.5rem 0 0 0;
+  background-color: #25D366 !important;  /* WhatsApp-groen */
   border-radius: var(--border-radius-medium);
   color: white !important;
   font-weight: var(--font-weight-bold);
-  padding: 0.75rem 1.5rem;    /* verticale en horizontale padding */
+  padding: 0.75rem 1.5rem;
   text-align: center;
   transition: transform 0.2s ease, background 0.3s ease;
   cursor: pointer;
-  white-space: nowrap;         /* voorkomt dat tekst op twee regels komt */
+  white-space: nowrap;
+  border: 2px solid #128C7E;  /* kleine omkadering voor extra zichtbaarheid */
 }
 
+/* Icon in knop */
 .whatsapp-submit i {
   margin-right: 8px;
 }
 
+/* Hover effect */
 .whatsapp-submit:hover {
   background-color: #1ebe5d !important;
   transform: scale(1.03);
 }
+
+/* Mobiel-proof: behoud dezelfde stijl op alle schermgroottes */
+@media (max-width: 768px) {
+  .whatsapp-form-container {
+    padding: 1.5rem;
+  }
+
+  .whatsapp-submit {
+    width: 100%;       /* knop neemt volledige breedte van container */
+    text-align: center;
+  }
+}
+
 
 
   /*---------------------------------------
