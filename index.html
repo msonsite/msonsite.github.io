@@ -205,7 +205,7 @@
 
                 <div class="col-lg-12 col-12">
 
-                    <h3 class="mb-4">🗂️ Projecten</h3>
+                    <h3 style="font-weight: bold; font-size: 2em; color: #417580; margin-bottom: 3rem;">🗂️ Projecten</h3>
                     <p class="mb-4">Ontdek onze projecten – klik hieronder op een project voor een exclusief kijkje in ons werk.</p>
                     
                     <div class="accordion" id="accordionExample">
@@ -437,85 +437,39 @@
     track.innerHTML = partners.map(createPartnerItem).join('') + partners.map(createPartnerItem).join('');
   </script>
 
-    
-    <!-- MDL FOTO -->
-    <section class="hero d-flex flex-column justify-content-center align-items-center">
-
-         <div class="container">
-            <div class="row">
-
-                  <div class="mx-auto col-lg-5 col-md-5 col-10">
-                      <img src="images/mdl.jpg" class="img-fluid" alt="MdL Photo" style="width: 60%; height: auto; margin: 0;">
-                  </div>
-
-                   <div class="d-flex flex-column justify-content-center align-items-center col-lg-7 col-md-7 col-12">
-                        <div class="hero-text">
-
-                            <h1 class="hero-title" style="margin-bottom: 20px;">👷🏼‍♂️ Martin de Lobel</h1>
-                            <h6 class="hero-subtitle" style="color: #417580;">Projectcoördinator & UAS Operator</h6>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </section>
-
 
   <!-- CONTACT SECTION -->
-    <section class="contact section-padding pt-0" id="contact">
+    <section class="contact section-padding pt-5" id="contact">
       <div class="container">
-          <div class="row">
-              <!-- Left Column: Contact Details -->
-              <div class="col-lg-6 col-md-6 col-12" style="text-align: left; padding-left: 20px;">
-                  <h3 class="my-4 pt-4 pt-lg-0">👋🏼 Contact</h3>
-                  
-                  <p class="mb-1" style="margin-left: 0; font-family: Arial, sans-serif; color: #333;">
-                    Voor nadere informatie over onze oplossingen staan wij u graag te woord. 
-                    U kunt vrijblijvend contact met ons opnemen via de onderstaande gegevens of ons WhatsApp-formulier.
+        <h3 style="font-weight: bold; font-size: 2em; color: #417580; margin-bottom: 3rem;">👋🏼 Contact</h3>          
+            <div class="row">
+              <!-- Left Column: MDL Foto + Info -->
+              <div class="col-lg-5 col-md-12 text-center text-lg-left mb-5 mb-lg-0">
+                <div style="display: inline-block; text-align: left;">
+                  <img src="images/mdl.jpg" alt="MdL Photo" style="width: 220px; height: 220px; border-radius: 50%; object-fit: cover; box-shadow: 0 8px 20px rgba(0,0,0,0.15); margin-bottom: 20px;">
+                  <h2 style="margin-bottom: 20px; color: #34495e;">Martin de Lobel</h2>
+                  <h6 style="color: #417580; margin-bottom: 20px;">Projectcoördinator</h6>
+                  <h6 style="color: #417580; margin-bottom: 20px;">UAS Operator</h6>
+                </div>
+                
+                <p style="color: #333; font-size: 16px; text-align: left;">
+                  Voor nadere informatie over onze oplossingen staan wij u graag te woord. 
+                  U kunt vrijblijvend contact met ons opnemen via de onderstaande gegevens of ons WhatsApp-formulier.
                 </p>
-                
-                <ul class="mt-4 mb-5 mb-lg-0 profile-list list-unstyled" style="margin-left: 0; font-family: Arial, sans-serif; color: #333;">
-                    <li style="margin-bottom: 10px;">
-                        <strong style="color: #417580;">Locatie</strong> 
-                        <span style="color: #34495e;">Izegem, België</span>
-                    </li>
-                    <li style="margin-bottom: 10px;">
-                        <strong style="color: #417580;">Telefoon</strong> 
-                        <a href="tel:+32491150887" target="_blank" style="color: #007AFF; text-decoration: none; transition: color 0.3s;">
-                            +32 491 150 887
-                        </a>
-                    </li>
-                    <li style="margin-bottom: 10px;">
-                        <strong style="color: #417580;">E-mail</strong> 
-                        <a href="mailto:martinonsite@telenet.be" target="_blank" style="color: #007AFF; text-decoration: none; transition: color 0.3s;">
-                            martinonsite@telenet.be
-                        </a>
-                    </li>
-                    <li style="margin-bottom: 10px;">
-                        <strong style="color: #417580;">BTW</strong> 
-                        <span style="color: #34495e;">BE 0784.964.976</span>
-                    </li>
-                    <br>
+
+                <ul class="list-unstyled" style="color: #333; padding-left: 0; margin-top: 30px;">
+                  <li style="margin-bottom: 10px;"><strong style="color: #417580;">Locatie:</strong> Izegem, België</li>
+                  <li style="margin-bottom: 10px;"><strong style="color: #417580;">Telefoon:</strong> <a href="tel:+32491150887" style="color: #007AFF; text-decoration: none;">+32 491 150 887</a></li>
+                  <li style="margin-bottom: 10px;"><strong style="color: #417580;">E-mail:</strong> <a href="mailto:martinonsite@telenet.be" style="color: #007AFF; text-decoration: none;">martinonsite@telenet.be</a></li>
+                  <li style="margin-bottom: 10px;"><strong style="color: #417580;">BTW:</strong> BE 0784.964.976</li>
                 </ul>
-                
-                              <ul class="social-links mt-2" style="list-style-type: none; padding-left: 0; margin-left: 0;">
-                  <li style="display: inline; margin-right: 20px;">
-                      <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank" rel="noopener" 
-                        style="color: #417580; font-size: 24px; transition: color 0.3s;" class="fab fa-linkedin"></a>
-                  </li>
-                  <li style="display: inline; margin-right: 20px;">
-                      <a href="https://www.facebook.com/people/MS-Onsite/61561631330027/" target="_blank" rel="noopener" 
-                        style="color: #417580; font-size: 24px; transition: color 0.3s;" class="fab fa-facebook"></a>
-                  </li>
-                  <li style="display: inline; margin-right: 20px;">
-                      <a href="https://www.instagram.com/onsite_project_coordination/" target="_blank" rel="noopener" 
-                        style="color: #417580; font-size: 24px; transition: color 0.3s;" class="fab fa-instagram"></a>
-                  </li>
-                  <li style="display: inline; margin-right: 20px;">
-                      <a href="https://wa.me/32491150887" target="_blank" rel="noopener" 
-                        style="color: #417580; font-size: 24px; transition: color 0.3s;" class="fab fa-whatsapp"></a>
-                  </li>
-              </ul>
-                
+
+                <div style="margin-top: 20px;">
+                  <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank" class="fab fa-linkedin" style="color: #417580; font-size: 24px; margin-right: 15px;"></a>
+                  <a href="https://www.facebook.com/people/MS-Onsite/61561631330027/" target="_blank" class="fab fa-facebook" style="color: #417580; font-size: 24px; margin-right: 15px;"></a>
+                  <a href="https://www.instagram.com/onsite_project_coordination/" target="_blank" class="fab fa-instagram" style="color: #417580; font-size: 24px; margin-right: 15px;"></a>
+                  <a href="https://wa.me/32491150887" target="_blank" class="fab fa-whatsapp" style="color: #417580; font-size: 24px;"></a>
+                </div>
               </div>
   
               <!-- Right Column: WhatsApp Contact Form -->
@@ -551,10 +505,26 @@
 
           <script src="js/whatsapp.js"></script>
 
+          <!-- Footer: binnen de container -->
+          <div class="container mt-5">
+            <div class="d-flex justify-content-between align-items-center flex-wrap" style="color: #999; font-size: 13px;">
+              <!-- Left: copyright + design -->
+              <div>
+                <span>&copy; 2025 M&S Onsite. All rights reserved.</span> <br>
+                <span>🧑‍💻 Design by 
+                  <a href="https://www.linkedin.com/in/sanderdelobel/" target="_blank" style="color: #417580; text-decoration: none;">Sander de Lobel</a>
+                </span>
+              </div>
+
+              <!-- Right: social icons -->
+              <div>
+                <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank" class="fab fa-linkedin" style="color: #417580; font-size: 20px; margin-left: 10px;"></a>
+                <a href="https://www.facebook.com/people/MS-Onsite/61561631330027/" target="_blank" class="fab fa-facebook" style="color: #417580; font-size: 20px; margin-left: 10px;"></a>
+                <a href="https://www.instagram.com/onsite_project_coordination/" target="_blank" class="fab fa-instagram" style="color: #417580; font-size: 20px; margin-left: 10px;"></a>
+              </div>
+            </div>
           </div>
-          <p class="copyright-text mt-5 pt-3" style="margin-left: 0;">&copy; 2025 M&S Onsite. All rights reserved.</p>
-          <p style="margin-left: 0;">🧑‍💻 Design by <a href="https://www.linkedin.com/in/sanderdelobel/" target="_blank" style="color: #417580; text-decoration: none;">Sander de Lobel</a></p>        
-      </div>
+
     </section>
     
      <!-- SCRIPTS -->
