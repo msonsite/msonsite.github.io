@@ -149,7 +149,7 @@
       <!-- Titel boven de kaders -->
       <div class="row" style="margin-bottom: 1rem;">
         <div class="col-12">
-          <h3 style="font-weight: bold; font-size: 2em; color: #417580; margin-bottom: 0.5rem;">
+          <h3 style="font-weight: bold; font-size: 2em; color: #417580; margin-top: 2rem; margin-bottom: 0.5rem;">
             🌐 Onze Diensten
           </h3>
         </div>
@@ -216,13 +216,18 @@
   <!-- PROJECTEN SECTION -->
      <section class="projecten section-padding" id = "projecten">
         
+        <!-- SVG Wave Top -->
+        <svg class="wave-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+          <path fill="#ffffff" d="M0,64 C360,0 1080,128 1440,64 L1440,0 L0,0 Z"></path>
+        </svg>
+
         <div class="container">
             
             <div class="row">
 
                 <div class="col-lg-12 col-12">
 
-                    <h3 style="font-weight: bold; font-size: 2em; color: #417580; margin-bottom: 3rem;">🗂️ Projecten</h3>
+                    <h3 style="font-weight: bold; font-size: 2em; color: #417580; margin-top: 2rem; margin-bottom: 3rem;">🗂️ Projecten</h3>
                     <p class="mb-4">Ontdek onze projecten – klik hieronder op een project voor een exclusief kijkje in ons werk.</p>
                     
                     <div class="accordion" id="accordionExample">
@@ -402,14 +407,20 @@
            	 </div><!-- col -->
         	</div><!-- row -->
         </div><!-- container -->
+
+          <!-- SVG Wave Bottom -->
+          <svg class="wave-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+            <path fill="#ffffff" d="M0,64 C360,128 1080,0 1440,64 L1440,100 L0,100 Z"></path>
+          </svg>
+
     </section>
 
     <!-- SAMENWERKINGEN SECTION -->
-    <section class="customers section-padding" id="customers">
+    <section class="customers section-padding" id="customers" style="padding-bottom: 80px;">
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            <h3 class="mb-5" style="font-size: var(--h4-font-size); font-weight: var(--font-weight-bold); font-family: var(--base-font-family);">
+            <h3 class="mb-5" style="font-size: var(--h4-font-size); font-weight: var(--font-weight-bold); font-family: var(--base-font-family); margin-top: 2rem;">
               Samenwerkingen
             </h3>
             <p style="font-size: var(--h6-font-size); font-weight: var(--font-weight-normal); font-family: var(--base-font-family); margin: 40px 0;">
@@ -477,89 +488,97 @@
   </script>
 
 
-  <!-- CONTACT SECTION -->
+    <!-- CONTACT SECTION -->
     <section class="contact section-padding pt-5" id="contact">
       <div class="container">
-        <h3 style="font-weight: bold; font-size: 2em; color: #417580; margin-bottom: 3rem;">👋🏼 Contact</h3>          
-            <div class="row">
-              <!-- Left Column: MDL Foto + Info -->
-              <div class="col-lg-5 col-md-12 text-center text-lg-left mb-5 mb-lg-0">
-                <div style="display: inline-block; text-align: left;">
-                  <img src="images/mdl.jpg" alt="MdL Photo" style="width: 220px; height: 220px; border-radius: 50%; object-fit: cover; box-shadow: 0 8px 20px rgba(0,0,0,0.15); margin-bottom: 20px;">
-                  <h2 style="margin-bottom: 20px; color: #34495e;">Martin de Lobel</h2>
-                  <h6 style="color: #417580; margin-bottom: 20px;">Projectcoördinator</h6>
-                  <h6 style="color: #417580; margin-bottom: 20px;">UAS Operator</h6>
-                </div>
-                
-                <p style="color: #333; font-size: 16px; text-align: left;">
-                  Voor nadere informatie over onze oplossingen staan wij u graag te woord. 
-                  U kunt vrijblijvend contact met ons opnemen via de onderstaande gegevens of ons WhatsApp-formulier.
-                </p>
+        <h3 style="font-weight: bold; font-size: 2em; color: #417580; margin-top: 2rem; margin-bottom: 3rem;">
+          👋🏼 Contact
+        </h3>
 
-                <ul class="list-unstyled" style="color: #333; padding-left: 0; margin-top: 30px;">
-                  <li style="margin-bottom: 10px;"><strong style="color: #417580;">Locatie:</strong> Izegem, België</li>
-                  <li style="margin-bottom: 10px;"><strong style="color: #417580;">Telefoon:</strong> <a href="tel:+32491150887" style="color: #007AFF; text-decoration: none;">+32 491 150 887</a></li>
-                  <li style="margin-bottom: 10px;"><strong style="color: #417580;">E-mail:</strong> <a href="mailto:martinonsite@telenet.be" style="color: #007AFF; text-decoration: none;">martinonsite@telenet.be</a></li>
-                  <li style="margin-bottom: 10px;"><strong style="color: #417580;">BTW:</strong> BE 0784.964.976</li>
-                </ul>
-
-              </div>
-  
-              <!-- Right Column: WhatsApp Contact Form -->
-              <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-center" style="margin: auto; padding-left: 20px; padding-right: 20px;">
-                <div class="whatsapp-form-container">
-                  <h6 class="contact-title">Stuur ons een bericht</h6>
-                  <p class="contact-subtitle">Vul je gegevens in en start meteen een WhatsApp-chat met ons.</p>
-
-                  <form id="whatsappForm" class="contact-form">
-                    <div class="form-group">
-                      <label for="name" class="webform-label">Naam:</label>
-                      <input type="text" id="name" class="form-control" placeholder=" " required>
-                      
-                    </div>
-
-                    <div class="form-group">
-                      <label for="project" class="webform-label">Onderwerp:</label>
-                      <input type="text" id="project" class="form-control" placeholder=" " required>
-                      
-                    </div>
-
-                    <div class="form-group">
-                      <label for="message" class="webform-label">Bericht:</label>
-                      <textarea id="message" class="form-control" placeholder=" " rows="3" required></textarea>
-                    </div>
-
-                    <button type="submit" id="submit-button" class="whatsapp-submit">
-                      <i class="fab fa-whatsapp"></i> Verstuur
-                    </button>
-                  </form>
-                </div>
-              </div>
-
-          <script src="js/whatsapp.js"></script>
-
-          <!-- Footer: binnen de container -->
-          <div class="container mt-5">
-            <div class="d-flex justify-content-between align-items-center flex-wrap" style="color: #999; font-size: 13px;">
-              <!-- Left: copyright + design -->
-              <div>
-                <span>&copy; 2025 M&S Onsite. All rights reserved.</span> <br>
-                <span>🧑‍💻 Design by 
-                  <a href="https://www.linkedin.com/in/sanderdelobel/" target="_blank" style="color: #417580; text-decoration: none;">Sander de Lobel</a>
-                </span>
-              </div>
-
-              <!-- Right: social icons -->
-              <div>
-                <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank" class="fab fa-linkedin" style="color: #417580; font-size: 20px; margin-left: 10px;"></a>
-                <a href="https://www.facebook.com/people/MS-Onsite/61561631330027/" target="_blank" class="fab fa-facebook" style="color: #417580; font-size: 20px; margin-left: 10px;"></a>
-                <a href="https://www.instagram.com/onsite_project_coordination/" target="_blank" class="fab fa-instagram" style="color: #417580; font-size: 20px; margin-left: 10px;"></a>
-              </div>
+        <div class="row align-items-start">
+          <!-- Left Column: MDL Foto + Info -->
+          <div class="col-lg-5 col-md-12 text-center text-lg-left mb-5 mb-lg-0">
+            <div style="display: inline-block; text-align: left;">
+              <img src="images/mdl.jpg" alt="MdL Photo" class="mdl-photo">
+              <h2 style="margin-bottom: 10px; color: #34495e;">Martin de Lobel</h2>
+              <h6 style="color: #417580; margin-bottom: 5px;">Projectcoördinator</h6>
+              <h6 style="color: #417580; margin-bottom: 20px;">UAS Operator</h6>
             </div>
+
+            <p style="color: #333; font-size: 16px; text-align: left;">
+              Voor nadere informatie over onze oplossingen staan wij u graag te woord. 
+              U kunt vrijblijvend contact met ons opnemen via de onderstaande gegevens of ons WhatsApp-formulier.
+            </p>
+
+            <ul class="list-unstyled" style="color: #333; padding-left: 0; margin-top: 20px; font-size: 16px; line-height: 1.6;">
+              <li style="margin-bottom: 8px;"><strong style="color: #417580;">Locatie:</strong> Izegem, België</li>
+              <li style="margin-bottom: 8px;"><strong style="color: #417580;">Telefoon:</strong> 
+                <a href="tel:+32491150887" style="color: #007AFF; text-decoration: none;">+32 491 150 887</a>
+              </li>
+              <li style="margin-bottom: 8px;"><strong style="color: #417580;">E-mail:</strong> 
+                <a href="mailto:martinonsite@telenet.be" style="color: #007AFF; text-decoration: none;">martinonsite@telenet.be</a>
+              </li>
+              <li><strong style="color: #417580;">BTW:</strong> BE 0784.964.976</li>
+            </ul>
           </div>
 
+          <!-- Right Column: WhatsApp Contact Form -->
+          <div class="col-lg-6 col-md-6 col-12 d-flex justify-content-end">
+            <div class="whatsapp-form-container" style="width: 100%; max-width: 450px;">
+              <h6 class="contact-title">Stuur ons een bericht</h6>
+              <p class="contact-subtitle">Vul je gegevens in en start meteen een WhatsApp-chat met ons.</p>
+
+              <form id="whatsappForm" class="contact-form">
+                <div class="form-group">
+                  <label for="name" class="webform-label">Naam:</label>
+                  <input type="text" id="name" class="form-control" placeholder=" " required>
+                </div>
+
+                <div class="form-group">
+                  <label for="project" class="webform-label">Onderwerp:</label>
+                  <input type="text" id="project" class="form-control" placeholder=" " required>
+                </div>
+
+                <div class="form-group">
+                  <label for="message" class="webform-label">Bericht:</label>
+                  <textarea id="message" class="form-control" placeholder=" " rows="3" required></textarea>
+                </div>
+
+                <button type="submit" id="submit-button" class="whatsapp-submit">
+                  <i class="fab fa-whatsapp"></i> Verstuur
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="js/whatsapp.js"></script>
     </section>
-    
+
+    <!-- FOOTER SECTION -->
+    <section class="footer-section" style="background-color: #f9f9f9; padding: 40px 0;">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center flex-wrap" style="color: #999; font-size: 13px;">
+          <!-- Left: copyright + design -->
+          <div>
+            <span>&copy; 2025 M&S Onsite. All rights reserved.</span> <br>
+            <span>🧑‍💻 Design by 
+              <a href="https://www.linkedin.com/in/sanderdelobel/" target="_blank" style="color: #417580; text-decoration: none;">Sander de Lobel</a>
+            </span>
+          </div>
+
+          <!-- Right: social icons -->
+          <div>
+            <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank" class="fab fa-linkedin" style="color: #417580; font-size: 20px; margin-left: 10px;"></a>
+            <a href="https://www.facebook.com/people/MS-Onsite/61561631330027/" target="_blank" class="fab fa-facebook" style="color: #417580; font-size: 20px; margin-left: 10px;"></a>
+            <a href="https://www.instagram.com/onsite_project_coordination/" target="_blank" class="fab fa-instagram" style="color: #417580; font-size: 20px; margin-left: 10px;"></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
      <!-- SCRIPTS -->
      <script src="js/jquery.min.js"></script>
      <script src="js/bootstrap.min.js"></script>
