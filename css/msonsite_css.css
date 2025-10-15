@@ -217,13 +217,13 @@
   }
 
   .navbar .custom-btn {
-    background: var(--primary-color);
-    color: var(--dark-color);
+    background: #0A66C2;
+    color: var(--white-color);
   }
 
   .contact-form #submit-button:hover,
   .navbar .custom-btn:hover {
-    background: var(--dark-color);
+    background: #004182;
     color: var(--white-color);
   }
 
