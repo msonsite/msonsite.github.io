@@ -59,9 +59,15 @@
         <div class="container">
 
             <a class="navbar-brand" href="#">
-              <img src="images/MsOnsite LogoSpacing.png" alt="M&S Onsite" style="height: 40px;"> <!-- Adjust height as needed -->
+              <img src="images/MsOnsite LogoSpacing.png" alt="M&S Onsite" style="height: 50px;">
             </a>
-          
+
+                      <script>
+            document.querySelector('.navbar-brand').addEventListener('click', function(e) {
+              e.preventDefault(); // prevent the default jump
+              window.scrollTo({ top: 0, behavior: 'smooth' }); // smooth scroll to top when clicking M&S Onsite logo
+            });
+          </script>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -127,7 +133,7 @@
     <img id="scrollImage" src="images/emailbanner.png" alt="MdL Photo"
         style="position: absolute; top: 50%; left: 50%;
                 transform: translate(-50%, -50%) scale(1);
-                width: auto; height: 100%; max-width: none;
+                width: auto; height: 200%; max-width: none;
                 border-radius: 12px; transition: transform 0.2s ease-out;">
   </section>
 
@@ -246,20 +252,27 @@
                                 Afhankelijk van de <strong>projectgrootte</strong> leveren we de resultaten al <strong>binnen enkele uren</strong> na opmeting.
                               </p>
 
-                              <div class="image-grid">
-                                  <div>
-                                      <img src="images/project2/Picture1.png" style="width: 100%;"> 
-                                      <p>Puntenwolk</p>                             
+                              <!-- Project 2 slider -->
+                              <div class="image-slider">
+                                <div class="slides">
+                                  <div class="slide">
+                                    <img src="images/project2/Picture1.png" alt="Puntenwolk">
+                                    <p>Puntenwolk</p>
                                   </div>
-                                  <div>
-                                      <img src="images/project2/Picture2.png" style="width: 100%;">
-                                      <p>Gradiëntkaart</p>
+                                  <div class="slide">
+                                    <img src="images/project2/Picture2.png" alt="Gradiëntkaart">
+                                    <p>Gradiëntkaart</p>
                                   </div>
-                                  <div>
-                                      <img src="images/project2/Picture3.png" style="width: 100%;">
-                                      <p>Volumeberekeningen</p>
+                                  <div class="slide">
+                                    <img src="images/project2/Picture3.png" alt="Volumeberekeningen">
+                                    <p>Volumeberekeningen</p>
                                   </div>
+                                </div>
+
+                                <button class="prev">‹</button>
+                                <button class="next">›</button>
                               </div>
+
                               <h6>
                                 Voordelen
                               </h6>
@@ -295,20 +308,25 @@
                                 Dankzij deze dataset kunnen de meetpunten later opnieuw worden uitgezet, wat bijdraagt aan een <strong>betrouwbare</strong> en <strong>reproduceerbare oplevering</strong>.
                                 </p>
                               
-                              <!-- Image grid -->
-                              <div class="image-grid">
-                                  <div>
-                                      <img src="images/asbuiltplan/Picture1.png" style="width: 100%;">
-                                      <p>As-built</p>
+                              <!-- As-built Plan slider -->
+                              <div class="image-slider">
+                                <div class="slides">
+                                  <div class="slide">
+                                    <img src="images/asbuiltplan/Picture1.png" alt="As-built">
+                                    <p>As-built</p>
                                   </div>
-                                  <div>
-                                      <img src="images/asbuiltplan/Picture2.png" style="width: 100%;">
-                                      <p>Leidingtracé</p>
+                                  <div class="slide">
+                                    <img src="images/asbuiltplan/Picture2.png" alt="Leidingtracé">
+                                    <p>Leidingtracé</p>
                                   </div>
-                                  <div>
-                                      <img src="images/asbuiltplan/Picture3.png" style="width: 100%;">
-                                      <p>DXF-export</p>
+                                  <div class="slide">
+                                    <img src="images/asbuiltplan/Picture3.png" alt="DXF-export">
+                                    <p>DXF-export</p>
                                   </div>
+                                </div>
+
+                                <button class="prev">‹</button>
+                                <button class="next">›</button>
                               </div>
                           </div>
                       </div>
@@ -328,32 +346,41 @@
                                 <h6>Dronegestuurde opvolging</h6>
                                 <p>Bij een complexe <strong>bodemsanering met rasterontgraving</strong> werd onze drone ingezet voor nauwkeurige <em>GPS-gestuurde uitvoering</em> en overzichtelijke <strong>werfopvolging</strong>. Via <strong>photogrammetrie</strong> werden op verschillende momenten puntenwolken gemaakt  voor snelle <strong>oppervlakte-</strong> en <strong>volumeberekeningen</strong>.  Dit leverde een gedetailleerd <strong>as-built plan</strong> op.</p>
 
-                                <div class="image-grid">
-                                  <div>
-                                    <img src="images/project 3/Picture1.png" style="width: 100%;"> 
-                                    <p>1. Beginsituatie</p>                             
+                                <!-- Compact Image Slider -->
+                                <div class="image-slider">
+                                  <div class="slides">
+                                    <div class="slide">
+                                      <img src="images/project 3/Picture1.png" alt="Beginsituatie">
+                                      <p>1. Beginsituatie</p>
+                                    </div>
+                                    <div class="slide">
+                                      <img src="images/project 3/Picture2.png" alt="Inpeiling">
+                                      <p>2. Inpeiling</p>
+                                    </div>
+                                    <div class="slide">
+                                      <img src="images/project 3/Picture3.png" alt="Oppervlakte- en volumeberekeningen">
+                                      <p>3. Oppervlakte- en volumeberekeningen</p>
+                                    </div>
+                                    <div class="slide">
+                                      <img src="images/project 3/Picture4.png" alt="Ontgraven rastervlakken">
+                                      <p>4. Ontgraven rastervlakken</p>
+                                    </div>
+                                    <div class="slide">
+                                      <img src="images/project 3/Picture5.png" alt="Resterende uit te graven rasters">
+                                      <p>5. Resterende uit te graven rasters</p>
+                                    </div>
+                                    <div class="slide">
+                                      <img src="images/project 3/Picture6.png" alt="As-built">
+                                      <p>6. As-built</p>
+                                    </div>
                                   </div>
-                                  <div>
-                                    <img src="images/project 3/Picture2.png" style="width: 100%;">
-                                    <p>2. Inpeiling</p>
-                                  </div>
-                                  <div>
-                                    <img src="images/project 3/Picture3.png" style="width: 100%;">
-                                    <p>3. Oppervlakte- en volumeberekeningen</p>
-                                  </div>
-                                  <div>
-                                    <img src="images/project 3/Picture4.png" style="width: 100%;">
-                                    <p>4. Ontgraven rastervlakken</p>
-                                  </div>
-                                  <div>
-                                    <img src="images/project 3/Picture5.png" style="width: 100%;">
-                                    <p>5. Resterende uit te graven rasters</p>
-                                  </div>
-                                  <div>
-                                    <img src="images/project 3/Picture6.png" style="width: 100%;">
-                                    <p>6. As-built</p>
-                                  </div>
+
+                                  <button class="prev">‹</button>
+                                  <button class="next">›</button>
                                 </div>
+
+                                <script src="js/image-slider.js"></script>
+
                             </div>
                           </div>
                         </div>
