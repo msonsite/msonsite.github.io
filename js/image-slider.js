@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const startAutoplay = () => {
       autoplayInterval = setInterval(() => {
         if (!isTouching) goNext(); // alleen bewegen als gebruiker niet swipe vasthoudt
-      }, 5000);
+      }, 4000);
     };
 
     const resetAutoplay = () => {
