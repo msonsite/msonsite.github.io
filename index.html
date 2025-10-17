@@ -90,6 +90,39 @@
     .fade-in-up {
       animation: fadeInUp 0.6s ease-out;
     }
+
+    /* Drone Animation */
+    @keyframes droneFly {
+      0% { transform: translateX(-100px) translateY(0px) rotate(0deg); }
+      25% { transform: translateX(50px) translateY(-30px) rotate(5deg); }
+      50% { transform: translateX(200px) translateY(0px) rotate(0deg); }
+      75% { transform: translateX(50px) translateY(30px) rotate(-5deg); }
+      100% { transform: translateX(-100px) translateY(0px) rotate(0deg); }
+    }
+
+    @keyframes droneHover {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(2deg); }
+      50% { transform: translateY(-5px) rotate(0deg); }
+      75% { transform: translateY(-15px) rotate(-2deg); }
+    }
+
+    @keyframes droneRotors {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .animate-drone-fly {
+      animation: droneFly 20s ease-in-out infinite;
+    }
+
+    .animate-drone-hover {
+      animation: droneHover 3s ease-in-out infinite;
+    }
+
+    .animate-rotors {
+      animation: droneRotors 0.1s linear infinite;
+    }
    
     /* Smooth scrolling offset for fixed navbar */
     html {
@@ -205,6 +238,37 @@
       <div class="absolute inset-0">
         <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-white/5 to-transparent transform -skew-y-6"></div>
         <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-transparent via-primary-light/5 to-transparent transform skew-y-6"></div>
+      </div>
+
+      <!-- Animated Drone -->
+      <div class="absolute top-1/2 left-0 w-full h-full pointer-events-none">
+        <div class="animate-drone-fly relative">
+          <!-- Drone Body -->
+          <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-drone-hover">
+            <!-- Main Drone Body -->
+            <div class="w-16 h-8 bg-white/20 backdrop-blur-sm rounded-lg border border-white/30 shadow-lg relative">
+              <!-- Drone Camera -->
+              <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-light/40 rounded-full border border-white/20"></div>
+              <!-- LED Lights -->
+              <div class="absolute top-1 left-1 w-1 h-1 bg-green-400 rounded-full animate-pulse"></div>
+              <div class="absolute top-1 right-1 w-1 h-1 bg-red-400 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+            </div>
+            
+            <!-- Rotors -->
+            <div class="absolute -top-2 -left-2 w-6 h-6 border-2 border-white/30 rounded-full">
+              <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-0.5 bg-white/40 animate-rotors"></div>
+            </div>
+            <div class="absolute -top-2 -right-2 w-6 h-6 border-2 border-white/30 rounded-full">
+              <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-0.5 bg-white/40 animate-rotors"></div>
+            </div>
+            <div class="absolute -bottom-2 -left-2 w-6 h-6 border-2 border-white/30 rounded-full">
+              <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-0.5 bg-white/40 animate-rotors"></div>
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-6 h-6 border-2 border-white/30 rounded-full">
+              <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-0.5 bg-white/40 animate-rotors"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
    
