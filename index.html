@@ -64,7 +64,7 @@
       100% { transform: translateX(-50%); }
     }
     .animate-scroll {
-      animation: scroll 30s linear infinite;
+      animation: scroll 15s linear infinite;
     }
    
     @keyframes float {
@@ -96,9 +96,9 @@
       scroll-padding-top: 80px;
     }
  
-    /* Banner zoom effect */
-    .banner-zoom {
-      transition: transform 0.2s ease-out;
+    /* Enhanced floating animation */
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
     }
    
     /* Gradient text */
@@ -156,7 +156,10 @@
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
           </a>
           <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank"
-             class="bg-gradient-to-r from-primary to-primary-light hover:from-primary-dark hover:to-primary text-white px-6 py-2.5 rounded-full transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105">
+             class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2.5 rounded-full transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+             style="background: linear-gradient(135deg, #0077B5 0%, #005885 100%);"
+             onmouseover="this.style.background='linear-gradient(135deg, #005885 0%, #004066 100%)'"
+             onmouseout="this.style.background='linear-gradient(135deg, #0077B5 0%, #005885 100%)'">
             <span>LinkedIn</span>
             <i class="fab fa-linkedin"></i>
           </a>
@@ -171,7 +174,10 @@
           <a href="#customers" class="text-gray-700 hover:text-primary transition duration-300 font-medium py-2">Samenwerkingen</a>
           <a href="#contact" class="text-gray-700 hover:text-primary transition duration-300 font-medium py-2">Contact</a>
           <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank"
-             class="bg-gradient-to-r from-primary to-primary-light text-white px-6 py-3 rounded-full transition duration-300 inline-flex items-center justify-center space-x-2 shadow-lg">
+             class="text-white px-6 py-3 rounded-full transition duration-300 inline-flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+             style="background: linear-gradient(135deg, #0077B5 0%, #005885 100%);"
+             onmouseover="this.style.background='linear-gradient(135deg, #005885 0%, #004066 100%)'"
+             onmouseout="this.style.background='linear-gradient(135deg, #0077B5 0%, #005885 100%)'">
             <span>LinkedIn</span>
             <i class="fab fa-linkedin"></i>
           </a>
@@ -181,59 +187,76 @@
   </nav>
  
   <!-- HERO SECTION -->
-  <section id="banner" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-primary-dark to-primary">
-    <!-- Background Image with Overlay -->
-    <div class="absolute inset-0">
-      <img id="scrollImage" src="images/emailbanner.png" alt="M&S Onsite Banner"
-           class="w-full h-full object-cover banner-zoom opacity-40">
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/50"></div>
+  <section id="banner" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Modern Gradient Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-primary-dark to-primary"></div>
+    
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 overflow-hidden">
+      <!-- Floating geometric shapes -->
+      <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full animate-float blur-xl"></div>
+      <div class="absolute top-1/3 right-1/4 w-48 h-48 bg-primary-light/10 rounded-full animate-float blur-lg" style="animation-delay: 2s;"></div>
+      <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-white/3 rounded-full animate-float blur-2xl" style="animation-delay: 4s;"></div>
+      
+      <!-- Grid pattern -->
+      <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
+      
+      <!-- Subtle diagonal lines -->
+      <div class="absolute inset-0">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-white/5 to-transparent transform -skew-y-6"></div>
+        <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-transparent via-primary-light/5 to-transparent transform skew-y-6"></div>
+      </div>
     </div>
    
     <!-- Hero Content -->
-    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white py-20">
+    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white min-h-screen flex items-center justify-center">
       <div class="max-w-4xl mx-auto space-y-8 fade-in-up">
-        <h1 class="text-5xl md:text-7xl font-bold leading-tight">
-          <span class="block mb-2">Drone Services</span>
-          <span class="block bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Voor de Toekomst</span>
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
+        
+        <!-- Main Headline -->
+        <div class="space-y-6">
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <span class="block text-white">Precisie vanuit</span>
+            <span class="block bg-gradient-to-r from-white via-primary-light to-white bg-clip-text text-transparent">de Lucht</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
+            Drone-oplossingen die <span class="text-white font-semibold">werken</span> voor uw projecten
+          </p>
+        </div>
+        
+        <!-- Badge -->
+        <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm font-medium">
+          <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+          <span>Professionele Drone Services</span>
+        </div>
+        
+        <!-- Description -->
+        <p class="text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto">
           Professionele drone-opmetingen, werfopvolging en inspectiediensten in België.
-          <span class="block mt-2 font-semibold">Sneller, nauwkeuriger, veiliger.</span>
+          <span class="block mt-2 text-white font-medium">Sneller, nauwkeuriger, veiliger.</span>
         </p>
+        
+        <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
           <a href="#about"
-             class="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center space-x-2">
+             class="group bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2">
             <span>Ontdek Onze Diensten</span>
-            <i class="fas fa-arrow-down"></i>
+            <i class="fas fa-arrow-down group-hover:translate-y-1 transition-transform"></i>
           </a>
           <a href="#contact"
-             class="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 inline-flex items-center space-x-2">
+             class="group border-2 border-white/30 text-white hover:bg-white hover:text-primary px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 inline-flex items-center justify-center space-x-2 backdrop-blur-sm">
             <span>Neem Contact Op</span>
-            <i class="fas fa-envelope"></i>
+            <i class="fas fa-envelope group-hover:scale-110 transition-transform"></i>
           </a>
-        </div>
-       
-        <!-- Stats -->
-        <div class="grid grid-cols-3 gap-6 max-w-3xl mx-auto pt-12">
-          <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold mb-2">10+</div>
-            <div class="text-sm md:text-base text-gray-300">Projecten</div>
-          </div>
-          <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold mb-2">100%</div>
-            <div class="text-sm md:text-base text-gray-300">Tevreden Klanten</div>
-          </div>
-          <div class="text-center">
-            <div class="text-4xl md:text-5xl font-bold mb-2">24/7</div>
-            <div class="text-sm md:text-base text-gray-300">Bereikbaar</div>
-          </div>
         </div>
       </div>
     </div>
    
     <!-- Scroll Indicator -->
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-      <i class="fas fa-chevron-down text-white text-2xl"></i>
+      <div class="flex flex-col items-center space-y-2">
+        <span class="text-xs text-gray-400 uppercase tracking-wider">Scroll</span>
+        <i class="fas fa-chevron-down text-white text-xl"></i>
+      </div>
     </div>
   </section>
  
@@ -341,7 +364,7 @@
               <div class="relative inline-block">
                 <img src="images/mdl.jpg" alt="Martin de Lobel"
                      class="w-40 h-40 rounded-full object-cover border-4 border-white shadow-xl mx-auto mb-4">
-                <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-green-500 text-white text-xs px-3 py-1 rounded-full">
+                <div class="absolute bottom-1 left-1/2 -translate-x-1/2 bg-green-500 text-white text-xs px-3 py-1 rounded-full">
                   Beschikbaar
                 </div>
               </div>
@@ -503,14 +526,15 @@
       });
     });
  
-    // Banner Zoom on Scroll
+    // Parallax effect for floating elements
     window.addEventListener('scroll', function() {
       const scrollY = window.scrollY;
-      const image = document.getElementById('scrollImage');
-      if (image) {
-        const scale = 1 + scrollY / 2000;
-        image.style.transform = `translate(-50%, -50%) scale(${scale})`;
-      }
+      const floatingElements = document.querySelectorAll('.animate-float');
+      floatingElements.forEach((element, index) => {
+        const speed = 0.5 + (index * 0.1);
+        const yPos = -(scrollY * speed);
+        element.style.transform = `translateY(${yPos}px)`;
+      });
     });
  
     // Services Data
