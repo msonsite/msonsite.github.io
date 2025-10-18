@@ -62,14 +62,16 @@
     .partners-container {
       overflow: hidden;
       position: relative;
+      width: 100%;
     }
     
     .partners-track {
       display: flex;
-      transition: transform 0.3s ease-out;
+      animation: scroll-infinite 30s linear infinite;
+      width: max-content;
     }
     
-    .partners-track.paused {
+    .partners-track:hover {
       animation-play-state: paused;
     }
     
@@ -78,6 +80,23 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    
+    /* Seamless infinite scroll animation */
+    @keyframes scroll-infinite {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    
+    /* Mobile optimization */
+    @media (max-width: 768px) {
+      .partners-track {
+        animation-duration: 25s;
+      }
     }
    
     @keyframes float {
@@ -582,9 +601,9 @@
             <p class="text-gray-300 leading-relaxed max-w-md">
               Professionele drone-services voor opmetingen, werfopvolging en inspecties in België. 
               Sneller, nauwkeuriger, veiliger.
-            </p>
-          </div>
-          
+          </p>
+        </div>
+ 
           <!-- Contact Info -->
           <div class="space-y-3">
             <div class="flex items-center space-x-3">
@@ -642,9 +661,9 @@
             <p class="text-gray-400 text-xs">BTW: BE 0784.964.976</p>
           </div>
         </div>
-      </div>
-    </div>
-
+          </div>
+        </div>
+ 
     <!-- Bottom Bar -->
     <div class="border-t border-white/10">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -1016,114 +1035,26 @@
       { img: "images/customers/evsinfrabouw.jpeg", alt: "EVS Infrabouw" },
     ];
  
-    // Infinite Carousel Implementation
-    class InfiniteCarousel {
-      constructor(containerId, items, options = {}) {
-        this.container = document.getElementById(containerId);
-        this.items = items;
-        this.options = {
-          speed: options.speed || 1, // pixels per frame
-          pauseOnHover: options.pauseOnHover !== false,
-          mobileSpeed: options.mobileSpeed || 0.8,
-          ...options
-        };
-        
-        this.currentPosition = 0;
-        this.isPaused = false;
-        this.animationId = null;
-        this.itemWidth = 0;
-        this.totalWidth = 0;
-        
-        this.init();
-      }
+    // Simple Infinite Carousel Implementation
+    function initInfiniteCarousel() {
+      const partnersTrack = document.getElementById('partners-track');
       
-      init() {
-        this.renderItems();
-        this.calculateDimensions();
-        this.startAnimation();
-        this.addEventListeners();
-      }
-      
-      renderItems() {
-        // Create enough items for seamless infinite scroll (3 sets)
-        const itemsHTML = this.items.map(partner => `
-          <div class="partner-item mx-3 sm:mx-4 md:mx-6">
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 sm:p-6 transform hover:scale-105 border border-gray-100 w-48 h-24 sm:w-56 sm:h-28 md:w-64 md:h-32 flex items-center justify-center">
-              <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition duration-500">
+      // Create partner items HTML
+    const partnerHTML = partners.map(partner => `
+        <div class="partner-item mx-3 sm:mx-4 md:mx-6">
+          <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 sm:p-6 transform hover:scale-105 border border-gray-100 w-48 h-24 sm:w-56 sm:h-28 md:w-64 md:h-32 flex items-center justify-center">
+            <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition duration-500">
         </div>
       </div>
     `).join('');
-        
-        // Render 3 sets of items for seamless infinite scroll
-        this.container.innerHTML = itemsHTML + itemsHTML + itemsHTML;
-      }
       
-      calculateDimensions() {
-        const firstItem = this.container.querySelector('.partner-item');
-        if (firstItem) {
-          this.itemWidth = firstItem.offsetWidth;
-          this.totalWidth = this.itemWidth * this.items.length;
-        }
-      }
-      
-      startAnimation() {
-        const animate = () => {
-          if (!this.isPaused) {
-            this.currentPosition -= this.getSpeed();
-            
-            // Reset position when we've scrolled through 2 sets (back to first set)
-            // This creates seamless infinite scroll with 3 sets
-            if (Math.abs(this.currentPosition) >= this.totalWidth * 2) {
-              this.currentPosition += this.totalWidth;
-            }
-            
-            this.container.style.transform = `translateX(${this.currentPosition}px)`;
-          }
-          
-          this.animationId = requestAnimationFrame(animate);
-        };
-        
-        animate();
-      }
-      
-      getSpeed() {
-        const isMobile = window.innerWidth <= 768;
-        return isMobile ? this.options.mobileSpeed : this.options.speed;
-      }
-      
-      addEventListeners() {
-        if (this.options.pauseOnHover) {
-          this.container.addEventListener('mouseenter', () => this.pause());
-          this.container.addEventListener('mouseleave', () => this.resume());
-        }
-        
-        // Recalculate dimensions on window resize
-        window.addEventListener('resize', () => {
-          this.calculateDimensions();
-        });
-      }
-      
-      pause() {
-        this.isPaused = true;
-      }
-      
-      resume() {
-        this.isPaused = false;
-      }
-      
-      destroy() {
-        if (this.animationId) {
-          cancelAnimationFrame(this.animationId);
-        }
-      }
+      // Duplicate the partners for seamless infinite scroll
+      // We need exactly 2 sets to make the -50% translateX work perfectly
+      partnersTrack.innerHTML = partnerHTML + partnerHTML;
     }
 
     // Initialize the carousel
-    const carousel = new InfiniteCarousel('partners-track', partners, {
-      speed: 1.2,
-      mobileSpeed: 0.8,
-      pauseOnHover: true
-    });
+    initInfiniteCarousel();
  
     // WhatsApp Form Submit
     document.getElementById('whatsappForm').addEventListener('submit', function(e) {
