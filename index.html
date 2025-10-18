@@ -272,22 +272,22 @@
   </nav>
  
   <!-- HERO SECTION -->
-  <section id="banner" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-0">
+  <section id="banner" class="relative min-h-screen overflow-hidden">
     <!-- Video Background -->
     <div class="absolute inset-0 w-full h-full">
-         <video 
-           autoplay 
-           muted 
-           loop 
-           playsinline
-           class="absolute inset-0 w-full h-full object-cover"
-           id="hero-video"
-         >
+      <video 
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        class="absolute inset-0 w-full h-full object-cover"
+        id="hero-video"
+      >
         <source src="videos/DJI_0528.MP4" type="video/mp4">
         <!-- Fallback for browsers that don't support video -->
-    <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-primary-dark to-primary"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-primary-dark to-primary"></div>
       </video>
-      </div>
+    </div>
 
     <!-- Dark Overlay for Text Readability -->
     <div class="absolute inset-0 bg-black/40"></div>
@@ -295,49 +295,50 @@
     <!-- Gradient Overlay for Better Text Contrast -->
     <div class="absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-black/50"></div>
    
-    <!-- Hero Content -->
-    <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white min-h-screen flex items-center justify-center">
-      <div class="max-w-4xl mx-auto space-y-6 sm:space-y-8 fade-in-up py-8 sm:py-12 md:py-0">
-        
-        <!-- Main Headline -->
-        <div class="space-y-6">
-          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight drop-shadow-2xl">
-            <span class="block text-white drop-shadow-lg">M&S Onsite</span>
-            <span class="block bg-gradient-to-r from-white via-primary-light to-white bg-clip-text text-transparent drop-shadow-lg">Drone Services</span>
-          </h1>
-          <p class="text-xl md:text-2xl text-gray-100 leading-relaxed max-w-2xl mx-auto drop-shadow-lg">
-            Drone-oplossingen die <span class="text-white font-semibold drop-shadow-md">werken</span> voor uw projecten
+    <!-- Hero Content Container -->
+    <div class="relative z-10 min-h-screen flex flex-col justify-center">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white py-20 sm:py-24 md:py-28 lg:py-32">
+        <div class="max-w-5xl mx-auto space-y-8 sm:space-y-10 md:space-y-12 fade-in-up">
+          
+          <!-- Main Headline -->
+          <div class="space-y-6 sm:space-y-8">
+            <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight drop-shadow-2xl">
+              <span class="block text-white drop-shadow-lg">M&S Onsite</span>
+              <span class="block bg-gradient-to-r from-white via-primary-light to-white bg-clip-text text-transparent drop-shadow-lg">Drone Services</span>
+            </h1>
+            <p class="text-xl sm:text-2xl md:text-3xl text-gray-100 leading-relaxed max-w-3xl mx-auto drop-shadow-lg">
+              Drone-oplossingen die <span class="text-white font-semibold drop-shadow-md">werken</span> voor uw projecten
+            </p>
+          </div>
+          
+          <!-- Badge -->
+          <div class="inline-flex items-center space-x-3 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-6 py-3 text-base font-medium drop-shadow-lg">
+            <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+            <span>Professionele Drone Services</span>
+          </div>
+          
+          <!-- Description -->
+          <p class="text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed max-w-3xl mx-auto drop-shadow-lg">
+            Professionele drone-opmetingen, werfopvolging en inspectiediensten in België.
+            <span class="block mt-3 text-white font-medium drop-shadow-md">Sneller, nauwkeuriger, veiliger.</span>
           </p>
-        </div>
-        
-        <!-- Badge -->
-        <div class="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-4 py-2 text-sm font-medium drop-shadow-lg">
-          <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-          <span>Professionele Drone Services</span>
-        </div>
-        
-        <!-- Description -->
-        <p class="text-lg text-gray-200 leading-relaxed max-w-2xl mx-auto drop-shadow-lg">
-          Professionele drone-opmetingen, werfopvolging en inspectiediensten in België.
-          <span class="block mt-2 text-white font-medium drop-shadow-md">Sneller, nauwkeuriger, veiliger.</span>
-        </p>
-        
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-          <a href="#about"
-             class="group bg-white/95 text-primary hover:bg-white px-8 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2 backdrop-blur-sm">
-            <span>Ontdek Onze Diensten</span>
-            <i class="fas fa-arrow-down group-hover:translate-y-1 transition-transform"></i>
-          </a>
-          <a href="#contact"
-             class="group border-2 border-white/50 text-white hover:bg-white/90 hover:text-primary px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 inline-flex items-center justify-center space-x-2 backdrop-blur-md drop-shadow-lg">
-            <span>Neem Contact Op</span>
-            <i class="fas fa-envelope group-hover:scale-110 transition-transform"></i>
-          </a>
+          
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center pt-8 sm:pt-10">
+            <a href="#about"
+               class="group bg-white/95 text-primary hover:bg-white px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-lg sm:text-xl shadow-2xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-3 backdrop-blur-sm">
+              <span>Ontdek Onze Diensten</span>
+              <i class="fas fa-arrow-down group-hover:translate-y-1 transition-transform"></i>
+            </a>
+            <a href="#contact"
+               class="group border-2 border-white/50 text-white hover:bg-white/90 hover:text-primary px-8 sm:px-10 py-4 sm:py-5 rounded-full font-bold text-lg sm:text-xl transition-all duration-300 inline-flex items-center justify-center space-x-3 backdrop-blur-md drop-shadow-lg">
+              <span>Neem Contact Op</span>
+              <i class="fas fa-envelope group-hover:scale-110 transition-transform"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-   
   </section>
  
   <!-- DIENSTEN SECTION -->
@@ -549,63 +550,63 @@
           </div>
         </div>
  
-         <!-- Right Column: WhatsApp Form -->
-         <div class="lg:col-span-3">
+        <!-- Right Column: WhatsApp Form -->
+        <div class="lg:col-span-3">
            <div class="bg-white rounded-3xl shadow-2xl p-6 lg:p-8 h-full flex flex-col">
              <!-- Header Section -->
              <div class="flex items-center space-x-3 mb-8">
-               <div class="bg-green-100 p-3 rounded-xl">
-                 <i class="fab fa-whatsapp text-green-600 text-2xl"></i>
-               </div>
-               <div>
-                 <h3 class="text-2xl font-bold text-gray-800">Stuur ons een bericht</h3>
-                 <p class="text-gray-500">Direct via WhatsApp</p>
-               </div>
-             </div>
-
+              <div class="bg-green-100 p-3 rounded-xl">
+                <i class="fab fa-whatsapp text-green-600 text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-gray-800">Stuur ons een bericht</h3>
+                <p class="text-gray-500">Direct via WhatsApp</p>
+              </div>
+            </div>
+ 
              <!-- Form Section - Takes remaining space -->
              <form id="whatsappForm" class="flex flex-col flex-1 space-y-6">
                <!-- Name Field -->
-               <div class="relative">
-                 <input type="text" id="name" required
-                        class="peer w-full px-4 py-4 pt-6 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition outline-none"
-                        placeholder=" ">
-                 <label for="name" class="absolute left-4 top-2 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs">
-                   Uw naam
-                 </label>
-               </div>
-
+              <div class="relative">
+                <input type="text" id="name" required
+                       class="peer w-full px-4 py-4 pt-6 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition outline-none"
+                       placeholder=" ">
+                <label for="name" class="absolute left-4 top-2 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs">
+                  Uw naam
+                </label>
+              </div>
+ 
                <!-- Project Field -->
-               <div class="relative">
-                 <input type="text" id="project" required
-                        class="peer w-full px-4 py-4 pt-6 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition outline-none"
-                        placeholder=" ">
-                 <label for="project" class="absolute left-4 top-2 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs">
-                   Onderwerp
-                 </label>
-               </div>
-
+              <div class="relative">
+                <input type="text" id="project" required
+                       class="peer w-full px-4 py-4 pt-6 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition outline-none"
+                       placeholder=" ">
+                <label for="project" class="absolute left-4 top-2 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs">
+                  Onderwerp
+                </label>
+              </div>
+ 
                <!-- Message Field - Takes most of the remaining space -->
                <div class="relative flex-1">
                  <textarea id="message" required
                            class="peer w-full h-full min-h-[120px] px-4 py-4 pt-6 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition outline-none resize-none"
-                           placeholder=" "></textarea>
-                 <label for="message" class="absolute left-4 top-2 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs">
-                   Uw bericht
-                 </label>
-               </div>
-
+                          placeholder=" "></textarea>
+                <label for="message" class="absolute left-4 top-2 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs">
+                  Uw bericht
+                </label>
+              </div>
+ 
                <!-- Submit Button - Fixed at bottom -->
                <div class="pt-4">
-                 <button type="submit"
-                         class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:scale-105">
-                   <i class="fab fa-whatsapp text-2xl"></i>
-                   <span class="text-lg">Verstuur via WhatsApp</span>
-                 </button>
+              <button type="submit"
+                      class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:scale-105">
+                <i class="fab fa-whatsapp text-2xl"></i>
+                <span class="text-lg">Verstuur via WhatsApp</span>
+              </button>
                </div>
-             </form>
-           </div>
-         </div>
+            </form>
+          </div>
+        </div>
  
       </div>
     </div>
