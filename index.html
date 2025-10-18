@@ -496,10 +496,14 @@
             <!-- Profile Section -->
             <div class="text-center mb-4">
               <!-- Toggle Button -->
-              <div class="flex justify-end mb-2">
+              <div class="flex justify-end items-center mb-2 space-x-2">
+                <span class="text-white/70 text-xs font-medium animate-pulse">Klik voor meer info</span>
                 <button id="toggle-contact-btn" onclick="toggleContactInfo()" 
-                        class="bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110 group">
+                        class="bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110 group relative">
                   <i class="fas fa-info-circle text-white text-lg group-hover:text-primary-light"></i>
+                  <!-- Click indicator -->
+                  <div class="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-ping opacity-75"></div>
+                  <div class="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full"></div>
                 </button>
               </div>
               <div class="relative inline-block">
@@ -1367,17 +1371,25 @@
        const basicContact = document.getElementById('basic-contact');
        const detailedContact = document.getElementById('detailed-contact');
        const toggleButton = document.querySelector('#toggle-contact-btn i');
+       const clickIndicators = document.querySelectorAll('#toggle-contact-btn .absolute');
+       const clickText = document.querySelector('.text-white\\/70');
        
        if (basicContact.classList.contains('hidden')) {
          basicContact.classList.remove('hidden');
          detailedContact.classList.add('hidden');
          // Show info icon for basic view
          toggleButton.className = 'fas fa-info-circle text-white text-lg group-hover:text-primary-light';
+         // Show click indicators
+         clickIndicators.forEach(indicator => indicator.style.display = 'block');
+         if (clickText) clickText.style.display = 'block';
        } else {
          basicContact.classList.add('hidden');
          detailedContact.classList.remove('hidden');
          // Show return icon for detailed view
          toggleButton.className = 'fas fa-undo text-white text-lg group-hover:text-primary-light';
+         // Hide click indicators
+         clickIndicators.forEach(indicator => indicator.style.display = 'none');
+         if (clickText) clickText.style.display = 'none';
        }
      }
 
