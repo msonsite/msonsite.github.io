@@ -271,8 +271,27 @@
  
   <!-- HERO SECTION -->
   <section id="banner" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <!-- Modern Gradient Background -->
+    <!-- Video Background -->
+    <div class="absolute inset-0 w-full h-full">
+      <video 
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        class="absolute inset-0 w-full h-full object-cover"
+        poster="images/bannerphotos.jpeg"
+      >
+        <source src="videos/DJI_0528.MP4" type="video/mp4">
+        <!-- Fallback for browsers that don't support video -->
     <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-primary-dark to-primary"></div>
+      </video>
+    </div>
+    
+    <!-- Dark Overlay for Text Readability -->
+    <div class="absolute inset-0 bg-black/40"></div>
+    
+    <!-- Gradient Overlay for Better Text Contrast -->
+    <div class="absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-black/50"></div>
     
     <!-- Animated Background Elements -->
     <div class="absolute inset-0 overflow-hidden">
@@ -328,36 +347,36 @@
         
         <!-- Main Headline -->
         <div class="space-y-6">
-          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-            <span class="block text-white">M&S Onsite</span>
-            <span class="block bg-gradient-to-r from-white via-primary-light to-white bg-clip-text text-transparent">Drone Services</span>
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight drop-shadow-2xl">
+            <span class="block text-white drop-shadow-lg">M&S Onsite</span>
+            <span class="block bg-gradient-to-r from-white via-primary-light to-white bg-clip-text text-transparent drop-shadow-lg">Drone Services</span>
           </h1>
-          <p class="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
-            Drone-oplossingen die <span class="text-white font-semibold">werken</span> voor uw projecten
+          <p class="text-xl md:text-2xl text-gray-100 leading-relaxed max-w-2xl mx-auto drop-shadow-lg">
+            Drone-oplossingen die <span class="text-white font-semibold drop-shadow-md">werken</span> voor uw projecten
           </p>
         </div>
         
         <!-- Badge -->
-        <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm font-medium">
+        <div class="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-4 py-2 text-sm font-medium drop-shadow-lg">
           <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
           <span>Professionele Drone Services</span>
         </div>
         
         <!-- Description -->
-        <p class="text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto">
+        <p class="text-lg text-gray-200 leading-relaxed max-w-2xl mx-auto drop-shadow-lg">
           Professionele drone-opmetingen, werfopvolging en inspectiediensten in België.
-          <span class="block mt-2 text-white font-medium">Sneller, nauwkeuriger, veiliger.</span>
+          <span class="block mt-2 text-white font-medium drop-shadow-md">Sneller, nauwkeuriger, veiliger.</span>
         </p>
         
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
           <a href="#about"
-             class="group bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2">
+             class="group bg-white/95 text-primary hover:bg-white px-8 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2 backdrop-blur-sm">
             <span>Ontdek Onze Diensten</span>
             <i class="fas fa-arrow-down group-hover:translate-y-1 transition-transform"></i>
           </a>
           <a href="#contact"
-             class="group border-2 border-white/30 text-white hover:bg-white hover:text-primary px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 inline-flex items-center justify-center space-x-2 backdrop-blur-sm">
+             class="group border-2 border-white/50 text-white hover:bg-white/90 hover:text-primary px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 inline-flex items-center justify-center space-x-2 backdrop-blur-md drop-shadow-lg">
             <span>Neem Contact Op</span>
             <i class="fas fa-envelope group-hover:scale-110 transition-transform"></i>
           </a>
@@ -367,9 +386,9 @@
    
     <!-- Scroll Indicator -->
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 transform w-full flex justify-center">
-      <div class="flex flex-col items-center space-y-2">
-        <span class="text-xs text-gray-400 uppercase tracking-wider">Scroll</span>
-        <i class="fas fa-chevron-down text-white text-xl"></i>
+      <div class="flex flex-col items-center space-y-2 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 drop-shadow-lg">
+        <span class="text-xs text-gray-200 uppercase tracking-wider drop-shadow-md">Scroll</span>
+        <i class="fas fa-chevron-down text-white text-xl drop-shadow-md"></i>
       </div>
     </div>
     
