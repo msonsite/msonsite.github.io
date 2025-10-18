@@ -198,6 +198,7 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
+
   </style>
 </head>
  
@@ -438,20 +439,29 @@
         <!-- Left Column: Contact Info Card -->
         <div class="lg:col-span-2">
           <div class="bg-gradient-to-br from-primary to-primary-dark text-white rounded-3xl shadow-2xl p-8 h-full">
-            <div class="text-center mb-8">
+            <!-- Profile Section -->
+            <div class="text-center mb-4">
+              <!-- Toggle Button -->
+              <div class="flex justify-end mb-2">
+                <button id="toggle-contact-btn" onclick="toggleContactInfo()" 
+                        class="bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-all duration-300 hover:scale-110 group">
+                  <i class="fas fa-info-circle text-white text-lg group-hover:text-primary-light"></i>
+                </button>
+              </div>
               <div class="relative inline-block">
                 <img src="images/mdl.jpg" alt="Martin de Lobel"
-                     class="w-40 h-40 rounded-full object-cover border-4 border-white shadow-xl mx-auto mb-4">
+                     class="w-40 h-40 rounded-full object-cover border-4 border-white shadow-xl mx-auto mb-3">
                 <div class="absolute bottom-1 left-1/2 -translate-x-1/2 bg-green-500 text-white text-xs px-3 py-1 rounded-full">
                   Beschikbaar
                 </div>
               </div>
-              <h3 class="text-2xl font-bold mb-1">Martin de Lobel</h3>
-              <p class="text-primary-light font-medium">Projectcoördinator</p>
-              <p class="text-primary-light font-medium">UAS Operator</p>
+              <h3 class="text-xl font-bold mb-1">Martin de Lobel</h3>
+              <p class="text-primary-light font-medium text-sm">Projectcoördinator</p>
+              <p class="text-primary-light font-medium text-sm">UAS Operator</p>
             </div>
  
-            <div class="space-y-4">
+            <!-- Basic Contact Info (Default View) -->
+            <div id="basic-contact" class="space-y-4">
               <a href="https://maps.google.com/?q=Izegem,Belgium" target="_blank"
                  class="flex items-start space-x-4 p-4 bg-white/10 hover:bg-white/20 rounded-xl transition group">
                 <div class="bg-white/20 p-3 rounded-lg group-hover:scale-110 transition">
@@ -495,58 +505,107 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
- 
-        <!-- Right Column: WhatsApp Form -->
-        <div class="lg:col-span-3">
-          <div class="bg-white rounded-3xl shadow-2xl p-8 lg:p-10 h-full">
-            <div class="flex items-center space-x-3 mb-6">
-              <div class="bg-green-100 p-3 rounded-xl">
-                <i class="fab fa-whatsapp text-green-600 text-2xl"></i>
+
+            <!-- Detailed Professional Info (Hidden by Default) -->
+            <div id="detailed-contact" class="space-y-4 hidden">
+              <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+                <div class="flex items-start space-x-4">
+                  <div class="bg-white/20 p-3 rounded-lg">
+                    <i class="fas fa-briefcase text-white text-xl"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs text-white/70 mb-1">Huidige Positie</div>
+                    <div class="font-semibold">Zelfstandig projectcoördinator & UAS Operator bij M&S Onsite</div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h3 class="text-2xl font-bold text-gray-800">Stuur ons een bericht</h3>
-                <p class="text-gray-500">Direct via WhatsApp</p>
+
+              <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+                <div class="flex items-start space-x-4">
+                  <div class="bg-white/20 p-3 rounded-lg">
+                    <i class="fas fa-chart-line text-white text-xl"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs text-white/70 mb-1">Ervaring</div>
+                    <div class="font-semibold">Ruim 15 jaar ervaring in projectcoördinatie</div>
+                    <div class="text-sm text-white/80 mt-1">Focus op sanering en baggerwerken</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+                <div class="flex items-start space-x-4">
+                  <div class="bg-white/20 p-3 rounded-lg">
+                    <i class="fas fa-cogs text-white text-xl"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs text-white/70 mb-1">Vaardigheden</div>
+                    <div class="font-semibold">Van milieuconsultancy tot werfleiding</div>
+                    <div class="text-sm text-white/80 mt-1">Ervaring in breed scala aan projecten en verantwoordelijkheden</div>
+                  </div>
+                </div>
               </div>
             </div>
- 
-            <form id="whatsappForm" class="space-y-5">
-              <div class="relative">
-                <input type="text" id="name" required
-                       class="peer w-full px-4 py-4 pt-6 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition outline-none"
-                       placeholder=" ">
-                <label for="name" class="absolute left-4 top-2 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs">
-                  Uw naam
-                </label>
-              </div>
- 
-              <div class="relative">
-                <input type="text" id="project" required
-                       class="peer w-full px-4 py-4 pt-6 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition outline-none"
-                       placeholder=" ">
-                <label for="project" class="absolute left-4 top-2 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs">
-                  Onderwerp
-                </label>
-              </div>
- 
-              <div class="relative">
-                <textarea id="message" rows="5" required
-                          class="peer w-full px-4 py-4 pt-6 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition outline-none resize-none"
-                          placeholder=" "></textarea>
-                <label for="message" class="absolute left-4 top-2 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs">
-                  Uw bericht
-                </label>
-              </div>
- 
-              <button type="submit"
-                      class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:scale-105">
-                <i class="fab fa-whatsapp text-2xl"></i>
-                <span class="text-lg">Verstuur via WhatsApp</span>
-              </button>
-            </form>
           </div>
         </div>
+ 
+         <!-- Right Column: WhatsApp Form -->
+         <div class="lg:col-span-3">
+           <div class="bg-white rounded-3xl shadow-2xl p-6 lg:p-8 h-full flex flex-col">
+             <!-- Header Section -->
+             <div class="flex items-center space-x-3 mb-8">
+               <div class="bg-green-100 p-3 rounded-xl">
+                 <i class="fab fa-whatsapp text-green-600 text-2xl"></i>
+               </div>
+               <div>
+                 <h3 class="text-2xl font-bold text-gray-800">Stuur ons een bericht</h3>
+                 <p class="text-gray-500">Direct via WhatsApp</p>
+               </div>
+             </div>
+
+             <!-- Form Section - Takes remaining space -->
+             <form id="whatsappForm" class="flex flex-col flex-1 space-y-6">
+               <!-- Name Field -->
+               <div class="relative">
+                 <input type="text" id="name" required
+                        class="peer w-full px-4 py-4 pt-6 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition outline-none"
+                        placeholder=" ">
+                 <label for="name" class="absolute left-4 top-2 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs">
+                   Uw naam
+                 </label>
+               </div>
+
+               <!-- Project Field -->
+               <div class="relative">
+                 <input type="text" id="project" required
+                        class="peer w-full px-4 py-4 pt-6 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition outline-none"
+                        placeholder=" ">
+                 <label for="project" class="absolute left-4 top-2 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs">
+                   Onderwerp
+                 </label>
+               </div>
+
+               <!-- Message Field - Takes most of the remaining space -->
+               <div class="relative flex-1">
+                 <textarea id="message" required
+                           class="peer w-full h-full min-h-[120px] px-4 py-4 pt-6 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition outline-none resize-none"
+                           placeholder=" "></textarea>
+                 <label for="message" class="absolute left-4 top-2 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs">
+                   Uw bericht
+                 </label>
+               </div>
+
+               <!-- Submit Button - Fixed at bottom -->
+               <div class="pt-4">
+                 <button type="submit"
+                         class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:scale-105">
+                   <i class="fab fa-whatsapp text-2xl"></i>
+                   <span class="text-lg">Verstuur via WhatsApp</span>
+                 </button>
+               </div>
+             </form>
+           </div>
+         </div>
  
       </div>
     </div>
@@ -936,7 +995,7 @@
                     <i class="fas fa-map-marker-alt mr-2"></i>
                     ${project.location}
                   </span>
-                </div>
+              </div>
                 </div>
               <button onclick="closeProjectModal()" class="text-white hover:text-gray-300 transition-colors">
                 <i class="fas fa-times text-2xl"></i>
@@ -1055,8 +1114,27 @@
       }, { once: true });
     }
 
-    // Initialize video poster generation
-    generateVideoPoster();
+     // Initialize video poster generation
+     generateVideoPoster();
+
+     // Contact Info Toggle Function
+     function toggleContactInfo() {
+       const basicContact = document.getElementById('basic-contact');
+       const detailedContact = document.getElementById('detailed-contact');
+       const toggleButton = document.querySelector('#toggle-contact-btn i');
+       
+       if (basicContact.classList.contains('hidden')) {
+         basicContact.classList.remove('hidden');
+         detailedContact.classList.add('hidden');
+         // Show info icon for basic view
+         toggleButton.className = 'fas fa-info-circle text-white text-lg group-hover:text-primary-light';
+       } else {
+         basicContact.classList.add('hidden');
+         detailedContact.classList.remove('hidden');
+         // Show return icon for detailed view
+         toggleButton.className = 'fas fa-undo text-white text-lg group-hover:text-primary-light';
+       }
+    }
  
     // Partners Data
     const partners = [
