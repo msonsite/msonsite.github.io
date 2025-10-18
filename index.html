@@ -206,16 +206,16 @@
   <!-- NAVIGATION -->
   <nav class="fixed top-0 left-0 right-0 glass shadow-lg z-50 border-b border-white/20">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-5">
+      <div class="flex justify-between items-center py-3 sm:py-4 md:py-5">
        
         <!-- Logo -->
         <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" class="flex items-center transform hover:scale-105 transition duration-300">
-          <img src="images/MsOnsite LogoSpacing.png" alt="M&S Onsite" class="h-12 md:h-14">
+          <img src="images/MsOnsite LogoSpacing.png" alt="M&S Onsite" class="h-10 sm:h-12 md:h-14">
         </a>
  
         <!-- Mobile menu button -->
-        <button id="mobile-menu-btn" class="lg:hidden text-gray-700 hover:text-primary focus:outline-none">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button id="mobile-menu-btn" class="lg:hidden text-gray-700 hover:text-primary focus:outline-none p-1">
+          <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
@@ -239,12 +239,13 @@
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
           </a>
           <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank"
-             class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2.5 rounded-full transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
+             class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 py-2 sm:px-6 sm:py-2.5 rounded-full transition-all duration-300 flex items-center space-x-1 sm:space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm sm:text-base"
              style="background: linear-gradient(135deg, #0077B5 0%, #005885 100%);"
              onmouseover="this.style.background='linear-gradient(135deg, #005885 0%, #004066 100%)'"
              onmouseout="this.style.background='linear-gradient(135deg, #0077B5 0%, #005885 100%)'">
-            <span>LinkedIn</span>
-            <i class="fab fa-linkedin"></i>
+            <span class="hidden sm:inline">LinkedIn</span>
+            <span class="sm:hidden">LI</span>
+            <i class="fab fa-linkedin text-sm sm:text-base"></i>
           </a>
         </div>
       </div>
@@ -257,7 +258,7 @@
           <a href="#customers" class="text-gray-700 hover:text-primary transition duration-300 font-medium py-2">Samenwerkingen</a>
           <a href="#contact" class="text-gray-700 hover:text-primary transition duration-300 font-medium py-2">Contact</a>
           <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank"
-             class="text-white px-6 py-3 rounded-full transition duration-300 inline-flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+             class="text-white px-4 py-3 rounded-full transition duration-300 inline-flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl text-sm"
              style="background: linear-gradient(135deg, #0077B5 0%, #005885 100%);"
              onmouseover="this.style.background='linear-gradient(135deg, #005885 0%, #004066 100%)'"
              onmouseout="this.style.background='linear-gradient(135deg, #0077B5 0%, #005885 100%)'">
@@ -270,7 +271,7 @@
   </nav>
  
   <!-- HERO SECTION -->
-  <section id="banner" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <section id="banner" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-0">
     <!-- Video Background -->
     <div class="absolute inset-0 w-full h-full">
       <video 
@@ -342,7 +343,7 @@
    
     <!-- Hero Content -->
     <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white min-h-screen flex items-center justify-center">
-      <div class="max-w-4xl mx-auto space-y-8 fade-in-up">
+      <div class="max-w-4xl mx-auto space-y-6 sm:space-y-8 fade-in-up py-8 sm:py-12 md:py-0">
         
         <!-- Main Headline -->
         <div class="space-y-6">
@@ -384,10 +385,10 @@
     </div>
    
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 transform w-full flex justify-center">
-      <div class="flex flex-col items-center space-y-2 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 drop-shadow-lg">
+    <div class="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 transform w-full flex justify-center">
+      <div class="flex flex-col items-center space-y-2 bg-black/20 backdrop-blur-sm rounded-full px-3 py-2 sm:px-4 drop-shadow-lg">
         <span class="text-xs text-gray-200 uppercase tracking-wider drop-shadow-md">Scroll</span>
-        <i class="fas fa-chevron-down text-white text-xl drop-shadow-md"></i>
+        <i class="fas fa-chevron-down text-white text-lg sm:text-xl drop-shadow-md"></i>
       </div>
     </div>
     
