@@ -198,6 +198,40 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
+     
+     /* Hide scrollbar for project scroller */
+     .scrollbar-hide {
+       -ms-overflow-style: none;
+       scrollbar-width: none;
+     }
+     .scrollbar-hide::-webkit-scrollbar {
+       display: none;
+     }
+     
+     /* Project scroller cursor */
+     #projects-scroll-container {
+       cursor: grab;
+     }
+     #projects-scroll-container:active {
+       cursor: grabbing;
+     }
+     
+     /* Line clamp utilities */
+     .line-clamp-1 {
+       display: -webkit-box;
+       -webkit-line-clamp: 1;
+       line-clamp: 1;
+       -webkit-box-orient: vertical;
+       overflow: hidden;
+     }
+     
+     .line-clamp-3 {
+       display: -webkit-box;
+       -webkit-line-clamp: 3;
+       line-clamp: 3;
+       -webkit-box-orient: vertical;
+       overflow: hidden;
+     }
 
   </style>
 </head>
@@ -386,8 +420,27 @@
         </p>
       </div>
  
-      <!-- Projects Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto" id="projects-grid"></div>
+       <!-- Projects Grid -->
+       <div class="relative">
+         <!-- Desktop Horizontal Scroller -->
+         <div class="hidden lg:block">
+           <div class="overflow-x-auto pb-4 scrollbar-hide" id="projects-scroll-container">
+             <div class="flex space-x-6 min-w-max" id="projects-grid"></div>
+           </div>
+           <!-- Scroll Indicators -->
+           <div class="flex justify-center mt-4 space-x-2">
+             <button id="scroll-left" class="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+               <i class="fas fa-chevron-left text-white"></i>
+             </button>
+             <button id="scroll-right" class="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+               <i class="fas fa-chevron-right text-white"></i>
+             </button>
+           </div>
+         </div>
+         
+         <!-- Mobile Grid -->
+         <div class="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto" id="projects-mobile-grid"></div>
+       </div>
  
     </div>
   </section>
@@ -896,6 +949,7 @@
         id: 1,
         title: "Volumetrische Meting",
         location: "Houthulst, België",
+        flag: "🇧🇪",
         description: "Met onze drones brengen we snel en nauwkeurig het volume van zand, grind, aarde en andere materialen in kaart. Zo krijgt u overzicht in hoeveel materiaal aanwezig is of verplaatst moet worden, zodat het project vlot en efficiënt kan worden gepland.",
         tasks: [
           "Drone-opmeting met fotogrammetrie",
@@ -916,6 +970,7 @@
         id: 2,
         title: "As-Built Plan",
         location: "Hamme-Mille, België",
+        flag: "🇧🇪",
         description: "Voor een bodemsaneringsproject hebben we met drones een volledig overzicht gemaakt van alle sleuven en leidingtracés. Het resultaat is een helder en betrouwbaar plan dat eenvoudig gebruikt kan worden voor verdere bewerkingen of controle op de werf.",
         tasks: [
           "Drone-fotogrammetrie uitvoering",
@@ -932,40 +987,67 @@
         category: "Opmetingen",
         status: "Voltooid"
       },
-      {
-        id: 3,
-        title: "Werfopvolging Bodemsanering",
-        location: "Sint-Truiden, België",
-        description: "Tijdens de opvolging van een complexe werf gebruiken we drones om het terrein overzichtelijk te monitoren. Zo kunnen voortgang, oppervlakten en volumes snel worden beoordeeld, terwijl het eindresultaat een volledig en gedetailleerd beeld van de werkzaamheden geeft.",
-        tasks: [
-          "GPS-gestuurde drone-opmetingen",
-          "Periodieke puntenwolk generatie",
-          "Oppervlakte- en volumeberekeningen",
-          "Progressie rapportage"
-        ],
-        images: [
-          { src: "images/project 3/Picture1.png", alt: "Beginsituatie", caption: "Beginsituatie" },
-          { src: "images/project 3/Picture2.png", alt: "Inpeiling", caption: "Inpeiling" },
-          { src: "images/project 3/Picture3.png", alt: "Berekeningen", caption: "Berekeningen" },
-          { src: "images/project 3/Picture4.png", alt: "Rastervlakken", caption: "Rastervlakken" },
-          { src: "images/project 3/Picture5.png", alt: "Resterende rasters", caption: "Resterende rasters" },
-          { src: "images/project 3/Picture6.png", alt: "As-built", caption: "As-built" }
-        ],
-        previewImageIndex: 4,
-        category: "Werfopvolging",
-        status: "Voltooid"
-      }
+       {
+         id: 3,
+         title: "Werfopvolging",
+         location: "Sint-Truiden, België",
+         flag: "🇧🇪",
+         description: "Tijdens de opvolging van een complexe werf gebruiken we drones om het terrein overzichtelijk te monitoren. Zo kunnen voortgang, oppervlakten en volumes snel worden beoordeeld, terwijl het eindresultaat een volledig en gedetailleerd beeld van de werkzaamheden geeft.",
+         tasks: [
+           "GPS-gestuurde drone-opmetingen",
+           "Periodieke puntenwolk generatie",
+           "Oppervlakte- en volumeberekeningen",
+           "Progressie rapportage"
+         ],
+         images: [
+           { src: "images/project 3/Picture1.png", alt: "Beginsituatie", caption: "Beginsituatie" },
+           { src: "images/project 3/Picture2.png", alt: "Inpeiling", caption: "Inpeiling" },
+           { src: "images/project 3/Picture3.png", alt: "Berekeningen", caption: "Berekeningen" },
+           { src: "images/project 3/Picture4.png", alt: "Rastervlakken", caption: "Rastervlakken" },
+           { src: "images/project 3/Picture5.png", alt: "Resterende rasters", caption: "Resterende rasters" },
+           { src: "images/project 3/Picture6.png", alt: "As-built", caption: "As-built" }
+         ],
+         previewImageIndex: 4,
+         category: "Werfopvolging",
+         status: "Voltooid"
+       },
+       {
+         id: 4,
+         title: "Vuurtoren Inspectie",
+         location: "Breskens, Nederland",
+         flag: "🇳🇱",
+         description: "Gedetailleerde inspectie van een historische vuurtoren met drone-technologie. Hoge-resolutie beelden en diepgaande analyse onthulden structurele details en onderhoudsbehoeften zonder risico voor inspecteurs. Het resultaat: een complete visuele documentatie voor restauratieplanning en onderhoud.",
+         tasks: [
+           "Hoge-resolutie drone-inspectie",
+           "Thermische analyse uitvoering",
+           "Structurele detailopnames",
+           "360° visuele documentatie",
+           "Restauratieplanning rapportage"
+         ],
+         images: [
+           { src: "images/project 4/vuurtorenfoto.png", alt: "Vuurtoren overzicht", caption: "Vuurtoren overzicht" },
+           { src: "images/project 4/vuurtoreninspectie.png", alt: "Inspectie detail", caption: "Inspectie detail" },
+           { src: "images/project 4/inspectieanalyse1.png", alt: "Analyse resultaat 1", caption: "Analyse resultaat 1" },
+           { src: "images/project 4/inspectieanalyse2.png", alt: "Analyse resultaat 2", caption: "Analyse resultaat 2" }
+         ],
+         previewImageIndex: 0,
+         category: "Inspecties",
+         status: "Voltooid"
+       }
     ];
  
     // Render Projects Grid
     const projectsGrid = document.getElementById('projects-grid');
-    projects.forEach((project, index) => {
-      const projectCard = `
-        <div class="group bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer"
+    const projectsMobileGrid = document.getElementById('projects-mobile-grid');
+    
+    // Function to create project card HTML for desktop (horizontal scroller)
+    function createDesktopProjectCard(project, index) {
+      return `
+        <div class="group bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer w-80 flex-shrink-0 flex flex-col"
              onclick="openProjectModal(${project.id})">
           
           <!-- Project Image -->
-          <div class="relative h-48 overflow-hidden">
+          <div class="relative h-48 overflow-hidden flex-shrink-0">
             <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -988,32 +1070,40 @@
               </span>
                 </div>
               </div>
-          
-          <!-- Project Content -->
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary-light transition-colors">
-              ${project.title}
-            </h3>
+        
+          <!-- Project Content - Flexbox for equal distribution -->
+          <div class="flex flex-col flex-1 p-6">
             
-            <div class="mb-4">
-              <div class="flex items-center text-gray-300 text-sm">
-                <i class="fas fa-map-marker-alt text-primary-light mr-2"></i>
-                <span>${project.location}</span>
+            <!-- Title Container -->
+            <div class="mb-4 flex-shrink-0">
+              <h3 class="text-xl font-bold text-white group-hover:text-primary-light transition-colors leading-tight">
+                ${project.title}
+              </h3>
                 </div>
+            
+            <!-- Location Container -->
+            <div class="mb-4 flex-shrink-0">
+              <div class="flex items-center text-gray-300 text-sm">
+                <span class="text-lg mr-2 flex-shrink-0">${project.flag}</span>
+                <span class="truncate">${project.location}</span>
+              </div>
+                </div>
+            
+            <!-- Description Container - Flexible height -->
+            <div class="mb-4 flex-1 min-h-[60px]">
+              <p class="text-gray-300 text-sm leading-relaxed line-clamp-3">
+                ${project.description}
+              </p>
               </div>
             
-            <p class="text-gray-300 text-sm leading-relaxed mb-4">
-              ${project.description}
-            </p>
-            
-            <!-- Tasks Preview -->
-            <div class="mb-4">
+            <!-- Tasks Container - Fixed height for alignment -->
+            <div class="mb-4 flex-shrink-0 min-h-[80px]">
               <h4 class="text-sm font-semibold text-white mb-2">Uitgevoerde taken:</h4>
               <ul class="space-y-1">
                 ${project.tasks.slice(0, 2).map(task => `
-                  <li class="text-gray-300 text-xs flex items-center">
-                    <i class="fas fa-check text-green-400 mr-2 text-xs"></i>
-                    ${task}
+                  <li class="text-gray-300 text-xs flex items-start">
+                    <i class="fas fa-check text-green-400 mr-2 text-xs flex-shrink-0 mt-0.5"></i>
+                    <span class="line-clamp-1">${task}</span>
                   </li>
                 `).join('')}
                 ${project.tasks.length > 2 ? `
@@ -1024,17 +1114,112 @@
               </ul>
             </div>
  
-            <!-- View Details Button -->
-            <div class="flex items-center justify-between">
+            <!-- View Details Button - Fixed at bottom -->
+            <div class="flex items-center justify-between flex-shrink-0 mt-auto">
               <span class="text-primary-light text-sm font-medium group-hover:text-white transition-colors">
                 Bekijk details
               </span>
               <i class="fas fa-arrow-right text-primary-light group-hover:translate-x-1 transition-transform"></i>
+                  </div>
+                </div>
+                  </div>
+      `;
+    }
+    
+    // Function to create project card HTML for mobile (grid)
+    function createMobileProjectCard(project, index) {
+      return `
+        <div class="group bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer flex flex-col h-full"
+             onclick="openProjectModal(${project.id})">
+          
+          <!-- Project Image -->
+          <div class="relative h-48 overflow-hidden flex-shrink-0">
+            <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
+                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            
+            <!-- Status Badge -->
+            <div class="absolute top-4 right-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold ${
+                project.status === 'Voltooid' 
+                  ? 'bg-green-500/90 text-white' 
+                  : 'bg-yellow-500/90 text-white'
+              }">
+                ${project.status}
+                </span>
+            </div>
+ 
+            <!-- Category Badge -->
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-primary/90 text-white">
+                ${project.category}
+              </span>
                 </div>
               </div>
+        
+          <!-- Project Content - Flexbox for equal distribution -->
+          <div class="flex flex-col flex-1 p-6">
+            
+            <!-- Title Container -->
+            <div class="mb-4 flex-shrink-0">
+              <h3 class="text-xl font-bold text-white group-hover:text-primary-light transition-colors leading-tight">
+                ${project.title}
+              </h3>
                 </div>
+            
+            <!-- Location Container -->
+            <div class="mb-4 flex-shrink-0">
+              <div class="flex items-center text-gray-300 text-sm">
+                <span class="text-lg mr-2 flex-shrink-0">${project.flag}</span>
+                <span class="truncate">${project.location}</span>
+              </div>
+                </div>
+            
+            <!-- Description Container - Flexible height -->
+            <div class="mb-4 flex-1 min-h-[60px]">
+              <p class="text-gray-300 text-sm leading-relaxed line-clamp-3">
+                ${project.description}
+              </p>
+            </div>
+ 
+            <!-- Tasks Container - Fixed height for alignment -->
+            <div class="mb-4 flex-shrink-0 min-h-[80px]">
+              <h4 class="text-sm font-semibold text-white mb-2">Uitgevoerde taken:</h4>
+              <ul class="space-y-1">
+                ${project.tasks.slice(0, 2).map(task => `
+                  <li class="text-gray-300 text-xs flex items-start">
+                    <i class="fas fa-check text-green-400 mr-2 text-xs flex-shrink-0 mt-0.5"></i>
+                    <span class="line-clamp-1">${task}</span>
+                  </li>
+                `).join('')}
+                ${project.tasks.length > 2 ? `
+                  <li class="text-primary-light text-xs">
+                    +${project.tasks.length - 2} meer taken...
+                  </li>
+                ` : ''}
+              </ul>
+                </div>
+
+            <!-- View Details Button - Fixed at bottom -->
+            <div class="flex items-center justify-between flex-shrink-0 mt-auto">
+              <span class="text-primary-light text-sm font-medium group-hover:text-white transition-colors">
+                Bekijk details
+              </span>
+              <i class="fas fa-arrow-right text-primary-light group-hover:translate-x-1 transition-transform"></i>
+              </div>
+                </div>
+              </div>
       `;
-      projectsGrid.innerHTML += projectCard;
+    }
+    
+    // Render for desktop (horizontal scroller)
+    projects.forEach((project, index) => {
+      projectsGrid.innerHTML += createDesktopProjectCard(project, index);
+    });
+    
+    // Render for mobile (grid)
+    projects.forEach((project, index) => {
+      projectsMobileGrid.innerHTML += createMobileProjectCard(project, index);
     });
 
     // Project Modal Function
@@ -1053,16 +1238,16 @@
                 <h2 class="text-2xl font-bold mb-2">${project.title}</h2>
                 <div class="flex items-center text-primary-light">
                   <span class="flex items-center">
-                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    <span class="text-lg mr-2">${project.flag}</span>
                     ${project.location}
                   </span>
-              </div>
                 </div>
+              </div>
               <button onclick="closeProjectModal()" class="text-white hover:text-gray-300 transition-colors">
                 <i class="fas fa-times text-2xl"></i>
               </button>
-              </div>
                 </div>
+              </div>
           
           <!-- Modal Content -->
           <div class="p-6 max-h-[70vh] overflow-y-auto">
@@ -1070,7 +1255,7 @@
             <div class="mb-6">
               <h3 class="text-lg font-semibold text-gray-800 mb-3">Projectbeschrijving</h3>
               <p class="text-gray-600 leading-relaxed">${project.description}</p>
-              </div>
+                </div>
             
             <!-- Tasks -->
             <div class="mb-6">
@@ -1083,7 +1268,7 @@
                   </li>
                 `).join('')}
               </ul>
-                </div>
+              </div>
             
             <!-- Images Gallery -->
             <div class="mb-6">
@@ -1094,11 +1279,11 @@
                     <img src="${img.src}" alt="${img.alt}" 
                          class="w-full h-32 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300">
                     <p class="text-sm text-gray-600 mt-2 text-center">${img.caption}</p>
-              </div>
-                `).join('')}
                 </div>
+                `).join('')}
               </div>
             </div>
+          </div>
           </div>
       `;
       
@@ -1268,6 +1453,78 @@
 
     // Initialize the carousel
     initInfiniteCarousel();
+    
+    // Project Scroller Functionality
+    const scrollContainer = document.getElementById('projects-scroll-container');
+    const scrollLeftBtn = document.getElementById('scroll-left');
+    const scrollRightBtn = document.getElementById('scroll-right');
+    
+    if (scrollContainer && scrollLeftBtn && scrollRightBtn) {
+      // Click scroll functionality
+      scrollLeftBtn.addEventListener('click', () => {
+        scrollContainer.scrollBy({ left: -344, behavior: 'smooth' }); // 320px card + 24px gap
+      });
+      
+      scrollRightBtn.addEventListener('click', () => {
+        scrollContainer.scrollBy({ left: 344, behavior: 'smooth' }); // 320px card + 24px gap
+      });
+      
+      // Mouse drag functionality
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+      
+      scrollContainer.addEventListener('mousedown', (e) => {
+        isDown = true;
+        scrollContainer.style.cursor = 'grabbing';
+        startX = e.pageX - scrollContainer.offsetLeft;
+        scrollLeft = scrollContainer.scrollLeft;
+      });
+      
+      scrollContainer.addEventListener('mouseleave', () => {
+        isDown = false;
+        scrollContainer.style.cursor = 'grab';
+      });
+      
+      scrollContainer.addEventListener('mouseup', () => {
+        isDown = false;
+        scrollContainer.style.cursor = 'grab';
+      });
+      
+      scrollContainer.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - scrollContainer.offsetLeft;
+        const walk = (x - startX) * 2; // Scroll speed multiplier
+        scrollContainer.scrollLeft = scrollLeft - walk;
+      });
+      
+      // Touch support for mobile
+      let touchStartX;
+      let touchScrollLeft;
+      
+      scrollContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].pageX - scrollContainer.offsetLeft;
+        touchScrollLeft = scrollContainer.scrollLeft;
+      });
+      
+      scrollContainer.addEventListener('touchmove', (e) => {
+        if (!touchStartX) return;
+        const x = e.touches[0].pageX - scrollContainer.offsetLeft;
+        const walk = (x - touchStartX) * 2;
+        scrollContainer.scrollLeft = touchScrollLeft - walk;
+      });
+      
+      // Update button visibility based on scroll position
+      const updateScrollButtons = () => {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
+        scrollLeftBtn.style.opacity = scrollLeft > 0 ? '1' : '0.5';
+        scrollRightBtn.style.opacity = scrollLeft < scrollWidth - clientWidth ? '1' : '0.5';
+      };
+      
+      scrollContainer.addEventListener('scroll', updateScrollButtons);
+      updateScrollButtons(); // Initial state
+    }
  
     // WhatsApp Form Submit
     document.getElementById('whatsappForm').addEventListener('submit', function(e) {
