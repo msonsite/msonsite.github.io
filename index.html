@@ -269,13 +269,116 @@
        overflow: hidden;
      }
      
-     .line-clamp-3 {
-       display: -webkit-box;
-       -webkit-line-clamp: 3;
-       line-clamp: 3;
-       -webkit-box-orient: vertical;
-       overflow: hidden;
-     }
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Design Signature Animations */
+    @keyframes penWrite {
+      0%, 100% { 
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.8;
+      }
+      25% { 
+        transform: translateY(-1px) rotate(2deg);
+        opacity: 1;
+      }
+      50% { 
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.9;
+      }
+      75% { 
+        transform: translateY(1px) rotate(-1deg);
+        opacity: 0.85;
+      }
+    }
+    
+    @keyframes gradientSweep {
+      0% { 
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      50% { 
+        opacity: 1;
+      }
+      100% { 
+        transform: translateX(100%);
+        opacity: 0;
+      }
+    }
+    
+    @keyframes signatureGlow {
+      0%, 100% { 
+        box-shadow: 0 0 0 rgba(65, 117, 128, 0);
+      }
+      50% { 
+        box-shadow: 0 0 8px rgba(65, 117, 128, 0.3);
+      }
+    }
+    
+    @keyframes letterReveal {
+      0% { 
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      100% { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Design signature styles */
+    .design-pen-icon {
+      animation: penWrite 3s ease-in-out infinite;
+    }
+    
+    .design-signature-link {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .design-signature-link:hover {
+      animation: signatureGlow 2s ease-in-out infinite;
+    }
+    
+    .animate-gradient-sweep {
+      animation: gradientSweep 0.8s ease-out;
+    }
+    
+    /* Letter-by-letter reveal on hover */
+    .design-signature-link:hover span {
+      animation: letterReveal 0.6s ease-out;
+    }
+    
+    /* Subtle floating effect for the pen */
+    .design-pen-icon::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 50%;
+      width: 2px;
+      height: 2px;
+      background: linear-gradient(45deg, transparent, rgba(65, 117, 128, 0.4), transparent);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      animation: penWrite 3s ease-in-out infinite;
+      animation-delay: 0.5s;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .design-pen-icon {
+        animation-duration: 4s;
+      }
+      
+      .design-signature-link:hover {
+        animation-duration: 3s;
+      }
+    }
 
   </style>
 </head>
@@ -769,8 +872,7 @@
           <div class="mb-6">
             <img src="images/msonsitelogowhite.png" alt="M&S Onsite" class="h-14 mb-4">
             <p class="text-gray-300 leading-relaxed max-w-md">
-              Professionele drone-services voor opmetingen, werfopvolging en inspecties in België. 
-              Sneller, nauwkeuriger, veiliger.
+              Professionele drones, maximale precisie: opmetingen, inspecties en werfopvolging in België.
           </p>
         </div>
  
@@ -826,10 +928,10 @@
             </a>
           </div>
           
-          <!-- Legal Links -->
+          <!-- Legal Links 
           <div class="space-y-2">
             <p class="text-gray-400 text-xs">BTW: BE 0784.964.976</p>
-          </div>
+          </div> -->
         </div>
           </div>
         </div>
@@ -844,12 +946,22 @@
             </p>
           </div>
           <div class="text-center md:text-right">
-            <p class="text-gray-400 text-sm">
-              🧑‍💻 Design by 
-              <a href="https://www.linkedin.com/in/sanderdelobel/" target="_blank" 
-                 class="text-primary-light hover:text-white transition-colors font-medium">
-                Sander de Lobel
-              </a>
+            <p class="text-gray-400 text-sm flex items-center justify-center md:justify-end space-x-2">
+              <span class="design-signature-container relative inline-flex items-center">
+                <!-- Animated Pen Icon -->
+                <div class="design-pen-icon relative">
+                  <i class="fa-solid fa-bicycle text-primary-light/80 text-xs"></i>
+                </div>
+                <span class="text-gray-400">Design by</span>
+                <a href="https://www.linkedin.com/in/sanderdelobel/" target="_blank" 
+                   class="design-signature-link text-primary-light hover:text-white transition-all duration-300 font-medium relative group">
+                  <span class="relative z-10">Sander de Lobel</span>
+                  <!-- Animated underline -->
+                  <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-light to-primary transition-all duration-500 group-hover:w-full"></div>
+                  <!-- Gradient sweep effect -->
+                  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-gradient-sweep transition-opacity duration-300"></div>
+                </a>
+              </span>
             </p>
           </div>
         </div>
