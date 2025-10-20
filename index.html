@@ -1634,24 +1634,38 @@
        }, 2000);
      }
      
-     // Simple Infinite Carousel Implementation
-     function initInfiniteCarousel() {
-      const partnersTrack = document.getElementById('partners-track');
-      
-      // Create partner items HTML with click handling
-    const partnerHTML = partners.map(partner => `
-        <div class="partner-item mx-3 sm:mx-4 md:mx-6">
-          <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 sm:p-6 transform hover:scale-105 border border-gray-100 w-48 h-24 sm:w-56 sm:h-28 md:w-64 md:h-32 flex items-center justify-center cursor-pointer" 
-               onclick="handlePartnerClick(event)">
-            <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition duration-500">
-        </div>
-      </div>
-    `).join('');
-      
-      // Duplicate the partners for seamless infinite scroll
-      // We need exactly 2 sets to make the -50% translateX work perfectly
-      partnersTrack.innerHTML = partnerHTML + partnerHTML;
-    }
+    // Simple Infinite Carousel Implementation
+    function initInfiniteCarousel() {
+     const partnersTrack = document.getElementById('partners-track');
+     
+     // Function to create partner HTML with conditional click handling
+     function createPartnerHTML() {
+       const isMobile = window.innerWidth < 768;
+       
+       return partners.map(partner => `
+         <div class="partner-item mx-3 sm:mx-4 md:mx-6">
+           <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 sm:p-6 transform hover:scale-105 border border-gray-100 w-48 h-24 sm:w-56 sm:h-28 md:w-64 md:h-32 flex items-center justify-center ${isMobile ? '' : 'cursor-pointer'}" 
+                ${isMobile ? '' : 'onclick="handlePartnerClick(event)"'}>
+             <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition duration-500">
+         </div>
+       </div>
+     `).join('');
+     }
+     
+     // Initial render
+     const partnerHTML = createPartnerHTML();
+     partnersTrack.innerHTML = partnerHTML + partnerHTML;
+     
+     // Handle window resize to update click behavior
+     let resizeTimeout;
+     window.addEventListener('resize', function() {
+       clearTimeout(resizeTimeout);
+       resizeTimeout = setTimeout(function() {
+         const newPartnerHTML = createPartnerHTML();
+         partnersTrack.innerHTML = newPartnerHTML + newPartnerHTML;
+       }, 250); // Debounce resize events
+     });
+   }
 
     // Initialize the carousel
     initInfiniteCarousel();
