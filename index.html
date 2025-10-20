@@ -42,6 +42,15 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
  
+   <!-- Critical Resource Preloading -->
+   <link rel="preload" href="images/hero-poster.jpg" as="image" type="image/jpeg">
+   <link rel="preload" href="videos/DJI_0528.mp4" as="video" type="video/mp4">
+   <link rel="preload" href="images/MsOnsite LogoSpacing.png" as="image" type="image/png">
+   
+   <!-- DNS Prefetch for external resources -->
+   <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+   <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+ 
   <!-- Custom Tailwind Configuration -->
   <script>
     tailwind.config = {
@@ -199,6 +208,33 @@
       -webkit-backdrop-filter: blur(10px);
     }
      
+     /* Video Loading Optimizations */
+     .video-loading {
+       transition: opacity 1s ease-in-out;
+     }
+     
+     .hero-poster {
+       transition: opacity 1s ease-in-out;
+     }
+     
+     /* Lazy loading for images */
+     img.lazy {
+       opacity: 0;
+       transition: opacity 0.3s;
+     }
+     
+     img.lazy.loaded {
+       opacity: 1;
+     }
+     
+     /* Preload critical resources */
+     .preload-critical {
+       position: absolute;
+       top: -9999px;
+       left: -9999px;
+       visibility: hidden;
+     }
+     
      /* Hide scrollbar for project scroller */
      .scrollbar-hide {
        -ms-overflow-style: none;
@@ -307,22 +343,44 @@
  
   <!-- HERO SECTION -->
   <section id="banner" class="relative h-screen overflow-hidden">
-    <!-- Video Background -->
+    <!-- Optimized Video Background with Loading States -->
     <div class="absolute inset-0 w-full h-full">
+      <!-- Preload Image for Instant Display -->
+      <div id="hero-poster" class="absolute inset-0 w-full h-full bg-gradient-to-br from-slate-900 via-primary-dark to-primary">
+        <img src="images/heroframe.png" alt="Drone Services Background" 
+             class="w-full h-full object-cover opacity-90"
+             loading="eager"
+             onload="this.style.opacity='1'"
+             onerror="this.style.display='none'">
+      </div>
+
+      <!-- Loading Spinner -->
+      <div id="video-loading" class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-900 via-primary-dark to-primary">
+        <div class="text-center text-white">
+          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <p class="text-sm opacity-80">Loading...</p>
+        </div>
+            </div>
+            
+      <!-- Optimized Video -->
       <video 
         autoplay 
         muted 
         loop 
         playsinline
-        class="absolute inset-0 w-full h-full object-cover"
+        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
         id="hero-video"
+        preload="metadata"
+        poster="images/heroframe.png"
       >
-        <source src="videos/DJI_0528.MP4" type="video/mp4">
+        <!-- Multiple formats for better compatibility and performance -->
+        <source src="videos/DJI_0528.webm" type="video/webm">
+        <source src="videos/DJI_0528.mp4" type="video/mp4">
         <!-- Fallback for browsers that don't support video -->
-    <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-primary-dark to-primary"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-primary-dark to-primary"></div>
       </video>
-      </div>
-
+    </div>
+   
     <!-- Dark Overlay for Text Readability -->
     <div class="absolute inset-0 bg-black/40"></div>
     
@@ -831,6 +889,71 @@
  
   <!-- JAVASCRIPT -->
   <script>
+     // Video Loading Optimization
+     document.addEventListener('DOMContentLoaded', function() {
+       const video = document.getElementById('hero-video');
+       const poster = document.getElementById('hero-poster');
+       const loading = document.getElementById('video-loading');
+       
+       // Preload critical resources
+       function preloadCriticalResources() {
+         // Preload hero poster image
+         const posterImg = new Image();
+         posterImg.src = 'images/hero-poster.jpg';
+         posterImg.onload = function() {
+           console.log('Hero poster preloaded');
+         };
+         
+         // Preload video metadata
+         if (video) {
+           video.addEventListener('loadedmetadata', function() {
+             console.log('Video metadata loaded');
+           });
+           
+           video.addEventListener('canplaythrough', function() {
+             // Hide loading spinner and poster, show video
+             if (loading) loading.style.opacity = '0';
+             if (poster) poster.style.opacity = '0';
+             video.style.opacity = '1';
+             
+             setTimeout(() => {
+               if (loading) loading.style.display = 'none';
+               if (poster) poster.style.display = 'none';
+             }, 1000);
+           });
+           
+           video.addEventListener('error', function() {
+             // Fallback to poster image if video fails
+             console.log('Video failed to load, using poster');
+             if (loading) loading.style.display = 'none';
+             if (poster) poster.style.opacity = '1';
+           });
+         }
+       }
+       
+       // Start preloading immediately
+       preloadCriticalResources();
+       
+       // Intersection Observer for lazy loading non-critical images
+       if ('IntersectionObserver' in window) {
+         const imageObserver = new IntersectionObserver((entries, observer) => {
+           entries.forEach(entry => {
+             if (entry.isIntersecting) {
+               const img = entry.target;
+               img.src = img.dataset.src;
+               img.classList.remove('lazy');
+               observer.unobserve(img);
+             }
+           });
+         });
+         
+         // Observe all lazy images
+         document.querySelectorAll('img[data-src]').forEach(img => {
+           imageObserver.observe(img);
+         });
+       }
+     });
+     
     // Mobile Menu Toggle
     document.getElementById('mobile-menu-btn').addEventListener('click', function() {
       document.getElementById('mobile-menu').classList.toggle('hidden');
