@@ -863,8 +863,8 @@
       <!-- Modal Header -->
       <div class="flex items-center justify-between p-6 border-b border-gray-200">
         <div>
-          <h3 class="text-xl font-bold text-gray-800">Drone Operator Certificaat</h3>
-          <p class="text-sm text-gray-600">Martin de Lobel - Gecertificeerd Drone Operator</p>
+          <h3 class="text-xl font-bold text-gray-800">EASA Vaardigheidsbewijs</h3>
+          <p class="text-sm text-gray-600">Categorie A1/A3 & A2</p>
         </div>
         <button onclick="closeCertificateModal()" class="text-gray-400 hover:text-gray-600 transition-colors">
           <i class="fas fa-times text-2xl"></i>
@@ -878,7 +878,6 @@
                alt="Drone Operator Certificate" 
                class="max-w-full h-auto rounded-lg shadow-lg mx-auto cursor-zoom-in"
                onclick="openCertificateLightbox()">
-          <p class="text-sm text-gray-600 mt-4">Klik op de afbeelding om te vergroten</p>
         </div>
       </div>
     </div>
@@ -1119,28 +1118,30 @@
           { src: "images/asbuiltplan/Picture3.png", alt: "DXF-export", caption: "DXF-export" }
         ],
         previewImageIndex: 2,
-        category: "Opmetingen",
+        category: "Plaatsbeschrijving",
         status: "Voltooid"
       },
        {
          id: 3,
-         title: "Werfopvolging",
+         title: "Bodemsanering",
          location: "Sint-Truiden, België",
          flag: "🇧🇪",
-         description: "Tijdens de opvolging van een complexe werf gebruiken we drones om het terrein overzichtelijk te monitoren. Zo kunnen voortgang, oppervlakten en volumes snel worden beoordeeld, terwijl het eindresultaat een volledig en gedetailleerd beeld van de werkzaamheden geeft.",
+         description: "Voor dit bodemsaneringsproject in Sint-Truiden hebben we met drones de volledige werfopvolging verzorgd. Van beginsituatie tot eindresultaat: elke fase werd gedocumenteerd met precisie-opmetingen, 3D-modellen en gedetailleerde berekeningen voor een complete as-built documentatie.",
          tasks: [
-           "GPS-gestuurde drone-opmetingen",
-           "Periodieke puntenwolk generatie",
+           "Beginsituatie terrein in kaart gebracht",
+           "Periodieke drone-opmetingen tijdens sanering",
+           "3D-puntenwolk generatie per fase",
            "Oppervlakte- en volumeberekeningen",
-           "Progressie rapportage"
+           "As-built documentatie eindresultaat",
+           "Progressie rapportage aan opdrachtgever"
          ],
          images: [
-           { src: "images/project 3/Picture1.png", alt: "Beginsituatie", caption: "Beginsituatie" },
-           { src: "images/project 3/Picture2.png", alt: "Inpeiling", caption: "Inpeiling" },
-           { src: "images/project 3/Picture3.png", alt: "Berekeningen", caption: "Berekeningen" },
-           { src: "images/project 3/Picture4.png", alt: "Rastervlakken", caption: "Rastervlakken" },
-           { src: "images/project 3/Picture5.png", alt: "Resterende rasters", caption: "Resterende rasters" },
-           { src: "images/project 3/Picture6.png", alt: "As-built", caption: "As-built" }
+           { src: "images/project 3/Picture1.png", alt: "Beginsituatie terrein", caption: "Beginsituatie van het terrein" },
+           { src: "images/project 3/Picture2.png", alt: "Drone-opmeting in uitvoering", caption: "Drone-opmeting tijdens werkzaamheden" },
+           { src: "images/project 3/Picture3.png", alt: "3D-puntenwolk generatie", caption: "3D-puntenwolk van het terrein" },
+           { src: "images/project 3/Picture4.png", alt: "Oppervlakteberekeningen", caption: "Gedetailleerde oppervlakteberekeningen" },
+           { src: "images/project 3/Picture5.png", alt: "Volume-analyse", caption: "Volume-analyse van de werkzaamheden" },
+           { src: "images/project 3/Picture6.png", alt: "Eindresultaat as-built", caption: "Eindresultaat as-built plan" }
          ],
          previewImageIndex: 4,
          category: "Werfopvolging",
@@ -1281,15 +1282,15 @@
               }">
                 ${project.status}
                 </span>
-            </div>
+                </div>
  
             <!-- Category Badge -->
             <div class="absolute top-4 left-4">
               <span class="px-3 py-1 rounded-full text-xs font-semibold bg-primary/90 text-white">
                 ${project.category}
               </span>
+                  </div>
                 </div>
-              </div>
         
           <!-- Project Content - Flexbox for equal distribution -->
           <div class="flex flex-col flex-1 p-6">
@@ -1299,15 +1300,15 @@
               <h3 class="text-xl font-bold text-white group-hover:text-primary-light transition-colors leading-tight">
                 ${project.title}
               </h3>
-                </div>
+              </div>
             
             <!-- Location Container -->
             <div class="mb-4 flex-shrink-0">
               <div class="flex items-center text-gray-300 text-sm">
                 <span class="text-lg mr-2 flex-shrink-0">${project.flag}</span>
                 <span class="truncate">${project.location}</span>
-              </div>
-                </div>
+            </div>
+          </div>
             
             <!-- Description Container - Flexible height -->
             <div class="mb-4 flex-1 min-h-[60px]">
@@ -1385,8 +1386,8 @@
               <button onclick="closeProjectModal()" class="text-white hover:text-gray-300 transition-colors">
                 <i class="fas fa-times text-2xl"></i>
               </button>
-                </div>
-              </div>
+            </div>
+          </div>
           
           <!-- Modal Content -->
           <div class="p-6 max-h-[70vh] overflow-y-auto">
@@ -1394,8 +1395,8 @@
             <div class="mb-6">
               <h3 class="text-lg font-semibold text-gray-800 mb-3">Projectbeschrijving</h3>
               <p class="text-gray-600 leading-relaxed">${project.description}</p>
-                </div>
-            
+            </div>
+ 
             <!-- Tasks -->
             <div class="mb-6">
               <h3 class="text-lg font-semibold text-gray-800 mb-3">Uitgevoerde taken</h3>
@@ -1407,23 +1408,31 @@
                   </li>
                 `).join('')}
               </ul>
-              </div>
+                </div>
             
             <!-- Images Gallery -->
             <div class="mb-6">
-              <h3 class="text-lg font-semibold text-gray-800 mb-3">Projectbeelden</h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                ${project.images.map(img => `
-                  <div class="group cursor-pointer" onclick="openImageLightbox('${img.src}', '${img.alt}')">
-                    <img src="${img.src}" alt="${img.alt}" 
-                         class="w-full h-32 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300">
-                    <p class="text-sm text-gray-600 mt-2 text-center">${img.caption}</p>
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">Projectbeelden</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                ${project.images.map((img, index) => `
+                  <div class="group cursor-pointer bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden" onclick="openImageLightbox('${img.src}', '${img.alt}')">
+                    <div class="relative overflow-hidden">
+                      <img src="${img.src}" alt="${img.alt}" 
+                           class="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i class="fas fa-expand text-gray-700 text-sm"></i>
+              </div>
+                </div>
+                    <div class="p-4">
+                      <p class="text-sm font-medium text-gray-800 group-hover:text-primary transition-colors">${img.caption}</p>
+              </div>
                 </div>
                 `).join('')}
               </div>
-            </div>
-          </div>
-          </div>
+                </div>
+              </div>
+                </div>
       `;
       
       document.body.appendChild(modal);
@@ -1647,9 +1656,9 @@
            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 sm:p-6 transform hover:scale-105 border border-gray-100 w-48 h-24 sm:w-56 sm:h-28 md:w-64 md:h-32 flex items-center justify-center ${isMobile ? '' : 'cursor-pointer'}" 
                 ${isMobile ? '' : 'onclick="handlePartnerClick(event)"'}>
              <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition duration-500">
-         </div>
-       </div>
-     `).join('');
+        </div>
+      </div>
+    `).join('');
      }
      
      // Initial render
