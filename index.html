@@ -53,7 +53,7 @@
  
    <!-- Critical Resource Preloading -->
    <link rel="preload" href="images/hero-poster.jpg" as="image" type="image/jpeg">
-   <link rel="preload" href="videos/DJI_0528.mp4" as="video" type="video/mp4">
+   <link rel="preload" href="videos/musso.mp4" as="video" type="video/mp4">
    <link rel="preload" href="images/MsOnsite LogoSpacing.png" as="image" type="image/png">
    
    <!-- DNS Prefetch for external resources -->
@@ -494,8 +494,8 @@
         poster="images/heroframe.png"
       >
         <!-- Multiple formats for better compatibility and performance -->
-        <source src="videos/DJI_0528.webm" type="video/webm">
-        <source src="videos/DJI_0528.mp4" type="video/mp4">
+        <source src="videos/musso.webm" type="video/webm">
+        <source src="videos/musso.mp4" type="video/mp4">
         <!-- Fallback for browsers that don't support video -->
         <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-primary-dark to-primary"></div>
       </video>
@@ -531,7 +531,7 @@
         
         <!-- Description -->
           <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 leading-relaxed max-w-4xl mx-auto drop-shadow-lg px-4">
-          Professionele drone-opmetingen, werfopvolging en inspectiediensten in België.
+          Professionele drone-opmetingen, werfopvolging en inspectiediensten in Benelux.
             <span class="block mt-2 sm:mt-3 text-white font-medium drop-shadow-md">Sneller, nauwkeuriger, veiliger.</span>
         </p>
         
@@ -594,7 +594,7 @@
           Projecten Portfolio
         </h2>
         <p class="text-gray-300 text-lg leading-relaxed">
-          Ontdek onze projecten – klik op een project voor details over locatie, taken en resultaten.
+          Ontdek onze projecten – klik op een project voor meer details over uitgevoerde opdrachten.
         </p>
       </div>
  
@@ -1112,7 +1112,7 @@
       {
         title: "Opmetingen",
         subtitle: "met fotogrammetrie",
-        description: "Wij brengen uw project snel en tot op de centimeter nauwkeurig in kaart. Inclusief as-built plannen, oppervlaktebepalingen en volumeberekeningen. Zo bespaart u tijd én kosten.",
+        description: "Breng uw project snel en tot op de centimeter nauwkeurig in kaart. Inclusief as-built plannen, oppervlaktebepalingen en volumeberekeningen. Zo bespaart u tijd én kosten.",
         icon: "fa-ruler-combined"
       },
       {
@@ -1130,13 +1130,13 @@
       {
         title: "Visuals",
         subtitle: "unieke beelden",
-        description: "Leg uw bouwproject vast met professionele luchtfoto's en video's die uw visie tot leven brengen.",
+        description: "Leg uw project vast met professionele luchtfoto's en video's die uw visie tot leven brengen.",
         icon: "fa-camera"
       },
       {
         title: "Plaatsbeschrijving",
         subtitle: "gedocumenteerd",
-        description: "Houd stakeholders op de hoogte met visuele rapportages en overzicht van de projectstatus.",
+        description: "Opmaak gedetailleerde plaatsbeschrijvingen met dronebeelden die een duidelijk en volledig overzicht van de omgeving bieden, ideaal om de situatie voor en na een project nauwkeurig vast te leggen.",
         icon: "fa-file-alt"
       },
       {
@@ -1205,7 +1205,7 @@
         title: "Volumetrische Meting",
         location: "Houthulst, België",
         flag: "🇧🇪",
-        description: "Met onze drones brengen we snel en nauwkeurig het volume van zand, grind, aarde en andere materialen in kaart. Zo krijgt u overzicht in hoeveel materiaal aanwezig is of verplaatst moet worden, zodat het project vlot en efficiënt kan worden gepland.",
+        description: "Met onze drones brengen we snel en nauwkeurig het volume van zand, grind, aarde en andere materialen in kaart. Zo krijgt u overzicht in hoeveel materiaal aanwezig is of verplaatst moet worden, zodat het transport vlot en efficiënt kan worden gepland.",
         tasks: [
           "Drone-opmeting met fotogrammetrie",
           "3D-puntenwolk generatie",
@@ -1217,9 +1217,9 @@
           { src: "images/project2/Picture2.png", alt: "Gradiëntkaart", caption: "Gradiëntkaart" },
           { src: "images/project2/Picture3.png", alt: "Volumeberekeningen", caption: "Volumeberekeningen" }
         ],
-        previewImageIndex: 2,
+        previewImageIndex: 1,
         category: "Opmetingen",
-        status: "Lopende"
+        status: "Voltooid"
       },
       {
         id: 2,
@@ -1234,12 +1234,12 @@
           "DXF-export voor CAD-software"
         ],
         images: [
-          { src: "images/asbuiltplan/Picture1.png", alt: "As-built", caption: "As-built plan" },
-          { src: "images/asbuiltplan/Picture2.png", alt: "Leidingtracé", caption: "Leidingtracé" },
+          { src: "images/asbuiltplan/Picture1.png", alt: "As-built", caption: "Orthofoto" },
+          { src: "images/asbuiltplan/Picture2.png", alt: "Leidingtracé", caption: "As-built Leidingtracé" },
           { src: "images/asbuiltplan/Picture3.png", alt: "DXF-export", caption: "DXF-export" }
         ],
         previewImageIndex: 2,
-        category: "Plaatsbeschrijving",
+        category: "Opmetingen",
         status: "Voltooid"
       },
        {
@@ -1262,7 +1262,8 @@
            { src: "images/project 3/Picture3.png", alt: "3D-puntenwolk generatie", caption: "3D-puntenwolk van het terrein" },
            { src: "images/project 3/Picture4.png", alt: "Oppervlakteberekeningen", caption: "Gedetailleerde oppervlakteberekeningen" },
            { src: "images/project 3/Picture5.png", alt: "Volume-analyse", caption: "Volume-analyse van de werkzaamheden" },
-           { src: "images/project 3/Picture6.png", alt: "Eindresultaat as-built", caption: "Eindresultaat as-built plan" }
+           { src: "images/project 3/Picture6.png", alt: "Eindresultaat", caption: "Eindresultaat " },
+           { src: "images/project 3/Picture7.png", alt: "As-built", caption: "As-built plan" }
          ],
          previewImageIndex: 4,
          category: "Werfopvolging",
@@ -1281,13 +1282,38 @@
            "Restauratieplanning rapportage"
          ],
          images: [
-           { src: "images/project 4/vuurtorenfoto.png", alt: "Vuurtoren overzicht", caption: "Vuurtoren overzicht" },
-           { src: "images/project 4/vuurtoreninspectie.png", alt: "Inspectie detail", caption: "Inspectie detail" },
-           { src: "images/project 4/inspectieanalyse1.png", alt: "Analyse resultaat 1", caption: "Analyse resultaat 1" },
-           { src: "images/project 4/inspectieanalyse2.png", alt: "Analyse resultaat 2", caption: "Analyse resultaat 2" }
+           { src: "images/project 4/vuurtorenfoto.jpg", alt: "Vuurtoren overzicht", caption: "Vuurtoren overzicht" },
+           { src: "images/project 4/vuurtoreninspectie.jpg", alt: "Inspectie detail", caption: "Inspectie detail" },
+           { src: "images/project 4/inspectieanalyse2.png", alt: "Analyse resultaat 1", caption: "Close-up inspectie" },
+           { src: "images/project 4/inspectieanalyse1.png", alt: "Analyse resultaat 2", caption: "Close-up inspectie details" }
          ],
+         previewVideo: "videos/vuurtoren.mp4",
          previewImageIndex: 0,
          category: "Inspecties",
+         status: "Voltooid"
+       },
+       {
+         id: 5,
+         title: "Titel",
+         location: "Locatie",
+         flag: "🇧🇪",
+         description: "Beschrijving hier",
+         tasks: [
+           "Task1",
+           "Task2",
+           "Task3",
+           "Task4"
+         ],
+         images: [
+           { src: "images/project 5/Picture1.png", alt: "Alt1", caption: "29/02/24 - Beginsituatie" },
+           { src: "images/project 5/Picture2.png", alt: "Alt2", caption: "29/02/24 - Opmetingen overstroomd gebied" },
+           { src: "images/project 5/Picture3.png", alt: "Alt3", caption: "25/03/24 - Tussenopname" },
+           { src: "images/project 5/Picture4.png", alt: "Alt4", caption: "25/03/24 - Opervlakte- en afstandmetingen" },
+           { src: "images/project 5/Picture5.png", alt: "Alt5", caption: "22/04/24 - Eindsituatie" },
+           { src: "images/project 5/Picture6.png", alt: "Alt6", caption: "22/04/24 - Finale opmeting" }
+         ],
+         previewImageIndex: 2,
+         category: "Monitoring",
          status: "Voltooid"
        }
     ];
@@ -1302,10 +1328,18 @@
         <div class="group bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer w-80 flex-shrink-0 flex flex-col"
              onclick="openProjectModal(${project.id})">
           
-          <!-- Project Image -->
+          <!-- Project Image/Video -->
           <div class="relative h-48 overflow-hidden flex-shrink-0">
-            <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
-                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            ${project.previewVideo ? `
+              <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" muted loop autoplay>
+                <source src="${project.previewVideo}" type="video/mp4">
+                <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              </video>
+            ` : `
+              <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            `}
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
             
             <!-- Status Badge -->
@@ -1354,7 +1388,7 @@
             
             <!-- Tasks Container - Fixed height for alignment -->
             <div class="mb-4 flex-shrink-0 min-h-[80px]">
-              <h4 class="text-sm font-semibold text-white mb-2">Uitgevoerde taken:</h4>
+              <h4 class="text-sm font-semibold text-white mb-2">Uitgevoerde opdrachten:</h4>
               <ul class="space-y-1">
                 ${project.tasks.slice(0, 2).map(task => `
                   <li class="text-gray-300 text-xs flex items-start">
@@ -1388,10 +1422,18 @@
         <div class="group bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer flex flex-col h-full"
              onclick="openProjectModal(${project.id})">
           
-          <!-- Project Image -->
+          <!-- Project Image/Video -->
           <div class="relative h-48 overflow-hidden flex-shrink-0">
-            <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
-                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            ${project.previewVideo ? `
+              <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" muted loop autoplay>
+                <source src="${project.previewVideo}" type="video/mp4">
+                <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
+                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              </video>
+            ` : `
+              <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            `}
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
             
             <!-- Status Badge -->
@@ -1440,7 +1482,7 @@
  
             <!-- Tasks Container - Fixed height for alignment -->
             <div class="mb-4 flex-shrink-0 min-h-[80px]">
-              <h4 class="text-sm font-semibold text-white mb-2">Uitgevoerde taken:</h4>
+              <h4 class="text-sm font-semibold text-white mb-2">Uitgevoerde opdrachten:</h4>
               <ul class="space-y-1">
                 ${project.tasks.slice(0, 2).map(task => `
                   <li class="text-gray-300 text-xs flex items-start">
@@ -1520,7 +1562,7 @@
  
             <!-- Tasks -->
             <div class="mb-6">
-              <h3 class="text-lg font-semibold text-gray-800 mb-3">Uitgevoerde taken</h3>
+              <h3 class="text-lg font-semibold text-gray-800 mb-3">Uitgevoerde opdrachten</h3>
               <ul class="space-y-2">
                 ${project.tasks.map(task => `
                   <li class="flex items-start text-gray-600">
