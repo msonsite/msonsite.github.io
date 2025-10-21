@@ -41,7 +41,7 @@
  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
+ 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon_io/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
@@ -257,15 +257,36 @@
        -ms-overflow-style: none;
        scrollbar-width: none;
      }
-     .scrollbar-hide::-webkit-scrollbar {
-       display: none;
-     }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    
+    /* Smooth scrolling and touch-friendly behavior */
+    .overflow-x-auto {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+    }
+    
+    /* Snap scrolling for project cards */
+    .overflow-x-auto > div > div {
+      scroll-snap-align: start;
+    }
+    
+    /* Mobile project cards centering */
+    @media (max-width: 1024px) {
+      #projects-mobile-scroll-container {
+        max-width: 400px; /* Slightly wider than card width for better centering */
+      }
+    }
      
      /* Project scroller cursor */
-     #projects-scroll-container {
+     #projects-scroll-container,
+     #projects-mobile-scroll-container {
        cursor: grab;
      }
-     #projects-scroll-container:active {
+     #projects-scroll-container:active,
+     #projects-mobile-scroll-container:active {
        cursor: grabbing;
      }
      
@@ -616,8 +637,23 @@
            </div>
          </div>
          
-         <!-- Mobile Grid -->
-         <div class="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto" id="projects-mobile-grid"></div>
+        <!-- Mobile Horizontal Scroller -->
+        <div class="lg:hidden">
+          <div class="flex justify-center">
+            <div class="overflow-x-auto pb-4 scrollbar-hide w-full max-w-sm" id="projects-mobile-scroll-container">
+              <div class="flex space-x-4 min-w-max px-4" id="projects-mobile-grid"></div>
+            </div>
+          </div>
+          <!-- Mobile Scroll Indicators -->
+          <div class="flex justify-center mt-4 space-x-2">
+            <button id="mobile-scroll-left" class="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+              <i class="fas fa-chevron-left text-white"></i>
+            </button>
+            <button id="mobile-scroll-right" class="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+              <i class="fas fa-chevron-right text-white"></i>
+            </button>
+          </div>
+        </div>
        </div>
  
     </div>
@@ -1420,10 +1456,10 @@
       `;
     }
     
-    // Function to create project card HTML for mobile (grid)
+    // Function to create project card HTML for mobile (horizontal scroller)
     function createMobileProjectCard(project, index) {
       return `
-        <div class="group bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer flex flex-col h-full"
+        <div class="group bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer w-80 flex-shrink-0 flex flex-col"
              onclick="openProjectModal(${project.id})">
           
           <!-- Project Image/Video -->
@@ -1918,6 +1954,48 @@
       
       scrollContainer.addEventListener('scroll', updateScrollButtons);
       updateScrollButtons(); // Initial state
+    }
+
+    // Mobile Project Scroller Functionality
+    const mobileScrollContainer = document.getElementById('projects-mobile-scroll-container');
+    const mobileScrollLeftBtn = document.getElementById('mobile-scroll-left');
+    const mobileScrollRightBtn = document.getElementById('mobile-scroll-right');
+    
+    if (mobileScrollContainer && mobileScrollLeftBtn && mobileScrollRightBtn) {
+      // Click scroll functionality
+      mobileScrollLeftBtn.addEventListener('click', () => {
+        mobileScrollContainer.scrollBy({ left: -336, behavior: 'smooth' }); // 320px card + 16px gap
+      });
+      
+      mobileScrollRightBtn.addEventListener('click', () => {
+        mobileScrollContainer.scrollBy({ left: 336, behavior: 'smooth' }); // 320px card + 16px gap
+      });
+      
+      // Touch support for mobile
+      let mobileTouchStartX;
+      let mobileTouchScrollLeft;
+      
+      mobileScrollContainer.addEventListener('touchstart', (e) => {
+        mobileTouchStartX = e.touches[0].pageX - mobileScrollContainer.offsetLeft;
+        mobileTouchScrollLeft = mobileScrollContainer.scrollLeft;
+      });
+      
+      mobileScrollContainer.addEventListener('touchmove', (e) => {
+        if (!mobileTouchStartX) return;
+        const x = e.touches[0].pageX - mobileScrollContainer.offsetLeft;
+        const walk = (x - mobileTouchStartX) * 2;
+        mobileScrollContainer.scrollLeft = mobileTouchScrollLeft - walk;
+      });
+      
+      // Update button visibility based on scroll position
+      const updateMobileScrollButtons = () => {
+        const { scrollLeft, scrollWidth, clientWidth } = mobileScrollContainer;
+        mobileScrollLeftBtn.style.opacity = scrollLeft > 0 ? '1' : '0.5';
+        mobileScrollRightBtn.style.opacity = scrollLeft < scrollWidth - clientWidth ? '1' : '0.5';
+      };
+      
+      mobileScrollContainer.addEventListener('scroll', updateMobileScrollButtons);
+      updateMobileScrollButtons(); // Initial state
     }
  
     // WhatsApp Form Submit
