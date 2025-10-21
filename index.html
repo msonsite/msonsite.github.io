@@ -1331,7 +1331,8 @@
           <!-- Project Image/Video -->
           <div class="relative h-48 overflow-hidden flex-shrink-0">
             ${project.previewVideo ? `
-              <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" muted loop autoplay>
+              <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 pointer-events-none" 
+                     muted loop autoplay playsinline preload="metadata">
                 <source src="${project.previewVideo}" type="video/mp4">
                 <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
@@ -1425,11 +1426,17 @@
           <!-- Project Image/Video -->
           <div class="relative h-48 overflow-hidden flex-shrink-0">
             ${project.previewVideo ? `
-              <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" muted loop autoplay>
+              <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 pointer-events-none" 
+                     muted loop autoplay playsinline preload="metadata" 
+                     onloadstart="this.play()" oncanplay="this.play()">
                 <source src="${project.previewVideo}" type="video/mp4">
                 <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
               </video>
+              <!-- Video Play Indicator for Mobile -->
+              <div class="absolute top-2 left-2 bg-black/50 text-white px-2 py-1 rounded-full text-xs font-medium backdrop-blur-sm">
+                <i class="fas fa-play mr-1"></i>Video
+              </div>
             ` : `
               <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
