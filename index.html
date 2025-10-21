@@ -266,29 +266,11 @@
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
       scroll-snap-type: x mandatory;
-      overscroll-behavior-x: contain;
-    }
-    
-    /* Enhanced mobile touch scrolling */
-    #projects-mobile-scroll-container {
-      -webkit-overflow-scrolling: touch;
-      scroll-behavior: smooth;
-      overscroll-behavior-x: contain;
-      scroll-snap-type: x mandatory;
-      scroll-padding: 0 20px;
-      touch-action: pan-x;
-      will-change: scroll-position;
     }
     
     /* Snap scrolling for project cards */
     .overflow-x-auto > div > div {
       scroll-snap-align: start;
-    }
-    
-    /* Enhanced snap scrolling for mobile */
-    #projects-mobile-grid > div {
-      scroll-snap-align: center;
-      scroll-margin: 0 20px;
     }
     
     /* Mobile project cards centering */
@@ -1989,58 +1971,21 @@
         mobileScrollContainer.scrollBy({ left: 336, behavior: 'smooth' }); // 320px card + 16px gap
       });
       
-      // Enhanced touch support for mobile
+      // Touch support for mobile
       let mobileTouchStartX;
       let mobileTouchScrollLeft;
-      let isMobileScrolling = false;
-      let mobileScrollVelocity = 0;
-      let mobileLastTouchX = 0;
-      let mobileLastTouchTime = 0;
       
       mobileScrollContainer.addEventListener('touchstart', (e) => {
         mobileTouchStartX = e.touches[0].pageX - mobileScrollContainer.offsetLeft;
         mobileTouchScrollLeft = mobileScrollContainer.scrollLeft;
-        isMobileScrolling = true;
-        mobileScrollVelocity = 0;
-        mobileLastTouchX = mobileTouchStartX;
-        mobileLastTouchTime = Date.now();
-      }, { passive: true });
+      });
       
       mobileScrollContainer.addEventListener('touchmove', (e) => {
-        if (!isMobileScrolling || !mobileTouchStartX) return;
-        
-        const currentTime = Date.now();
-        const currentX = e.touches[0].pageX - mobileScrollContainer.offsetLeft;
-        const deltaX = currentX - mobileLastTouchX;
-        const deltaTime = currentTime - mobileLastTouchTime;
-        
-        // Calculate velocity for momentum
-        if (deltaTime > 0) {
-          mobileScrollVelocity = deltaX / deltaTime;
-        }
-        
-        mobileLastTouchX = currentX;
-        mobileLastTouchTime = currentTime;
-        
-        const walk = (currentX - mobileTouchStartX) * 1.5; // Reduced multiplier for smoother scrolling
+        if (!mobileTouchStartX) return;
+        const x = e.touches[0].pageX - mobileScrollContainer.offsetLeft;
+        const walk = (x - mobileTouchStartX) * 2;
         mobileScrollContainer.scrollLeft = mobileTouchScrollLeft - walk;
-      }, { passive: true });
-      
-      mobileScrollContainer.addEventListener('touchend', (e) => {
-        if (!isMobileScrolling) return;
-        
-        isMobileScrolling = false;
-        mobileTouchStartX = null;
-        
-        // Apply momentum scrolling
-        if (Math.abs(mobileScrollVelocity) > 0.1) {
-          const momentum = mobileScrollVelocity * 200; // Adjust momentum strength
-          mobileScrollContainer.scrollBy({
-            left: momentum,
-            behavior: 'smooth'
-          });
-        }
-      }, { passive: true });
+      });
       
       // Update button visibility based on scroll position
       const updateMobileScrollButtons = () => {
