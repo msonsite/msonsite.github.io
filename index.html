@@ -1348,6 +1348,7 @@
           { src: "images/project 5/Picture5.png", alt: "Alt5", caption: "22/04 - Origineel" },
           { src: "images/project 5/Picture6.png", alt: "Alt6", caption: "22/04 - Opmeting" }
         ],
+         previewImage: "images/project 5/waterbeheersingbanner.png",
          previewImageIndex: 1,
          category: "Monitoring",
          status: "Voltooid"
@@ -1390,7 +1391,10 @@
           
           <!-- Project Image/Video -->
           <div class="relative h-48 overflow-hidden flex-shrink-0">
-            ${project.previewVideo ? `
+            ${project.previewImage ? `
+              <img src="${project.previewImage}" alt="${project.title}" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            ` : project.previewVideo ? `
               <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 pointer-events-none" 
                      muted loop autoplay playsinline preload="metadata">
                 <source src="${project.previewVideo}" type="video/mp4">
@@ -1485,7 +1489,10 @@
           
           <!-- Project Image/Video -->
           <div class="relative h-48 overflow-hidden flex-shrink-0">
-            ${project.previewVideo ? `
+            ${project.previewImage ? `
+              <img src="${project.previewImage}" alt="${project.title}" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            ` : project.previewVideo ? `
               <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 pointer-events-none" 
                      muted loop autoplay playsinline preload="metadata" 
                      onloadstart="this.play()" oncanplay="this.play()">
