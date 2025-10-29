@@ -411,6 +411,29 @@
       }
     }
 
+    /* GDPR Cookie Banner Styles */
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: rgba(45, 81, 89, 0.98);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(0);
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    #cookie-banner.hidden {
+      transform: translateY(100%);
+    }
+    
+    @media (max-width: 768px) {
+      #cookie-banner {
+        padding: 1rem;
+      }
+    }
   </style>
 </head>
  
@@ -989,6 +1012,14 @@
             <p class="text-gray-400 text-sm">
               &copy; 2025 M&S Onsite. Alle rechten voorbehouden.
             </p>
+            <!-- Legal Links -->
+            <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-3 text-xs">
+              <a href="cookie-policy.html" class="text-gray-400 hover:text-primary-light transition-colors">Cookiebeleid</a>
+              <span class="text-gray-500">|</span>
+              <a href="privacy-policy.html" class="text-gray-400 hover:text-primary-light transition-colors">Privacybeleid</a>
+              <span class="text-gray-500">|</span>
+              <a href="terms-and-conditions.html" class="text-gray-400 hover:text-primary-light transition-colors">Algemene Voorwaarden</a>
+            </div>
           </div>
           <div class="text-center md:text-right">
             <p class="text-gray-400 text-sm flex items-center justify-center md:justify-end space-x-2">
@@ -1013,6 +1044,35 @@
       </div>
     </div>
   </footer>
+  
+  <!-- GDPR Cookie Banner -->
+  <div id="cookie-banner" class="hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex-1 text-white">
+          <p class="text-sm sm:text-base leading-relaxed">
+            <i class="fas fa-cookie-bite mr-2 text-primary-light"></i>
+            Deze website gebruikt cookies en maakt gebruik van services van derden (GitHub Pages, Cloudflare, Font Awesome, Fastly CDN) 
+            voor hosting, beveiliging en content delivery. Door op "Accepteren" te klikken, stemt u in met het gebruik van 
+            analytische cookies. Essentiële services werken altijd zonder toestemming. 
+            <a href="cookie-policy.html" class="text-primary-light hover:text-primary underline font-medium ml-1">
+              Meer informatie
+            </a>
+          </p>
+        </div>
+        <div class="flex gap-3 sm:gap-4">
+          <button id="cookie-decline" 
+                  class="px-4 sm:px-6 py-2 sm:py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors text-sm sm:text-base">
+            Weigeren
+          </button>
+          <button id="cookie-accept" 
+                  class="px-4 sm:px-6 py-2 sm:py-3 bg-primary hover:bg-primary-dark text-white rounded-lg font-medium transition-colors text-sm sm:text-base">
+            Accepteren
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   
   <!-- Certificate Modal -->
   <div id="certificateModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
@@ -2021,6 +2081,128 @@
      
       window.open(whatsappURL, '_blank');
     });
+
+    // ============================================
+    // GDPR Cookie Banner Functionality
+    // ============================================
+    
+    /**
+     * Cookie Consent Management
+     * Compliant with Belgian GDPR (AVG) and DPA rulings
+     */
+    (function() {
+      'use strict';
+      
+      const COOKIE_CONSENT_KEY = 'cookie_consent';
+      const COOKIE_CONSENT_EXPIRY_DAYS = 365;
+      
+      const banner = document.getElementById('cookie-banner');
+      const acceptBtn = document.getElementById('cookie-accept');
+      const declineBtn = document.getElementById('cookie-decline');
+      
+      // Check if user has already made a choice
+      function getCookieConsent() {
+        const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
+        if (consent) {
+          try {
+            const data = JSON.parse(consent);
+            // Check if consent is still valid (not expired)
+            if (data.timestamp && (Date.now() - data.timestamp) < (COOKIE_CONSENT_EXPIRY_DAYS * 24 * 60 * 60 * 1000)) {
+              return data;
+            }
+          } catch (e) {
+            console.error('Error parsing cookie consent:', e);
+          }
+        }
+        return null;
+      }
+      
+      // Save cookie consent choice
+      function saveCookieConsent(accepted) {
+        const consent = {
+          accepted: accepted,
+          timestamp: Date.now(),
+          date: new Date().toISOString()
+        };
+        localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(consent));
+        
+        // Hide banner
+        banner.classList.add('hidden');
+        
+        // Load or block non-essential scripts based on consent
+        if (accepted) {
+          loadNonEssentialScripts();
+        } else {
+          blockNonEssentialScripts();
+        }
+      }
+      
+      // Load non-essential scripts (analytics, marketing, etc.)
+      function loadNonEssentialScripts() {
+        console.log('[GDPR] Loading non-essential scripts with user consent');
+        
+        // Non-essential scripts that require consent would be loaded here
+        // Examples: Cloudflare Analytics, Google Analytics, Facebook Pixel, etc.
+        // 
+        // Note: Essential services (GitHub Pages, Cloudflare CDN, Font Awesome via Cloudflare CDN, 
+        // Tailwind CSS via Fastly CDN) are already loaded and do not require consent
+        // 
+        // Example structure for analytics:
+        // if (typeof cloudflare !== 'undefined') {
+        //   // Initialize Cloudflare Analytics
+        // }
+      }
+      
+      // Block non-essential scripts
+      function blockNonEssentialScripts() {
+        console.log('[GDPR] Non-essential scripts blocked per user choice');
+        
+        // Ensure analytics and tracking scripts are not loaded
+        // This ensures compliance when user declines
+      }
+      
+      // Initialize cookie banner on page load
+      function initCookieBanner() {
+        const consent = getCookieConsent();
+        
+        if (!consent) {
+          // No consent found - show banner
+          banner.classList.remove('hidden');
+        } else {
+          // Consent exists - apply previous choice
+          if (consent.accepted) {
+            loadNonEssentialScripts();
+          } else {
+            blockNonEssentialScripts();
+          }
+        }
+      }
+      
+      // Event listeners
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', function() {
+          saveCookieConsent(true);
+        });
+      }
+      
+      if (declineBtn) {
+        declineBtn.addEventListener('click', function() {
+          saveCookieConsent(false);
+        });
+      }
+      
+      // Initialize on DOM ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCookieBanner);
+      } else {
+        initCookieBanner();
+      }
+      
+      // Expose consent status for external scripts (optional)
+      window.getCookieConsent = function() {
+        return getCookieConsent();
+      };
+    })();
   </script>
  
 </body>
