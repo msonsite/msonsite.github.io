@@ -54,8 +54,7 @@
   <link rel="manifest" href="/favicon/site.webmanifest">
  
    <!-- Critical Resource Preloading -->
-   <link rel="preload" href="videos/musso.webm" as="video" type="video/webm">
-   <link rel="preload" href="videos/musso.mp4" as="video" type="video/mp4">
+   <!-- Note: Videos are NOT preloaded to improve initial page load speed -->
    <link rel="preload" href="images/branding/MsOnsite LogoSpacing.png" as="image" type="image/png">
    <link rel="preload" href="images/assets/heroframe.png" as="image" type="image/png">
    
@@ -515,19 +514,10 @@
       <!-- Preload Image for Instant Display -->
       <div id="hero-poster" class="absolute inset-0 w-full h-full bg-gradient-to-br from-slate-900 via-primary-dark to-primary">
         <img src="images/assets/heroframe.png" alt="Drone Services Background" 
-             class="w-full h-full object-cover opacity-90"
+             class="w-full h-full object-cover opacity-100"
              loading="eager"
-             onload="this.style.opacity='1'"
              onerror="this.style.display='none'">
       </div>
-
-      <!-- Loading Spinner -->
-      <div id="video-loading" class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-slate-900 via-primary-dark to-primary">
-        <div class="text-center text-white">
-          <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
-          <p class="text-sm opacity-80">Loading...</p>
-        </div>
-            </div>
             
       <!-- Optimized Video -->
       <video 

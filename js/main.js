@@ -1,8 +1,7 @@
- // Video Loading Optimization
- document.addEventListener('DOMContentLoaded', function() {
-   const video = document.getElementById('hero-video');
-   const poster = document.getElementById('hero-poster');
-   const loading = document.getElementById('video-loading');
+// Video Loading Optimization
+document.addEventListener('DOMContentLoaded', function() {
+  const video = document.getElementById('hero-video');
+  const poster = document.getElementById('hero-poster');
    
    // Preload critical resources
    function preloadCriticalResources() {
@@ -13,20 +12,21 @@ posterImg.onload = function() {
   console.log('Hero poster preloaded');
 };
 
-// Preload video metadata
+// Load video immediately for faster playback
 if (video) {
+  // Start loading video immediately
+  video.load();
+  
   video.addEventListener('loadedmetadata', function() {
     console.log('Video metadata loaded');
   });
   
   video.addEventListener('canplaythrough', function() {
-    // Hide loading spinner and poster, show video
-    if (loading) loading.style.opacity = '0';
+    // Hide poster and show video smoothly
     if (poster) poster.style.opacity = '0';
     video.style.opacity = '1';
     
     setTimeout(() => {
-      if (loading) loading.style.display = 'none';
       if (poster) poster.style.display = 'none';
     }, 1000);
   });
@@ -34,7 +34,6 @@ if (video) {
   video.addEventListener('error', function() {
     // Fallback to poster image if video fails
     console.log('Video failed to load, using poster');
-    if (loading) loading.style.display = 'none';
     if (poster) poster.style.opacity = '1';
   });
 }
