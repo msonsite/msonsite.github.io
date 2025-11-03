@@ -160,6 +160,28 @@ const projects = [
     previewImageIndex: 1,
     category: "Inspecties",
     status: "Voltooid"
+  },
+  {
+    id: 7,
+    title: "Stockdepot Meting",
+    location: "Blankenberge, België",
+    flag: "🇧🇪",
+    description: "Voor een toonaangevende speler in de zand- en grindsector voeren wij regelmatig stockinventarissen met drones uit. Dankzij nauwkeurige luchtmetingen brengen we de aanwezige volumes snel en betrouwbaar in kaart. Onze methode bespaart tijd, levert heldere rapportages en visuele overzichten die het voorraadbeheer en de planning van onze klant optimaliseren.",
+    tasks: [
+      "Flexibele inplanning opmeting",
+      "Drone fotogrammetrie depot",
+      "Volumeberekening aanwezige stocks",
+      "Duidelijke rapportage"
+    ],
+    images: [
+      { src: "images/project-7/drone-depot.png", alt: "Drone-opname depot", caption: "Drone-opname van het stockdepot" },
+      { src: "images/project-7/sateliet-volumes.png", alt: "Satelietweergave met volumeberekeningen", caption: "Satelietweergave met gemarkeerde volumes per stock" },
+      { src: "images/project-7/volume-rapport.png", alt: "Volume rapportage", caption: "Rapportage met volumes per stock" }
+    ],
+    previewImage: "images/project-7/header.png",
+    previewImageIndex: 0,
+    category: "Opmetingen",
+    status: "Voltooid"
   }
 ];
 
