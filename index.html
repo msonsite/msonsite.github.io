@@ -447,7 +447,7 @@
        
         <!-- Logo -->
         <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" class="flex items-center transform hover:scale-105 transition duration-300">
-          <img src="images/branding/MsOnsite LogoSpacing.png" alt="M&S Onsite" class="h-10 sm:h-12 md:h-14">
+          <img src="images/branding/MsOnsite LogoSpacing.png" alt="M&S Onsite" class="h-10 sm:h-12 md:h-14" loading="eager" fetchpriority="high">
         </a>
  
         <!-- Mobile menu button -->
@@ -516,8 +516,9 @@
         <img src="images/assets/heroframe.png" alt="Drone Services Background" 
              class="w-full h-full object-cover opacity-100"
              loading="eager"
+             fetchpriority="high"
              onerror="this.style.display='none'">
-      </div>
+            </div>
             
       <!-- Optimized Video -->
       <video 
@@ -527,7 +528,7 @@
         playsinline
         class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
         id="hero-video"
-        preload="metadata"
+        preload="auto"
         poster="images/assets/heroframe.png"
       >
         <!-- Multiple formats for better compatibility and performance -->
@@ -555,7 +556,9 @@
               <img src="images/branding/MsOnsite LogoSpacing.png" 
                    alt="M&S Onsite Drone Services" 
                    class="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 drop-shadow-2xl"
-                   style="filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));">
+                   style="filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));"
+                   loading="eager"
+                   fetchpriority="high">
             </div>
             <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 leading-relaxed max-w-4xl mx-auto drop-shadow-lg px-4">
               <span class="text-white font-semibold drop-shadow-md">Drone-oplossingen die werken voor uw projecten</span>
@@ -748,7 +751,8 @@
               </div>
               <div class="relative inline-block">
                 <img src="images/assets/mdl.jpg" alt="Martin de Lobel"
-                     class="w-24 h-24 rounded-full object-cover border-3 border-white shadow-lg mx-auto mb-1.5">
+                     class="w-24 h-24 rounded-full object-cover border-3 border-white shadow-lg mx-auto mb-1.5"
+                     loading="lazy">
                 <div class="absolute bottom-0.5 left-1/2 -translate-x-1/2 bg-green-500 text-white text-xs px-2 py-0.5 rounded-full">
                   Beschikbaar
                 </div>
@@ -859,7 +863,8 @@
                   <div class="mb-3">
                     <img src="images/certificates/certificaat1.jpg" 
                          alt="EASA Certificate Preview" 
-                         class="w-full h-auto max-h-32 object-contain rounded-lg ">
+                         class="w-full h-auto max-h-32 object-contain rounded-lg"
+                         loading="lazy">
                   </div>
                 </div>
               </div>
@@ -938,7 +943,7 @@
         <!-- Company Info -->
         <div class="lg:col-span-2">
           <div class="mb-6">
-            <img src="images/branding/msonsitelogowhite.png" alt="M&S Onsite" class="h-14 mb-4">
+            <img src="images/branding/msonsitelogowhite.png" alt="M&S Onsite" class="h-14 mb-4" loading="lazy">
             <p class="text-gray-300 leading-relaxed max-w-md">
               Professionele drones, maximale precisie: opmetingen, inspecties en werfopvolging in Benelux.
           </p>
@@ -1093,6 +1098,7 @@
           <img src="images/certificates/certificaat1.jpg" 
                alt="Drone Operator Certificate" 
                class="max-w-full h-auto rounded-lg shadow-lg mx-auto cursor-zoom-in"
+               loading="lazy"
                onclick="openCertificateLightbox()">
         </div>
       </div>
@@ -1104,7 +1110,8 @@
     <div class="relative max-w-7xl max-h-full">
       <img src="images/certificates/certificaat1.jpg" 
            alt="Drone Operator Certificate - Full Size" 
-           class="max-w-full max-h-full object-contain rounded-lg">
+           class="max-w-full max-h-full object-contain rounded-lg"
+           loading="lazy">
       <button onclick="closeCertificateLightbox()" 
               class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors bg-black/50 rounded-full p-2">
         <i class="fas fa-times text-xl"></i>

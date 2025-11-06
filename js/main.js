@@ -5,21 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
    
    // Preload critical resources
    function preloadCriticalResources() {
-// Preload hero poster image
-const posterImg = new Image();
-posterImg.src = 'images/assets/heroframe.png';
-posterImg.onload = function() {
-  console.log('Hero poster preloaded');
-};
-
+// Hero poster is already loaded with fetchpriority="high" in HTML
 // Load video immediately for faster playback
 if (video) {
   // Start loading video immediately
   video.load();
-  
-  video.addEventListener('loadedmetadata', function() {
-    console.log('Video metadata loaded');
-  });
   
   video.addEventListener('canplaythrough', function() {
     // Hide poster and show video smoothly
@@ -29,36 +19,80 @@ if (video) {
     setTimeout(() => {
       if (poster) poster.style.display = 'none';
     }, 1000);
-  });
+  }, { once: true });
   
   video.addEventListener('error', function() {
     // Fallback to poster image if video fails
-    console.log('Video failed to load, using poster');
     if (poster) poster.style.opacity = '1';
-  });
+  }, { once: true });
 }
    }
    
    // Start preloading immediately
    preloadCriticalResources();
    
-   // Intersection Observer for lazy loading non-critical images
+   // Intersection Observer for lazy loading videos in project cards
+   // Only for cards that are not immediately visible
    if ('IntersectionObserver' in window) {
-const imageObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const img = entry.target;
-      img.src = img.dataset.src;
-      img.classList.remove('lazy');
-      observer.unobserve(img);
-    }
-  });
-});
+     const videoObserver = new IntersectionObserver((entries, observer) => {
+       entries.forEach(entry => {
+         if (entry.isIntersecting) {
+           const container = entry.target;
+           const img = container.querySelector('img[data-video-src]');
+           const video = container.querySelector('video');
+           
+           if (img && video && video.dataset.loaded !== 'true') {
+             // Load video when in viewport
+             video.preload = 'auto';
+             video.load();
+             video.dataset.loaded = 'true';
+             
+             // Once video can play, show it and hide image
+             video.addEventListener('canplay', function() {
+               video.classList.remove('hidden');
+               if (img) img.style.opacity = '0';
+               setTimeout(() => {
+                 if (img) img.style.display = 'none';
+               }, 300);
+             }, { once: true });
+             
+             observer.unobserve(container);
+           }
+         }
+       });
+     }, {
+       rootMargin: '200px' // Start loading 200px before entering viewport for smoother experience
+     });
 
-// Observe all lazy images
-document.querySelectorAll('img[data-src]').forEach(img => {
-  imageObserver.observe(img);
-});
+     // Observe all project cards with videos, but load first 2 immediately
+     setTimeout(() => {
+       document.querySelectorAll('[data-video-src]').forEach((img, index) => {
+         const container = img.closest('.relative');
+         if (container) {
+           // Load first 2 videos immediately (likely visible)
+           if (index < 2) {
+             const video = container.querySelector('video');
+             if (video && video.dataset.loaded !== 'true') {
+               video.preload = 'auto';
+               video.load();
+               video.dataset.loaded = 'true';
+               
+               video.addEventListener('canplay', function() {
+                 video.classList.remove('hidden');
+                 const img = container.querySelector('img[data-video-src]');
+                 if (img) img.style.opacity = '0';
+                 setTimeout(() => {
+                   if (img) img.style.display = 'none';
+                 }, 300);
+               }, { once: true });
+             }
+           } else {
+             // Use observer for the rest
+             videoObserver.observe(container);
+           }
+         }
+       });
+     }, 100);
    }
  });
  
@@ -193,17 +227,23 @@ function createDesktopProjectCard(project, index) {
  <div class="relative h-48 overflow-hidden flex-shrink-0">
    ${project.previewImage ? `
      <img src="${project.previewImage}" alt="${project.title}" 
-          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          loading="lazy">
    ` : project.previewVideo ? `
-     <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 pointer-events-none" 
-            muted loop autoplay playsinline preload="metadata">
-       <source src="${project.previewVideo}" type="video/mp4">
+     <div class="w-full h-full relative">
        <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-     </video>
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            loading="lazy"
+            data-video-src="${project.previewVideo}">
+       <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 pointer-events-none hidden" 
+              muted loop autoplay playsinline preload="none">
+         <source src="${project.previewVideo}" type="video/mp4">
+       </video>
+     </div>
    ` : `
      <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
-          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          loading="lazy">
    `}
    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
    
@@ -291,18 +331,23 @@ function createMobileProjectCard(project, index) {
  <div class="relative h-48 overflow-hidden flex-shrink-0">
    ${project.previewImage ? `
      <img src="${project.previewImage}" alt="${project.title}" 
-          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          loading="lazy">
    ` : project.previewVideo ? `
-     <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 pointer-events-none" 
-            muted loop autoplay playsinline preload="metadata" 
-            onloadstart="this.play()" oncanplay="this.play()">
-       <source src="${project.previewVideo}" type="video/mp4">
+     <div class="w-full h-full relative">
        <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-     </video>
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            loading="lazy"
+            data-video-src="${project.previewVideo}">
+       <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 pointer-events-none hidden" 
+              muted loop autoplay playsinline preload="none">
+         <source src="${project.previewVideo}" type="video/mp4">
+       </video>
+     </div>
    ` : `
      <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
-          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          loading="lazy">
    `}
    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
    
@@ -381,13 +426,21 @@ function createMobileProjectCard(project, index) {
 }
 
 // Render for desktop (horizontal scroller)
+// First 2 projects load eagerly (likely visible), rest load lazily
 projects.forEach((project, index) => {
-  projectsGrid.innerHTML += createDesktopProjectCard(project, index);
+  const cardHTML = createDesktopProjectCard(project, index);
+  // Replace loading="lazy" with loading="eager" for first 2 projects
+  const modifiedCardHTML = index < 2 ? cardHTML.replace('loading="lazy"', 'loading="eager"') : cardHTML;
+  projectsGrid.innerHTML += modifiedCardHTML;
 });
 
 // Render for mobile (grid)
+// First 2 projects load eagerly (likely visible), rest load lazily
 projects.forEach((project, index) => {
-  projectsMobileGrid.innerHTML += createMobileProjectCard(project, index);
+  const cardHTML = createMobileProjectCard(project, index);
+  // Replace loading="lazy" with loading="eager" for first 2 projects
+  const modifiedCardHTML = index < 2 ? cardHTML.replace('loading="lazy"', 'loading="eager"') : cardHTML;
+  projectsMobileGrid.innerHTML += modifiedCardHTML;
 });
 
 // Project Modal Function
@@ -451,7 +504,8 @@ function openProjectModal(projectId) {
          <div class="group cursor-pointer bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden" onclick="openImageLightbox('${img.src}', '${img.alt}')">
            <div class="relative overflow-hidden">
              <img src="${img.src}" alt="${img.alt}" 
-                  class="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500">
+                  class="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy">
              <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
              <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                <i class="fas fa-expand text-gray-700 text-sm"></i>
@@ -492,7 +546,7 @@ function openImageLightbox(src, alt) {
   };
   lightbox.innerHTML = `
     <div class="relative max-w-4xl max-h-full">
- <img src="${src}" alt="${alt}" class="max-w-full max-h-full object-contain rounded-lg">
+ <img src="${src}" alt="${alt}" class="max-w-full max-h-full object-contain rounded-lg" loading="eager">
  <button onclick="closeImageLightbox()" 
          class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors">
    <i class="fas fa-times text-2xl"></i>
@@ -669,7 +723,7 @@ function initInfiniteCarousel() {
 <div class="partner-item mx-3 sm:mx-4 md:mx-6">
   <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 sm:p-6 transform hover:scale-105 border border-gray-100 w-48 h-24 sm:w-56 sm:h-28 md:w-64 md:h-32 flex items-center justify-center ${isMobile ? '' : 'cursor-pointer'}" 
        ${isMobile ? '' : 'onclick="handlePartnerClick(event)"'}>
-    <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition duration-500">
+    <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition duration-500" loading="lazy">
     </div>
   </div>
 `).join('');
