@@ -6,12 +6,22 @@ document.addEventListener('DOMContentLoaded', function() {
    // Preload critical resources
    function preloadCriticalResources() {
 // Hero poster is already loaded with fetchpriority="high" in HTML
-// Load video after a small delay to not block initial render
+// Load video only after page is fully interactive to improve LCP
 if (video) {
-  // Start loading video after page is interactive
-  setTimeout(() => {
+  // Wait for page to be interactive before loading video
+  if (document.readyState === 'complete') {
+    // Page already loaded, wait a bit more for other resources
+    setTimeout(() => {
   video.load();
-  }, 100);
+    }, 2000);
+  } else {
+    // Wait for page to be fully loaded
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        video.load();
+      }, 2000);
+    }, { once: true });
+  }
   
   // Show video as soon as it can play (not wait for full buffer)
   video.addEventListener('canplay', function() {
@@ -320,7 +330,7 @@ function createFeaturedProject(project) {
          <source src="${project.previewVideo}" type="video/mp4">
        </video>
           ` : `
-            <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" loading="eager">
+            <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" width="800" height="500">
           `}
           <div class="absolute inset-0 bg-gradient-to-r from-primary/15 via-primary/8 to-transparent"></div>
           
@@ -374,7 +384,7 @@ function createModernProjectCard(project, index) {
             <source src="${project.previewVideo}" type="video/mp4">
           </video>
         ` : `
-          <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" loading="lazy">
+          <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="192">
         `}
         <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
         
@@ -491,7 +501,7 @@ function createMobileProjectCard(project, index) {
             <source src="${project.previewVideo}" type="video/mp4">
           </video>
         ` : `
-          <img src="${imageSrc}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+          <img src="${imageSrc}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
         `}
         <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);"></div>
         
@@ -942,7 +952,7 @@ function initInfiniteCarousel() {
 <div class="partner-item mx-3 sm:mx-4 md:mx-6">
   <a href="${partner.url}" target="_blank" rel="noopener noreferrer" 
      class="block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 sm:p-6 transform hover:scale-105 border border-gray-100 w-48 h-24 sm:w-56 sm:h-28 md:w-64 md:h-32 flex items-center justify-center cursor-pointer">
-    <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition duration-500" loading="lazy">
+    <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition duration-500" loading="lazy" decoding="async" width="200" height="100">
   </a>
   </div>
 `).join('');

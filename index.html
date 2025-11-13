@@ -40,7 +40,11 @@
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   
-  <!-- Tailwind CSS - Must load before inline config -->
+  <!-- Resource Hints for better performance -->
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+  
+  <!-- Tailwind CSS - Inline critical config, load script -->
   <script src="https://cdn.tailwindcss.com"></script>
  
   <!-- Font Awesome - Load asynchronously to not block rendering -->
@@ -63,10 +67,6 @@
    <link rel="preload" href="images/assets/heroframe.png" as="image" type="image/png" fetchpriority="high">
    
    <!-- Note: Video preloading removed - too heavy, browser will handle it efficiently -->
-   
-   <!-- DNS Prefetch for external resources -->
-   <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-   <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
  
   <!-- Custom Tailwind Configuration -->
   <script>
@@ -743,10 +743,11 @@
              class="w-full h-full object-cover opacity-100"
              loading="eager"
              fetchpriority="high"
+             decoding="async"
              onerror="this.style.display='none'">
             </div>
             
-      <!-- Optimized Video -->
+      <!-- Optimized Video - Load after page is interactive -->
       <video 
         autoplay 
         muted 
@@ -754,7 +755,7 @@
         playsinline
         class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
         id="hero-video"
-        preload="metadata"
+        preload="none"
         poster="images/assets/heroframe.png"
       >
         <!-- Multiple formats for better compatibility and performance -->
@@ -784,7 +785,8 @@
                    class="h-16 sm:h-20 md:h-24 lg:h-24 xl:h-28 drop-shadow-2xl"
                    style="filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));"
                    loading="eager"
-                   fetchpriority="high">
+                   fetchpriority="high"
+                   decoding="async">
             </div>
             <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 leading-relaxed max-w-4xl mx-auto drop-shadow-lg px-4">
               <span class="text-white font-semibold drop-shadow-md">Drone-oplossingen die werken voor uw projecten</span>
@@ -1331,6 +1333,19 @@
   </div>
  
   <!-- JAVASCRIPT -->
+  <!-- Register Service Worker for caching -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(() => {
+          console.log('Service Worker registered');
+        }).catch(() => {
+          // Silently fail if service worker registration fails
+        });
+      });
+    }
+  </script>
+  
   <!-- Load Projects Data - Defer to not block rendering -->
   <script src="js/projects.js" defer></script>
   
