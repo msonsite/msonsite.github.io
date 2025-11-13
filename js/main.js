@@ -929,52 +929,21 @@ closeCertificateLightbox();
    }
  });
  
-// Partners Data
-const partners = [
-  { img: "images/customers/groupdecloedt.png", alt: "Group De Cloedt" },
-  { img: "images/customers/agentschapnatuur.png", alt: "Agentschap voor Natuur en Bos" },
-  { img: "images/customers/bioterra.png", alt: "Bioterra" },
-  { img: "images/customers/vlaamsewaterweg.png", alt: "De Vlaamse Waterweg" },
-  { img: "images/customers/hdr.jpg", alt: "Heyrman - De Roeck" },
-  { img: "images/customers/nhm.webp", alt: "NHM" },
-  { img: "images/customers/evsinfrabouw.jpeg", alt: "EVS Infrabouw" },
-];
- 
- // Partner click handler to prevent carousel interruption
- function handlePartnerClick(event) {
-   event.preventDefault();
-   event.stopPropagation();
-   
-   // Temporarily pause the carousel
-   const partnersTrack = document.getElementById('partners-track');
-   partnersTrack.classList.add('paused');
-   
-   // Resume after a short delay
-   setTimeout(() => {
-partnersTrack.classList.remove('paused');
-partnersTrack.classList.add('resumed');
-
-// Remove the resumed class after animation restarts
-setTimeout(() => {
-  partnersTrack.classList.remove('resumed');
-}, 100);
-   }, 2000);
- }
+// Partners data is loaded from partners.js
  
 // Simple Infinite Carousel Implementation
 function initInfiniteCarousel() {
  const partnersTrack = document.getElementById('partners-track');
+ if (!partnersTrack) return;
  
- // Function to create partner HTML with conditional click handling
+ // Function to create partner HTML with clickable links
  function createPartnerHTML() {
-   const isMobile = window.innerWidth < 768;
-   
    return partners.map(partner => `
 <div class="partner-item mx-3 sm:mx-4 md:mx-6">
-  <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 sm:p-6 transform hover:scale-105 border border-gray-100 w-48 h-24 sm:w-56 sm:h-28 md:w-64 md:h-32 flex items-center justify-center ${isMobile ? '' : 'cursor-pointer'}" 
-       ${isMobile ? '' : 'onclick="handlePartnerClick(event)"'}>
+  <a href="${partner.url}" target="_blank" rel="noopener noreferrer" 
+     class="block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 sm:p-6 transform hover:scale-105 border border-gray-100 w-48 h-24 sm:w-56 sm:h-28 md:w-64 md:h-32 flex items-center justify-center cursor-pointer">
     <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition duration-500" loading="lazy">
-    </div>
+  </a>
   </div>
 `).join('');
  }
@@ -983,7 +952,7 @@ function initInfiniteCarousel() {
  const partnerHTML = createPartnerHTML();
  partnersTrack.innerHTML = partnerHTML + partnerHTML;
  
- // Handle window resize to update click behavior
+ // Handle window resize to re-render
  let resizeTimeout;
  window.addEventListener('resize', function() {
    clearTimeout(resizeTimeout);

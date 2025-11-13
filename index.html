@@ -851,10 +851,15 @@
   </section>
  
   <!-- PROJECTEN SECTION -->
-   <!-- GREENISH BACKGROUND:  <section class="py-16 md:py-24 relative overflow-hidden" id="projecten" style="background: linear-gradient(to bottom, #f0f9fa 0%, #e8f4f6 50%, #f0f9fa 100%);">-->
-  <section class="py-16 md:py-24 bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 relative overflow-hidden" id="projecten">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-[0.08]">
+  <section class="py-16 md:py-24 relative overflow-hidden" id="projecten">
+    <!-- Background Image -->
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/assets/projectsectionbackground.png');"></div>
+    
+    <!-- Overlay for readability -->
+    <div class="absolute inset-0 bg-white/85 backdrop-blur-[2px]"></div>
+    
+    <!-- Background Pattern (subtle) -->
+    <div class="absolute inset-0 opacity-[0.03]">
       <div class="absolute inset-0" style="background-image: radial-gradient(circle, #417580 1px, transparent 1px); background-size: 40px 40px;"></div>
     </div>
    
@@ -1328,6 +1333,9 @@
   <!-- JAVASCRIPT -->
   <!-- Load Projects Data - Defer to not block rendering -->
   <script src="js/projects.js" defer></script>
+  
+  <!-- Load Partners Data - Defer to not block rendering -->
+  <script src="js/partners.js" defer></script>
   
   <!-- Main JavaScript - Defer to not block rendering -->
   <script src="js/main.js" defer></script>
