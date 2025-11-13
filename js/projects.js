@@ -110,7 +110,7 @@ const projects = [
       { src: "images/project-4/eindresultaat.png", alt: "Eindresultaat", caption: "Eindresultaat " },
       { src: "images/project-4/asbuilt-plan.png", alt: "As-built", caption: "As-built plan" }
     ],
-    previewImageIndex: 4,
+    previewImage: "images/project-4/previewimageproject4.png",
     categories: ["Werfopvolging"],
     status: "Voltooid"
   },
