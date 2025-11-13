@@ -656,95 +656,175 @@ if (document.readyState === 'loading') {
 
 // Old rendering code removed - now using initProjectsSection() instead
 
-// Project Modal Function
+// Project Modal Function - Completely Redesigned
 function openProjectModal(projectId) {
   const project = projects.find(p => p.id === projectId);
   if (!project) return;
 
   const modal = document.createElement('div');
-  modal.className = 'fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4';
+  modal.className = 'fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4 md:p-8';
+  modal.style.cssText = 'animation: fadeIn 0.2s ease-out;';
   modal.onclick = function(e) {
     if (e.target === modal) {
  closeProjectModal();
     }
   };
+  
   modal.innerHTML = `
-    <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
- <!-- Modal Header -->
- <div class="bg-gradient-to-r from-primary to-primary-dark text-white p-6">
-   <div class="flex justify-between items-start">
-     <div>
-       <h2 class="text-2xl font-bold mb-2">${project.title}</h2>
-       <div class="flex items-center text-primary-light">
-         <span class="flex items-center">
-           <span class="text-lg mr-2">${project.flag}</span>
-           ${project.location}
-         </span>
-       </div>
+    <div class="bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[95vh] overflow-hidden flex flex-col" style="animation: slideUp 0.3s ease-out;">
+      <!-- Clean Header with Close Button -->
+      <div class="flex items-center justify-between p-6 md:p-8 border-b border-gray-100 relative">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-3 mb-3 flex-wrap">
+            <span class="category-tag flex-shrink-0">${getProjectCategories(project)[0] || 'Project'}</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">${project.title}</h2>
+          <div class="flex items-center gap-2 text-gray-600">
+            <span class="text-2xl">${project.flag}</span>
+            <span class="text-base font-medium">${project.location}</span>
      </div>
-     <button onclick="closeProjectModal()" class="text-white hover:text-gray-300 transition-colors">
-       <i class="fas fa-times text-2xl"></i>
+        </div>
+        <button onclick="closeProjectModal()" class="ml-6 p-2 rounded-full hover:bg-gray-100 text-gray-500 hover:text-gray-700 transition-colors" aria-label="Sluiten">
+          <i class="fas fa-times text-xl"></i>
      </button>
-   </div>
  </div>
  
- <!-- Modal Content -->
- <div class="p-6 max-h-[70vh] overflow-y-auto">
-   <!-- Description -->
-   <div class="mb-6">
-     <h3 class="text-lg font-semibold text-gray-800 mb-3">Projectbeschrijving</h3>
-     <p class="text-gray-600 leading-relaxed">${project.description}</p>
-   </div>
- 
-   <!-- Tasks -->
-   <div class="mb-6">
-     <h3 class="text-lg font-semibold text-gray-800 mb-3">Uitgevoerde opdrachten</h3>
-     <ul class="space-y-2">
+      <!-- Scrollable Content Area -->
+      <div class="flex-1 overflow-y-auto" style="scrollbar-width: thin; scrollbar-color: #e5e7eb transparent;">
+        <div class="p-6 md:p-12 space-y-12">
+          
+          <!-- Project Description Section -->
+          <section>
+            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Projectbeschrijving</h3>
+            <p class="text-base md:text-lg text-gray-700 leading-relaxed max-w-4xl">${project.description}</p>
+          </section>
+          
+          <!-- Tasks Section -->
+          <section>
+            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Uitgevoerde opdrachten</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
        ${project.tasks.map(task => `
-         <li class="flex items-start text-gray-600">
-           <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
-           <span>${task}</span>
-         </li>
+                <div class="flex items-start p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-primary/30 hover:bg-primary/5 transition-all duration-200">
+                  <div class="flex-shrink-0 mt-0.5">
+                    <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                      <i class="fas fa-check text-primary text-sm"></i>
+                    </div>
+                  </div>
+                  <p class="ml-4 text-base md:text-lg text-gray-700 leading-relaxed">${task}</p>
+                </div>
        `).join('')}
-     </ul>
        </div>
-   
-   <!-- Images Gallery -->
-   <div class="mb-6">
-     <h3 class="text-lg font-semibold text-gray-800 mb-4">Projectbeelden</h3>
-     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          </section>
+          
+          <!-- Images Gallery Section -->
+          <section>
+            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Projectbeelden</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
        ${project.images.map((img, index) => `
-         <div class="group cursor-pointer bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden" onclick="openImageLightbox('${img.src}', '${img.alt}')">
-           <div class="relative overflow-hidden">
+                <div class="group relative bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer" onclick="openImageLightbox('${img.src}', '${img.alt}')">
+                  <div class="relative aspect-video overflow-hidden bg-gray-100">
              <img src="${img.src}" alt="${img.alt}" 
-                  class="w-full h-48 md:h-56 object-cover group-hover:scale-110 transition-transform duration-500"
-                  loading="lazy">
-             <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-             <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-               <i class="fas fa-expand text-gray-700 text-sm"></i>
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                         loading="lazy"
+                         decoding="async">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full p-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+                      <i class="fas fa-expand text-primary text-sm"></i>
      </div>
        </div>
-           <div class="p-4">
-             <p class="text-sm font-medium text-gray-800 group-hover:text-primary transition-colors">${img.caption}</p>
+                  ${img.caption ? `
+                    <div class="p-4 md:p-5">
+                      <p class="text-sm md:text-base font-medium text-gray-800 group-hover:text-primary transition-colors leading-relaxed">${img.caption}</p>
      </div>
+                  ` : ''}
        </div>
        `).join('')}
      </div>
+          </section>
+          
        </div>
      </div>
        </div>
+    
+    <style>
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes slideUp {
+        from { 
+          opacity: 0;
+          transform: translateY(20px) scale(0.95);
+        }
+        to { 
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .fixed.inset-0::-webkit-scrollbar {
+        width: 8px;
+      }
+      .fixed.inset-0::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .fixed.inset-0::-webkit-scrollbar-thumb {
+        background: #e5e7eb;
+        border-radius: 4px;
+      }
+      .fixed.inset-0::-webkit-scrollbar-thumb:hover {
+        background: #d1d5db;
+      }
+    </style>
   `;
   
   document.body.appendChild(modal);
+  
+  // Prevent body scroll when modal is open - simpler approach without position:fixed
+  const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+  modal.dataset.scrollY = scrollY;
+  
+  // Prevent scrolling without changing position - this prevents jump
   document.body.style.overflow = 'hidden';
+  document.documentElement.style.overflow = 'hidden';
+  
+  // Store current scroll position in data attribute for restoration
+  document.body.dataset.modalScrollY = scrollY;
 }
 
 // Close Modal Function
 function closeProjectModal() {
-  const modal = document.querySelector('.fixed.inset-0.bg-black\\/80');
+  const modal = document.querySelector('.fixed.inset-0.bg-black\\/70') || document.querySelector('.fixed.inset-0.bg-black\\/80');
   if (modal) {
-    modal.remove();
-    document.body.style.overflow = 'auto';
+    // Get stored scroll position
+    const scrollY = modal.dataset.scrollY ? parseInt(modal.dataset.scrollY) : 
+                    (document.body.dataset.modalScrollY ? parseInt(document.body.dataset.modalScrollY) : 0);
+    
+    // Fade out modal first
+    modal.style.opacity = '0';
+    modal.style.transition = 'opacity 0.15s ease-out';
+    
+    // Wait for fade, then restore everything
+    setTimeout(() => {
+      // Restore overflow styles
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      
+      // Remove data attribute
+      delete document.body.dataset.modalScrollY;
+      
+      // Remove modal from DOM
+      modal.remove();
+      
+      // Restore scroll position synchronously - no delay, no animation
+      // Set scroll position directly on both elements to prevent any jump
+      document.documentElement.scrollTop = scrollY;
+      document.body.scrollTop = scrollY;
+      
+      // Also use scrollTo as backup
+      if (window.scrollTo) {
+        window.scrollTo(0, scrollY);
+      }
+    }, 150); // Match fade duration
   }
 }
 
