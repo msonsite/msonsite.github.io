@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 if (video) {
   // Start loading video after page is interactive
   setTimeout(() => {
-    video.load();
+  video.load();
   }, 100);
   
   // Show video as soon as it can play (not wait for full buffer)
@@ -46,7 +46,7 @@ if (video) {
    // Start preloading immediately - don't wait for DOMContentLoaded
    // Video element might already exist
    if (document.readyState === 'loading') {
-     preloadCriticalResources();
+   preloadCriticalResources();
    } else {
      preloadCriticalResources();
    }
@@ -216,34 +216,34 @@ const serviceGrid = `
           <!-- Subtle Background Number -->
           <div class="absolute top-0 right-0 text-[140px] md:text-[160px] font-black text-primary/[0.03] leading-none -mt-6 -mr-4 pointer-events-none">
             ${serviceNumber}
-          </div>
+ </div>
           
           <!-- Icon -->
           <div class="relative z-10 mb-5">
             <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center shadow-xl scale-110">
               <i class="fas ${service.icon} text-2xl text-white"></i>
             </div>
-          </div>
-          
+ </div>
+ 
           <!-- Content -->
-          <div class="relative z-10">
+ <div class="relative z-10">
             <h3 class="text-xl md:text-2xl font-bold text-primary mb-2 leading-relaxed">
-              ${service.title}
-            </h3>
-            ${service.subtitle ? `
+     ${service.title}
+   </h3>
+   ${service.subtitle ? `
               <p class="text-sm text-primary font-semibold uppercase tracking-wide mb-3">
-                ${service.subtitle}
-              </p>
-            ` : ''}
+       ${service.subtitle}
+     </p>
+   ` : ''}
             <p class="text-gray-700 text-xs md:text-sm leading-relaxed">
-              ${service.description}
-            </p>
-          </div>
-          
+     ${service.description}
+   </p>
+ </div>
+ 
           <!-- Background -->
           <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary-light/5 pointer-events-none"></div>
-        </div>
-      `;
+    </div>
+  `;
     }).join('')}
   </div>
 `;
@@ -253,9 +253,335 @@ servicesContainer.innerHTML = serviceGrid;
 // Projects data is loaded from js/projects.js
 // The projects array is now defined in a separate file for easier maintenance
  
-// Render Projects Grid
+// Projects Section - New Grid Layout
 const projectsGrid = document.getElementById('projects-grid');
 const projectsMobileGrid = document.getElementById('projects-mobile-grid');
+const featuredProjectContainer = document.getElementById('featured-project-container');
+const projectFiltersContainer = document.getElementById('project-filters');
+const projectsEmpty = document.getElementById('projects-empty');
+let currentFilter = 'all';
+
+// Get unique categories from projects
+function getUniqueCategories() {
+  const categories = [...new Set(projects.map(p => p.category))];
+  return categories.sort();
+}
+
+// Create filter buttons
+function renderFilters() {
+  if (!projectFiltersContainer) return;
+  
+  const categories = getUniqueCategories();
+  const filtersHTML = categories.map(category => `
+    <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-white text-primary border-2 border-gray-200 hover:border-primary hover:shadow-lg transform hover:scale-105" data-filter="${category}">
+      ${category}
+    </button>
+  `).join('');
+  
+  projectFiltersContainer.innerHTML = `
+    <button class="filter-btn active px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-primary text-white shadow-lg hover:shadow-xl transform hover:scale-105" data-filter="all">
+      Alle Projecten
+    </button>
+    ${filtersHTML}
+  `;
+  
+  // Add event listeners
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderProjects();
+    });
+  });
+}
+
+// Create featured project hero
+function createFeaturedProject(project) {
+  const imageSrc = project.previewImage || project.images[project.previewImageIndex || 0].src;
+  
+  return `
+    <div class="featured-project group" onclick="openProjectModal(${project.id})">
+      <div class="grid md:grid-cols-2 gap-0 h-full min-h-[400px] md:min-h-[500px]">
+        <!-- Image/Video Section -->
+        <div class="relative overflow-hidden h-full">
+          ${project.previewVideo ? `
+            <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+              <source src="${project.previewVideo}" type="video/mp4">
+            </video>
+          ` : `
+            <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" loading="eager">
+          `}
+          <div class="absolute inset-0 bg-gradient-to-r from-primary/15 via-primary/8 to-transparent"></div>
+          
+          <!-- Badges - positioned at same height to align -->
+          <div class="absolute top-6 left-6 right-6 z-10 flex items-center justify-between pointer-events-none">
+            <span class="category-tag pointer-events-auto">${project.category}</span>
+            <span class="project-badge ${project.status === 'Voltooid' ? 'bg-green-500/90 text-white' : 'bg-yellow-500/90 text-white'} pointer-events-auto">
+              ${project.status}
+            </span>
+          </div>
+        </div>
+        
+        <!-- Content Section -->
+        <div class="p-8 md:p-12 flex flex-col justify-center text-white bg-gradient-to-br from-primary to-primary-dark h-full">
+          <div class="flex items-center gap-2 mb-4 text-white/80">
+            <span class="text-2xl">${project.flag}</span>
+            <span class="text-sm font-medium">${project.location}</span>
+          </div>
+          <h3 class="text-3xl md:text-4xl font-bold mb-4 group-hover:text-primary-light transition-colors">
+            ${project.title}
+          </h3>
+          <p class="text-white/90 text-lg leading-relaxed mb-6 line-clamp-3">
+            ${project.description}
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            ${project.tasks.slice(0, 3).map(task => `
+              <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm">${task}</span>
+            `).join('')}
+            ${project.tasks.length > 3 ? `<span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm">+${project.tasks.length - 3} meer</span>` : ''}
+          </div>
+          <div class="flex items-center gap-2 text-white/80 group-hover:text-white transition-colors">
+            <span class="font-medium">Bekijk details</span>
+            <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Create modern project card
+function createModernProjectCard(project, index) {
+  const imageSrc = project.previewImage || project.images[project.previewImageIndex || 0].src;
+  
+  return `
+    <div class="modern-project-card" onclick="openProjectModal(${project.id})" style="animation-delay: ${index * 0.1}s">
+      <!-- Image -->
+      <div class="project-card-image h-48 overflow-hidden">
+        ${project.previewVideo ? `
+          <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+            <source src="${project.previewVideo}" type="video/mp4">
+          </video>
+        ` : `
+          <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" loading="lazy">
+        `}
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+        
+        <!-- Badge -->
+        <div class="absolute top-4 right-4">
+          <span class="project-badge ${project.status === 'Voltooid' ? 'bg-green-500/90 text-white' : 'bg-yellow-500/90 text-white'}">
+            ${project.status}
+          </span>
+        </div>
+      </div>
+      
+      <!-- Content -->
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-3">
+          <span class="category-tag">${project.category}</span>
+          <span class="text-lg">${project.flag}</span>
+        </div>
+        
+        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+          ${project.title}
+        </h3>
+        
+        <p class="text-gray-500 text-sm mb-3 flex items-center">
+          <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+          ${project.location}
+        </p>
+        
+        <p class="text-gray-600 text-sm leading-relaxed line-clamp-2 mb-4">
+          ${project.description}
+        </p>
+        
+        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+          <span class="text-primary text-sm font-medium">Bekijk details</span>
+          <i class="fas fa-arrow-right text-primary group-hover:translate-x-1 transition-transform"></i>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Render projects based on filter
+function renderProjects() {
+  if (!projectsGrid || !featuredProjectContainer) return;
+  
+  const filteredProjects = currentFilter === 'all' 
+    ? projects 
+    : projects.filter(p => p.category === currentFilter);
+  
+  if (filteredProjects.length === 0) {
+    projectsGrid.innerHTML = '';
+    if (projectsMobileGrid) projectsMobileGrid.innerHTML = '';
+    featuredProjectContainer.innerHTML = '';
+    if (projectsEmpty) projectsEmpty.classList.remove('hidden');
+    return;
+  }
+  
+  if (projectsEmpty) projectsEmpty.classList.add('hidden');
+  
+  // Featured project (first one) - Desktop only
+  const featured = filteredProjects[0];
+  if (featuredProjectContainer) {
+    featuredProjectContainer.innerHTML = createFeaturedProject(featured);
+  }
+  
+  // Grid projects (rest) - Desktop
+  const gridProjects = filteredProjects.slice(1);
+  if (projectsGrid) {
+    projectsGrid.innerHTML = gridProjects.map((project, index) => 
+      createModernProjectCard(project, index)
+    ).join('');
+  }
+  
+  // Mobile horizontal scroller - All projects
+  if (projectsMobileGrid) {
+    projectsMobileGrid.innerHTML = filteredProjects.map((project, index) => 
+      createMobileProjectCard(project, index)
+    ).join('');
+    console.log('Mobile cards rendered:', projectsMobileGrid.innerHTML.substring(0, 200));
+  }
+  
+  // Animate cards
+  setTimeout(() => {
+    document.querySelectorAll('.modern-project-card').forEach(card => {
+      card.classList.add('visible');
+    });
+  }, 100);
+}
+
+// Create mobile project card for horizontal scroller - Completely redesigned
+function createMobileProjectCard(project, index) {
+  const imageSrc = project.previewImage || project.images[project.previewImageIndex || 0].src;
+  
+  return `
+    <div onclick="openProjectModal(${project.id})" 
+         style="flex-shrink: 0; width: 320px; margin-right: 1rem; border-radius: 1.5rem; overflow: hidden; cursor: pointer; background: linear-gradient(135deg, #417580 0%, #2d5561 100%); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 4px 10px -2px rgba(0, 0, 0, 0.15); border: 2px solid rgba(255, 255, 255, 0.1);">
+      <!-- Image -->
+      <div style="position: relative; height: 192px; overflow: hidden; background: #f3f4f6;">
+        ${project.previewVideo ? `
+          <video style="width: 100%; height: 100%; object-fit: cover;" autoplay muted loop playsinline>
+            <source src="${project.previewVideo}" type="video/mp4">
+          </video>
+        ` : `
+          <img src="${imageSrc}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+        `}
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);"></div>
+        
+        <!-- Badge -->
+        <div style="position: absolute; top: 1rem; right: 1rem;">
+          <span style="padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; ${project.status === 'Voltooid' ? 'background: rgba(34, 197, 94, 0.9);' : 'background: rgba(234, 179, 8, 0.9);'} color: white; backdrop-filter: blur(10px);">
+            ${project.status}
+          </span>
+        </div>
+      </div>
+      
+      <!-- Content -->
+      <div style="padding: 1.5rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+          <span style="display: inline-flex; align-items: center; padding: 0.375rem 0.75rem; border-radius: 0.5rem; font-size: 0.75rem; font-weight: 500; background: rgba(255, 255, 255, 0.2); color: white;">${project.category}</span>
+          <span style="font-size: 1.125rem; color: white;">${project.flag}</span>
+        </div>
+        
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: white; margin-bottom: 0.5rem; line-height: 1.3;">
+          ${project.title}
+        </h3>
+        
+        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; margin-bottom: 0.75rem; display: flex; align-items: center;">
+          <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem; color: #5a9aa8;"></i>
+          ${project.location}
+        </p>
+        
+        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; line-height: 1.5; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+          ${project.description}
+        </p>
+        
+        <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+          <span style="color: #5a9aa8; font-size: 0.875rem; font-weight: 500;">Bekijk details</span>
+          <i class="fas fa-arrow-right" style="color: #5a9aa8; transition: transform 0.3s;"></i>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Initialize projects section
+function initProjectsSection() {
+  renderFilters();
+  renderProjects();
+}
+
+// Initialize when projects are loaded
+function waitForProjects() {
+  if (typeof projects !== 'undefined' && projects.length > 0) {
+    initProjectsSection();
+    initMobileScrollButtons();
+  } else {
+    // Wait a bit and try again if projects.js hasn't loaded yet
+    setTimeout(waitForProjects, 100);
+  }
+}
+
+// Initialize mobile scroll buttons
+function initMobileScrollButtons() {
+  const mobileScrollContainer = document.getElementById('projects-mobile-scroll');
+  const mobileScrollLeftBtn = document.getElementById('mobile-scroll-left-btn');
+  const mobileScrollRightBtn = document.getElementById('mobile-scroll-right-btn');
+  
+  if (!mobileScrollContainer || !mobileScrollLeftBtn || !mobileScrollRightBtn) return;
+  
+  // Scroll functions
+  const scrollAmount = 340; // 320px card + 1rem gap
+  
+  mobileScrollLeftBtn.addEventListener('click', () => {
+    mobileScrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+  
+  mobileScrollRightBtn.addEventListener('click', () => {
+    mobileScrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+  
+  // Update button states based on scroll position
+  const updateMobileScrollButtons = () => {
+    const { scrollLeft, scrollWidth, clientWidth } = mobileScrollContainer;
+    const maxScroll = scrollWidth - clientWidth;
+    
+    // Left button
+    if (scrollLeft > 10) {
+      mobileScrollLeftBtn.style.opacity = '1';
+      mobileScrollLeftBtn.disabled = false;
+      mobileScrollLeftBtn.style.cursor = 'pointer';
+    } else {
+      mobileScrollLeftBtn.style.opacity = '0.5';
+      mobileScrollLeftBtn.disabled = true;
+      mobileScrollLeftBtn.style.cursor = 'not-allowed';
+    }
+    
+    // Right button
+    if (scrollLeft < maxScroll - 10) {
+      mobileScrollRightBtn.style.opacity = '1';
+      mobileScrollRightBtn.disabled = false;
+      mobileScrollRightBtn.style.cursor = 'pointer';
+    } else {
+      mobileScrollRightBtn.style.opacity = '0.5';
+      mobileScrollRightBtn.disabled = true;
+      mobileScrollRightBtn.style.cursor = 'not-allowed';
+    }
+  };
+  
+  mobileScrollContainer.addEventListener('scroll', updateMobileScrollButtons);
+  updateMobileScrollButtons(); // Initial state
+}
+
+// Start initialization
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', waitForProjects);
+} else {
+  waitForProjects();
+}
 
 // Function to create project card HTML for desktop (horizontal scroller)
 function createDesktopProjectCard(project, index) {
@@ -364,126 +690,9 @@ function createDesktopProjectCard(project, index) {
   `;
 }
 
-// Function to create project card HTML for mobile (horizontal scroller)
-function createMobileProjectCard(project, index) {
-  return `
-    <div class="group bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer w-80 flex-shrink-0 flex flex-col"
-    onclick="openProjectModal(${project.id})">
- 
- <!-- Project Image/Video -->
- <div class="relative h-48 overflow-hidden flex-shrink-0">
-   ${project.previewImage ? `
-     <img src="${project.previewImage}" alt="${project.title}" 
-          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          loading="${index < 3 ? 'eager' : 'lazy'}"
-          fetchpriority="${index < 3 ? 'high' : 'auto'}">
-   ` : project.previewVideo ? `
-     <div class="w-full h-full relative">
-       <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            loading="${index < 3 ? 'eager' : 'lazy'}"
-            fetchpriority="${index < 3 ? 'high' : 'auto'}"
-            data-video-src="${project.previewVideo}">
-       <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 pointer-events-none hidden" 
-              muted loop autoplay playsinline preload="${index < 3 ? 'auto' : 'none'}">
-         <source src="${project.previewVideo}" type="video/mp4">
-       </video>
-     </div>
-   ` : `
-     <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
-          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          loading="${index < 3 ? 'eager' : 'lazy'}"
-          fetchpriority="${index < 3 ? 'high' : 'auto'}">
-   `}
-   <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-   
-   <!-- Status Badge -->
-   <div class="absolute top-4 right-4">
-     <span class="px-3 py-1 rounded-full text-xs font-semibold ${
-       project.status === 'Voltooid' 
-         ? 'bg-green-500/90 text-white' 
-         : 'bg-yellow-500/90 text-white'
-     }">
-       ${project.status}
-       </span>
-       </div>
- 
-   <!-- Category Badge -->
-   <div class="absolute top-4 left-4">
-     <span class="px-3 py-1 rounded-full text-xs font-semibold bg-primary/90 text-white">
-       ${project.category}
-     </span>
-         </div>
-       </div>
-    
- <!-- Project Content - Flexbox for equal distribution -->
- <div class="flex flex-col flex-1 p-6">
-   
-   <!-- Title Container -->
-   <div class="mb-4 flex-shrink-0">
-     <h3 class="text-xl font-bold text-white group-hover:text-primary-light transition-colors leading-tight">
-       ${project.title}
-     </h3>
-     </div>
-   
-   <!-- Location Container -->
-   <div class="mb-4 flex-shrink-0">
-     <div class="flex items-center text-gray-300 text-sm">
-       <span class="text-lg mr-2 flex-shrink-0">${project.flag}</span>
-       <span class="truncate">${project.location}</span>
-   </div>
- </div>
-   
-   <!-- Description Container - Flexible height -->
-   <div class="mb-4 flex-1 min-h-[60px]">
-     <p class="text-gray-300 text-sm leading-relaxed line-clamp-3">
-       ${project.description}
-     </p>
-   </div>
- 
-   <!-- Tasks Container - Fixed height for alignment -->
-   <div class="mb-4 flex-shrink-0 min-h-[80px]">
-     <h4 class="text-sm font-semibold text-white mb-2">Uitgevoerde opdrachten:</h4>
-     <ul class="space-y-1">
-       ${project.tasks.slice(0, 2).map(task => `
-         <li class="text-gray-300 text-xs flex items-start">
-           <i class="fas fa-check text-green-400 mr-2 text-xs flex-shrink-0 mt-0.5"></i>
-           <span class="line-clamp-1">${task}</span>
-         </li>
-       `).join('')}
-       ${project.tasks.length > 2 ? `
-         <li class="text-primary-light text-xs">
-           +${project.tasks.length - 2} meer taken...
-         </li>
-       ` : ''}
-     </ul>
-       </div>
+// OLD MOBILE CARD FUNCTION REMOVED - Using new createMobileProjectCard at line 456
 
-   <!-- View Details Button - Fixed at bottom -->
-   <div class="flex items-center justify-between flex-shrink-0 mt-auto">
-     <span class="text-primary-light text-sm font-medium group-hover:text-white transition-colors">
-       Bekijk details
-     </span>
-     <i class="fas fa-arrow-right text-primary-light group-hover:translate-x-1 transition-transform"></i>
-     </div>
-       </div>
-     </div>
-  `;
-}
-
-// Render for desktop (horizontal scroller)
-// First 3 projects load eagerly (likely visible), rest load lazily
-projects.forEach((project, index) => {
-  const cardHTML = createDesktopProjectCard(project, index);
-  projectsGrid.innerHTML += cardHTML;
-});
-
-// Render for mobile (grid)
-// First 3 projects load eagerly (likely visible), rest load lazily
-projects.forEach((project, index) => {
-  const cardHTML = createMobileProjectCard(project, index);
-  projectsMobileGrid.innerHTML += cardHTML;
-});
+// Old rendering code removed - now using initProjectsSection() instead
 
 // Project Modal Function
 function openProjectModal(projectId) {

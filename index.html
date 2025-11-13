@@ -42,7 +42,7 @@
   
   <!-- Tailwind CSS - Must load before inline config -->
   <script src="https://cdn.tailwindcss.com"></script>
-
+ 
   <!-- Font Awesome - Load asynchronously to not block rendering -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'; this.onload=null;">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
@@ -294,6 +294,30 @@
       display: none;
     }
     
+    /* Mobile project scroller */
+    #projects-mobile-scroll {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      padding-left: calc((100vw - 320px) / 2);
+      padding-right: calc((100vw - 320px) / 2);
+    }
+    
+    @media (max-width: 640px) {
+      #projects-mobile-scroll {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+    
+    #projects-mobile-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    
+    #projects-mobile-grid > div {
+      scroll-snap-align: center;
+    }
+    
     /* Smooth scrolling and touch-friendly behavior */
     .overflow-x-auto {
       scroll-behavior: smooth;
@@ -313,15 +337,186 @@
       }
     }
      
-     /* Project scroller cursor */
-     #projects-scroll-container,
-     #projects-mobile-scroll-container {
-       cursor: grab;
+     /* Project Filter Buttons */
+     .filter-btn {
+       background: white;
+       color: #417580;
+       border: 2px solid #e5e7eb;
+       cursor: pointer;
      }
-     #projects-scroll-container:active,
-     #projects-mobile-scroll-container:active {
-       cursor: grabbing;
+     
+     .filter-btn:hover {
+       border-color: #417580;
+       color: #417580;
      }
+     
+     .filter-btn.active {
+       background: #417580;
+       color: white;
+       border-color: #417580;
+     }
+     
+     /* Featured Project Hero */
+     .featured-project {
+       position: relative;
+       border-radius: 2rem;
+       overflow: hidden;
+       cursor: pointer;
+       transition: transform 0.4s ease, box-shadow 0.4s ease;
+       background: linear-gradient(135deg, #417580 0%, #2d5561 100%);
+       box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+     }
+     
+     .featured-project:hover {
+       transform: translateY(-8px);
+       box-shadow: 0 25px 50px -12px rgba(65, 117, 128, 0.3);
+     }
+     
+     .featured-project > div {
+       height: 100%;
+     }
+     
+     /* Modern Project Card */
+     .modern-project-card {
+       background: white;
+       border-radius: 1.5rem;
+       overflow: hidden;
+       cursor: pointer;
+       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+       border: 1px solid #e5e7eb;
+       opacity: 0;
+       transform: translateY(30px);
+       animation: fadeInUp 0.6s ease forwards;
+       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+     }
+     
+     /* Mobile project cards - green background */
+     .mobile-project-card {
+       background: linear-gradient(135deg, #417580 0%, #2d5561 100%) !important;
+     }
+     
+     .modern-project-card.visible {
+       opacity: 1;
+       transform: translateY(0);
+     }
+     
+     .modern-project-card:hover {
+       transform: translateY(-8px);
+       box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+       border-color: #417580;
+     }
+     
+     /* Mobile card improvements for better contrast */
+     @media (max-width: 768px) {
+       .modern-project-card.mobile-project-card,
+       #projects-mobile-grid .modern-project-card {
+         background: linear-gradient(135deg, #417580 0%, #2d5561 100%) !important;
+         box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 4px 10px -2px rgba(0, 0, 0, 0.15) !important;
+         border: 2px solid rgba(255, 255, 255, 0.1) !important;
+       }
+       
+       .modern-project-card .project-card-image {
+         border-top-left-radius: 1.5rem;
+         border-top-right-radius: 1.5rem;
+       }
+       
+       /* Text colors for mobile cards with dark background */
+       #projects-mobile-grid .modern-project-card h3,
+       #projects-mobile-grid .modern-project-card .text-gray-900,
+       .mobile-project-card h3,
+       .mobile-project-card .text-gray-900 {
+         color: white !important;
+       }
+       
+       #projects-mobile-grid .modern-project-card .text-gray-600,
+       #projects-mobile-grid .modern-project-card .text-gray-500,
+       .mobile-project-card .text-gray-600,
+       .mobile-project-card .text-gray-500 {
+         color: rgba(255, 255, 255, 0.8) !important;
+       }
+       
+       #projects-mobile-grid .modern-project-card .border-gray-100,
+       .mobile-project-card .border-gray-100 {
+         border-color: rgba(255, 255, 255, 0.2) !important;
+       }
+       
+       #projects-mobile-grid .modern-project-card .category-tag,
+       .mobile-project-card .category-tag {
+         background: rgba(255, 255, 255, 0.2) !important;
+         color: white !important;
+       }
+     }
+     
+     @keyframes fadeInUp {
+       to {
+         opacity: 1;
+         transform: translateY(0);
+       }
+     }
+     
+     /* Project Card Image */
+     .project-card-image {
+       position: relative;
+       overflow: hidden;
+       background: #f3f4f6;
+     }
+     
+     .project-card-image img,
+     .project-card-image video {
+       transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+     }
+     
+     .modern-project-card:hover .project-card-image img,
+     .modern-project-card:hover .project-card-image video {
+       transform: scale(1.1);
+     }
+     
+     /* Project Card Badge */
+     .project-badge {
+       position: absolute;
+       top: 1rem;
+       right: 1rem;
+       padding: 0.5rem 1rem;
+       border-radius: 9999px;
+       font-size: 0.75rem;
+       font-weight: 600;
+       backdrop-filter: blur(10px);
+       z-index: 10;
+     }
+     
+     /* Category Tag */
+     .category-tag {
+       display: inline-flex;
+       align-items: center;
+       padding: 0.375rem 0.75rem;
+       border-radius: 0.5rem;
+       font-size: 0.75rem;
+       font-weight: 500;
+       background: #f0f9ff;
+       color: #417580;
+     }
+     
+     /* Featured project badge alignment - ensure same height */
+     .featured-project .category-tag,
+     .featured-project .project-badge {
+       display: inline-flex;
+       align-items: center;
+       line-height: 1;
+       vertical-align: middle;
+     }
+     
+     .featured-project .project-badge {
+       position: static;
+     }
+     
+     /* Grid Animation Stagger */
+     .modern-project-card:nth-child(1) { animation-delay: 0.1s; }
+     .modern-project-card:nth-child(2) { animation-delay: 0.2s; }
+     .modern-project-card:nth-child(3) { animation-delay: 0.3s; }
+     .modern-project-card:nth-child(4) { animation-delay: 0.4s; }
+     .modern-project-card:nth-child(5) { animation-delay: 0.5s; }
+     .modern-project-card:nth-child(6) { animation-delay: 0.6s; }
+     .modern-project-card:nth-child(7) { animation-delay: 0.7s; }
      
      /* Line clamp utilities */
      .line-clamp-1 {
@@ -656,62 +851,68 @@
   </section>
  
   <!-- PROJECTEN SECTION -->
-  <section class="py-20 md:py-32 bg-gradient-to-br from-gray-900 via-primary-dark to-gray-900 text-white relative overflow-hidden" id="projecten">
+   <!-- GREENISH BACKGROUND:  <section class="py-16 md:py-24 relative overflow-hidden" id="projecten" style="background: linear-gradient(to bottom, #f0f9fa 0%, #e8f4f6 50%, #f0f9fa 100%);">-->
+  <section class="py-16 md:py-24 bg-gradient-to-b from-gray-50 via-gray-100 to-gray-50 relative overflow-hidden" id="projecten">
     <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-5">
-      <div class="absolute inset-0" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 50px 50px;"></div>
+    <div class="absolute inset-0 opacity-[0.08]">
+      <div class="absolute inset-0" style="background-image: radial-gradient(circle, #417580 1px, transparent 1px); background-size: 40px 40px;"></div>
     </div>
    
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
      
       <!-- Section Title -->
-      <div class="text-center mb-16 max-w-3xl mx-auto scroll-fade-in">
-        <div class="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4 scroll-fade-in-item">
+      <div class="text-center mb-12 md:mb-16 max-w-3xl mx-auto scroll-fade-in">
+        <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4 scroll-fade-in-item">
           🗂️ ONZE REALISATIES
         </div>
         <h2 class="text-4xl md:text-5xl font-bold mb-6 scroll-fade-in-item">
-          Projecten Portfolio
+          <span class="gradient-text">Projecten Portfolio</span>
         </h2>
-        <p class="text-gray-300 text-lg leading-relaxed scroll-fade-in-item">
-          Ontdek onze projecten – klik op een project voor meer details over uitgevoerde opdrachten.
+        <p class="text-gray-600 text-lg leading-relaxed scroll-fade-in-item">
+          Ontdek onze projecten – van inspecties tot volumetrische metingen
         </p>
       </div>
  
-       <!-- Projects Grid -->
-       <div class="relative">
-         <!-- Desktop Horizontal Scroller -->
-         <div class="hidden lg:block">
-           <div class="overflow-x-auto pb-4 scrollbar-hide" id="projects-scroll-container">
-             <div class="flex space-x-6 min-w-max" id="projects-grid"></div>
-           </div>
-           <!-- Scroll Indicators -->
-           <div class="flex justify-center mt-4 space-x-2">
-             <button id="scroll-left" class="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
-               <i class="fas fa-chevron-left text-white"></i>
+      <!-- Category Filters -->
+      <div class="flex flex-wrap justify-center gap-3 mb-12 scroll-fade-in" id="project-filters">
+        <button class="filter-btn active px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-primary text-white shadow-lg hover:shadow-xl transform hover:scale-105" data-filter="all">
+          Alle Projecten
              </button>
-             <button id="scroll-right" class="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
-               <i class="fas fa-chevron-right text-white"></i>
-             </button>
+        <!-- Filters will be dynamically generated -->
            </div>
+
+      <!-- Featured Project Hero - Desktop Only -->
+      <div class="mb-16 scroll-fade-in hidden md:block" id="featured-project-container">
+        <!-- Featured project will be dynamically inserted here -->
          </div>
          
-        <!-- Mobile Horizontal Scroller -->
-        <div class="lg:hidden">
-          <div class="flex justify-center">
-            <div class="overflow-x-auto pb-4 scrollbar-hide w-full max-w-sm" id="projects-mobile-scroll-container">
-              <div class="flex space-x-4 min-w-max px-4" id="projects-mobile-grid"></div>
+      <!-- Projects Grid - Desktop -->
+      <div class="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="projects-grid">
+        <!-- Projects will be dynamically inserted here -->
             </div>
+
+      <!-- Projects Horizontal Scroller - Mobile Only -->
+      <div class="md:hidden">
+        <div class="overflow-x-auto pb-4 scrollbar-hide" id="projects-mobile-scroll">
+          <div class="flex min-w-max px-4" id="projects-mobile-grid" style="gap: 1rem;">
+            <!-- Mobile projects will be dynamically inserted here -->
           </div>
-          <!-- Mobile Scroll Indicators -->
-          <div class="flex justify-center mt-4 space-x-2">
-            <button id="mobile-scroll-left" class="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
-              <i class="fas fa-chevron-left text-white"></i>
+        </div>
+        <!-- Mobile Scroll Buttons -->
+        <div class="flex justify-center items-center gap-4 mt-4">
+          <button id="mobile-scroll-left-btn" class="p-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-sm" style="opacity: 0.5; cursor: not-allowed;" disabled>
+            <i class="fas fa-chevron-left text-sm"></i>
             </button>
-            <button id="mobile-scroll-right" class="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
-              <i class="fas fa-chevron-right text-white"></i>
+          <button id="mobile-scroll-right-btn" class="p-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-sm">
+            <i class="fas fa-chevron-right text-sm"></i>
             </button>
           </div>
         </div>
+
+      <!-- Empty State -->
+      <div id="projects-empty" class="hidden text-center py-16">
+        <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+        <p class="text-gray-500 text-lg">Geen projecten gevonden voor deze categorie</p>
        </div>
  
     </div>
@@ -785,11 +986,11 @@
                 <img src="images/assets/mdl.png" alt="Martin de Lobel"
                      class="w-24 h-24 rounded-full object-cover border-2 border-white/30 shadow-lg"
                      loading="lazy">
-              </div>
+                </div>
               <h3 class="text-base font-bold mb-1">Martin de Lobel</h3>
               <p class="text-primary-light text-xs leading-tight">Projectcoördinator & UAS Operator</p>
             </div>
-
+ 
             <!-- Contact Info -->
             <div class="space-y-2 flex-1 flex flex-col justify-center">
               <a href="https://maps.google.com/?q=Izegem,Belgium" target="_blank"
@@ -802,7 +1003,7 @@
                   <div class="font-semibold text-xs leading-tight">Izegem, België</div>
                 </div>
               </a>
-
+ 
               <a href="tel:+32491150887"
                  class="flex items-center gap-2.5 p-2.5 bg-white/10 hover:bg-white/15 rounded-lg transition-all group border border-transparent hover:border-white/20">
                 <div class="bg-white/20 p-1.5 rounded-md group-hover:bg-white/30 transition flex-shrink-0 group-hover:scale-110">
@@ -814,7 +1015,7 @@
                 </div>
                 <i class="fas fa-external-link-alt text-[10px] text-white/50 group-hover:text-white/80 transition-opacity opacity-0 group-hover:opacity-100"></i>
               </a>
-
+ 
               <a href="mailto:martinonsite@telenet.be"
                  class="flex items-center gap-2.5 p-2.5 bg-white/10 hover:bg-white/15 rounded-lg transition-all group border border-transparent hover:border-white/20">
                 <div class="bg-white/20 p-1.5 rounded-md group-hover:bg-white/30 transition flex-shrink-0 group-hover:scale-110">
@@ -826,10 +1027,10 @@
                 </div>
                 <i class="fas fa-external-link-alt text-[10px] text-white/50 group-hover:text-white/80 transition-opacity opacity-0 group-hover:opacity-100"></i>
               </a>
-
-            </div>
-          </div>
-        </div>
+ 
+                </div>
+                </div>
+              </div>
 
         <!-- Professional Info (Left on desktop) -->
         <div class="order-2 lg:order-1">
@@ -847,13 +1048,13 @@
                 <div class="flex items-start gap-2.5">
                   <div class="bg-primary/10 p-1.5 rounded-md flex items-center justify-center flex-shrink-0">
                     <i class="fas fa-briefcase text-primary text-xs"></i>
-                  </div>
+                </div>
                   <div class="flex-1">
                     <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Huidige Positie</div>
                     <div class="font-semibold text-xs text-gray-800 leading-tight">Zelfstandig projectcoördinator & UAS Operator</div>
-                  </div>
                 </div>
               </div>
+            </div>
 
               <!-- Experience -->
               <div class="bg-gray-50 rounded-lg p-2.5 border border-gray-100">
@@ -866,23 +1067,23 @@
                     <div class="font-semibold text-xs text-gray-800 leading-tight mb-0.5">Ruim 15 jaar ervaring in projectcoördinatie</div>
                     <div class="text-[10px] text-gray-600 leading-tight">Focus op sanering en baggerwerken</div>
                   </div>
-                </div>
-              </div>
-
+          </div>
+        </div>
+ 
               <!-- Skills -->
               <div class="bg-gray-50 rounded-lg p-2.5 border border-gray-100">
                 <div class="flex items-start gap-2.5">
                   <div class="bg-primary/10 p-1.5 rounded-md flex items-center justify-center flex-shrink-0">
                     <i class="fas fa-cogs text-primary text-xs"></i>
-                  </div>
+              </div>
                   <div class="flex-1">
                     <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Vaardigheden</div>
                     <div class="font-semibold text-xs text-gray-800 leading-tight mb-0.5">Van milieuconsultancy tot werfleiding</div>
                     <div class="text-[10px] text-gray-600 leading-tight">Ervaring in breed scala aan projecten</div>
                   </div>
-                </div>
               </div>
-
+            </div>
+ 
               <!-- Specializations -->
               <div class="bg-gray-50 rounded-lg p-2.5 border border-gray-100">
                 <div class="flex items-start gap-2.5">
@@ -911,7 +1112,7 @@
               <h3 class="text-base font-bold text-gray-800 mb-1">EASA Gecertificeerd</h3>
               <p class="text-gray-600 text-xs leading-tight">Drone Operator A1/A3 & A2</p>
             </div>
-
+ 
             <!-- Certificate Preview -->
             <div class="flex-1 flex items-center justify-center bg-gray-50 rounded-xl p-3 border border-gray-100 min-h-0">
               <img src="images/certificates/certificaat1.jpg" 
@@ -919,15 +1120,15 @@
                    class="w-full h-auto max-h-52 object-contain rounded-lg shadow-sm cursor-pointer hover:shadow-md transition-all hover:scale-[1.02]"
                    loading="lazy"
                    onclick="showCertificatePreview()">
-            </div>
-
+              </div>
+ 
             <!-- View Button -->
             <div class="mt-3 text-center">
               <button onclick="showCertificatePreview()" 
                       class="text-xs text-primary hover:text-primary-dark font-medium transition-colors underline decoration-primary/30 hover:decoration-primary/60">
                 Bekijk volledig certificaat
               </button>
-            </div>
+               </div>
           </div>
         </div>
  
