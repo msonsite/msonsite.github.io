@@ -419,9 +419,9 @@ function createModernProjectCard(project, index) {
         <div class="flex items-center justify-between pt-4 border-t border-gray-100">
           <span class="text-primary text-sm font-medium">Bekijk details</span>
           <i class="fas fa-arrow-right text-primary group-hover:translate-x-1 transition-transform"></i>
-   </div>
-      </div>
-    </div>
+         </div>
+       </div>
+         </div>
   `;
 }
 
@@ -498,8 +498,8 @@ function createMobileProjectCard(project, index) {
       <div style="position: relative; height: 192px; overflow: hidden; background: #f3f4f6;">
         ${project.previewVideo ? `
           <video style="width: 100%; height: 100%; object-fit: cover;" autoplay muted loop playsinline>
-            <source src="${project.previewVideo}" type="video/mp4">
-          </video>
+         <source src="${project.previewVideo}" type="video/mp4">
+       </video>
         ` : `
           <img src="${imageSrc}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
         `}
@@ -508,21 +508,21 @@ function createMobileProjectCard(project, index) {
         <!-- Badge -->
         <div style="position: absolute; top: 1rem; right: 1rem;">
           <span style="padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; ${project.status === 'Voltooid' ? 'background: rgba(34, 197, 94, 0.9);' : 'background: rgba(234, 179, 8, 0.9);'} color: white; backdrop-filter: blur(10px);">
-            ${project.status}
-     </span>
+       ${project.status}
+       </span>
         </div>
-      </div>
-      
+       </div>
+ 
       <!-- Content -->
       <div style="padding: 1.5rem;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
           <span style="display: inline-flex; align-items: center; padding: 0.375rem 0.75rem; border-radius: 0.5rem; font-size: 0.75rem; font-weight: 500; background: rgba(255, 255, 255, 0.2); color: white;">${getProjectCategories(project)[0] || 'Project'}</span>
           <span style="font-size: 1.125rem; color: white;">${project.flag}</span>
-        </div>
-        
+       </div>
+    
         <h3 style="font-size: 1.25rem; font-weight: 700; color: white; margin-bottom: 0.5rem; line-height: 1.3;">
-          ${project.title}
-        </h3>
+       ${project.title}
+     </h3>
         
         <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; margin-bottom: 0.75rem; display: flex; align-items: center;">
           <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem; color: #5a9aa8;"></i>
@@ -530,15 +530,15 @@ function createMobileProjectCard(project, index) {
         </p>
         
         <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; line-height: 1.5; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-          ${project.description}
-        </p>
+       ${project.description}
+     </p>
         
         <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.2);">
           <span style="color: #5a9aa8; font-size: 0.875rem; font-weight: 500;">Bekijk details</span>
           <i class="fas fa-arrow-right" style="color: #5a9aa8; transition: transform 0.3s;"></i>
-         </div>
+     </div>
        </div>
-         </div>
+     </div>
   `;
 }
 
@@ -579,35 +579,47 @@ function initMobileScrollButtons() {
   });
   
   // Update button states based on scroll position
+  // Optimized to prevent forced reflows by batching reads and using requestAnimationFrame
   const updateMobileScrollButtons = () => {
-    const { scrollLeft, scrollWidth, clientWidth } = mobileScrollContainer;
-    const maxScroll = scrollWidth - clientWidth;
-    
-    // Left button
-    if (scrollLeft > 10) {
-      mobileScrollLeftBtn.style.opacity = '1';
-      mobileScrollLeftBtn.disabled = false;
-      mobileScrollLeftBtn.style.cursor = 'pointer';
-    } else {
-      mobileScrollLeftBtn.style.opacity = '0.5';
-      mobileScrollLeftBtn.disabled = true;
-      mobileScrollLeftBtn.style.cursor = 'not-allowed';
-    }
-    
-    // Right button
-    if (scrollLeft < maxScroll - 10) {
-      mobileScrollRightBtn.style.opacity = '1';
-      mobileScrollRightBtn.disabled = false;
-      mobileScrollRightBtn.style.cursor = 'pointer';
-    } else {
-      mobileScrollRightBtn.style.opacity = '0.5';
-      mobileScrollRightBtn.disabled = true;
-      mobileScrollRightBtn.style.cursor = 'not-allowed';
-    }
+    // Use requestAnimationFrame to batch layout reads after DOM writes
+    requestAnimationFrame(() => {
+      // Cache all layout reads in variables first (batch reads)
+      const scrollLeft = mobileScrollContainer.scrollLeft;
+      const scrollWidth = mobileScrollContainer.scrollWidth;
+      const clientWidth = mobileScrollContainer.clientWidth;
+      const maxScroll = scrollWidth - clientWidth;
+      
+      // Calculate button states (no DOM reads after this point)
+      const canScrollLeft = scrollLeft > 10;
+      const canScrollRight = scrollLeft < maxScroll - 10;
+      
+      // Batch all DOM writes together
+      // Left button updates
+      const leftOpacity = canScrollLeft ? '1' : '0.5';
+      const leftDisabled = !canScrollLeft;
+      const leftCursor = canScrollLeft ? 'pointer' : 'not-allowed';
+      
+      // Right button updates
+      const rightOpacity = canScrollRight ? '1' : '0.5';
+      const rightDisabled = !canScrollRight;
+      const rightCursor = canScrollRight ? 'pointer' : 'not-allowed';
+      
+      // Apply all DOM writes in a single batch
+      mobileScrollLeftBtn.style.opacity = leftOpacity;
+      mobileScrollLeftBtn.disabled = leftDisabled;
+      mobileScrollLeftBtn.style.cursor = leftCursor;
+      
+      mobileScrollRightBtn.style.opacity = rightOpacity;
+      mobileScrollRightBtn.disabled = rightDisabled;
+      mobileScrollRightBtn.style.cursor = rightCursor;
+    });
   };
   
   mobileScrollContainer.addEventListener('scroll', updateMobileScrollButtons);
-  updateMobileScrollButtons(); // Initial state
+  // Defer initial state update to avoid forced reflow after DOM writes
+  requestAnimationFrame(() => {
+    updateMobileScrollButtons();
+  });
 }
 
 // Start initialization
@@ -617,114 +629,7 @@ if (document.readyState === 'loading') {
   waitForProjects();
 }
 
-// Function to create project card HTML for desktop (horizontal scroller)
-function createDesktopProjectCard(project, index) {
-  return `
-    <div class="group bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-white/20 hover:border-white/40 transition-all duration-300 cursor-pointer w-80 flex-shrink-0 flex flex-col"
-    onclick="openProjectModal(${project.id})">
- 
- <!-- Project Image/Video -->
- <div class="relative h-48 overflow-hidden flex-shrink-0">
-   ${project.previewImage ? `
-     <img src="${project.previewImage}" alt="${project.title}" 
-          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          loading="${index < 3 ? 'eager' : 'lazy'}"
-          fetchpriority="${index < 3 ? 'high' : 'auto'}">
-   ` : project.previewVideo ? `
-     <div class="w-full h-full relative">
-       <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            loading="${index < 3 ? 'eager' : 'lazy'}"
-            fetchpriority="${index < 3 ? 'high' : 'auto'}"
-            data-video-src="${project.previewVideo}">
-       <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 pointer-events-none hidden" 
-              muted loop autoplay playsinline preload="${index < 3 ? 'auto' : 'none'}">
-         <source src="${project.previewVideo}" type="video/mp4">
-       </video>
-     </div>
-   ` : `
-     <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
-          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          loading="${index < 3 ? 'eager' : 'lazy'}"
-          fetchpriority="${index < 3 ? 'high' : 'auto'}">
-   `}
-   <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-   
-   <!-- Status Badge -->
-   <div class="absolute top-4 right-4">
-     <span class="px-3 py-1 rounded-full text-xs font-semibold ${
-       project.status === 'Voltooid' 
-         ? 'bg-green-500/90 text-white' 
-         : 'bg-yellow-500/90 text-white'
-     }">
-       ${project.status}
-       </span>
-       </div>
- 
-   <!-- Category Badge -->
-   <div class="absolute top-4 left-4">
-     <span class="px-3 py-1 rounded-full text-xs font-semibold bg-primary/90 text-white">
-       ${getProjectCategories(project)[0] || 'Project'}
-     </span>
-         </div>
-       </div>
-    
- <!-- Project Content - Flexbox for equal distribution -->
- <div class="flex flex-col flex-1 p-6">
-   
-   <!-- Title Container -->
-   <div class="mb-4 flex-shrink-0">
-     <h3 class="text-xl font-bold text-white group-hover:text-primary-light transition-colors leading-tight">
-       ${project.title}
-     </h3>
-     </div>
-   
-   <!-- Location Container -->
-   <div class="mb-4 flex-shrink-0">
-     <div class="flex items-center text-gray-300 text-sm">
-       <span class="text-lg mr-2 flex-shrink-0">${project.flag}</span>
-       <span class="truncate">${project.location}</span>
-   </div>
- </div>
-   
-   <!-- Description Container - Flexible height -->
-   <div class="mb-4 flex-1 min-h-[60px]">
-     <p class="text-gray-300 text-sm leading-relaxed line-clamp-3">
-       ${project.description}
-     </p>
-   </div>
- 
-   <!-- Tasks Container - Fixed height for alignment -->
-   <div class="mb-4 flex-shrink-0 min-h-[80px]">
-     <h4 class="text-sm font-semibold text-white mb-2">Uitgevoerde opdrachten:</h4>
-     <ul class="space-y-1">
-       ${project.tasks.slice(0, 2).map(task => `
-         <li class="text-gray-300 text-xs flex items-start">
-           <i class="fas fa-check text-green-400 mr-2 text-xs flex-shrink-0 mt-0.5"></i>
-           <span class="line-clamp-1">${task}</span>
-         </li>
-       `).join('')}
-       ${project.tasks.length > 2 ? `
-         <li class="text-primary-light text-xs">
-           +${project.tasks.length - 2} meer taken...
-         </li>
-       ` : ''}
-     </ul>
-       </div>
-
-   <!-- View Details Button - Fixed at bottom -->
-   <div class="flex items-center justify-between flex-shrink-0 mt-auto">
-     <span class="text-primary-light text-sm font-medium group-hover:text-white transition-colors">
-       Bekijk details
-     </span>
-     <i class="fas fa-arrow-right text-primary-light group-hover:translate-x-1 transition-transform"></i>
-     </div>
-       </div>
-     </div>
-  `;
-}
-
-// OLD MOBILE CARD FUNCTION REMOVED - Using new createMobileProjectCard at line 456
+// Removed unused createDesktopProjectCard function - not referenced anywhere
 
 // Old rendering code removed - now using initProjectsSection() instead
 
@@ -1013,119 +918,7 @@ function initProjectsBackground() {
 // Initialize background loading
 initProjectsBackground();
 
-// Project Scroller Functionality
-const scrollContainer = document.getElementById('projects-scroll-container');
-const scrollLeftBtn = document.getElementById('scroll-left');
-const scrollRightBtn = document.getElementById('scroll-right');
-
-if (scrollContainer && scrollLeftBtn && scrollRightBtn) {
-  // Click scroll functionality
-  scrollLeftBtn.addEventListener('click', () => {
-    scrollContainer.scrollBy({ left: -344, behavior: 'smooth' }); // 320px card + 24px gap
-  });
-  
-  scrollRightBtn.addEventListener('click', () => {
-    scrollContainer.scrollBy({ left: 344, behavior: 'smooth' }); // 320px card + 24px gap
-  });
-  
-  // Mouse drag functionality
-  let isDown = false;
-  let startX;
-  let scrollLeft;
-  
-  scrollContainer.addEventListener('mousedown', (e) => {
-    isDown = true;
-    scrollContainer.style.cursor = 'grabbing';
-    startX = e.pageX - scrollContainer.offsetLeft;
-    scrollLeft = scrollContainer.scrollLeft;
-  });
-  
-  scrollContainer.addEventListener('mouseleave', () => {
-    isDown = false;
-    scrollContainer.style.cursor = 'grab';
-  });
-  
-  scrollContainer.addEventListener('mouseup', () => {
-    isDown = false;
-    scrollContainer.style.cursor = 'grab';
-  });
-  
-  scrollContainer.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - scrollContainer.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed multiplier
-    scrollContainer.scrollLeft = scrollLeft - walk;
-  });
-  
-  // Touch support for mobile
-  let touchStartX;
-  let touchScrollLeft;
-  
-  scrollContainer.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].pageX - scrollContainer.offsetLeft;
-    touchScrollLeft = scrollContainer.scrollLeft;
-  });
-  
-  scrollContainer.addEventListener('touchmove', (e) => {
-    if (!touchStartX) return;
-    const x = e.touches[0].pageX - scrollContainer.offsetLeft;
-    const walk = (x - touchStartX) * 2;
-    scrollContainer.scrollLeft = touchScrollLeft - walk;
-  });
-  
-  // Update button visibility based on scroll position
-  const updateScrollButtons = () => {
-    const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
-    scrollLeftBtn.style.opacity = scrollLeft > 0 ? '1' : '0.5';
-    scrollRightBtn.style.opacity = scrollLeft < scrollWidth - clientWidth ? '1' : '0.5';
-  };
-  
-  scrollContainer.addEventListener('scroll', updateScrollButtons);
-  updateScrollButtons(); // Initial state
-}
-
-// Mobile Project Scroller Functionality
-const mobileScrollContainer = document.getElementById('projects-mobile-scroll-container');
-const mobileScrollLeftBtn = document.getElementById('mobile-scroll-left');
-const mobileScrollRightBtn = document.getElementById('mobile-scroll-right');
-
-if (mobileScrollContainer && mobileScrollLeftBtn && mobileScrollRightBtn) {
-  // Click scroll functionality
-  mobileScrollLeftBtn.addEventListener('click', () => {
-    mobileScrollContainer.scrollBy({ left: -336, behavior: 'smooth' }); // 320px card + 16px gap
-  });
-  
-  mobileScrollRightBtn.addEventListener('click', () => {
-    mobileScrollContainer.scrollBy({ left: 336, behavior: 'smooth' }); // 320px card + 16px gap
-  });
-  
-  // Touch support for mobile
-  let mobileTouchStartX;
-  let mobileTouchScrollLeft;
-  
-  mobileScrollContainer.addEventListener('touchstart', (e) => {
-    mobileTouchStartX = e.touches[0].pageX - mobileScrollContainer.offsetLeft;
-    mobileTouchScrollLeft = mobileScrollContainer.scrollLeft;
-  });
-  
-  mobileScrollContainer.addEventListener('touchmove', (e) => {
-    if (!mobileTouchStartX) return;
-    const x = e.touches[0].pageX - mobileScrollContainer.offsetLeft;
-    const walk = (x - mobileTouchStartX) * 2;
-    mobileScrollContainer.scrollLeft = mobileTouchScrollLeft - walk;
-  });
-  
-  // Update button visibility based on scroll position
-  const updateMobileScrollButtons = () => {
-    const { scrollLeft, scrollWidth, clientWidth } = mobileScrollContainer;
-    mobileScrollLeftBtn.style.opacity = scrollLeft > 0 ? '1' : '0.5';
-    mobileScrollRightBtn.style.opacity = scrollLeft < scrollWidth - clientWidth ? '1' : '0.5';
-  };
-  
-  mobileScrollContainer.addEventListener('scroll', updateMobileScrollButtons);
-  updateMobileScrollButtons(); // Initial state
-}
+// Removed unused project scroller functionality - elements don't exist in HTML
  
 // WhatsApp Form Submit - Removed as form was replaced with professional info
 
