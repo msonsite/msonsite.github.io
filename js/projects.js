@@ -15,7 +15,9 @@
  * - previewVideo: (optional) Video path for preview
  * - previewImage: (optional) Custom preview image path
  * - previewImageIndex: Index of image to use as preview (if no previewVideo/previewImage)
- * - category: Project category (e.g., "Inspecties", "Opmetingen", "Werfopvolging", "Monitoring")
+ * - categories: Array of categories (e.g., ["Inspecties", "Opmetingen"])
+ *   - Single category projects: ["Inspecties"]
+ *   - Multiple category projects: ["Inspecties", "Opmetingen", "Monitoring"]
  * - status: Project status (e.g., "Voltooid", "In uitvoering")
  */
 
@@ -40,7 +42,7 @@ const projects = [
     ],
     previewVideo: "videos/vuurtoren.mp4",
     previewImageIndex: 0,
-    category: "Inspecties",
+    categories: ["Inspecties"],
     status: "Voltooid"
   },
   {
@@ -61,7 +63,7 @@ const projects = [
       { src: "images/project-2/volumeberekeningen.png", alt: "Volumeberekeningen", caption: "Volumeberekeningen" }
     ],
     previewImageIndex: 1,
-    category: "Opmetingen",
+    categories: ["Opmetingen"],
     status: "Voltooid"
   },
   {
@@ -82,7 +84,7 @@ const projects = [
       { src: "images/project-3/dxf-export.png", alt: "DXF-export", caption: "DXF-export" }
     ],
     previewImageIndex: 2,
-    category: "Opmetingen",
+    categories: ["Opmetingen"],
     status: "Voltooid"
   },
   {
@@ -109,7 +111,7 @@ const projects = [
       { src: "images/project-4/asbuilt-plan.png", alt: "As-built", caption: "As-built plan" }
     ],
     previewImageIndex: 4,
-    category: "Werfopvolging",
+    categories: ["Werfopvolging"],
     status: "Voltooid"
   },
   {
@@ -134,7 +136,7 @@ const projects = [
     ],
     previewImage: "images/project-5/waterbeheersingbanner.png",
     previewImageIndex: 1,
-    category: "Monitoring",
+    categories: ["Monitoring"],
     status: "Voltooid"
   },
   {
@@ -158,7 +160,7 @@ const projects = [
       { src: "images/project-6/detail-raam.png", alt: "Detail raam", caption: "Detail raam" }
     ],
     previewImageIndex: 1,
-    category: "Inspecties",
+    categories: ["Inspecties"],
     status: "Voltooid"
   },
   {
@@ -180,7 +182,7 @@ const projects = [
     ],
     previewImage: "images/project-7/header.png",
     previewImageIndex: 0,
-    category: "Opmetingen",
+    categories: ["Opmetingen"],
     status: "Voltooid"
   }
 ];

@@ -263,8 +263,18 @@ let currentFilter = 'all';
 
 // Get unique categories from projects
 function getUniqueCategories() {
-  const categories = [...new Set(projects.map(p => p.category))];
-  return categories.sort();
+  const allCategories = [];
+  projects.forEach(project => {
+    if (project.categories && Array.isArray(project.categories)) {
+      allCategories.push(...project.categories);
+    }
+  });
+  return [...new Set(allCategories)].sort();
+}
+
+// Get project categories (always returns an array)
+function getProjectCategories(project) {
+  return project.categories && Array.isArray(project.categories) ? project.categories : [];
 }
 
 // Create filter buttons
@@ -307,8 +317,8 @@ function createFeaturedProject(project) {
         <div class="relative overflow-hidden h-full">
           ${project.previewVideo ? `
             <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-              <source src="${project.previewVideo}" type="video/mp4">
-            </video>
+         <source src="${project.previewVideo}" type="video/mp4">
+       </video>
           ` : `
             <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" loading="eager">
           `}
@@ -316,13 +326,13 @@ function createFeaturedProject(project) {
           
           <!-- Badges - positioned at same height to align -->
           <div class="absolute top-6 left-6 right-6 z-10 flex items-center justify-between pointer-events-none">
-            <span class="category-tag pointer-events-auto">${project.category}</span>
+            <span class="category-tag pointer-events-auto">${getProjectCategories(project)[0] || 'Project'}</span>
             <span class="project-badge ${project.status === 'Voltooid' ? 'bg-green-500/90 text-white' : 'bg-yellow-500/90 text-white'} pointer-events-auto">
-              ${project.status}
-            </span>
+       ${project.status}
+       </span>
           </div>
-        </div>
-        
+   </div>
+ 
         <!-- Content Section -->
         <div class="p-8 md:p-12 flex flex-col justify-center text-white bg-gradient-to-br from-primary to-primary-dark h-full">
           <div class="flex items-center gap-2 mb-4 text-white/80">
@@ -372,20 +382,20 @@ function createModernProjectCard(project, index) {
         <div class="absolute top-4 right-4">
           <span class="project-badge ${project.status === 'Voltooid' ? 'bg-green-500/90 text-white' : 'bg-yellow-500/90 text-white'}">
             ${project.status}
-          </span>
-        </div>
-      </div>
-      
+     </span>
+       </div>
+     </div>
+    
       <!-- Content -->
       <div class="p-6">
         <div class="flex items-center justify-between mb-3">
-          <span class="category-tag">${project.category}</span>
+          <span class="category-tag">${getProjectCategories(project)[0] || 'Project'}</span>
           <span class="text-lg">${project.flag}</span>
         </div>
         
         <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-          ${project.title}
-        </h3>
+       ${project.title}
+     </h3>
         
         <p class="text-gray-500 text-sm mb-3 flex items-center">
           <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
@@ -393,13 +403,13 @@ function createModernProjectCard(project, index) {
         </p>
         
         <p class="text-gray-600 text-sm leading-relaxed line-clamp-2 mb-4">
-          ${project.description}
-        </p>
+       ${project.description}
+     </p>
         
         <div class="flex items-center justify-between pt-4 border-t border-gray-100">
           <span class="text-primary text-sm font-medium">Bekijk details</span>
           <i class="fas fa-arrow-right text-primary group-hover:translate-x-1 transition-transform"></i>
-        </div>
+   </div>
       </div>
     </div>
   `;
@@ -411,7 +421,10 @@ function renderProjects() {
   
   const filteredProjects = currentFilter === 'all' 
     ? projects 
-    : projects.filter(p => p.category === currentFilter);
+    : projects.filter(p => {
+        const projectCategories = getProjectCategories(p);
+        return projectCategories.includes(currentFilter);
+      });
   
   if (filteredProjects.length === 0) {
     projectsGrid.innerHTML = '';
@@ -423,26 +436,37 @@ function renderProjects() {
   
   if (projectsEmpty) projectsEmpty.classList.add('hidden');
   
-  // Featured project (first one) - Desktop only
-  const featured = filteredProjects[0];
-  if (featuredProjectContainer) {
-    featuredProjectContainer.innerHTML = createFeaturedProject(featured);
+  // Featured project (first one) - Only show on "Alle Projecten" filter, Desktop only
+  if (currentFilter === 'all' && filteredProjects.length > 0) {
+    const featured = filteredProjects[0];
+    if (featuredProjectContainer) {
+      featuredProjectContainer.innerHTML = createFeaturedProject(featured);
+    }
+    
+    // Grid projects (rest) - Desktop
+    const gridProjects = filteredProjects.slice(1);
+    if (projectsGrid) {
+      projectsGrid.innerHTML = gridProjects.map((project, index) => 
+        createModernProjectCard(project, index)
+      ).join('');
+    }
+  } else {
+    // No featured project for category filters - show all in grid
+    if (featuredProjectContainer) {
+      featuredProjectContainer.innerHTML = '';
+    }
+    if (projectsGrid) {
+      projectsGrid.innerHTML = filteredProjects.map((project, index) => 
+        createModernProjectCard(project, index)
+      ).join('');
+    }
   }
   
-  // Grid projects (rest) - Desktop
-  const gridProjects = filteredProjects.slice(1);
-  if (projectsGrid) {
-    projectsGrid.innerHTML = gridProjects.map((project, index) => 
-      createModernProjectCard(project, index)
-    ).join('');
-  }
-  
-  // Mobile horizontal scroller - All projects
+  // Mobile horizontal scroller - All projects (always show all, no featured on mobile)
   if (projectsMobileGrid) {
     projectsMobileGrid.innerHTML = filteredProjects.map((project, index) => 
       createMobileProjectCard(project, index)
     ).join('');
-    console.log('Mobile cards rendered:', projectsMobileGrid.innerHTML.substring(0, 200));
   }
   
   // Animate cards
@@ -475,14 +499,14 @@ function createMobileProjectCard(project, index) {
         <div style="position: absolute; top: 1rem; right: 1rem;">
           <span style="padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; ${project.status === 'Voltooid' ? 'background: rgba(34, 197, 94, 0.9);' : 'background: rgba(234, 179, 8, 0.9);'} color: white; backdrop-filter: blur(10px);">
             ${project.status}
-          </span>
+     </span>
         </div>
       </div>
       
       <!-- Content -->
       <div style="padding: 1.5rem;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-          <span style="display: inline-flex; align-items: center; padding: 0.375rem 0.75rem; border-radius: 0.5rem; font-size: 0.75rem; font-weight: 500; background: rgba(255, 255, 255, 0.2); color: white;">${project.category}</span>
+          <span style="display: inline-flex; align-items: center; padding: 0.375rem 0.75rem; border-radius: 0.5rem; font-size: 0.75rem; font-weight: 500; background: rgba(255, 255, 255, 0.2); color: white;">${getProjectCategories(project)[0] || 'Project'}</span>
           <span style="font-size: 1.125rem; color: white;">${project.flag}</span>
         </div>
         
@@ -502,9 +526,9 @@ function createMobileProjectCard(project, index) {
         <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.2);">
           <span style="color: #5a9aa8; font-size: 0.875rem; font-weight: 500;">Bekijk details</span>
           <i class="fas fa-arrow-right" style="color: #5a9aa8; transition: transform 0.3s;"></i>
-        </div>
-      </div>
-    </div>
+         </div>
+       </div>
+         </div>
   `;
 }
 
@@ -625,15 +649,15 @@ function createDesktopProjectCard(project, index) {
      }">
        ${project.status}
        </span>
-   </div>
+       </div>
  
    <!-- Category Badge -->
    <div class="absolute top-4 left-4">
      <span class="px-3 py-1 rounded-full text-xs font-semibold bg-primary/90 text-white">
-       ${project.category}
+       ${getProjectCategories(project)[0] || 'Project'}
      </span>
+         </div>
        </div>
-     </div>
     
  <!-- Project Content - Flexbox for equal distribution -->
  <div class="flex flex-col flex-1 p-6">
@@ -643,23 +667,23 @@ function createDesktopProjectCard(project, index) {
      <h3 class="text-xl font-bold text-white group-hover:text-primary-light transition-colors leading-tight">
        ${project.title}
      </h3>
-       </div>
+     </div>
    
    <!-- Location Container -->
    <div class="mb-4 flex-shrink-0">
      <div class="flex items-center text-gray-300 text-sm">
        <span class="text-lg mr-2 flex-shrink-0">${project.flag}</span>
        <span class="truncate">${project.location}</span>
-     </div>
-       </div>
+   </div>
+ </div>
    
    <!-- Description Container - Flexible height -->
    <div class="mb-4 flex-1 min-h-[60px]">
      <p class="text-gray-300 text-sm leading-relaxed line-clamp-3">
        ${project.description}
      </p>
-     </div>
-   
+   </div>
+ 
    <!-- Tasks Container - Fixed height for alignment -->
    <div class="mb-4 flex-shrink-0 min-h-[80px]">
      <h4 class="text-sm font-semibold text-white mb-2">Uitgevoerde opdrachten:</h4>
@@ -676,17 +700,17 @@ function createDesktopProjectCard(project, index) {
          </li>
        ` : ''}
      </ul>
-   </div>
- 
+       </div>
+
    <!-- View Details Button - Fixed at bottom -->
    <div class="flex items-center justify-between flex-shrink-0 mt-auto">
      <span class="text-primary-light text-sm font-medium group-hover:text-white transition-colors">
        Bekijk details
      </span>
      <i class="fas fa-arrow-right text-primary-light group-hover:translate-x-1 transition-transform"></i>
-         </div>
+     </div>
        </div>
-         </div>
+     </div>
   `;
 }
 
