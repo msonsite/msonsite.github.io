@@ -349,9 +349,8 @@ function createFeaturedProject(project) {
           `}
           <div class="absolute inset-0 bg-gradient-to-r from-primary/15 via-primary/8 to-transparent"></div>
           
-          <!-- Badges - positioned at same height to align -->
-          <div class="absolute top-6 left-6 right-6 z-10 flex items-center justify-between pointer-events-none">
-            <span class="category-tag pointer-events-auto">${getProjectCategories(project)[0] || 'Project'}</span>
+          <!-- Badge - Status only (category tag removed) -->
+          <div class="absolute top-6 right-6 z-10 pointer-events-none">
             <span class="project-badge ${project.status === 'Voltooid' ? 'bg-green-500/90 text-white' : 'bg-yellow-500/90 text-white'} pointer-events-auto">
        ${project.status}
        </span>
