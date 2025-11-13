@@ -63,6 +63,7 @@ if (video) {
    
    // Intersection Observer for lazy loading videos in project cards
    // Only for cards that are not immediately visible
+  // Optimized with reduced rootMargin to prevent excessive checks
    if ('IntersectionObserver' in window) {
      const videoObserver = new IntersectionObserver((entries, observer) => {
        entries.forEach(entry => {
@@ -91,7 +92,7 @@ if (video) {
          }
        });
      }, {
-       rootMargin: '500px' // Start loading 500px before entering viewport for instant playback
+      rootMargin: '200px' // Reduced from 500px to prevent excessive checks during scroll
      });
 
      // Observe all project cards with videos, but load first 3 immediately
@@ -163,15 +164,29 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
 });
  
 // Parallax effect for floating elements
+// Optimized scroll handler with requestAnimationFrame throttling to prevent lag
+let scrollRafId = null;
 window.addEventListener('scroll', function() {
+  // Cancel previous RAF if still pending
+  if (scrollRafId !== null) {
+    cancelAnimationFrame(scrollRafId);
+  }
+  
+  // Throttle with requestAnimationFrame for smooth 60fps updates
+  scrollRafId = requestAnimationFrame(() => {
   const scrollY = window.scrollY;
   const floatingElements = document.querySelectorAll('.animate-float');
+    
+    // Batch DOM reads and writes to prevent forced reflows
   floatingElements.forEach((element, index) => {
     const speed = 0.5 + (index * 0.1);
     const yPos = -(scrollY * speed);
     element.style.transform = `translateY(${yPos}px)`;
   });
+    
+    scrollRafId = null;
 });
+}, { passive: true }); // Use passive listener for better scroll performance
  
 // Services Data
 const services = [
@@ -579,10 +594,16 @@ function initMobileScrollButtons() {
   });
   
   // Update button states based on scroll position
-  // Optimized to prevent forced reflows by batching reads and using requestAnimationFrame
+  // Optimized with throttling to prevent scroll lag
+  let updateRafId = null;
   const updateMobileScrollButtons = () => {
-    // Use requestAnimationFrame to batch layout reads after DOM writes
-    requestAnimationFrame(() => {
+    // Cancel previous RAF if still pending
+    if (updateRafId !== null) {
+      cancelAnimationFrame(updateRafId);
+    }
+    
+    // Throttle with requestAnimationFrame for smooth updates
+    updateRafId = requestAnimationFrame(() => {
       // Cache all layout reads in variables first (batch reads)
       const scrollLeft = mobileScrollContainer.scrollLeft;
       const scrollWidth = mobileScrollContainer.scrollWidth;
@@ -612,10 +633,13 @@ function initMobileScrollButtons() {
       mobileScrollRightBtn.style.opacity = rightOpacity;
       mobileScrollRightBtn.disabled = rightDisabled;
       mobileScrollRightBtn.style.cursor = rightCursor;
+      
+      updateRafId = null;
     });
   };
   
-  mobileScrollContainer.addEventListener('scroll', updateMobileScrollButtons);
+  // Use passive listener for better scroll performance
+  mobileScrollContainer.addEventListener('scroll', updateMobileScrollButtons, { passive: true });
   // Defer initial state update to avoid forced reflow after DOM writes
   requestAnimationFrame(() => {
     updateMobileScrollButtons();
