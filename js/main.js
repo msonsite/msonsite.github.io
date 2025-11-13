@@ -6,12 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
    // Preload critical resources
    function preloadCriticalResources() {
 // Hero poster is already loaded with fetchpriority="high" in HTML
-// Load video immediately for faster playback
+// Load video after a small delay to not block initial render
 if (video) {
-  // Start loading video immediately
-  video.load();
+  // Start loading video after page is interactive
+  setTimeout(() => {
+    video.load();
+  }, 100);
   
-  video.addEventListener('canplaythrough', function() {
+  // Show video as soon as it can play (not wait for full buffer)
+  video.addEventListener('canplay', function() {
     // Hide poster and show video smoothly
     if (poster) poster.style.opacity = '0';
     video.style.opacity = '1';
@@ -21,6 +24,18 @@ if (video) {
     }, 1000);
   }, { once: true });
   
+  // Fallback: if canplay doesn't fire quickly, use loadeddata
+  video.addEventListener('loadeddata', function() {
+    if (video.style.opacity === '0' || video.style.opacity === '') {
+      if (poster) poster.style.opacity = '0';
+      video.style.opacity = '1';
+      
+      setTimeout(() => {
+        if (poster) poster.style.display = 'none';
+      }, 1000);
+    }
+  }, { once: true });
+  
   video.addEventListener('error', function() {
     // Fallback to poster image if video fails
     if (poster) poster.style.opacity = '1';
@@ -28,8 +43,13 @@ if (video) {
 }
    }
    
-   // Start preloading immediately
-   preloadCriticalResources();
+   // Start preloading immediately - don't wait for DOMContentLoaded
+   // Video element might already exist
+   if (document.readyState === 'loading') {
+     preloadCriticalResources();
+   } else {
+     preloadCriticalResources();
+   }
    
    // Intersection Observer for lazy loading videos in project cards
    // Only for cards that are not immediately visible
@@ -61,16 +81,16 @@ if (video) {
          }
        });
      }, {
-       rootMargin: '200px' // Start loading 200px before entering viewport for smoother experience
+       rootMargin: '500px' // Start loading 500px before entering viewport for instant playback
      });
 
-     // Observe all project cards with videos, but load first 2 immediately
+     // Observe all project cards with videos, but load first 3 immediately
      setTimeout(() => {
        document.querySelectorAll('[data-video-src]').forEach((img, index) => {
          const container = img.closest('.relative');
          if (container) {
-           // Load first 2 videos immediately (likely visible)
-           if (index < 2) {
+           // Load first 3 videos immediately (likely visible)
+           if (index < 3) {
              const video = container.querySelector('video');
              if (video && video.dataset.loaded !== 'true') {
                video.preload = 'auto';
@@ -87,12 +107,36 @@ if (video) {
                }, { once: true });
              }
            } else {
-             // Use observer for the rest
+             // Use observer for the rest with larger rootMargin
              videoObserver.observe(container);
            }
          }
        });
-     }, 100);
+     }, 0); // Load immediately, no delay
+   }
+   
+   // Scroll fade-in animations for section titles
+   if ('IntersectionObserver' in window) {
+     const scrollFadeObserver = new IntersectionObserver((entries, observer) => {
+       entries.forEach(entry => {
+         if (entry.isIntersecting) {
+           const container = entry.target;
+           const items = container.querySelectorAll('.scroll-fade-in-item');
+           items.forEach(item => {
+             item.classList.add('visible');
+           });
+           observer.unobserve(container);
+         }
+       });
+     }, {
+       rootMargin: '0px 0px -100px 0px', // Trigger when element is 100px from bottom of viewport
+       threshold: 0.1
+     });
+     
+     // Observe all section titles with scroll-fade-in class
+     document.querySelectorAll('.scroll-fade-in').forEach(section => {
+       scrollFadeObserver.observe(section);
+     });
    }
  });
  
@@ -228,22 +272,25 @@ function createDesktopProjectCard(project, index) {
    ${project.previewImage ? `
      <img src="${project.previewImage}" alt="${project.title}" 
           class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          loading="lazy">
+          loading="${index < 3 ? 'eager' : 'lazy'}"
+          fetchpriority="${index < 3 ? 'high' : 'auto'}">
    ` : project.previewVideo ? `
      <div class="w-full h-full relative">
        <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            loading="lazy"
+            loading="${index < 3 ? 'eager' : 'lazy'}"
+            fetchpriority="${index < 3 ? 'high' : 'auto'}"
             data-video-src="${project.previewVideo}">
        <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 pointer-events-none hidden" 
-              muted loop autoplay playsinline preload="none">
+              muted loop autoplay playsinline preload="${index < 3 ? 'auto' : 'none'}">
          <source src="${project.previewVideo}" type="video/mp4">
        </video>
      </div>
    ` : `
      <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
           class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          loading="lazy">
+          loading="${index < 3 ? 'eager' : 'lazy'}"
+          fetchpriority="${index < 3 ? 'high' : 'auto'}">
    `}
    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
    
@@ -332,22 +379,25 @@ function createMobileProjectCard(project, index) {
    ${project.previewImage ? `
      <img src="${project.previewImage}" alt="${project.title}" 
           class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          loading="lazy">
+          loading="${index < 3 ? 'eager' : 'lazy'}"
+          fetchpriority="${index < 3 ? 'high' : 'auto'}">
    ` : project.previewVideo ? `
      <div class="w-full h-full relative">
        <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            loading="lazy"
+            loading="${index < 3 ? 'eager' : 'lazy'}"
+            fetchpriority="${index < 3 ? 'high' : 'auto'}"
             data-video-src="${project.previewVideo}">
        <video class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 pointer-events-none hidden" 
-              muted loop autoplay playsinline preload="none">
+              muted loop autoplay playsinline preload="${index < 3 ? 'auto' : 'none'}">
          <source src="${project.previewVideo}" type="video/mp4">
        </video>
      </div>
    ` : `
      <img src="${project.images[project.previewImageIndex || 0].src}" alt="${project.images[project.previewImageIndex || 0].alt}" 
           class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          loading="lazy">
+          loading="${index < 3 ? 'eager' : 'lazy'}"
+          fetchpriority="${index < 3 ? 'high' : 'auto'}">
    `}
    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
    
@@ -426,21 +476,17 @@ function createMobileProjectCard(project, index) {
 }
 
 // Render for desktop (horizontal scroller)
-// First 2 projects load eagerly (likely visible), rest load lazily
+// First 3 projects load eagerly (likely visible), rest load lazily
 projects.forEach((project, index) => {
   const cardHTML = createDesktopProjectCard(project, index);
-  // Replace loading="lazy" with loading="eager" for first 2 projects
-  const modifiedCardHTML = index < 2 ? cardHTML.replace('loading="lazy"', 'loading="eager"') : cardHTML;
-  projectsGrid.innerHTML += modifiedCardHTML;
+  projectsGrid.innerHTML += cardHTML;
 });
 
 // Render for mobile (grid)
-// First 2 projects load eagerly (likely visible), rest load lazily
+// First 3 projects load eagerly (likely visible), rest load lazily
 projects.forEach((project, index) => {
   const cardHTML = createMobileProjectCard(project, index);
-  // Replace loading="lazy" with loading="eager" for first 2 projects
-  const modifiedCardHTML = index < 2 ? cardHTML.replace('loading="lazy"', 'loading="eager"') : cardHTML;
-  projectsMobileGrid.innerHTML += modifiedCardHTML;
+  projectsMobileGrid.innerHTML += cardHTML;
 });
 
 // Project Modal Function

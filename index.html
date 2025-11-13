@@ -36,11 +36,16 @@
   }
   </script>
  
-  <!-- Tailwind CSS -->
+  <!-- Preconnect to CDNs for faster loading -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  
+  <!-- Tailwind CSS - Must load before inline config -->
   <script src="https://cdn.tailwindcss.com"></script>
- 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Font Awesome - Load asynchronously to not block rendering -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'; this.onload=null;">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
  
   <!-- Favicon - Google Search compliant -->
   <link rel="icon" href="/favicon.ico">
@@ -54,9 +59,10 @@
   <link rel="manifest" href="/favicon/site.webmanifest">
  
    <!-- Critical Resource Preloading -->
-   <!-- Note: Videos are NOT preloaded to improve initial page load speed -->
-   <link rel="preload" href="images/branding/MsOnsite LogoSpacing.png" as="image" type="image/png">
-   <link rel="preload" href="images/assets/heroframe.png" as="image" type="image/png">
+   <link rel="preload" href="images/branding/MsOnsite LogoSpacing.png" as="image" type="image/png" fetchpriority="high">
+   <link rel="preload" href="images/assets/heroframe.png" as="image" type="image/png" fetchpriority="high">
+   
+   <!-- Note: Video preloading removed - too heavy, browser will handle it efficiently -->
    
    <!-- DNS Prefetch for external resources -->
    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
@@ -244,6 +250,31 @@
      
      img.lazy.loaded {
        opacity: 1;
+     }
+     
+     /* Scroll fade-in animations for section titles */
+     .scroll-fade-in-item {
+       opacity: 0;
+       transform: translateY(30px);
+       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+     }
+     
+     .scroll-fade-in-item.visible {
+       opacity: 1;
+       transform: translateY(0);
+     }
+     
+     /* Staggered animation delays for items within the same container */
+     .scroll-fade-in-item:nth-child(1) {
+       transition-delay: 0ms;
+     }
+     
+     .scroll-fade-in-item:nth-child(2) {
+       transition-delay: 150ms;
+     }
+     
+     .scroll-fade-in-item:nth-child(3) {
+       transition-delay: 300ms;
      }
      
      /* Preload critical resources */
@@ -508,7 +539,7 @@
   </nav>
  
   <!-- HERO SECTION -->
-  <section id="banner" class="relative h-screen overflow-hidden">
+  <section id="banner" class="relative h-[85vh] overflow-hidden">
     <!-- Optimized Video Background with Loading States -->
     <div class="absolute inset-0 w-full h-full">
       <!-- Preload Image for Instant Display -->
@@ -528,7 +559,7 @@
         playsinline
         class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
         id="hero-video"
-        preload="auto"
+        preload="metadata"
         poster="images/assets/heroframe.png"
       >
         <!-- Multiple formats for better compatibility and performance -->
@@ -606,14 +637,14 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
      
       <!-- Section Title -->
-      <div class="text-center mb-8 md:mb-12 max-w-3xl mx-auto">
-        <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
+      <div class="text-center mb-8 md:mb-12 max-w-3xl mx-auto scroll-fade-in">
+        <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4 scroll-fade-in-item">
           🌐 WAT WIJ DOEN
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 scroll-fade-in-item">
           <span class="gradient-text">Onze Diensten</span>
         </h2>
-        <p class="text-gray-600 text-lg leading-relaxed">
+        <p class="text-gray-600 text-lg leading-relaxed scroll-fade-in-item">
           Van nauwkeurige opmetingen tot complete werfopvolging - wij leveren professionele drone-oplossingen die uw project naar een hoger niveau tillen.
         </p>
       </div>
@@ -634,14 +665,14 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
      
       <!-- Section Title -->
-      <div class="text-center mb-16 max-w-3xl mx-auto">
-        <div class="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+      <div class="text-center mb-16 max-w-3xl mx-auto scroll-fade-in">
+        <div class="inline-block bg-white/10 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4 scroll-fade-in-item">
           🗂️ ONZE REALISATIES
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 scroll-fade-in-item">
           Projecten Portfolio
         </h2>
-        <p class="text-gray-300 text-lg leading-relaxed">
+        <p class="text-gray-300 text-lg leading-relaxed scroll-fade-in-item">
           Ontdek onze projecten – klik op een project voor meer details over uitgevoerde opdrachten.
         </p>
       </div>
@@ -691,14 +722,14 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
      
       <!-- Section Title -->
-      <div class="text-center mb-16 max-w-3xl mx-auto">
-        <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
+      <div class="text-center mb-16 max-w-3xl mx-auto scroll-fade-in">
+        <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4 scroll-fade-in-item">
           🤝 VERTROUWD DOOR
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 scroll-fade-in-item">
           <span class="gradient-text">Onze Partners</span>
         </h2>
-        <p class="text-gray-600 text-lg leading-relaxed">
+        <p class="text-gray-600 text-lg leading-relaxed scroll-fade-in-item">
           Trotse samenwerkingen met toonaangevende bedrijven in de sector.
         </p>
       </div>
@@ -718,14 +749,14 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
      
       <!-- Section Title -->
-      <div class="text-center mb-8 md:mb-12 max-w-3xl mx-auto">
-        <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
+      <div class="text-center mb-8 md:mb-12 max-w-3xl mx-auto scroll-fade-in">
+        <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4 scroll-fade-in-item">
           👋🏼 NEEM CONTACT OP
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 scroll-fade-in-item">
           <span class="gradient-text">Klaar om op te stijgen?</span>
         </h2>
-        <p class="text-gray-600 text-lg leading-relaxed">
+        <p class="text-gray-600 text-lg leading-relaxed scroll-fade-in-item">
           Contacteer ons en ontdek hoe drones uw project vooruit helpen.
         </p>
       </div>
@@ -1120,14 +1151,14 @@
   </div>
  
   <!-- JAVASCRIPT -->
-  <!-- Load Projects Data -->
-  <script src="js/projects.js"></script>
+  <!-- Load Projects Data - Defer to not block rendering -->
+  <script src="js/projects.js" defer></script>
   
-  <!-- Main JavaScript -->
-  <script src="js/main.js"></script>
+  <!-- Main JavaScript - Defer to not block rendering -->
+  <script src="js/main.js" defer></script>
   
-  <!-- Cookie Banner JavaScript -->
-  <script src="js/cookie-banner.js"></script>
+  <!-- Cookie Banner JavaScript - Defer to not block rendering -->
+  <script src="js/cookie-banner.js" defer></script>
   
   <!-- Inline script removed - all JavaScript moved to external files -->
  
