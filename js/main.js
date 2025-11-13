@@ -168,7 +168,7 @@ const services = [
   {
     title: "Opmetingen",
     subtitle: "met fotogrammetrie",
-    description: "Breng uw project snel en tot op de centimeter nauwkeurig in kaart. Inclusief as-built plannen, oppervlaktebepalingen en volumeberekeningen. Zo bespaart u tijd én kosten.",
+    description: "Breng uw project snel en nauwkeurig in kaart. Inclusief as-built plannen, oppervlaktebepalingen en volumeberekeningen. Bespaar tijd én kosten.",
     icon: "fa-ruler-combined"
   },
   {
@@ -192,7 +192,7 @@ const services = [
   {
     title: "Plaatsbeschrijving",
     subtitle: "gedocumenteerd",
-    description: "Opmaak gedetailleerde plaatsbeschrijvingen met dronebeelden die een duidelijk en volledig overzicht van de omgeving bieden, ideaal om de situatie voor en na een project nauwkeurig vast te leggen.",
+    description: "Gedetailleerde plaatsbeschrijvingen met dronebeelden voor een volledig overzicht van de omgeving, ideaal om de situatie voor en na een project vast te leggen.",
     icon: "fa-file-alt"
   },
   {
@@ -203,56 +203,52 @@ const services = [
   },
 ];
  
-// Render Services with Enhanced Design
+// Render Services with Clean Design and Subtle Background Numbers
 const servicesContainer = document.getElementById('services-container');
-services.forEach((service, index) => {
-  const serviceCard = `
-    <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 p-5 border border-gray-100 hover:border-primary/30 transform hover:-translate-y-2 cursor-pointer fade-in-up overflow-hidden service-card-${index + 1}" style="animation-delay: ${index * 100}ms">
- <!-- Animated Background Gradient -->
- <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary-light/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
- 
- <!-- Floating Background Elements - Smaller -->
- <div class="absolute top-3 right-3 w-12 h-12 bg-gradient-to-br from-primary/10 to-primary-light/10 rounded-full blur-lg group-hover:scale-125 transition-transform duration-500 animate-pulse-glow"></div>
- <div class="absolute bottom-3 left-3 w-10 h-10 bg-gradient-to-br from-primary-light/10 to-primary/10 rounded-full blur-md group-hover:scale-110 transition-transform duration-500 animate-pulse-glow" style="animation-delay: 1s;"></div>
- 
- <!-- Icon Container - Compact -->
- <div class="relative z-10 mb-4">
-   <div class="bg-gradient-to-br from-primary via-primary-light to-primary-dark text-white w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-xl relative">
-     <i class="fas ${service.icon} text-lg group-hover:scale-110 transition-transform duration-300"></i>
-     <!-- Icon Inner Glow -->
-     <div class="absolute inset-1.5 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
- </div>
-   <!-- Icon Glow Effect - Smaller -->
-   <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary-light/20 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300"></div>
- </div>
- 
- <!-- Content - Compact -->
- <div class="relative z-10">
-   <h3 class="text-lg font-bold text-gray-800 mb-1.5 group-hover:text-primary transition-colors duration-300 group-hover:translate-x-1">
-     ${service.title}
-   </h3>
-   ${service.subtitle ? `
-     <p class="text-xs text-primary font-semibold mb-3 uppercase tracking-wide group-hover:translate-x-1 transition-transform duration-300">
-       ${service.subtitle}
-     </p>
-   ` : ''}
-   <p class="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-     ${service.description}
-   </p>
- </div>
- 
- <!-- Bottom Accent Line - Smaller -->
- <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary-light group-hover:w-full transition-all duration-500"></div>
- 
- <!-- Hover Overlay -->
- <div class="absolute inset-0 bg-gradient-to-br from-white/0 via-white/0 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
- 
- <!-- Subtle Border Animation -->
- <div class="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-primary/20 transition-colors duration-300"></div>
-    </div>
-  `;
-  servicesContainer.innerHTML += serviceCard;
-});
+
+const serviceGrid = `
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+    ${services.map((service, index) => {
+      const serviceNumber = String(index + 1).padStart(2, '0');
+      
+      return `
+        <div class="group relative bg-white rounded-2xl p-6 md:p-7 border-2 border-primary/50 shadow-xl cursor-pointer scroll-fade-in overflow-hidden" style="animation-delay: ${index * 50}ms">
+          <!-- Subtle Background Number -->
+          <div class="absolute top-0 right-0 text-[140px] md:text-[160px] font-black text-primary/[0.03] leading-none -mt-6 -mr-4 pointer-events-none">
+            ${serviceNumber}
+          </div>
+          
+          <!-- Icon -->
+          <div class="relative z-10 mb-5">
+            <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center shadow-xl scale-110">
+              <i class="fas ${service.icon} text-2xl text-white"></i>
+            </div>
+          </div>
+          
+          <!-- Content -->
+          <div class="relative z-10">
+            <h3 class="text-xl md:text-2xl font-bold text-primary mb-2 leading-relaxed">
+              ${service.title}
+            </h3>
+            ${service.subtitle ? `
+              <p class="text-sm text-primary font-semibold uppercase tracking-wide mb-3">
+                ${service.subtitle}
+              </p>
+            ` : ''}
+            <p class="text-gray-700 text-xs md:text-sm leading-relaxed">
+              ${service.description}
+            </p>
+          </div>
+          
+          <!-- Background -->
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary-light/5 pointer-events-none"></div>
+        </div>
+      `;
+    }).join('')}
+  </div>
+`;
+
+servicesContainer.innerHTML = serviceGrid;
  
 // Projects data is loaded from js/projects.js
 // The projects array is now defined in a separate file for easier maintenance
