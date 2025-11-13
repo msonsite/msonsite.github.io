@@ -62,7 +62,7 @@ const projects = [
       { src: "images/project-2/gradientkaart.png", alt: "Gradiëntkaart", caption: "Gradiëntkaart" },
       { src: "images/project-2/volumeberekeningen.png", alt: "Volumeberekeningen", caption: "Volumeberekeningen" }
     ],
-    previewImageIndex: 1,
+    previewImage: "images/project-2/previewimageproject2.png",
     categories: ["Opmetingen"],
     status: "Voltooid"
   },
