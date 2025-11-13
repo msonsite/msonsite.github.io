@@ -586,7 +586,7 @@
             <div class="flex justify-center">
               <img src="images/branding/MsOnsite LogoSpacing.png" 
                    alt="M&S Onsite Drone Services" 
-                   class="h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 drop-shadow-2xl"
+                   class="h-16 sm:h-20 md:h-24 lg:h-24 xl:h-28 drop-shadow-2xl"
                    style="filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));"
                    loading="eager"
                    fetchpriority="high">
@@ -745,8 +745,20 @@
   </section>
  
   <!-- CONTACT SECTION -->
-  <section class="py-12 md:py-16 bg-gradient-to-b from-white to-gray-100" id="contact">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-12 md:py-16 bg-gradient-to-b from-white to-gray-100 relative overflow-hidden" id="contact">
+    <!-- Subtle Map Background -->
+    <div class="absolute inset-0 pointer-events-none">
+      <img src="images/assets/applemapsmap.png" 
+           alt="Map background" 
+           class="w-full h-full object-cover opacity-[0.7]"
+           style="filter: blur(2px) grayscale(40%) brightness(1.1);"
+           loading="lazy"
+           aria-hidden="true">
+      <!-- Lighter overlay for better text readability while keeping map visible -->
+      <div class="absolute inset-0 bg-gradient-to-b from-white/50 via-white/30 to-gray-100/50"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
      
       <!-- Section Title -->
       <div class="text-center mb-8 md:mb-12 max-w-3xl mx-auto scroll-fade-in">
@@ -761,141 +773,126 @@
         </p>
       </div>
  
-       <!-- Main Content Grid - More Compact -->
-       <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+       <!-- Main Content Grid - Three Equal Columns -->
+       <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
        
-        <!-- Left Column: Contact Info Card - Compact -->
-        <div class="lg:col-span-2">
-          <div class="bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl shadow-xl p-4 h-full">
-            <!-- Profile Section - Ultra Compact -->
-            <div class="text-center mb-3">
-              <!-- Toggle Button -->
-              <div class="flex justify-end items-center mb-1.5 space-x-1.5">
-                <span class="text-white/70 text-xs font-medium animate-pulse">Klik voor meer info</span>
-                <button id="toggle-contact-btn" onclick="toggleContactInfo()" 
-                        class="bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-2 transition-all duration-300 hover:scale-110 group relative">
-                  <i class="fas fa-info-circle text-white text-sm group-hover:text-white"></i>
-                  <!-- Click indicator -->
-                  <div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-yellow-400 rounded-full animate-ping opacity-75"></div>
-                  <div class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-yellow-400 rounded-full"></div>
-                </button>
-              </div>
-              <div class="relative inline-block">
+        <!-- Contact Info Card (Middle on desktop) -->
+        <div class="order-1 lg:order-2">
+          <div class="bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl shadow-xl p-4 h-full flex flex-col">
+            <!-- Profile Section -->
+            <div class="text-center mb-4">
+              <div class="inline-block mb-3">
                 <img src="images/assets/mdl.png" alt="Martin de Lobel"
-                     class="w-24 h-24 rounded-full object-cover border-3 border-white shadow-lg mx-auto mb-1.5"
+                     class="w-24 h-24 rounded-full object-cover border-2 border-white/30 shadow-lg"
                      loading="lazy">
-                <div class="absolute bottom-0.5 left-1/2 -translate-x-1/2 bg-green-500 text-white text-xs px-2 py-0.5 rounded-full">
-                  Beschikbaar
-                </div>
               </div>
-              <h3 class="text-base font-bold mb-0.5">Martin de Lobel</h3>
-              <p class="text-primary-light font-medium text-xs">Projectcoördinator & UAS Operator</p>
+              <h3 class="text-base font-bold mb-1">Martin de Lobel</h3>
+              <p class="text-primary-light text-xs leading-tight">Projectcoördinator & UAS Operator</p>
             </div>
- 
-            <!-- Basic Contact Info (Default View) - Ultra Compact -->
-            <div id="basic-contact" class="space-y-2">
+
+            <!-- Contact Info -->
+            <div class="space-y-2 flex-1 flex flex-col justify-center">
               <a href="https://maps.google.com/?q=Izegem,Belgium" target="_blank"
-                 class="flex items-center space-x-2.5 p-2 bg-white/10 hover:bg-white/20 rounded-lg transition group">
-                <div class="bg-white/20 p-1.5 rounded-md group-hover:scale-110 transition flex items-center justify-center w-8 h-8">
-                  <i class="fas fa-map-marker-alt text-sm"></i>
+                 class="flex items-center gap-2.5 p-2.5 bg-white/10 hover:bg-white/15 rounded-lg transition-all group">
+                <div class="bg-white/20 p-1.5 rounded-md group-hover:bg-white/30 transition flex-shrink-0">
+                  <i class="fas fa-map-marker-alt text-xs"></i>
                 </div>
                 <div class="flex-1 min-w-0">
-                  <div class="text-xs text-primary-light mb-0.5">Locatie</div>
-                  <div class="font-semibold text-xs">Izegem, België</div>
+                  <div class="text-[10px] text-primary-light/80 mb-0.5 font-medium uppercase tracking-wide">Locatie</div>
+                  <div class="font-semibold text-xs leading-tight">Izegem, België</div>
                 </div>
               </a>
- 
+
               <a href="tel:+32491150887"
-                 class="flex items-center space-x-2.5 p-2 bg-white/10 hover:bg-white/20 rounded-lg transition group">
-                <div class="bg-white/20 p-1.5 rounded-md group-hover:scale-110 transition flex items-center justify-center w-8 h-8">
-                  <i class="fas fa-phone text-sm"></i>
+                 class="flex items-center gap-2.5 p-2.5 bg-white/10 hover:bg-white/15 rounded-lg transition-all group border border-transparent hover:border-white/20">
+                <div class="bg-white/20 p-1.5 rounded-md group-hover:bg-white/30 transition flex-shrink-0 group-hover:scale-110">
+                  <i class="fas fa-phone text-xs"></i>
                 </div>
                 <div class="flex-1 min-w-0">
-                  <div class="text-xs text-primary-light mb-0.5">Telefoon</div>
-                  <div class="font-semibold text-xs">+32 491 150 887</div>
+                  <div class="text-[10px] text-primary-light/80 mb-0.5 font-medium uppercase tracking-wide">Telefoon</div>
+                  <div class="font-semibold text-xs leading-tight group-hover:underline decoration-white/50">+32 491 150 887</div>
                 </div>
+                <i class="fas fa-external-link-alt text-[10px] text-white/50 group-hover:text-white/80 transition-opacity opacity-0 group-hover:opacity-100"></i>
               </a>
- 
+
               <a href="mailto:martinonsite@telenet.be"
-                 class="flex items-center space-x-2.5 p-2 bg-white/10 hover:bg-white/20 rounded-lg transition group">
-                <div class="bg-white/20 p-1.5 rounded-md group-hover:scale-110 transition flex items-center justify-center w-8 h-8">
-                  <i class="fas fa-envelope text-sm"></i>
+                 class="flex items-center gap-2.5 p-2.5 bg-white/10 hover:bg-white/15 rounded-lg transition-all group border border-transparent hover:border-white/20">
+                <div class="bg-white/20 p-1.5 rounded-md group-hover:bg-white/30 transition flex-shrink-0 group-hover:scale-110">
+                  <i class="fas fa-envelope text-xs"></i>
                 </div>
                 <div class="flex-1 min-w-0">
-                  <div class="text-xs text-primary-light mb-0.5">E-mail</div>
-                  <div class="font-semibold text-xs break-all">martinonsite@telenet.be</div>
+                  <div class="text-[10px] text-primary-light/80 mb-0.5 font-medium uppercase tracking-wide">E-mail</div>
+                  <div class="font-semibold text-xs break-all leading-tight group-hover:underline decoration-white/50">martinonsite@telenet.be</div>
                 </div>
+                <i class="fas fa-external-link-alt text-[10px] text-white/50 group-hover:text-white/80 transition-opacity opacity-0 group-hover:opacity-100"></i>
               </a>
- 
-              <div class="flex items-center space-x-2.5 p-2 bg-white/10 rounded-lg">
-                <div class="bg-white/20 p-1.5 rounded-md flex items-center justify-center w-8 h-8">
-                  <i class="fas fa-file-invoice text-sm"></i>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="text-xs text-primary-light mb-0.5">BTW</div>
-                  <div class="font-semibold text-xs">BE 0784.964.976</div>
-                </div>
-              </div>
-            </div>
 
-            <!-- Detailed Professional Info (Hidden by Default) - Ultra Compact -->
-            <div id="detailed-contact" class="space-y-1.5 hidden">
-              <div class="bg-white/10 backdrop-blur-sm rounded-lg p-2">
-                <div class="flex items-start space-x-2">
-                  <div class="bg-white/20 p-1 rounded-md flex items-center justify-center w-6 h-6">
-                    <i class="fas fa-briefcase text-white text-xs"></i>
-                </div>
-                <div>
-                    <div class="text-xs text-white/70 mb-0.5">Huidige Positie</div>
-                    <div class="font-semibold text-xs leading-tight">Zelfstandig projectcoördinator & UAS Operator</div>
-                </div>
-              </div>
             </div>
-
-              <div class="bg-white/10 backdrop-blur-sm rounded-lg p-2">
-                <div class="flex items-start space-x-2">
-                  <div class="bg-white/20 p-1 rounded-md flex items-center justify-center w-6 h-6">
-                    <i class="fas fa-chart-line text-white text-xs"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs text-white/70 mb-0.5">Ervaring</div>
-                    <div class="font-semibold text-xs leading-tight">Ruim 15 jaar ervaring in projectcoördinatie</div>
-                    <div class="text-xs text-white/80 mt-0.5 leading-tight">Focus op sanering en baggerwerken</div>
-                  </div>
           </div>
         </div>
- 
-              <div class="bg-white/10 backdrop-blur-sm rounded-lg p-2">
-                <div class="flex items-start space-x-2">
-                  <div class="bg-white/20 p-1 rounded-md flex items-center justify-center w-6 h-6">
-                    <i class="fas fa-cogs text-white text-xs"></i>
-              </div>
-              <div>
-                    <div class="text-xs text-white/70 mb-0.5">Vaardigheden</div>
-                    <div class="font-semibold text-xs leading-tight">Van milieuconsultancy tot werfleiding</div>
-                    <div class="text-xs text-white/80 mt-0.5 leading-tight">Ervaring in breed scala aan projecten</div>
-                  </div>
-              </div>
+
+        <!-- Professional Info (Left on desktop) -->
+        <div class="order-2 lg:order-1">
+          <div class="bg-white rounded-2xl shadow-xl p-4 h-full flex flex-col">
+            <!-- Header Section -->
+            <div class="mb-5 text-center mt-2">
+              <h3 class="text-base font-bold text-gray-800 mb-1">Professionale Informatie</h3>
+              <p class="text-gray-600 text-xs leading-tight">Expertise en ervaring</p>
             </div>
- 
-              <!-- Drone Certificate - Badge Style with Image -->
-              <div class="bg-gradient-to-r from-yellow-400/20 to-yellow-500/20 backdrop-blur-sm rounded-xl p-4 border border-yellow-400/30">
-                <div class="text-center">
-                  <!-- Certificate Icon -->
-                  <div class="inline-flex items-center justify-center w-12 h-12 bg-yellow-400/20 rounded-full mb-3">
-                    <i class="fas fa-certificate text-yellow-400 text-xl animate-pulse"></i>
+
+            <!-- Professional Info Section -->
+            <div class="space-y-2 flex-1 flex flex-col justify-center">
+              <!-- Current Position -->
+              <div class="bg-gray-50 rounded-lg p-2.5 border border-gray-100">
+                <div class="flex items-start gap-2.5">
+                  <div class="bg-primary/10 p-1.5 rounded-md flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-briefcase text-primary text-xs"></i>
                   </div>
-                  
-                  <!-- Title -->
-                  <div class="text-white font-bold text-sm mb-1">EASA Gecertificeerd</div>
-                  <div class="text-white/80 text-xs mb-3">Drone Operator A1/A3 & A2</div>
-                  
-                  <!-- Certificate Preview -->
-                  <div class="mb-3">
-                    <img src="images/certificates/certificaat1.jpg" 
-                         alt="EASA Certificate Preview" 
-                         class="w-full h-auto max-h-32 object-contain rounded-lg"
-                         loading="lazy">
+                  <div class="flex-1">
+                    <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Huidige Positie</div>
+                    <div class="font-semibold text-xs text-gray-800 leading-tight">Zelfstandig projectcoördinator & UAS Operator</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Experience -->
+              <div class="bg-gray-50 rounded-lg p-2.5 border border-gray-100">
+                <div class="flex items-start gap-2.5">
+                  <div class="bg-primary/10 p-1.5 rounded-md flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-chart-line text-primary text-xs"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Ervaring</div>
+                    <div class="font-semibold text-xs text-gray-800 leading-tight mb-0.5">Ruim 15 jaar ervaring in projectcoördinatie</div>
+                    <div class="text-[10px] text-gray-600 leading-tight">Focus op sanering en baggerwerken</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Skills -->
+              <div class="bg-gray-50 rounded-lg p-2.5 border border-gray-100">
+                <div class="flex items-start gap-2.5">
+                  <div class="bg-primary/10 p-1.5 rounded-md flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-cogs text-primary text-xs"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Vaardigheden</div>
+                    <div class="font-semibold text-xs text-gray-800 leading-tight mb-0.5">Van milieuconsultancy tot werfleiding</div>
+                    <div class="text-[10px] text-gray-600 leading-tight">Ervaring in breed scala aan projecten</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Specializations -->
+              <div class="bg-gray-50 rounded-lg p-2.5 border border-gray-100">
+                <div class="flex items-start gap-2.5">
+                  <div class="bg-primary/10 p-1.5 rounded-md flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-map-marked-alt text-primary text-xs"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Specialisaties</div>
+                    <div class="font-semibold text-xs text-gray-800 leading-tight mb-0.5">Fotogrammetrie, 3D-modellering & analyse</div>
+                    <div class="text-[10px] text-gray-600 leading-tight">Werfopvolging, inspecties en monitoring</div>
                   </div>
                 </div>
               </div>
@@ -903,61 +900,34 @@
           </div>
         </div>
 
-        <!-- Right Column: WhatsApp Form - Compact -->
-        <div class="lg:col-span-3">
-           <div class="bg-white rounded-2xl shadow-xl p-4 h-full flex flex-col">
-             <!-- Header Section - Compact -->
-             <div class="flex items-center space-x-2.5 mb-4">
-              <div class="bg-green-100 p-2 rounded-lg">
-                <i class="fab fa-whatsapp text-green-600 text-lg"></i>
+        <!-- Certificate Card (Right on desktop) -->
+        <div class="order-3 lg:order-3">
+          <div class="bg-white rounded-2xl shadow-xl p-4 h-full flex flex-col border border-gray-100">
+            <!-- Header Section -->
+            <div class="mb-4 text-center">
+              <div class="inline-flex items-center justify-center w-12 h-12 bg-yellow-50 rounded-full mb-3 border border-yellow-100">
+                <i class="fas fa-certificate text-yellow-600"></i>
               </div>
-              <div>
-                <h3 class="text-lg font-bold text-gray-800">Stuur ons een bericht</h3>
-                <p class="text-gray-500 text-xs">Direct via WhatsApp</p>
-              </div>
+              <h3 class="text-base font-bold text-gray-800 mb-1">EASA Gecertificeerd</h3>
+              <p class="text-gray-600 text-xs leading-tight">Drone Operator A1/A3 & A2</p>
             </div>
- 
-             <!-- Form Section - Ultra Compact -->
-             <form id="whatsappForm" class="flex flex-col flex-1 space-y-3">
-               <!-- Name Field -->
-              <div class="relative">
-                <input type="text" id="name" required
-                       class="peer w-full px-3 py-2.5 pt-4 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition outline-none text-sm"
-                       placeholder=" ">
-                <label for="name" class="absolute left-3 top-1 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-focus:top-1 peer-focus:text-xs">
-                  Uw naam
-                </label>
-              </div>
- 
-               <!-- Project Field -->
-              <div class="relative">
-                <input type="text" id="project" required
-                       class="peer w-full px-3 py-2.5 pt-4 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition outline-none text-sm"
-                       placeholder=" ">
-                <label for="project" class="absolute left-3 top-1 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-focus:top-1 peer-focus:text-xs">
-                  Onderwerp
-                </label>
-              </div>
- 
-               <!-- Message Field - Compact -->
-               <div class="relative flex-1">
-                 <textarea id="message" required
-                           class="peer w-full h-full min-h-[60px] px-3 py-2.5 pt-4 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition outline-none resize-none text-sm"
-                          placeholder=" "></textarea>
-                <label for="message" class="absolute left-3 top-1 text-xs text-gray-500 font-medium transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-focus:top-1 peer-focus:text-xs">
-                  Uw bericht
-                </label>
-              </div>
- 
-               <!-- Submit Button - Compact -->
-               <div class="pt-2">
-              <button type="submit"
-                      class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-2.5 px-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105">
-                <i class="fab fa-whatsapp text-base"></i>
-                <span class="text-sm">Verstuur via WhatsApp</span>
+
+            <!-- Certificate Preview -->
+            <div class="flex-1 flex items-center justify-center bg-gray-50 rounded-xl p-3 border border-gray-100 min-h-0">
+              <img src="images/certificates/certificaat1.jpg" 
+                   alt="EASA Certificate Preview" 
+                   class="w-full h-auto max-h-52 object-contain rounded-lg shadow-sm cursor-pointer hover:shadow-md transition-all hover:scale-[1.02]"
+                   loading="lazy"
+                   onclick="showCertificatePreview()">
+            </div>
+
+            <!-- View Button -->
+            <div class="mt-3 text-center">
+              <button onclick="showCertificatePreview()" 
+                      class="text-xs text-primary hover:text-primary-dark font-medium transition-colors underline decoration-primary/30 hover:decoration-primary/60">
+                Bekijk volledig certificaat
               </button>
-               </div>
-            </form>
+            </div>
           </div>
         </div>
  
@@ -1055,6 +1025,10 @@
               <a href="privacy-policy.html" class="text-gray-400 hover:text-primary-light transition-colors">Privacybeleid</a>
               <span class="text-gray-500">|</span>
               <a href="terms-and-conditions.html" class="text-gray-400 hover:text-primary-light transition-colors">Algemene Voorwaarden</a>
+            </div>
+            <!-- BTW Number - Subtle -->
+            <div class="mt-2">
+              <p class="text-gray-500 text-[10px]">BTW: BE 0784.964.976</p>
             </div>
           </div>
           <div class="text-center md:text-right">

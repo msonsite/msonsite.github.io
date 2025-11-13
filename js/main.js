@@ -649,32 +649,7 @@ function generateVideoPoster() {
  // Initialize video poster generation
  generateVideoPoster();
 
- // Contact Info Toggle Function
- function toggleContactInfo() {
-   const basicContact = document.getElementById('basic-contact');
-   const detailedContact = document.getElementById('detailed-contact');
-   const toggleButton = document.querySelector('#toggle-contact-btn i');
-   const clickIndicators = document.querySelectorAll('#toggle-contact-btn .absolute');
-   const clickText = document.querySelector('.text-white\\/70');
-   
-   if (basicContact.classList.contains('hidden')) {
-basicContact.classList.remove('hidden');
-detailedContact.classList.add('hidden');
-// Show info icon for basic view
-toggleButton.className = 'fas fa-info-circle text-white text-lg group-hover:text-white';
-// Show click indicators
-clickIndicators.forEach(indicator => indicator.style.display = 'block');
-if (clickText) clickText.style.display = 'block';
-   } else {
-basicContact.classList.add('hidden');
-detailedContact.classList.remove('hidden');
-// Show return icon for detailed view
-toggleButton.className = 'fas fa-undo text-white text-lg group-hover:text-white';
-// Hide click indicators
-clickIndicators.forEach(indicator => indicator.style.display = 'none');
-if (clickText) clickText.style.display = 'none';
-   }
- }
+ // Contact Info Toggle Function - Removed as cards are now always visible
 
  // Certificate Preview Functions
  function showCertificatePreview() {
@@ -907,27 +882,13 @@ if (mobileScrollContainer && mobileScrollLeftBtn && mobileScrollRightBtn) {
   updateMobileScrollButtons(); // Initial state
 }
  
-// WhatsApp Form Submit
-document.getElementById('whatsappForm').addEventListener('submit', function(e) {
-  e.preventDefault();
- 
-  const name = document.getElementById('name').value;
-  const project = document.getElementById('project').value;
-  const message = document.getElementById('message').value;
- 
-  const whatsappMessage = `Hallo, mijn naam is ${name}.%0A%0AOnderwerp: ${project}%0A%0A${message}`;
-  const phoneNumber = '32491150887';
-  const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
- 
-  window.open(whatsappURL, '_blank');
-});
+// WhatsApp Form Submit - Removed as form was replaced with professional info
 
 // Expose functions for onclick handlers
 window.openProjectModal = openProjectModal;
 window.closeProjectModal = closeProjectModal;
 window.openImageLightbox = openImageLightbox;
 window.closeImageLightbox = closeImageLightbox;
-window.toggleContactInfo = toggleContactInfo;
 window.showCertificatePreview = showCertificatePreview;
 window.closeCertificateModal = closeCertificateModal;
 window.openCertificateLightbox = openCertificateLightbox;
