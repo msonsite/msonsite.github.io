@@ -852,8 +852,8 @@
  
   <!-- PROJECTEN SECTION -->
   <section class="py-16 md:py-24 relative overflow-hidden" id="projecten">
-    <!-- Background Image -->
-    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('images/assets/projectsectionbackground.png');"></div>
+    <!-- Background Image - Lazy loaded -->
+    <div id="projects-bg-image" class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-0 transition-opacity duration-1000"></div>
     
     <!-- Overlay for readability -->
     <div class="absolute inset-0 bg-white/85 backdrop-blur-[2px]"></div>

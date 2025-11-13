@@ -966,6 +966,43 @@ partnersTrack.innerHTML = newPartnerHTML + newPartnerHTML;
 // Initialize the carousel
 initInfiniteCarousel();
 
+// Lazy load projects section background image
+function initProjectsBackground() {
+  const projectsSection = document.getElementById('projecten');
+  const bgImageDiv = document.getElementById('projects-bg-image');
+  
+  if (!projectsSection || !bgImageDiv) return;
+  
+  // Create image element for preloading
+  const img = new Image();
+  
+  // Intersection Observer to load when section is near viewport
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Start loading the image
+        img.src = 'images/assets/projectsectionbackground.png';
+        
+        // Once loaded, apply to background and fade in
+        img.onload = function() {
+          bgImageDiv.style.backgroundImage = `url('${img.src}')`;
+          bgImageDiv.style.opacity = '1';
+        };
+        
+        // Stop observing after loading starts
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    rootMargin: '200px' // Start loading 200px before section enters viewport
+  });
+  
+  observer.observe(projectsSection);
+}
+
+// Initialize background loading
+initProjectsBackground();
+
 // Project Scroller Functionality
 const scrollContainer = document.getElementById('projects-scroll-container');
 const scrollLeftBtn = document.getElementById('scroll-left');
