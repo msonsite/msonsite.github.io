@@ -60,7 +60,7 @@ const projects = [
     images: [
       { src: "images/project-2/puntenwolk.png", alt: "Puntenwolk", caption: "3D Puntenwolk" },
       { src: "images/project-2/gradientkaart.png", alt: "Gradiëntkaart", caption: "Gradiëntkaart" },
-      { src: "images/project-2/volumeberekeningen.png", alt: "Volumeberekeningen", caption: "Volumeberekeningen" }
+      { src: "images/project-2/volumeberekeningen.jpg", alt: "Volumeberekeningen", caption: "Volumeberekeningen" }
     ],
     previewImage: "images/project-2/previewimageproject2.png",
     categories: ["Opmetingen"],
@@ -79,8 +79,8 @@ const projects = [
       "DXF-export voor CAD-software"
     ],
     images: [
-      { src: "images/project-3/orthofoto.png", alt: "As-built", caption: "Orthofoto" },
-      { src: "images/project-3/leidingtrace.png", alt: "Leidingtracé", caption: "As-built Leidingtracé" },
+      { src: "images/project-3/orthofoto.jpg", alt: "As-built", caption: "Orthofoto" },
+      { src: "images/project-3/leidingtrace.jpg", alt: "Leidingtracé", caption: "As-built Leidingtracé" },
       { src: "images/project-3/dxf-export.png", alt: "DXF-export", caption: "DXF-export" }
     ],
     previewImageIndex: 2,
@@ -127,14 +127,14 @@ const projects = [
       "Kaart- en modelrapportage voor waterbeheer"
     ],
     images: [
-      { src: "images/project-5/2024-02-29-origineel.png", alt: "29 februari - Origineel", caption: "29/02 - Origineel" },
-      { src: "images/project-5/2024-02-29-opmeting.png", alt: "29 februari - Opmeting", caption: "29/02 - Opmeting" },
-      { src: "images/project-5/2024-03-25-origineel.png", alt: "25 maart - Origineel", caption: "25/03 - Origineel" },
-      { src: "images/project-5/2024-03-25-opmeting.png", alt: "25 maart - Opmeting", caption: "25/03 - Opmeting" },
-      { src: "images/project-5/2024-04-22-origineel.png", alt: "22 april - Origineel", caption: "22/04 - Origineel" },
-      { src: "images/project-5/2024-04-22-opmeting.png", alt: "22 april - Opmeting", caption: "22/04 - Opmeting" }
+      { src: "images/project-5/2024-02-29-origineel.jpg", alt: "29 februari - Origineel", caption: "29/02 - Origineel" },
+      { src: "images/project-5/2024-02-29-opmeting.jpg", alt: "29 februari - Opmeting", caption: "29/02 - Opmeting" },
+      { src: "images/project-5/2024-03-25-origineel.jpg", alt: "25 maart - Origineel", caption: "25/03 - Origineel" },
+      { src: "images/project-5/2024-03-25-opmeting.jpg", alt: "25 maart - Opmeting", caption: "25/03 - Opmeting" },
+      { src: "images/project-5/2024-04-22-origineel.jpg", alt: "22 april - Origineel", caption: "22/04 - Origineel" },
+      { src: "images/project-5/2024-04-22-opmeting.jpg", alt: "22 april - Opmeting", caption: "22/04 - Opmeting" }
     ],
-    previewImage: "images/project-5/waterbeheersingbanner.png",
+    previewImage: "images/project-5/waterbeheersingbanner.jpg",
     previewImageIndex: 1,
     categories: ["Monitoring"],
     status: "Voltooid"

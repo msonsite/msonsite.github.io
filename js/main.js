@@ -662,8 +662,8 @@ function openProjectModal(projectId) {
   if (!project) return;
 
   const modal = document.createElement('div');
-  modal.className = 'fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4 md:p-8';
-  modal.style.cssText = 'animation: fadeIn 0.2s ease-out;';
+  modal.className = 'fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 md:p-8';
+  modal.style.cssText = 'animation: fadeIn 0.2s ease-out; will-change: opacity;';
   modal.onclick = function(e) {
     if (e.target === modal) {
  closeProjectModal();
@@ -690,7 +690,7 @@ function openProjectModal(projectId) {
  </div>
  
       <!-- Scrollable Content Area -->
-      <div class="flex-1 overflow-y-auto" style="scrollbar-width: thin; scrollbar-color: #e5e7eb transparent;">
+      <div class="flex-1 overflow-y-auto" style="scrollbar-width: thin; scrollbar-color: #e5e7eb transparent; will-change: scroll-position; transform: translateZ(0); -webkit-overflow-scrolling: touch;">
         <div class="p-6 md:p-12 space-y-12">
           
           <!-- Project Description Section -->
@@ -704,7 +704,7 @@ function openProjectModal(projectId) {
             <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Uitgevoerde opdrachten</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
        ${project.tasks.map(task => `
-                <div class="flex items-start p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-primary/30 hover:bg-primary/5 transition-all duration-200">
+                <div class="flex items-start p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-primary/30 hover:bg-primary/5 transition-colors duration-200">
                   <div class="flex-shrink-0 mt-0.5">
                     <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
                       <i class="fas fa-check text-primary text-sm"></i>
@@ -721,14 +721,15 @@ function openProjectModal(projectId) {
             <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Projectbeelden</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
        ${project.images.map((img, index) => `
-                <div class="group relative bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer" onclick="openImageLightbox('${img.src}', '${img.alt}')">
+                <div class="group relative bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary/50 shadow-sm hover:shadow-lg transition-colors duration-200 cursor-pointer" onclick="openImageLightbox('${img.src}', '${img.alt}')" style="will-change: transform;">
                   <div class="relative aspect-video overflow-hidden bg-gray-100">
              <img src="${img.src}" alt="${img.alt}" 
-                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                          loading="lazy"
-                         decoding="async">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full p-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+                         decoding="async"
+                         style="will-change: transform; transform: translateZ(0);">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                    <div class="absolute top-4 right-4 bg-white/90 rounded-full p-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg">
                       <i class="fas fa-expand text-primary text-sm"></i>
      </div>
        </div>
