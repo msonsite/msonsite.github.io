@@ -1192,57 +1192,70 @@
        <!-- Main Content Grid - Three Equal Columns -->
        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
        
-        <!-- Contact Info Card (Middle on desktop) -->
+        <!-- Contact Info Card (Middle on desktop) - Completely Redesigned -->
         <div class="order-1 lg:order-2">
-          <div class="bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl shadow-xl p-4 h-full flex flex-col">
-            <!-- Profile Section -->
-            <div class="text-center mb-4">
-              <div class="inline-block mb-3">
-                <img src="images/assets/mdl.webp" alt="Martin de Lobel"
-                     class="w-24 h-24 rounded-full object-cover border-2 border-white/30 shadow-lg"
-                     loading="lazy">
+          <div class="bg-white rounded-2xl shadow-xl overflow-hidden h-full flex flex-col border border-gray-100">
+            <!-- Header with Gradient Background -->
+            <div class="bg-gradient-to-br from-primary via-primary to-primary-dark text-white px-4 py-4 relative overflow-hidden">
+              <!-- Decorative Pattern -->
+              <div class="absolute inset-0 opacity-10">
+                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+              </div>
+              
+              <!-- Profile Section -->
+              <div class="relative z-10 text-center">
+                <div class="inline-block mb-2 relative">
+                  <div class="absolute inset-0 bg-white/20 rounded-full blur-xl"></div>
+                  <img src="images/assets/mdl.webp" alt="Martin de Lobel"
+                       class="relative w-24 h-24 rounded-full object-cover border-4 border-white/40 shadow-2xl"
+                       loading="lazy"
+                       width="96"
+                       height="96">
                 </div>
-              <h3 class="text-base font-bold mb-1">Martin de Lobel</h3>
-              <p class="text-primary-light text-xs leading-tight">Projectcoördinator & UAS Operator</p>
+                <h3 class="text-base font-bold mb-1">Martin de Lobel</h3>
+                <p class="text-primary-light/90 text-xs leading-tight">Projectcoördinator & UAS Operator</p>
+              </div>
             </div>
  
-            <!-- Contact Info -->
-            <div class="space-y-2 flex-1 flex flex-col justify-center">
+            <!-- Contact Info Section -->
+            <div class="flex-1 p-4 space-y-2 flex flex-col justify-center">
+              <!-- Location -->
               <a href="https://maps.google.com/?q=Izegem,Belgium" target="_blank"
-                 class="flex items-center gap-2.5 p-2.5 bg-white/10 hover:bg-white/15 rounded-lg transition-all group">
-                <div class="bg-white/20 p-1.5 rounded-md group-hover:bg-white/30 transition flex-shrink-0">
-                  <i class="fas fa-map-marker-alt text-xs"></i>
+                 class="group flex items-center gap-2.5 p-2.5 bg-gray-50 hover:bg-primary/5 rounded-lg border border-gray-200 hover:border-primary/30 transition-all duration-200">
+                <div class="flex-shrink-0 w-6 h-6 bg-primary/10 group-hover:bg-primary/20 rounded-md flex items-center justify-center transition-colors duration-200" style="width: 24px; height: 24px; min-width: 24px; min-height: 24px;">
+                  <i class="fas fa-map-marker-alt text-primary text-xs"></i>
                 </div>
                 <div class="flex-1 min-w-0">
-                  <div class="text-[10px] text-primary-light/80 mb-0.5 font-medium uppercase tracking-wide">Locatie</div>
-                  <div class="font-semibold text-xs leading-tight">Izegem, België</div>
+                  <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Locatie</div>
+                  <div class="font-semibold text-xs text-gray-900 group-hover:text-primary transition-colors">Izegem, België</div>
                 </div>
               </a>
  
+              <!-- Phone -->
               <a href="tel:+32491150887"
-                 class="flex items-center gap-2.5 p-2.5 bg-white/10 hover:bg-white/15 rounded-lg transition-all group border border-transparent hover:border-white/20">
-                <div class="bg-white/20 p-1.5 rounded-md group-hover:bg-white/30 transition flex-shrink-0 group-hover:scale-110">
-                  <i class="fas fa-phone text-xs"></i>
+                 class="group flex items-center gap-2.5 p-2.5 bg-gray-50 hover:bg-primary/5 rounded-lg border border-gray-200 hover:border-primary/30 transition-all duration-200">
+                <div class="flex-shrink-0 w-6 h-6 bg-primary/10 group-hover:bg-primary/20 rounded-md flex items-center justify-center transition-colors duration-200" style="width: 24px; height: 24px; min-width: 24px; min-height: 24px;">
+                  <i class="fas fa-phone text-primary text-xs"></i>
                 </div>
                 <div class="flex-1 min-w-0">
-                  <div class="text-[10px] text-primary-light/80 mb-0.5 font-medium uppercase tracking-wide">Telefoon</div>
-                  <div class="font-semibold text-xs leading-tight group-hover:underline decoration-white/50">+32 491 150 887</div>
+                  <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Telefoon</div>
+                  <div class="font-semibold text-xs text-gray-900 group-hover:text-primary transition-colors">+32 491 150 887</div>
                 </div>
-                <i class="fas fa-external-link-alt text-[10px] text-white/50 group-hover:text-white/80 transition-opacity opacity-0 group-hover:opacity-100"></i>
+                <i class="fas fa-external-link-alt text-gray-400 group-hover:text-primary transition-colors text-[10px]"></i>
               </a>
  
+              <!-- Email -->
               <a href="mailto:martinonsite@telenet.be"
-                 class="flex items-center gap-2.5 p-2.5 bg-white/10 hover:bg-white/15 rounded-lg transition-all group border border-transparent hover:border-white/20">
-                <div class="bg-white/20 p-1.5 rounded-md group-hover:bg-white/30 transition flex-shrink-0 group-hover:scale-110">
-                  <i class="fas fa-envelope text-xs"></i>
+                 class="group flex items-center gap-2.5 p-2.5 bg-gray-50 hover:bg-primary/5 rounded-lg border border-gray-200 hover:border-primary/30 transition-all duration-200">
+                <div class="flex-shrink-0 w-6 h-6 bg-primary/10 group-hover:bg-primary/20 rounded-md flex items-center justify-center transition-colors duration-200" style="width: 24px; height: 24px; min-width: 24px; min-height: 24px;">
+                  <i class="fas fa-envelope text-primary text-xs"></i>
                 </div>
                 <div class="flex-1 min-w-0">
-                  <div class="text-[10px] text-primary-light/80 mb-0.5 font-medium uppercase tracking-wide">E-mail</div>
-                  <div class="font-semibold text-xs break-all leading-tight group-hover:underline decoration-white/50">martinonsite@telenet.be</div>
+                  <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">E-mail</div>
+                  <div class="font-semibold text-xs text-gray-900 group-hover:text-primary transition-colors break-all">martinonsite@telenet.be</div>
                 </div>
-                <i class="fas fa-external-link-alt text-[10px] text-white/50 group-hover:text-white/80 transition-opacity opacity-0 group-hover:opacity-100"></i>
+                <i class="fas fa-external-link-alt text-gray-400 group-hover:text-primary transition-colors text-[10px]"></i>
               </a>
- 
                 </div>
                 </div>
               </div>
@@ -1545,8 +1558,24 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').then(() => {
+        // Register with cache-busting parameter to force update
+        navigator.serviceWorker.register('/sw.js?v=2.2').then((registration) => {
           console.log('Service Worker registered');
+          
+          // Check for updates every time the page loads
+          registration.update();
+          
+          // Listen for updates
+          registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                // New service worker available, reload page
+                console.log('New service worker available, reloading...');
+                window.location.reload();
+              }
+            });
+          });
         }).catch(() => {
           // Silently fail if service worker registration fails
         });
@@ -1555,16 +1584,16 @@
   </script>
   
   <!-- Load Projects Data - Defer to not block rendering -->
-  <script src="js/projects.js" defer></script>
+  <script src="js/projects.js?v=2.2" defer></script>
   
   <!-- Load Partners Data - Defer to not block rendering -->
-  <script src="js/partners.js" defer></script>
+  <script src="js/partners.js?v=2.2" defer></script>
   
   <!-- Main JavaScript - Defer to not block rendering -->
-  <script src="js/main.js?v=2.0" defer></script>
+  <script src="js/main.js?v=2.2" defer></script>
   
   <!-- Cookie Banner JavaScript - Defer to not block rendering -->
-  <script src="js/cookie-banner.js" defer></script>
+  <script src="js/cookie-banner.js?v=2.2" defer></script>
   
   <!-- Inline script removed - all JavaScript moved to external files -->
  
