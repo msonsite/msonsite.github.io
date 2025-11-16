@@ -27,12 +27,12 @@ const projects = [
     title: "Vuurtoren Inspectie",
     location: "Breskens, Nederland",
     flag: "🇳🇱",
-    description: "Gedetailleerde inspectie van een historische vuurtoren met drone-technologie. Hoge-resolutie beelden en diepgaande analyse onthulden structurele details en onderhoudsbehoeften zonder risico voor inspecteurs. Het resultaat: een complete visuele documentatie voor restauratieplanning en onderhoud.",
+    description: "Een historische vuurtoren in Breskens die dringend geïnspecteerd moest worden, maar waar traditionele inspectiemethoden te gevaarlijk waren. Met onze drone vlogen we rondom de toren en legden elk detail vast. De restauratieplanners kregen een complete visuele documentatie die precies liet zien wat er aan de hand was, zonder dat iemand een voet op het dak hoefde te zetten.",
     tasks: [
-      "Hoge-resolutie drone-inspectie",
-      "Structurele detailopnames",
-      "360° visuele documentatie",
-      "Restauratieplanning rapportage"
+      "Rondom de vuurtoren vliegen met hoge-resolutie camera's",
+      "Elk structureel detail van dichtbij vastleggen",
+      "Een complete 360° visuele documentatie samenstellen",
+      "Rapportage opstellen die de restauratieplanners direct kunnen gebruiken"
     ],
     images: [
       { src: "images/project-1/vuurtorenfoto.jpg", alt: "Vuurtoren overzicht", caption: "Vuurtoren overzicht" },
@@ -50,12 +50,12 @@ const projects = [
     title: "Volumetrische Meting",
     location: "Houthulst, België",
     flag: "🇧🇪",
-    description: "Met onze drones brengen we snel en nauwkeurig het volume van zand, grind, aarde en andere materialen in kaart. Zo krijgt u overzicht in hoeveel materiaal aanwezig is of verplaatst moet worden, zodat het transport vlot en efficiënt kan worden gepland.",
+    description: "Hoeveel zand ligt er nu eigenlijk op die hoop? In plaats van dagenlang met meetstokken rondlopen, vlogen we er even overheen. Binnen een paar uur had de klant een nauwkeurig 3D-model met exacte volumes. Transport kon direct gepland worden, zonder giswerk.",
     tasks: [
-      "Drone-opmeting met fotogrammetrie",
-      "3D-puntenwolk generatie",
-      "Volumeberekening software analyse",
-      "Rapportage en visualisatie"
+      "Over het materiaal vliegen en honderden foto's maken",
+      "Die foto's verwerken tot een nauwkeurige 3D-puntenwolk",
+      "Met software de exacte volumes berekenen",
+      "Duidelijke rapportage met visualisaties opstellen"
     ],
     images: [
       { src: "images/project-2/puntenwolk.png", alt: "Puntenwolk", caption: "3D Puntenwolk" },
@@ -71,12 +71,12 @@ const projects = [
     title: "As-Built Plan",
     location: "Hamme-Mille, België",
     flag: "🇧🇪",
-    description: "Voor een bodemsaneringsproject hebben we met drones een volledig overzicht gemaakt van alle sleuven en leidingtracés. Het resultaat is een helder en betrouwbaar plan dat eenvoudig gebruikt kan worden voor verdere bewerkingen of controle op de werf.",
+    description: "Na een bodemsanering lagen er overal sleuven en leidingen door elkaar. De vraag: waar ligt alles precies? We maakten een complete luchtfoto en tekenden alle leidingtracés in. Nu heeft de opdrachtgever een helder plan dat direct gebruikt kan worden voor verdere werkzaamheden of controle.",
     tasks: [
-      "Drone-fotogrammetrie uitvoering",
-      "3D-puntenwolk verwerking",
-      "Leidingtracé digitalisatie",
-      "DXF-export voor CAD-software"
+      "Het hele terrein vanuit de lucht fotograferen",
+      "De foto's verwerken tot een gedetailleerde 3D-puntenwolk",
+      "Alle leidingtracés digitaal intekenen op de luchtfoto",
+      "Het plan exporteren naar DXF-formaat voor gebruik in CAD-software"
     ],
     images: [
       { src: "images/project-3/orthofoto.jpg", alt: "As-built", caption: "Orthofoto" },
@@ -92,14 +92,14 @@ const projects = [
     title: "Bodemsanering",
     location: "Sint-Truiden, België",
     flag: "🇧🇪",
-    description: "Voor dit bodemsaneringsproject in Sint-Truiden hebben we met drones de volledige werfopvolging verzorgd. Van beginsituatie tot eindresultaat: elke fase werd gedocumenteerd met precisie-opmetingen, 3D-modellen en gedetailleerde berekeningen voor een complete as-built documentatie.",
+    description: "Tijdens een bodemsanering in Sint-Truiden volgden we het hele proces op. We begonnen met de beginsituatie, vlogen regelmatig over tijdens de werkzaamheden en eindigden met een complete as-built documentatie. Elke fase werd vastgelegd: hoeveel grond werd verplaatst, welke oppervlaktes werden behandeld, en hoe het terrein er uiteindelijk uitzag. De opdrachtgever had zo altijd een actueel beeld van de voortgang.",
     tasks: [
-      "Beginsituatie terrein in kaart gebracht",
-      "Periodieke drone-opmetingen tijdens sanering",
-      "3D-puntenwolk generatie per fase",
-      "Oppervlakte- en volumeberekeningen",
-      "As-built documentatie eindresultaat",
-      "Progressie rapportage aan opdrachtgever"
+      "Vastleggen van de beginsituatie van het terrein",
+      "Regelmatig overvliegen tijdens de saneringswerkzaamheden",
+      "3D-modellen opbouwen van elke fase",
+      "Berekenen hoeveel grond verplaatst werd en welke oppervlaktes behandeld werden",
+      "Complete as-built documentatie van het eindresultaat",
+      "Voortgangsrapportage zodat de opdrachtgever altijd op de hoogte was"
     ],
     images: [
       { src: "images/project-4/beginsituatie-terrein.png", alt: "Beginsituatie terrein", caption: "Beginsituatie van het terrein" },
@@ -119,20 +119,20 @@ const projects = [
     title: "Monitoring Waterbeheersing",
     location: "Rijmenam, België",
     flag: "🇧🇪",
-    description: "Tijdens een drie maanden durend monitoringsproject werden meerdere overstromingsgebieden opgevolgd met behulp van drones en fotogrammetrie. Deze methode maakte het mogelijk om nauwkeurige orthofoto's en 3D-modellen te genereren, waarmee veranderingen in wateroppervlak en waterterugtrekking in kaart werden gebracht. De verkregen data leverden waardevolle inzichten op voor waterbeheer, gebiedsherstel en risicobeoordeling.",
+    description: "Drie maanden lang monitorden we overstromingsgebieden in Rijmenam. Elke paar weken vlogen we over het gebied en zagen we precies hoe het water zich terugtrok. Door de beelden naast elkaar te leggen, ontstond er een duidelijk beeld van de waterdynamiek. Die data hielp bij het nemen van beslissingen over waterbeheer en gebiedsherstel.",
     tasks: [
-      "Drone-opnames over overstromingsgebieden",
-      "Fotogrammetrische verwerking tot orthofoto's en 3D-modellen",
-      "Analyse van wateroppervlak en -terugtrekking",
-      "Kaart- en modelrapportage voor waterbeheer"
+      "Elke paar weken over de overstromingsgebieden vliegen",
+      "De opnames verwerken tot gedetailleerde orthofoto's en 3D-modellen",
+      "Analyseren hoe het wateroppervlak veranderde en zich terugtrok",
+      "Kaarten en modellen opstellen die helpen bij waterbeheerbeslissingen"
     ],
     images: [
-      { src: "images/project-5/2024-02-29-origineel.jpg", alt: "29 februari - Origineel", caption: "29/02 - Origineel" },
-      { src: "images/project-5/2024-02-29-opmeting.jpg", alt: "29 februari - Opmeting", caption: "29/02 - Opmeting" },
-      { src: "images/project-5/2024-03-25-origineel.jpg", alt: "25 maart - Origineel", caption: "25/03 - Origineel" },
-      { src: "images/project-5/2024-03-25-opmeting.jpg", alt: "25 maart - Opmeting", caption: "25/03 - Opmeting" },
-      { src: "images/project-5/2024-04-22-origineel.jpg", alt: "22 april - Origineel", caption: "22/04 - Origineel" },
-      { src: "images/project-5/2024-04-22-opmeting.jpg", alt: "22 april - Opmeting", caption: "22/04 - Opmeting" }
+      { src: "images/project-5/2024-02-29-origineel.jpg" },
+      { src: "images/project-5/2024-02-29-opmeting.jpg" },
+      { src: "images/project-5/2024-03-25-origineel.jpg" },
+      { src: "images/project-5/2024-03-25-opmeting.jpg" },
+      { src: "images/project-5/2024-04-22-origineel.jpg" },
+      { src: "images/project-5/2024-04-22-opmeting.jpg" }
     ],
     previewImage: "images/project-5/waterbeheersingbanner.jpg",
     previewImageIndex: 1,
@@ -144,20 +144,20 @@ const projects = [
     title: "Dakinspectie",
     location: "Izegem, België",
     flag: "🇧🇪",
-    description: "Met onze dronetechnologie inspecteren we daken zonder stellingen of risico's. Meer dan honderd luchtfoto's worden met fotogrammetrie omgezet in één haarscherpe orthofoto. Onze 3D-software markeert automatisch probleemzones: van losse dakpannen tot een beschadigd dakvenster of zelfs nestvorming. Het resultaat? Een duidelijk, visueel inspectierapport met praktische aanbevelingen. U ziet precies wat er speelt, zonder het dak te betreden.",
+    description: "Een dak inspecteren zonder erop te moeten klimmen? We vlogen er overheen, maakten honderden foto's en stelden daar één scherpe orthofoto van samen. Onze software markeerde automatisch alle probleemzones: losse dakpannen, een beschadigd raam, zelfs nestvorming. De klant kreeg een duidelijk rapport met precies aangegeven wat er moet gebeuren, zonder dat iemand het dak op hoefde.",
     tasks: [
-      "Dronevluchten voor dakinspectie uitgevoerd",
-      "Fotogrammetrische verwerking tot orthofoto's",
-      "Automatische detectie van schadezones in 3D-software",
-      "Opmaak van visueel inspectierapport met aanbevelingen"
+      "Over het dak vliegen en honderden foto's maken",
+      "Die foto's samenvoegen tot één scherpe orthofoto van het hele dak",
+      "Met 3D-software automatisch alle probleemzones markeren",
+      "Een visueel rapport opstellen met duidelijke aanbevelingen"
     ],
     images: [
-      { src: "images/project-6/analysezone.png", alt: "Analysezone", caption: "Analysezone" },
-      { src: "images/project-6/observatiepunten.png", alt: "Observatiepunten", caption: "Observatiepunten" },
-      { src: "images/project-6/detail-schouw.png", alt: "Detail schouw", caption: "Detail schouw" },
-      { src: "images/project-6/identificatie-losse-dakpannen.png", alt: "Identificatie losse dakpannen", caption: "Identificatie losse dakpannen" },
-      { src: "images/project-6/detail-nestvorming.png", alt: "Detail nestvorming", caption: "Detail nestvorming" },
-      { src: "images/project-6/detail-raam.png", alt: "Detail raam", caption: "Detail raam" }
+      { src: "images/project-6/analysezone.png" },
+      { src: "images/project-6/observatiepunten.png" },
+      { src: "images/project-6/detail-schouw.png" },
+      { src: "images/project-6/identificatie-losse-dakpannen.png" },
+      { src: "images/project-6/detail-nestvorming.png" },
+      { src: "images/project-6/detail-raam.png" }
     ],
     previewImageIndex: 1,
     categories: ["Inspecties"],
@@ -166,14 +166,14 @@ const projects = [
   {
     id: 7,
     title: "Stockdepot Meting",
-    location: "Blankenberge, België",
+    location: "Brugge, België",
     flag: "🇧🇪",
-    description: "Voor een toonaangevende speler in de zand- en grindsector voeren wij regelmatig stockinventarissen met drones uit. Dankzij nauwkeurige luchtmetingen brengen we de aanwezige volumes snel en betrouwbaar in kaart. Onze methode bespaart tijd, levert heldere rapportages en visuele overzichten die het voorraadbeheer en de planning van onze klant optimaliseren.",
+    description: "Een zand- en grinddepot in Brugge dat regelmatig geïnventariseerd moet worden. In plaats van dagenlang meten, vliegen we er even overheen. Binnen een dag heeft de klant een nauwkeurig overzicht van alle stockvolumes, met duidelijke visualisaties. Zo kunnen ze hun voorraadbeheer en planning veel beter afstemmen.",
     tasks: [
-      "Flexibele inplanning opmeting",
-      "Drone fotogrammetrie depot",
-      "Volumeberekening aanwezige stocks",
-      "Duidelijke rapportage"
+      "Flexibel inplannen wanneer de opmeting het beste uitkomt",
+      "Over het hele depot vliegen en alle stocks fotograferen",
+      "Voor elke stock het exacte volume berekenen",
+      "Een overzichtelijke rapportage opstellen met duidelijke visualisaties"
     ],
     images: [
       { src: "images/project-7/drone-depot.png", alt: "Drone-opname depot", caption: "Drone-opname van het stockdepot" },
@@ -184,6 +184,50 @@ const projects = [
     previewImageIndex: 0,
     categories: ["Opmetingen"],
     status: "Voltooid"
+  },
+  {
+    id: 8,
+    title: "Plaatsbeschrijving",
+    location: "Kruibeke, België",
+    flag: "🇧🇪",
+    description: "Voor een plaatsbeschrijving in Kruibeke moest de volledige gevel gedocumenteerd worden. We vlogen systematisch langs de gevel en maakten een grid van hoge-resolutie foto's. Elke steen, elke scheur, elk detail werd vastgelegd in een complete visuele documentatie, perfect geschikt voor renovatieplanning. Na de werkzaamheden kunnen we opnieuw vliegen en direct vergelijken wat er veranderd is.",
+    tasks: [
+      "De drone positioneren en een systematisch grid instellen",
+      "Langs de hele gevel vliegen en hoge-resolutie foto's maken volgens het grid",
+      "Alle detailfoto's bundelen in een gestructureerde rapportage"
+    ],
+    images: [
+      { src: "images/project-8/foto1.jpg" },
+      { src: "images/project-8/foto2.jpg" },
+      { src: "images/project-8/foto3.jpg" },
+      { src: "images/project-8/foto4.jpg" },
+      { src: "images/project-8/foto5.jpg" },
+      { src: "images/project-8/foto6.jpg" },
+      { src: "images/project-8/foto7.jpg" },
+      { src: "images/project-8/foto8.jpg" },
+      { src: "images/project-8/foto9.jpg" }
+    ],
+    previewImage: "images/project-8/project8header.png",
+    categories: ["Plaatsbeschrijving"],
+    status: "Voltooid"
+  },
+  {
+    id: 9,
+    title: "Uw volgende project?",
+    location: "België / Nederland",
+    flag: "🇧🇪🇳🇱",
+    description: "Heeft u een project waarbij drone-opnames, inspecties of opmetingen kunnen helpen? Wij denken graag mee over de beste aanpak voor uw specifieke situatie. Van eenmalige inspecties tot langdurige monitoring: we passen onze werkwijze aan op wat u nodig heeft.",
+    tasks: [
+      "Samen uw projectbehoefte bespreken",
+      "De beste drone-aanpak voor uw situatie bepalen",
+      "Flexibele planning die aansluit op uw werkzaamheden",
+      "Duidelijke rapportage die u direct kunt gebruiken"
+    ],
+    images: [
+      { src: "images/branding/MsOnsite LogoSpacing.png" }
+    ],
+    previewImage: "images/assets/projectsectionbackground.png",
+    status: "Onvoltooid"
   }
 ];
 

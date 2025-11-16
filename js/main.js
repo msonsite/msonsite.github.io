@@ -191,28 +191,22 @@ window.addEventListener('scroll', function() {
 // Services Data
 const services = [
   {
-    title: "Opmetingen",
-    subtitle: "met fotogrammetrie",
-    description: "Breng uw project snel en nauwkeurig in kaart. Inclusief as-built plannen, oppervlaktebepalingen en volumeberekeningen. Bespaar tijd én kosten.",
-    icon: "fa-ruler-combined"
-  },
-  {
-    title: "Werfopvolging",
-    subtitle: "vanuit de lucht",
-    description: "Dronebeelden geven een duidelijk overzicht van uw werf, met overzichtelijke kaarten, 3D-modellen en rapportages.",
-    icon: "fa-hard-hat"
-  },
-  {
     title: "Inspecties",
     subtitle: "sneller, veiliger, slimmer",
     description: "Inspecties op moeilijk bereikbare plaatsen, van gebouwen tot industriële installaties. Betrouwbare gegevens zonder risico voor personeel.",
     icon: "fa-search"
   },
   {
-    title: "Visuals",
-    subtitle: "unieke beelden",
-    description: "Leg uw project vast met professionele luchtfoto's en video's die uw visie tot leven brengen.",
-    icon: "fa-camera"
+    title: "Monitoring",
+    subtitle: "i.k.v. waterbeheersing",
+    description: "Preventieve inspecties en continue monitoring. Drones maken waterbeheersing slimmer, veiliger en efficiënter.",
+    icon: "fa-water"
+  },
+  {
+    title: "Opmetingen",
+    subtitle: "met fotogrammetrie",
+    description: "Breng uw project snel en nauwkeurig in kaart. Inclusief as-built plannen, oppervlaktebepalingen en volumeberekeningen. Bespaar tijd én kosten.",
+    icon: "fa-ruler-combined"
   },
   {
     title: "Plaatsbeschrijving",
@@ -221,10 +215,16 @@ const services = [
     icon: "fa-file-alt"
   },
   {
-    title: "Monitoring",
-    subtitle: "i.k.v. waterbeheersing",
-    description: "Preventieve inspecties en continue monitoring. Drones maken waterbeheersing slimmer, veiliger en efficiënter.",
-    icon: "fa-water"
+    title: "Visuals",
+    subtitle: "unieke beelden",
+    description: "Leg uw project vast met professionele luchtfoto's en video's die uw visie tot leven brengen.",
+    icon: "fa-camera"
+  },
+  {
+    title: "Werfopvolging",
+    subtitle: "vanuit de lucht",
+    description: "Dronebeelden geven een duidelijk overzicht van uw werf, met overzichtelijke kaarten, 3D-modellen en rapportages.",
+    icon: "fa-hard-hat"
   },
 ];
  
