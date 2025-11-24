@@ -338,7 +338,7 @@ function createModernProjectCard(project, index) {
             <source src="${project.previewVideo}" type="video/mp4">
           </video>
         ` : `
-          <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="192">
+          <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="192" fetchpriority="${index < 3 ? 'high' : 'auto'}">
         `}
         <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
         
@@ -439,6 +439,48 @@ function renderProjects() {
       card.classList.add('visible');
     });
   }, 100);
+  
+  // Optimize image loading on mobile with Intersection Observer
+  if (window.innerWidth <= 768 && 'IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          // Force load if still lazy
+          if (img.loading === 'lazy' && img.complete === false) {
+            img.loading = 'eager';
+            // Trigger reload
+            const src = img.src;
+            img.src = '';
+            img.src = src;
+          }
+          // Preload next 2-3 images in the scroll direction
+          const allImages = Array.from(document.querySelectorAll('.modern-project-card img, [onclick*="openProjectModal"] img'));
+          const currentIndex = allImages.indexOf(img);
+          const nextImages = allImages.slice(currentIndex + 1, currentIndex + 4);
+          nextImages.forEach(nextImg => {
+            if (nextImg.loading === 'lazy') {
+              const preloadImg = new Image();
+              preloadImg.src = nextImg.src;
+            }
+          });
+          imageObserver.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '400px', // Load images 400px before they come into view on mobile for faster loading
+      threshold: 0.01
+    });
+    
+    // Observe all project images on mobile
+    setTimeout(() => {
+      document.querySelectorAll('.modern-project-card img, [onclick*="openProjectModal"] img').forEach(img => {
+        if (img.loading === 'lazy') {
+          imageObserver.observe(img);
+        }
+      });
+    }, 200);
+  }
 }
 
 // Create mobile project card for horizontal scroller - Completely redesigned
@@ -455,7 +497,7 @@ function createMobileProjectCard(project, index) {
          <source src="${project.previewVideo}" type="video/mp4">
        </video>
         ` : `
-          <img src="${imageSrc}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
+          <img src="${imageSrc}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" fetchpriority="${index < 2 ? 'high' : 'auto'}">
         `}
         <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);"></div>
         
@@ -601,6 +643,16 @@ function openProjectModal(projectId) {
   const project = projects.find(p => p.id === projectId);
   if (!project) return;
 
+  // Preload modal images immediately when modal opens
+  if (project.images && project.images.length > 0) {
+    project.images.forEach((img, index) => {
+      if (index < 6) { // Preload first 6 images immediately
+        const preloadImg = new Image();
+        preloadImg.src = img.src;
+      }
+    });
+  }
+
   const modal = document.createElement('div');
   modal.className = 'fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 md:p-8';
   modal.style.cssText = 'animation: fadeIn 0.2s ease-out; will-change: opacity;';
@@ -666,8 +718,9 @@ function openProjectModal(projectId) {
                   <div class="relative aspect-video overflow-hidden bg-gray-100">
              <img src="${img.src}" alt="${img.alt || ''}" 
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                         loading="lazy"
+                         loading="eager"
                          decoding="async"
+                         fetchpriority="${index < 6 ? 'high' : 'auto'}"
                          style="will-change: transform; transform: translateZ(0);">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
                     <div class="absolute top-4 right-4 bg-white/90 rounded-full p-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg">
@@ -860,13 +913,23 @@ function initInfiniteCarousel() {
  const partnersTrack = document.getElementById('partners-track');
  if (!partnersTrack) return;
  
+ // Preload partner images for better performance
+ if (typeof partners !== 'undefined' && partners.length > 0) {
+   partners.forEach((partner, index) => {
+     if (index < 4) { // Preload first 4 logos immediately
+       const preloadImg = new Image();
+       preloadImg.src = partner.img;
+     }
+   });
+ }
+ 
  // Function to create partner HTML with clickable links
  function createPartnerHTML() {
-   return partners.map(partner => `
+   return partners.map((partner, index) => `
 <div class="partner-item mx-3 sm:mx-4 md:mx-6">
   <a href="${partner.url}" target="_blank" rel="noopener noreferrer" 
      class="block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 sm:p-6 transform hover:scale-105 border border-gray-100 w-48 h-24 sm:w-56 sm:h-28 md:w-64 md:h-32 flex items-center justify-center cursor-pointer">
-    <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain transition duration-500" loading="lazy" decoding="async" width="200" height="100">
+    <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain transition duration-500" loading="${index < 4 ? 'eager' : 'lazy'}" decoding="async" fetchpriority="${index < 2 ? 'high' : 'auto'}" width="200" height="100">
   </a>
   </div>
 `).join('');
