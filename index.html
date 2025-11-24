@@ -268,7 +268,6 @@
  
    <!-- Critical Resource Preloading -->
    <link rel="preload" href="images/branding/MsOnsite LogoSpacing.png" as="image" type="image/png" fetchpriority="high">
-   <link rel="preload" href="images/assets/heroframe.png" as="image" type="image/png" fetchpriority="high">
    
    <!-- Note: Video preloading removed - too heavy, browser will handle it efficiently -->
  
@@ -434,14 +433,6 @@
       -webkit-backdrop-filter: blur(10px);
     }
      
-     /* Video Loading Optimizations */
-     .video-loading {
-       transition: opacity 1s ease-in-out;
-     }
-     
-     .hero-poster {
-       transition: opacity 1s ease-in-out;
-     }
      
      /* Lazy loading for images */
      img.lazy {
@@ -453,16 +444,18 @@
        opacity: 1;
      }
      
-     /* Scroll fade-in animations for section titles */
+     /* Scroll fade-in animations for section titles - Optimized */
      .scroll-fade-in-item {
        opacity: 0;
-       transform: translateY(30px);
-       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+       transform: translateY(20px);
+       transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+       will-change: opacity, transform;
      }
      
      .scroll-fade-in-item.visible {
        opacity: 1;
        transform: translateY(0);
+       will-change: auto;
      }
      
      /* Staggered animation delays for items within the same container */
@@ -563,18 +556,20 @@
        border-radius: 2rem;
        overflow: hidden;
        cursor: pointer;
-       transition: transform 0.4s ease, box-shadow 0.4s ease;
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
        background: linear-gradient(135deg, #417580 0%, #2d5561 100%);
        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-       /* GPU acceleration */
-       will-change: transform;
-       transform: translateZ(0);
        backface-visibility: hidden;
      }
      
      .featured-project:hover {
-       transform: translate3d(0, -8px, 0);
-       box-shadow: 0 25px 50px -12px rgba(65, 117, 128, 0.3);
+       will-change: transform;
+       transform: translateY(-6px);
+       box-shadow: 0 20px 40px -12px rgba(65, 117, 128, 0.25);
+     }
+     
+     .featured-project:not(:hover) {
+       will-change: auto;
      }
      
      .featured-project > div {
@@ -587,14 +582,13 @@
        border-radius: 1.5rem;
        overflow: hidden;
        cursor: pointer;
-       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
        border: 1px solid #e5e7eb;
        opacity: 0;
-       transform: translate3d(0, 30px, 0);
-       animation: fadeInUp 0.6s ease forwards;
+       transform: translateY(20px);
+       animation: fadeInUp 0.5s ease forwards;
        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-       /* GPU acceleration for smooth animations */
-       will-change: transform, opacity;
+       /* Only use will-change on hover to avoid creating composite layers for all cards */
        backface-visibility: hidden;
      }
      
@@ -609,9 +603,14 @@
      }
      
      .modern-project-card:hover {
-       transform: translate3d(0, -8px, 0);
-       box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+       will-change: transform;
+       transform: translateY(-6px);
+       box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.12);
        border-color: #417580;
+     }
+     
+     .modern-project-card:not(:hover) {
+       will-change: auto;
      }
      
      /* Mobile card improvements for better contrast */
@@ -659,6 +658,39 @@
        to {
          opacity: 1;
          transform: translateY(0);
+       }
+     }
+     
+     /* Optimize animations for scroll performance */
+     .modern-project-card {
+       contain: layout style paint;
+     }
+     
+     /* Remove will-change after animation completes */
+     .modern-project-card.visible {
+       will-change: auto;
+     }
+     
+     @media (prefers-reduced-motion: reduce) {
+       .modern-project-card,
+       .featured-project,
+       .scroll-fade-in-item {
+         animation: none;
+         transition: none;
+       }
+     }
+     
+     /* Optimize animations for scroll performance */
+     .modern-project-card {
+       contain: layout style paint;
+     }
+     
+     @media (prefers-reduced-motion: reduce) {
+       .modern-project-card,
+       .featured-project,
+       .scroll-fade-in-item {
+         animation: none;
+         transition: none;
        }
      }
      
@@ -942,56 +974,28 @@
   </nav>
  
   <!-- HERO SECTION -->
-  <section id="banner" class="relative h-[92vh] overflow-hidden">
-    <!-- Optimized Video Background with Loading States -->
-    <div class="absolute inset-0 w-full h-full">
-      <!-- Preload Image for Instant Display -->
-      <div id="hero-poster" class="absolute inset-0 w-full h-full bg-gradient-to-br from-slate-900 via-primary-dark to-primary">
-        <img src="images/assets/heroframe.png" alt="Drone Services Background" 
-             class="w-full h-full object-cover opacity-100"
-             loading="eager"
-             fetchpriority="high"
-             decoding="async"
-             onerror="this.style.display='none'">
-            </div>
-            
-      <!-- Optimized Video - Load after page is interactive -->
+  <section id="banner" class="relative h-[92vh] overflow-hidden bg-gradient-to-br from-slate-900 via-primary-dark to-primary">
       <video 
         autoplay 
         muted 
         loop 
         playsinline
-        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
-        id="hero-video"
-        preload="none"
-        poster="images/assets/heroframe.png"
+      class="absolute inset-0 w-full h-full object-cover"
       >
-        <!-- Multiple formats for better compatibility and performance -->
-        <source src="videos/musso.webm" type="video/webm">
         <source src="videos/musso.mp4" type="video/mp4">
-        <!-- Fallback for browsers that don't support video -->
-        <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-primary-dark to-primary"></div>
       </video>
-    </div>
    
-    <!-- Dark Overlay for Text Readability -->
     <div class="absolute inset-0 bg-black/40"></div>
-    
-    <!-- Gradient Overlay for Better Text Contrast -->
     <div class="absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-black/50"></div>
    
-    <!-- Hero Content Container -->
     <div class="relative z-10 h-full flex flex-col justify-center">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white py-8 sm:py-12 pt-20 sm:pt-32">
-        <div class="max-w-6xl mx-auto space-y-4 sm:space-y-6 md:space-y-8 fade-in-up">
-        
-        <!-- Main Headline -->
+        <div class="max-w-6xl mx-auto space-y-4 sm:space-y-6 md:space-y-8">
           <div class="space-y-3 sm:space-y-4 md:space-y-6">
             <div class="flex justify-center">
               <img src="images/branding/MsOnsite LogoSpacing.png" 
                    alt="M&S Onsite Drone Services" 
                    class="h-16 sm:h-20 md:h-24 lg:h-24 xl:h-28 drop-shadow-2xl"
-                   style="filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));"
                    loading="eager"
                    fetchpriority="high"
                    decoding="async">
@@ -1001,13 +1005,11 @@
           </p>
         </div>
         
-        <!-- Badge -->
           <div class="inline-flex items-center space-x-2 sm:space-x-3 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-medium drop-shadow-lg">
             <div class="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-pulse"></div>
           <span>Professionele Drone Services</span>
         </div>
         
-        <!-- Description -->
           <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 leading-relaxed max-w-4xl mx-auto drop-shadow-lg px-4">
           Professionele drone-opmetingen, werfopvolging en inspectiediensten in Benelux.
             <span class="block mt-2 sm:mt-3 text-white font-medium drop-shadow-md">
@@ -1019,7 +1021,6 @@
             </span>
         </p>
         
-        <!-- CTA Buttons -->
           <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center pt-4 sm:pt-6 md:pt-8">
           <a href="#about"
                class="group bg-white/95 text-primary hover:bg-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg md:text-xl shadow-2xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2 sm:space-x-3 backdrop-blur-sm">
@@ -1061,17 +1062,12 @@
   </section>
  
   <!-- PROJECTEN SECTION -->
-  <section class="py-16 md:py-24 relative overflow-hidden" id="projecten">
-    <!-- Background Image - Lazy loaded -->
-    <div id="projects-bg-image" class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-0 transition-opacity duration-1000"></div>
+  <section class="py-16 md:py-24 relative overflow-hidden" id="projecten" style="contain: layout style paint;">
+    <!-- Background Image - Lazy loaded - Optimized -->
+    <div id="projects-bg-image" class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-0" style="transition: opacity 0.5s ease; will-change: opacity;"></div>
     
-    <!-- Overlay for readability -->
-    <div class="absolute inset-0 bg-white/85 backdrop-blur-[2px]"></div>
-    
-    <!-- Background Pattern (subtle) -->
-    <div class="absolute inset-0 opacity-[0.03]">
-      <div class="absolute inset-0" style="background-image: radial-gradient(circle, #417580 1px, transparent 1px); background-size: 40px 40px;"></div>
-    </div>
+    <!-- Overlay for readability - Removed backdrop-blur for performance -->
+    <div class="absolute inset-0 bg-white/90"></div>
    
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
      
@@ -1115,10 +1111,10 @@
         </div>
         <!-- Mobile Scroll Buttons -->
         <div class="flex justify-center items-center gap-4 mt-4">
-          <button id="mobile-scroll-left-btn" class="p-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-sm" style="opacity: 0.5; cursor: not-allowed;" disabled>
+          <button id="mobile-scroll-left-btn" class="p-2 rounded-full bg-white/95 border border-gray-200 text-primary hover:bg-primary hover:text-white transition-colors duration-200 shadow-sm" style="opacity: 0.5; cursor: not-allowed;" disabled>
             <i class="fas fa-chevron-left text-sm"></i>
             </button>
-          <button id="mobile-scroll-right-btn" class="p-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 text-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-sm">
+          <button id="mobile-scroll-right-btn" class="p-2 rounded-full bg-white/95 border border-gray-200 text-primary hover:bg-primary hover:text-white transition-colors duration-200 shadow-sm">
             <i class="fas fa-chevron-right text-sm"></i>
             </button>
           </div>

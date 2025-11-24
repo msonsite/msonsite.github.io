@@ -1,65 +1,3 @@
-// Video Loading Optimization
-document.addEventListener('DOMContentLoaded', function() {
-  const video = document.getElementById('hero-video');
-  const poster = document.getElementById('hero-poster');
-   
-   // Preload critical resources
-   function preloadCriticalResources() {
-// Hero poster is already loaded with fetchpriority="high" in HTML
-// Load video only after page is fully interactive to improve LCP
-if (video) {
-  // Wait for page to be interactive before loading video
-  if (document.readyState === 'complete') {
-    // Page already loaded, wait a bit more for other resources
-    setTimeout(() => {
-  video.load();
-    }, 2000);
-  } else {
-    // Wait for page to be fully loaded
-    window.addEventListener('load', function() {
-      setTimeout(() => {
-        video.load();
-      }, 2000);
-    }, { once: true });
-  }
-  
-  // Show video as soon as it can play (not wait for full buffer)
-  video.addEventListener('canplay', function() {
-    // Hide poster and show video smoothly
-    if (poster) poster.style.opacity = '0';
-    video.style.opacity = '1';
-    
-    setTimeout(() => {
-      if (poster) poster.style.display = 'none';
-    }, 1000);
-  }, { once: true });
-  
-  // Fallback: if canplay doesn't fire quickly, use loadeddata
-  video.addEventListener('loadeddata', function() {
-    if (video.style.opacity === '0' || video.style.opacity === '') {
-      if (poster) poster.style.opacity = '0';
-      video.style.opacity = '1';
-      
-      setTimeout(() => {
-        if (poster) poster.style.display = 'none';
-      }, 1000);
-    }
-  }, { once: true });
-  
-  video.addEventListener('error', function() {
-    // Fallback to poster image if video fails
-    if (poster) poster.style.opacity = '1';
-  }, { once: true });
-}
-   }
-   
-   // Start preloading immediately - don't wait for DOMContentLoaded
-   // Video element might already exist
-   if (document.readyState === 'loading') {
-   preloadCriticalResources();
-   } else {
-     preloadCriticalResources();
-   }
    
    // Intersection Observer for lazy loading videos in project cards
    // Only for cards that are not immediately visible
@@ -126,22 +64,25 @@ if (video) {
      }, 0); // Load immediately, no delay
    }
    
-   // Scroll fade-in animations for section titles
+   // Scroll fade-in animations for section titles - Optimized with throttling
    if ('IntersectionObserver' in window) {
      const scrollFadeObserver = new IntersectionObserver((entries, observer) => {
        entries.forEach(entry => {
          if (entry.isIntersecting) {
            const container = entry.target;
            const items = container.querySelectorAll('.scroll-fade-in-item');
-           items.forEach(item => {
-             item.classList.add('visible');
+           // Use requestAnimationFrame to batch DOM updates
+           requestAnimationFrame(() => {
+             items.forEach(item => {
+               item.classList.add('visible');
+             });
            });
            observer.unobserve(container);
          }
        });
      }, {
-       rootMargin: '0px 0px -100px 0px', // Trigger when element is 100px from bottom of viewport
-       threshold: 0.1
+       rootMargin: '50px', // Reduced from -100px to trigger earlier but less aggressively
+       threshold: 0.01 // Lower threshold for better performance
      });
      
      // Observe all section titles with scroll-fade-in class
@@ -149,7 +90,6 @@ if (video) {
        scrollFadeObserver.observe(section);
      });
    }
- });
  
 // Mobile Menu Toggle
 document.getElementById('mobile-menu-btn').addEventListener('click', function() {
@@ -677,7 +617,7 @@ function openProjectModal(projectId) {
         <div class="flex-1 min-w-0">
           <div class="flex items-center gap-3 mb-3 flex-wrap">
             <span class="category-tag flex-shrink-0">${getProjectCategories(project)[0] || 'Project'}</span>
-          </div>
+       </div>
           <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">${project.title}</h2>
           <div class="flex items-center gap-2 text-gray-600">
             <span class="text-2xl">${project.flag}</span>
@@ -816,7 +756,7 @@ function closeProjectModal() {
       delete document.body.dataset.modalScrollY;
       
       // Remove modal from DOM
-      modal.remove();
+    modal.remove();
       
       // Restore scroll position synchronously - no delay, no animation
       // Set scroll position directly on both elements to prevent any jump
@@ -861,43 +801,6 @@ function closeImageLightbox() {
   }
 }
 
-// Auto-generate video poster from first frame
-function generateVideoPoster() {
-  const video = document.getElementById('hero-video');
-  if (!video) return;
-
-  // Wait for video to load
-  video.addEventListener('loadeddata', function() {
-    // Create canvas to capture first frame
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    
-    // Set canvas dimensions to match video
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    
-    // Seek to first frame (0 seconds)
-    video.currentTime = 0;
-    
-    // Wait for seek to complete, then capture frame
-    video.addEventListener('seeked', function() {
- // Draw video frame to canvas
- ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
- 
- // Convert canvas to data URL (base64 image)
- const dataURL = canvas.toDataURL('image/jpeg', 0.8);
- 
- // Set as poster image
- video.poster = dataURL;
- 
- // Clean up event listeners
- video.removeEventListener('seeked', arguments.callee);
-    }, { once: true });
-  }, { once: true });
-}
-
- // Initialize video poster generation
- generateVideoPoster();
 
  // Contact Info Toggle Function - Removed as cards are now always visible
 
@@ -987,7 +890,7 @@ partnersTrack.innerHTML = newPartnerHTML + newPartnerHTML;
 // Initialize the carousel
 initInfiniteCarousel();
 
-// Lazy load projects section background image
+// Lazy load projects section background image - Optimized
 function initProjectsBackground() {
   const projectsSection = document.getElementById('projecten');
   const bgImageDiv = document.getElementById('projects-bg-image');
@@ -996,18 +899,22 @@ function initProjectsBackground() {
   
   // Create image element for preloading
   const img = new Image();
+  let loaded = false;
   
   // Intersection Observer to load when section is near viewport
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && !loaded) {
+        loaded = true;
         // Start loading the image
         img.src = 'images/assets/projectsectionbackground.png';
         
         // Once loaded, apply to background and fade in
         img.onload = function() {
-          bgImageDiv.style.backgroundImage = `url('${img.src}')`;
-          bgImageDiv.style.opacity = '1';
+          requestAnimationFrame(() => {
+            bgImageDiv.style.backgroundImage = `url('${img.src}')`;
+            bgImageDiv.style.opacity = '1';
+          });
         };
         
         // Stop observing after loading starts
@@ -1015,7 +922,8 @@ function initProjectsBackground() {
       }
     });
   }, {
-    rootMargin: '200px' // Start loading 200px before section enters viewport
+    rootMargin: '100px', // Reduced from 200px
+    threshold: 0.01
   });
   
   observer.observe(projectsSection);
