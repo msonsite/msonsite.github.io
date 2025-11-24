@@ -866,7 +866,7 @@ function initInfiniteCarousel() {
 <div class="partner-item mx-3 sm:mx-4 md:mx-6">
   <a href="${partner.url}" target="_blank" rel="noopener noreferrer" 
      class="block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 sm:p-6 transform hover:scale-105 border border-gray-100 w-48 h-24 sm:w-56 sm:h-28 md:w-64 md:h-32 flex items-center justify-center cursor-pointer">
-    <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain grayscale hover:grayscale-0 transition duration-500" loading="lazy" decoding="async" width="200" height="100">
+    <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain transition duration-500" loading="lazy" decoding="async" width="200" height="100">
   </a>
   </div>
 `).join('');

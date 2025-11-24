@@ -277,7 +277,9 @@
     .partners-container {
       overflow: hidden;
       position: relative;
-      width: 100%;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
       /* Optimize for scrolling performance */
       will-change: contents;
       contain: layout style paint;
@@ -1039,8 +1041,16 @@
   </section>
  
   <!-- DIENSTEN SECTION -->
-  <section class="py-12 md:py-16 bg-gradient-to-b from-white via-gray-50 to-white" id="about">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-12 md:py-16 relative overflow-hidden" id="about">
+    <!-- Diagonal Stripe Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-primary/8"></div>
+    <div class="absolute inset-0 opacity-40" style="background: repeating-linear-gradient(135deg, transparent, transparent 100px, rgba(65, 117, 128, 0.08) 100px, rgba(65, 117, 128, 0.08) 200px);"></div>
+    
+    <!-- Corner Accents -->
+    <div class="absolute top-0 left-0 w-64 h-64 bg-primary/15 rounded-br-full blur-2xl"></div>
+    <div class="absolute bottom-0 right-0 w-64 h-64 bg-primary/12 rounded-tl-full blur-2xl"></div>
+    
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
      
       <!-- Section Title -->
       <div class="text-center mb-8 md:mb-12 max-w-3xl mx-auto scroll-fade-in">
@@ -1130,8 +1140,19 @@
   </section>
  
   <!-- SAMENWERKINGEN SECTION -->
-  <section class="py-20 md:py-32 bg-gradient-to-b from-white via-primary/5 to-white" id="customers">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-20 md:py-32 relative overflow-hidden" id="customers">
+    <!-- Wave Pattern Background -->
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/10 via-white to-primary/8"></div>
+    <div class="absolute inset-0 opacity-30" style="background-image: 
+      radial-gradient(circle at 20% 50%, rgba(65, 117, 128, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(65, 117, 128, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(65, 117, 128, 0.1) 0%, transparent 50%);"></div>
+    
+    <!-- Side Accents -->
+    <div class="absolute top-1/4 left-0 w-32 h-96 bg-primary/10 rounded-r-full blur-xl"></div>
+    <div class="absolute bottom-1/4 right-0 w-32 h-96 bg-primary/10 rounded-l-full blur-xl"></div>
+    
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
      
       <!-- Section Title -->
       <div class="text-center mb-16 max-w-3xl mx-auto scroll-fade-in">
