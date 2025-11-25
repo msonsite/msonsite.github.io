@@ -594,11 +594,6 @@
        backface-visibility: hidden;
      }
      
-     /* Mobile project cards - green background */
-     .mobile-project-card {
-       background: linear-gradient(135deg, #417580 0%, #2d5561 100%) !important;
-     }
-     
      .modern-project-card.visible {
        opacity: 1;
        transform: translateY(0);
@@ -615,44 +610,23 @@
        will-change: auto;
      }
      
-     /* Mobile card improvements for better contrast */
+     /* Mobile card improvements - matching desktop design */
      @media (max-width: 768px) {
-       .modern-project-card.mobile-project-card,
        #projects-mobile-grid .modern-project-card {
-         background: linear-gradient(135deg, #417580 0%, #2d5561 100%) !important;
-         box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 4px 10px -2px rgba(0, 0, 0, 0.15) !important;
-         border: 2px solid rgba(255, 255, 255, 0.1) !important;
+         background: white;
+         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+         border: 1px solid #e5e7eb;
+       }
+       
+       #projects-mobile-grid .modern-project-card:hover {
+         transform: translateY(-4px);
+         box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.12);
+         border-color: #417580;
        }
        
        .modern-project-card .project-card-image {
          border-top-left-radius: 1.5rem;
          border-top-right-radius: 1.5rem;
-       }
-       
-       /* Text colors for mobile cards with dark background */
-       #projects-mobile-grid .modern-project-card h3,
-       #projects-mobile-grid .modern-project-card .text-gray-900,
-       .mobile-project-card h3,
-       .mobile-project-card .text-gray-900 {
-         color: white !important;
-       }
-       
-       #projects-mobile-grid .modern-project-card .text-gray-600,
-       #projects-mobile-grid .modern-project-card .text-gray-500,
-       .mobile-project-card .text-gray-600,
-       .mobile-project-card .text-gray-500 {
-         color: rgba(255, 255, 255, 0.8) !important;
-       }
-       
-       #projects-mobile-grid .modern-project-card .border-gray-100,
-       .mobile-project-card .border-gray-100 {
-         border-color: rgba(255, 255, 255, 0.2) !important;
-       }
-       
-       #projects-mobile-grid .modern-project-card .category-tag,
-       .mobile-project-card .category-tag {
-         background: rgba(255, 255, 255, 0.2) !important;
-         color: white !important;
        }
      }
      

@@ -483,58 +483,57 @@ function renderProjects() {
   }
 }
 
-// Create mobile project card for horizontal scroller - Completely redesigned
+// Create mobile project card for horizontal scroller - Matching desktop design
 function createMobileProjectCard(project, index) {
   const imageSrc = project.previewImage || project.images[project.previewImageIndex || 0].src;
   
   return `
-    <div onclick="openProjectModal(${project.id})" 
-         style="flex-shrink: 0; width: 320px; margin-right: 1rem; border-radius: 1.5rem; overflow: hidden; cursor: pointer; background: linear-gradient(135deg, #417580 0%, #2d5561 100%); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 4px 10px -2px rgba(0, 0, 0, 0.15); border: 2px solid rgba(255, 255, 255, 0.1);">
+    <div class="modern-project-card" onclick="openProjectModal(${project.id})" style="flex-shrink: 0; width: 320px; margin-right: 1rem; animation-delay: ${index * 0.1}s">
       <!-- Image -->
-      <div style="position: relative; height: 192px; overflow: hidden; background: #f3f4f6;">
+      <div class="project-card-image h-48 overflow-hidden">
         ${project.previewVideo ? `
-          <video style="width: 100%; height: 100%; object-fit: cover;" autoplay muted loop playsinline>
-         <source src="${project.previewVideo}" type="video/mp4">
-       </video>
+          <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+            <source src="${project.previewVideo}" type="video/mp4">
+          </video>
         ` : `
-          <img src="${imageSrc}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" fetchpriority="${index < 2 ? 'high' : 'auto'}">
+          <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" loading="lazy" decoding="async" width="320" height="192" fetchpriority="${index < 2 ? 'high' : 'auto'}">
         `}
-        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
         
         <!-- Badge -->
-        <div style="position: absolute; top: 1rem; right: 1rem;">
-          <span style="padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; ${project.status === 'Voltooid' ? 'background: rgba(34, 197, 94, 0.9);' : 'background: rgba(234, 179, 8, 0.9);'} color: white; backdrop-filter: blur(10px);">
-       ${project.status}
-       </span>
+        <div class="absolute top-4 right-4">
+          <span class="project-badge ${project.status === 'Voltooid' ? 'bg-green-500/90 text-white' : 'bg-yellow-500/90 text-white'}">
+            ${project.status}
+          </span>
         </div>
-       </div>
- 
-      <!-- Content -->
-      <div style="padding: 1.5rem;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-          <span style="display: inline-flex; align-items: center; padding: 0.375rem 0.75rem; border-radius: 0.5rem; font-size: 0.75rem; font-weight: 500; background: rgba(255, 255, 255, 0.2); color: white;">${getProjectCategories(project)[0] || 'Project'}</span>
-          <span style="font-size: 1.125rem; color: white;">${project.flag}</span>
-       </div>
+      </div>
     
-        <h3 style="font-size: 1.25rem; font-weight: 700; color: white; margin-bottom: 0.5rem; line-height: 1.3;">
-       ${project.title}
-     </h3>
+      <!-- Content -->
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-3">
+          <span class="category-tag">${getProjectCategories(project)[0] || 'Project'}</span>
+          <span class="text-lg">${project.flag}</span>
+        </div>
         
-        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; margin-bottom: 0.75rem; display: flex; align-items: center;">
-          <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem; color: #5a9aa8;"></i>
+        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+          ${project.title}
+        </h3>
+        
+        <p class="text-gray-500 text-sm mb-3 flex items-center">
+          <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
           ${project.location}
         </p>
         
-        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; line-height: 1.5; margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-       ${project.description}
-     </p>
+        <p class="text-gray-600 text-sm leading-relaxed line-clamp-2 mb-4">
+          ${project.description}
+        </p>
         
-        <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.2);">
-          <span style="color: #5a9aa8; font-size: 0.875rem; font-weight: 500;">Bekijk details</span>
-          <i class="fas fa-arrow-right" style="color: #5a9aa8; transition: transform 0.3s;"></i>
-     </div>
-       </div>
-     </div>
+        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+          <span class="text-primary text-sm font-medium">Bekijk details</span>
+          <i class="fas fa-arrow-right text-primary group-hover:translate-x-1 transition-transform"></i>
+        </div>
+      </div>
+    </div>
   `;
 }
 
