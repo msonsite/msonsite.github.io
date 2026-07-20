@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacybeleid | M&S Onsite</title>
-  <meta name="description" content="Privacybeleid van M&S Onsite - Hoe wij uw persoonlijke gegevens verzamelen, gebruiken en beschermen volgens de Belgische GDPR-wetgeving.">
+  <meta name="description" content="Privacybeleid van M&S Onsite. Hoe wij uw persoonlijke gegevens verzamelen, gebruiken en beschermen volgens de Belgische GDPR-wetgeving.">
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -401,7 +401,7 @@
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div class="text-center">
         <p class="text-gray-400 text-sm mb-4">
-          &copy; 2025 M&S Onsite. Alle rechten voorbehouden.
+          &copy; <span id="copyright-year"></span> M&S Onsite. Alle rechten voorbehouden.
         </p>
         <div class="flex flex-wrap justify-center gap-4 text-xs">
           <a href="cookie-policy.html" class="text-gray-400 hover:text-primary-light transition-colors">Cookiebeleid</a>
@@ -413,6 +413,10 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>

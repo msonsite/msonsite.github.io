@@ -128,92 +128,26 @@ window.addEventListener('scroll', function() {
 });
 }, { passive: true }); // Use passive listener for better scroll performance
  
-// Services Data
-const services = [
-  {
-    title: "Inspecties",
-    subtitle: "sneller, veiliger, slimmer",
-    description: "Inspecties op moeilijk bereikbare plaatsen, van gebouwen tot industriële installaties. Betrouwbare gegevens zonder risico voor personeel.",
-    icon: "fa-search"
-  },
-  {
-    title: "Monitoring",
-    subtitle: "i.k.v. waterbeheersing",
-    description: "Preventieve inspecties en continue monitoring. Drones maken waterbeheersing slimmer, veiliger en efficiënter.",
-    icon: "fa-water"
-  },
-  {
-    title: "Opmetingen",
-    subtitle: "met fotogrammetrie",
-    description: "Breng uw project snel en nauwkeurig in kaart. Inclusief as-built plannen, oppervlaktebepalingen en volumeberekeningen. Bespaar tijd én kosten.",
-    icon: "fa-ruler-combined"
-  },
-  {
-    title: "Plaatsbeschrijving",
-    subtitle: "gedocumenteerd",
-    description: "Gedetailleerde plaatsbeschrijvingen met dronebeelden voor een volledig overzicht van de omgeving, ideaal om de situatie voor en na een project vast te leggen.",
-    icon: "fa-file-alt"
-  },
-  {
-    title: "Visuals",
-    subtitle: "unieke beelden",
-    description: "Leg uw project vast met professionele luchtfoto's en video's die uw visie tot leven brengen.",
-    icon: "fa-camera"
-  },
-  {
-    title: "Werfopvolging",
-    subtitle: "vanuit de lucht",
-    description: "Dronebeelden geven een duidelijk overzicht van uw werf, met overzichtelijke kaarten, 3D-modellen en rapportages.",
-    icon: "fa-hard-hat"
-  },
-];
- 
-// Render Services with Clean Design and Subtle Background Numbers
-const servicesContainer = document.getElementById('services-container');
+// Services section is now static HTML in index.html - no JavaScript needed for rendering
+// Simple fade-in animation for services section header - Identical to "ons-aanbod"
+if ('IntersectionObserver' in window) {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
 
-const serviceGrid = `
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-    ${services.map((service, index) => {
-      const serviceNumber = String(index + 1).padStart(2, '0');
-      
-      return `
-        <div class="group relative bg-white rounded-2xl p-6 md:p-7 border-2 border-primary/50 shadow-xl cursor-pointer scroll-fade-in overflow-hidden" style="animation-delay: ${index * 50}ms">
-          <!-- Subtle Background Number -->
-          <div class="absolute top-0 right-0 text-[140px] md:text-[160px] font-black text-primary/[0.03] leading-none -mt-6 -mr-4 pointer-events-none">
-            ${serviceNumber}
- </div>
-          
-          <!-- Icon -->
-          <div class="relative z-10 mb-5">
-            <div class="w-14 h-14 bg-gradient-to-br from-primary to-primary-dark rounded-xl flex items-center justify-center shadow-xl scale-110">
-              <i class="fas ${service.icon} text-2xl text-white"></i>
-            </div>
- </div>
- 
-          <!-- Content -->
- <div class="relative z-10">
-            <h3 class="text-xl md:text-2xl font-bold text-primary mb-2 leading-relaxed">
-     ${service.title}
-   </h3>
-   ${service.subtitle ? `
-              <p class="text-sm text-primary font-semibold uppercase tracking-wide mb-3">
-       ${service.subtitle}
-     </p>
-   ` : ''}
-            <p class="text-gray-700 text-xs md:text-sm leading-relaxed">
-     ${service.description}
-   </p>
- </div>
- 
-          <!-- Background -->
-          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary-light/5 pointer-events-none"></div>
-    </div>
-  `;
-    }).join('')}
-  </div>
-`;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
 
-servicesContainer.innerHTML = serviceGrid;
+  document.querySelectorAll('.fade-in').forEach(el => {
+    observer.observe(el);
+  });
+}
  
 // Projects data is loaded from js/projects.js
 // The projects array is now defined in a separate file for easier maintenance
@@ -248,13 +182,13 @@ function renderFilters() {
   
   const categories = getUniqueCategories();
   const filtersHTML = categories.map(category => `
-    <button class="filter-btn px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-white text-primary border-2 border-gray-200 hover:border-primary hover:shadow-lg transform hover:scale-105" data-filter="${category}">
+    <button class="filter-btn px-5 py-2 rounded-lg text-sm font-medium transition-colors" data-filter="${category}">
       ${category}
     </button>
   `).join('');
   
   projectFiltersContainer.innerHTML = `
-    <button class="filter-btn active px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-primary text-white shadow-lg hover:shadow-xl transform hover:scale-105" data-filter="all">
+    <button class="filter-btn active px-5 py-2 rounded-lg text-sm font-medium transition-colors" data-filter="all">
       Alle Projecten
     </button>
     ${filtersHTML}
@@ -303,10 +237,10 @@ function createFeaturedProject(project) {
             <span class="text-2xl">${project.flag}</span>
             <span class="text-sm font-medium">${project.location}</span>
           </div>
-          <h3 class="text-3xl md:text-4xl font-bold mb-4 group-hover:text-primary-light transition-colors">
+          <h3 class="text-xl md:text-2xl font-bold mb-4 group-hover:text-primary-light transition-colors">
             ${project.title}
           </h3>
-          <p class="text-white/90 text-lg leading-relaxed mb-6 line-clamp-3">
+          <p class="text-white/90 text-base md:text-lg leading-relaxed mb-6 line-clamp-3">
             ${project.description}
           </p>
           <div class="flex flex-wrap gap-2 mb-6">
@@ -366,7 +300,7 @@ function createModernProjectCard(project, index) {
           ${project.location}
         </p>
         
-        <p class="text-gray-600 text-sm leading-relaxed line-clamp-2 mb-4">
+        <p class="text-gray-600 text-sm md:text-base leading-relaxed line-clamp-2 mb-4">
        ${project.description}
      </p>
         
@@ -380,6 +314,8 @@ function createModernProjectCard(project, index) {
 }
 
 // Render projects based on filter
+let projectsHasRendered = false;
+
 function renderProjects() {
   if (!projectsGrid || !featuredProjectContainer) return;
   
@@ -389,56 +325,131 @@ function renderProjects() {
         const projectCategories = getProjectCategories(p);
         return projectCategories.includes(currentFilter);
       });
-  
-  if (filteredProjects.length === 0) {
-    projectsGrid.innerHTML = '';
-    if (projectsMobileGrid) projectsMobileGrid.innerHTML = '';
+
+  const showFeatured = currentFilter === 'all' && filteredProjects.length > 0 && window.innerWidth >= 768;
+  const hasFeaturedContent = featuredProjectContainer.innerHTML.trim().length > 0;
+
+  const applyGridContent = () => {
+    if (filteredProjects.length === 0) {
+      projectsGrid.innerHTML = '';
+      if (projectsMobileGrid) projectsMobileGrid.innerHTML = '';
+      if (projectsEmpty) projectsEmpty.classList.remove('hidden');
+      projectsGrid.classList.remove('is-filtering');
+      if (projectsMobileGrid) projectsMobileGrid.classList.remove('is-filtering');
+      return;
+    }
+
+    if (projectsEmpty) projectsEmpty.classList.add('hidden');
+
+    if (showFeatured) {
+      const gridProjects = filteredProjects.slice(1);
+      projectsGrid.innerHTML = gridProjects.map((project, index) =>
+        createModernProjectCard(project, index)
+      ).join('');
+    } else {
+      projectsGrid.innerHTML = filteredProjects.map((project, index) =>
+        createModernProjectCard(project, index)
+      ).join('');
+    }
+
+    if (projectsMobileGrid) {
+      projectsMobileGrid.innerHTML = filteredProjects.map((project, index) =>
+        createMobileProjectCard(project, index)
+      ).join('');
+    }
+
+    setTimeout(() => {
+      document.querySelectorAll('.modern-project-card').forEach(card => {
+        card.classList.add('visible');
+      });
+      projectsGrid.classList.remove('is-filtering');
+      if (projectsMobileGrid) projectsMobileGrid.classList.remove('is-filtering');
+    }, 80);
+  };
+
+  const finishFeaturedCollapse = () => {
     featuredProjectContainer.innerHTML = '';
-    if (projectsEmpty) projectsEmpty.classList.remove('hidden');
-    return;
-  }
-  
-  if (projectsEmpty) projectsEmpty.classList.add('hidden');
-  
-  // Featured project (first one) - Only show on "Alle Projecten" filter, Desktop only
-  if (currentFilter === 'all' && filteredProjects.length > 0) {
-    const featured = filteredProjects[0];
-    if (featuredProjectContainer) {
-      featuredProjectContainer.innerHTML = createFeaturedProject(featured);
+    featuredProjectContainer.classList.add('is-collapsed');
+    featuredProjectContainer.style.maxHeight = '';
+    featuredProjectContainer.style.opacity = '';
+  };
+
+  const expandFeatured = (html, animate) => {
+    featuredProjectContainer.classList.remove('is-collapsed');
+    featuredProjectContainer.innerHTML = html;
+
+    if (!animate) {
+      featuredProjectContainer.style.maxHeight = '';
+      featuredProjectContainer.style.opacity = '';
+      return;
     }
-    
-    // Grid projects (rest) - Desktop
-    const gridProjects = filteredProjects.slice(1);
-    if (projectsGrid) {
-      projectsGrid.innerHTML = gridProjects.map((project, index) => 
-        createModernProjectCard(project, index)
-      ).join('');
-    }
-  } else {
-    // No featured project for category filters - show all in grid
-    if (featuredProjectContainer) {
-      featuredProjectContainer.innerHTML = '';
-    }
-    if (projectsGrid) {
-      projectsGrid.innerHTML = filteredProjects.map((project, index) => 
-        createModernProjectCard(project, index)
-      ).join('');
-    }
-  }
-  
-  // Mobile horizontal scroller - All projects (always show all, no featured on mobile)
-  if (projectsMobileGrid) {
-    projectsMobileGrid.innerHTML = filteredProjects.map((project, index) => 
-      createMobileProjectCard(project, index)
-    ).join('');
-  }
-  
-  // Animate cards
-  setTimeout(() => {
-    document.querySelectorAll('.modern-project-card').forEach(card => {
-      card.classList.add('visible');
+
+    featuredProjectContainer.style.maxHeight = '0px';
+    featuredProjectContainer.style.opacity = '0';
+
+    requestAnimationFrame(() => {
+      featuredProjectContainer.style.maxHeight = featuredProjectContainer.scrollHeight + 'px';
+      featuredProjectContainer.style.opacity = '1';
     });
-  }, 100);
+
+    const onEnd = (e) => {
+      if (e.propertyName !== 'max-height') return;
+      featuredProjectContainer.style.maxHeight = '';
+      featuredProjectContainer.removeEventListener('transitionend', onEnd);
+    };
+    featuredProjectContainer.addEventListener('transitionend', onEnd);
+  };
+
+  const collapseFeatured = (animate) => {
+    if (!hasFeaturedContent || featuredProjectContainer.classList.contains('is-collapsed')) {
+      finishFeaturedCollapse();
+      return;
+    }
+
+    if (!animate) {
+      finishFeaturedCollapse();
+      return;
+    }
+
+    featuredProjectContainer.style.maxHeight = featuredProjectContainer.scrollHeight + 'px';
+    featuredProjectContainer.style.opacity = '1';
+
+    requestAnimationFrame(() => {
+      featuredProjectContainer.classList.add('is-collapsed');
+      featuredProjectContainer.style.maxHeight = '0px';
+      featuredProjectContainer.style.opacity = '0';
+    });
+
+    let finished = false;
+    const complete = () => {
+      if (finished) return;
+      finished = true;
+      featuredProjectContainer.removeEventListener('transitionend', onEnd);
+      finishFeaturedCollapse();
+    };
+    const onEnd = (e) => {
+      if (e.propertyName !== 'max-height') return;
+      complete();
+    };
+    featuredProjectContainer.addEventListener('transitionend', onEnd);
+    setTimeout(complete, 500);
+  };
+
+  const animate = projectsHasRendered;
+  projectsHasRendered = true;
+
+  if (animate) {
+    projectsGrid.classList.add('is-filtering');
+    if (projectsMobileGrid) projectsMobileGrid.classList.add('is-filtering');
+  }
+
+  if (showFeatured) {
+    expandFeatured(createFeaturedProject(filteredProjects[0]), animate && !hasFeaturedContent);
+  } else {
+    collapseFeatured(animate);
+  }
+
+  applyGridContent();
   
   // Optimize image loading on mobile with Intersection Observer
   if (window.innerWidth <= 768 && 'IntersectionObserver' in window) {
@@ -446,15 +457,12 @@ function renderProjects() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const img = entry.target;
-          // Force load if still lazy
           if (img.loading === 'lazy' && img.complete === false) {
             img.loading = 'eager';
-            // Trigger reload
             const src = img.src;
             img.src = '';
             img.src = src;
           }
-          // Preload next 2-3 images in the scroll direction
           const allImages = Array.from(document.querySelectorAll('.modern-project-card img, [onclick*="openProjectModal"] img'));
           const currentIndex = allImages.indexOf(img);
           const nextImages = allImages.slice(currentIndex + 1, currentIndex + 4);
@@ -468,11 +476,10 @@ function renderProjects() {
         }
       });
     }, {
-      rootMargin: '400px', // Load images 400px before they come into view on mobile for faster loading
+      rootMargin: '400px',
       threshold: 0.01
     });
     
-    // Observe all project images on mobile
     setTimeout(() => {
       document.querySelectorAll('.modern-project-card img, [onclick*="openProjectModal"] img').forEach(img => {
         if (img.loading === 'lazy') {
@@ -524,7 +531,7 @@ function createMobileProjectCard(project, index) {
           ${project.location}
         </p>
         
-        <p class="text-gray-600 text-sm leading-relaxed line-clamp-2 mb-4">
+        <p class="text-gray-600 text-sm md:text-base leading-relaxed line-clamp-2 mb-4">
           ${project.description}
         </p>
         
@@ -669,11 +676,11 @@ function openProjectModal(projectId) {
           <div class="flex items-center gap-3 mb-3 flex-wrap">
             <span class="category-tag flex-shrink-0">${getProjectCategories(project)[0] || 'Project'}</span>
        </div>
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">${project.title}</h2>
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">${project.title}</h2>
           <div class="flex items-center gap-2 text-gray-600">
-            <span class="text-2xl">${project.flag}</span>
-            <span class="text-base font-medium">${project.location}</span>
-     </div>
+            <span class="text-xl">${project.flag}</span>
+            <span class="text-sm md:text-base font-medium">${project.location}</span>
+          </div>
         </div>
         <button onclick="closeProjectModal()" class="ml-6 p-2 rounded-full hover:bg-gray-100 text-gray-500 hover:text-gray-700 transition-colors" aria-label="Sluiten">
           <i class="fas fa-times text-xl"></i>
@@ -701,7 +708,7 @@ function openProjectModal(projectId) {
                       <i class="fas fa-check text-primary text-sm"></i>
                     </div>
                   </div>
-                  <p class="ml-4 text-base md:text-lg text-gray-700 leading-relaxed">${task}</p>
+                  <p class="ml-4 text-base text-gray-700 leading-relaxed">${task}</p>
                 </div>
        `).join('')}
        </div>
@@ -922,16 +929,15 @@ function initInfiniteCarousel() {
    });
  }
  
- // Function to create partner HTML with clickable links
+ // Function to create partner HTML (trust logos, not linked)
  function createPartnerHTML() {
    return partners.map((partner, index) => `
-<div class="partner-item mx-3 sm:mx-4 md:mx-6">
-  <a href="${partner.url}" target="_blank" rel="noopener noreferrer" 
-     class="block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 sm:p-6 transform hover:scale-105 border border-gray-100 w-48 h-24 sm:w-56 sm:h-28 md:w-64 md:h-32 flex items-center justify-center cursor-pointer">
-    <img src="${partner.img}" alt="${partner.alt}" class="max-w-full max-h-full object-contain transition duration-500" loading="${index < 4 ? 'eager' : 'lazy'}" decoding="async" fetchpriority="${index < 2 ? 'high' : 'auto'}" width="200" height="100">
-  </a>
+<div class="partner-item">
+  <div class="partner-logo">
+    <img src="${partner.img}" alt="${partner.alt}" loading="${index < 4 ? 'eager' : 'lazy'}" decoding="async" fetchpriority="${index < 2 ? 'high' : 'auto'}" width="160" height="72">
   </div>
-`).join('');
+</div>
+  `).join('');
  }
  
  // Initial render
@@ -998,6 +1004,12 @@ initProjectsBackground();
  
 // WhatsApp Form Submit - Removed as form was replaced with professional info
 
+// Auto-update copyright year
+const copyrightYearEl = document.getElementById('copyright-year');
+if (copyrightYearEl) {
+  copyrightYearEl.textContent = new Date().getFullYear();
+}
+
 // Expose functions for onclick handlers
 window.openProjectModal = openProjectModal;
 window.closeProjectModal = closeProjectModal;
@@ -1007,4 +1019,3 @@ window.showCertificatePreview = showCertificatePreview;
 window.closeCertificateModal = closeCertificateModal;
 window.openCertificateLightbox = openCertificateLightbox;
 window.closeCertificateLightbox = closeCertificateLightbox;
-window.handlePartnerClick = handlePartnerClick;

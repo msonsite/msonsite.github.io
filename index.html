@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="nl" class="scroll-smooth">
 <!-- Website Update - Fully SEO Optimized with Tailwind CSS -->
 <head>
   <meta charset="UTF-8">
@@ -53,7 +53,7 @@
     /* Reset & Base */
     *,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
     ::before,::after{--tw-content:''}
-    html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-feature-settings:normal;font-variation-settings:normal;scroll-padding-top:80px}
+    html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-feature-settings:normal;font-variation-settings:normal;scroll-padding-top:6rem}
     body{margin:0;line-height:inherit;background-color:#f9fafb;color:#1f2937}
     
     /* Critical Tailwind Utilities for Above-the-Fold */
@@ -177,6 +177,25 @@
     .bg-primary-dark{background-color:var(--primary-dark)}
     .bg-primary-light{background-color:var(--primary-light)}
     .hover\:text-primary:hover{color:var(--primary)}
+    
+    /* Shared type scale */
+    .section-header{text-align:center;max-width:36rem;margin-left:auto;margin-right:auto;margin-bottom:2rem}
+    .section-eyebrow{font-size:0.875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);margin:0 0 0.5rem}
+    .section-title{font-size:1.875rem;font-weight:700;letter-spacing:-0.02em;line-height:1.15;color:var(--primary);margin:0 0 0.75rem}
+    .section-lead{font-size:1.125rem;line-height:1.65;color:#4b5563;margin:0}
+    .body-text{font-size:1rem;line-height:1.65;color:#4b5563}
+    .subheading{font-size:1.25rem;font-weight:700;line-height:1.25;color:#111827;margin:0}
+    .label-text{font-size:0.75rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#6b7280}
+    .meta-text{font-size:0.875rem;line-height:1.5;color:#6b7280}
+    @media (min-width:768px){
+      .section-header{margin-bottom:2.5rem}
+      .section-title{font-size:2.25rem}
+      .body-text{font-size:1.125rem}
+      .subheading{font-size:1.5rem}
+    }
+    @media (min-width:1024px){
+      .section-title{font-size:3rem}
+    }
     .hover\:bg-white:hover{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}
     .hover\:bg-white\/90:hover{background-color:rgb(255 255 255 / 0.9)}
     .hover\:text-primary:hover{color:var(--primary)}
@@ -296,10 +315,6 @@
       -webkit-backface-visibility: hidden;
     }
     
-    .partners-track:hover {
-      animation-play-state: paused;
-    }
-    
     .partners-track.paused {
       animation-play-state: paused;
     }
@@ -313,9 +328,41 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      /* Optimize partner items */
+      padding: 0 1.25rem;
       will-change: transform;
       transform: translateZ(0);
+    }
+
+    @media (min-width: 768px) {
+      .partner-item {
+        padding: 0 1.75rem;
+      }
+    }
+
+    .partner-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 8.5rem;
+      height: 3.75rem;
+      padding: 0.5rem 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .partner-logo {
+        width: 10rem;
+        height: 4.25rem;
+        padding: 0.625rem 0.875rem;
+      }
+    }
+
+    .partner-logo img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
     }
     
     /* Seamless infinite scroll animation - GPU accelerated */
@@ -412,7 +459,7 @@
    
     /* Smooth scrolling offset for fixed navbar */
     html {
-      scroll-padding-top: 80px;
+      scroll-padding-top: 6rem;
     }
  
     /* Enhanced floating animation */
@@ -537,8 +584,9 @@
      .filter-btn {
        background: white;
        color: #417580;
-       border: 2px solid #e5e7eb;
+       border: 1px solid #e5e7eb;
        cursor: pointer;
+       border-radius: 0.5rem;
      }
      
      .filter-btn:hover {
@@ -877,6 +925,388 @@
         padding: 1rem;
       }
     }
+
+    /* Diensten — lookbook (DCQ Ons aanbod-stijl, M&S teal) */
+    .services-storytelling {
+      background: #f9fafb;
+      overflow: visible;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .services-intro {
+      text-align: center;
+      padding: 2.5rem 1rem 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .services-intro {
+        padding: 3.25rem 1.5rem 1.5rem;
+      }
+    }
+
+    .services-intro .section-lead {
+      max-width: 36rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .services-lookbook {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-entry {
+      position: relative;
+      color: #111827;
+      background: #f9fafb;
+      scroll-margin-top: 6rem;
+    }
+
+    .service-entry:nth-child(even) {
+      background: #f3f4f6;
+    }
+
+    .service-entry__inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 2.25rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .service-entry__inner {
+        padding: 2.75rem 1.5rem;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 2.5rem;
+      }
+
+      .service-entry--left .service-entry__content {
+        order: 1;
+      }
+
+      .service-entry--left .service-entry__visualWrap {
+        order: 2;
+      }
+
+      .service-entry--right .service-entry__content {
+        order: 2;
+        text-align: right;
+      }
+
+      .service-entry--right .service-entry__visualWrap {
+        order: 1;
+      }
+
+      .service-entry--right .service-entry__head {
+        justify-content: flex-end;
+      }
+
+      .service-entry--right .service-entry__text,
+      .service-entry--right .service-entry__features {
+        margin-left: auto;
+      }
+
+      .service-entry--right .service-entry__feature {
+        justify-content: flex-end;
+      }
+    }
+
+    .service-entry__content {
+      min-width: 0;
+    }
+
+    .service-entry__head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.65rem 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .service-entry__index {
+      font-size: 1.125rem;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: #417580;
+      flex-shrink: 0;
+    }
+
+    .service-entry__title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin: 0;
+      color: #111827;
+    }
+
+    @media (min-width: 768px) {
+      .service-entry__title {
+        font-size: 1.5rem;
+      }
+    }
+
+    .service-entry__visualWrap {
+      position: relative;
+      width: 100%;
+      justify-self: stretch;
+      z-index: 0;
+      margin-top: 0.35rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .service-entry__accent {
+      position: absolute;
+      width: 42%;
+      height: 48%;
+      max-width: 11rem;
+      max-height: 10rem;
+      background: #417580;
+      border-radius: 0.65rem;
+      opacity: 0.9;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .service-entry--left .service-entry__accent {
+      left: -0.55rem;
+      bottom: -0.55rem;
+    }
+
+    .service-entry--right .service-entry__accent {
+      right: -0.55rem;
+      bottom: -0.55rem;
+    }
+
+    .service-entry__visual {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 13rem;
+      background: #e5e7eb;
+      border-radius: 0.5rem;
+      z-index: 1;
+    }
+
+    @media (min-width: 768px) {
+      .service-entry__visual {
+        height: 19rem;
+      }
+    }
+
+    .service-entry__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .service-entry:hover .service-entry__img {
+      transform: scale(1.04);
+    }
+
+    .service-entry__text {
+      font-size: 1rem;
+      line-height: 1.65;
+      margin: 0 0 1rem;
+      max-width: 36rem;
+      color: #4b5563;
+    }
+
+    @media (min-width: 768px) {
+      .service-entry__text {
+        font-size: 1.125rem;
+      }
+    }
+
+    .service-entry__features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      max-width: 36rem;
+    }
+
+    .service-entry__feature {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.875rem;
+      color: #374151;
+    }
+
+    .service-entry__feature i {
+      color: #417580;
+      font-size: 0.875rem;
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 768px) {
+      .service-entry__feature {
+        font-size: 1rem;
+      }
+
+      .service-entry__feature i {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      .service-entry__accent {
+        display: none;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .service-entry__visualWrap {
+        order: -1;
+      }
+    }
+
+    /* Contact section atmosphere */
+    .contact-section {
+      background: #e8f1f3;
+    }
+
+    .contact-section__bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .contact-section__map {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.55;
+      filter: saturate(1.15) contrast(1.05) brightness(1.05);
+      transform: scale(1.02);
+    }
+
+    .contact-section__wash {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(65, 117, 128, 0.28) 0%, rgba(232, 241, 243, 0.55) 42%, rgba(90, 154, 168, 0.22) 100%),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(232, 241, 243, 0.55) 100%);
+    }
+
+    .contact-section__glow {
+      position: absolute;
+      width: min(28rem, 70vw);
+      height: min(28rem, 70vw);
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.45;
+    }
+
+    .contact-section__glow--tl {
+      top: -8rem;
+      left: -6rem;
+      background: rgba(90, 154, 168, 0.55);
+    }
+
+    .contact-section__glow--br {
+      right: -8rem;
+      bottom: -10rem;
+      background: rgba(65, 117, 128, 0.4);
+    }
+
+    .contact-panel {
+      padding: 1.75rem 1.5rem;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(65, 117, 128, 0.12);
+      border-radius: 1rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 12px 40px rgba(45, 81, 89, 0.08);
+    }
+
+    @media (min-width: 768px) {
+      .contact-panel {
+        padding: 2.25rem 2.5rem;
+      }
+    }
+
+    .contact-icon {
+      flex-shrink: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.65rem;
+      background: rgba(65, 117, 128, 0.1);
+      color: #417580;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .group:hover .contact-icon {
+      background: rgba(65, 117, 128, 0.18);
+    }
+
+    /* Projecten section background */
+    .projects-section {
+      background: #eef4f5;
+    }
+
+    .projects-section__wash {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(238, 244, 245, 0.62) 55%, rgba(255, 255, 255, 0.7) 100%),
+        linear-gradient(135deg, rgba(65, 117, 128, 0.12) 0%, transparent 50%, rgba(90, 154, 168, 0.1) 100%);
+      pointer-events: none;
+    }
+
+    #projects-bg-image {
+      position: absolute;
+      inset: 0;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    }
+
+    #featured-project-container {
+      overflow: hidden;
+      transition: max-height 0.45s ease, opacity 0.35s ease, margin 0.45s ease, padding 0.45s ease;
+    }
+
+    #featured-project-container.is-collapsed {
+      max-height: 0 !important;
+      opacity: 0;
+      margin-bottom: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      pointer-events: none;
+    }
+
+    #projects-grid,
+    #projects-mobile-grid {
+      transition: opacity 0.25s ease;
+    }
+
+    #projects-grid.is-filtering,
+    #projects-mobile-grid.is-filtering {
+      opacity: 0.35;
+    }
   </style>
 </head>
  
@@ -901,7 +1331,7 @@
  
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex items-center space-x-8">
-          <a href="#about" class="text-gray-700 hover:text-primary transition duration-300 font-medium relative group">
+          <a href="#diensten" class="text-gray-700 hover:text-primary transition duration-300 font-medium relative group">
             Diensten
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
           </a>
@@ -917,14 +1347,10 @@
             Contact
             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
           </a>
-          <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank"
-             class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 py-2 sm:px-6 sm:py-2.5 rounded-full transition-all duration-300 flex items-center space-x-1 sm:space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm sm:text-base"
-             style="background: linear-gradient(135deg, #0077B5 0%, #005885 100%);"
-             onmouseover="this.style.background='linear-gradient(135deg, #005885 0%, #004066 100%)'"
-             onmouseout="this.style.background='linear-gradient(135deg, #0077B5 0%, #005885 100%)'">
-            <span class="hidden sm:inline">LinkedIn</span>
-            <span class="sm:hidden">LI</span>
-            <i class="fab fa-linkedin text-sm sm:text-base"></i>
+          <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank" rel="noopener noreferrer"
+             class="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm font-medium">
+            <span>LinkedIn</span>
+            <i class="fab fa-linkedin"></i>
           </a>
         </div>
       </div>
@@ -932,15 +1358,12 @@
       <!-- Mobile Navigation -->
       <div id="mobile-menu" class="hidden lg:hidden pb-4">
         <div class="flex flex-col space-y-3">
-          <a href="#about" class="text-gray-700 hover:text-primary transition duration-300 font-medium py-2">Diensten</a>
+          <a href="#diensten" class="text-gray-700 hover:text-primary transition duration-300 font-medium py-2">Diensten</a>
           <a href="#projecten" class="text-gray-700 hover:text-primary transition duration-300 font-medium py-2">Projecten</a>
           <a href="#customers" class="text-gray-700 hover:text-primary transition duration-300 font-medium py-2">Samenwerkingen</a>
           <a href="#contact" class="text-gray-700 hover:text-primary transition duration-300 font-medium py-2">Contact</a>
-          <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank"
-             class="text-white px-4 py-3 rounded-full transition duration-300 inline-flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl text-sm"
-             style="background: linear-gradient(135deg, #0077B5 0%, #005885 100%);"
-             onmouseover="this.style.background='linear-gradient(135deg, #005885 0%, #004066 100%)'"
-             onmouseout="this.style.background='linear-gradient(135deg, #0077B5 0%, #005885 100%)'">
+          <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank" rel="noopener noreferrer"
+             class="bg-primary hover:bg-primary-dark text-white px-4 py-3 rounded-lg transition-colors inline-flex items-center justify-center gap-2 text-sm font-medium">
             <span>LinkedIn</span>
             <i class="fab fa-linkedin"></i>
           </a>
@@ -951,138 +1374,229 @@
  
   <!-- HERO SECTION -->
   <section id="banner" class="relative h-[92vh] overflow-hidden bg-gradient-to-br from-slate-900 via-primary-dark to-primary">
-      <video 
-        autoplay 
-        muted 
-        loop 
-        playsinline
+    <video 
+      autoplay 
+      muted 
+      loop 
+      playsinline
       class="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="videos/musso.mp4" type="video/mp4">
-      </video>
+    >
+      <source src="videos/musso.mp4" type="video/mp4">
+    </video>
    
     <div class="absolute inset-0 bg-black/40"></div>
     <div class="absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-black/50"></div>
    
     <div class="relative z-10 h-full flex flex-col justify-center">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white py-8 sm:py-12 pt-20 sm:pt-32">
-        <div class="max-w-6xl mx-auto space-y-4 sm:space-y-6 md:space-y-8">
-          <div class="space-y-3 sm:space-y-4 md:space-y-6">
-            <div class="flex justify-center">
-              <img src="images/branding/MsOnsite LogoSpacing.png" 
-                   alt="M&S Onsite Drone Services" 
-                   class="h-16 sm:h-20 md:h-24 lg:h-24 xl:h-28 drop-shadow-2xl"
-                   loading="eager"
-                   fetchpriority="high"
-                   decoding="async">
-            </div>
-            <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-100 leading-relaxed max-w-4xl mx-auto drop-shadow-lg px-4">
-              <span class="text-white font-semibold drop-shadow-md">Drone-oplossingen die werken voor uw projecten</span>
+        <div class="max-w-3xl mx-auto space-y-5 sm:space-y-6 fade-in-up">
+          <img src="images/branding/MsOnsite LogoSpacing.png" 
+               alt="M&S Onsite" 
+               class="h-16 sm:h-20 md:h-24 lg:h-28 mx-auto drop-shadow-2xl"
+               loading="eager"
+               fetchpriority="high"
+               decoding="async">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight drop-shadow-lg">
+            Drone-oplossingen die werken voor uw projecten
+          </h1>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed drop-shadow-md max-w-2xl mx-auto">
+            Professionele drone-opmetingen, werfopvolging en inspectiediensten in Benelux.
           </p>
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-1">
+            <a href="#diensten"
+               class="bg-white text-primary hover:bg-gray-100 px-8 py-3.5 rounded-lg font-semibold text-base transition-colors inline-flex items-center gap-2">
+              <span>Ontdek onze diensten</span>
+              <i class="fas fa-arrow-down text-sm"></i>
+            </a>
+            <a href="#contact"
+               class="border border-white/60 text-white hover:bg-white/10 px-8 py-3.5 rounded-lg font-semibold text-base transition-colors inline-flex items-center gap-2">
+              <span>Neem contact op</span>
+            </a>
+          </div>
         </div>
-        
-          <div class="inline-flex items-center space-x-2 sm:space-x-3 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-medium drop-shadow-lg">
-            <div class="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full animate-pulse"></div>
-          <span>Professionele Drone Services</span>
-        </div>
-        
-          <p class="text-sm sm:text-base md:text-lg lg:text-xl text-gray-200 leading-relaxed max-w-4xl mx-auto drop-shadow-lg px-4">
-          Professionele drone-opmetingen, werfopvolging en inspectiediensten in Benelux.
-            <span class="block mt-2 sm:mt-3 text-white font-medium drop-shadow-md">
-              <span class="inline-block">Sneller</span>
-              <span class="mx-2 sm:mx-3 text-primary-light">•</span>
-              <span class="inline-block">Nauwkeuriger</span>
-              <span class="mx-2 sm:mx-3 text-primary-light">•</span>
-              <span class="inline-block">Veiliger</span>
-            </span>
-        </p>
-        
-          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center items-center pt-4 sm:pt-6 md:pt-8">
-          <a href="#about"
-               class="group bg-white/95 text-primary hover:bg-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg md:text-xl shadow-2xl hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center space-x-2 sm:space-x-3 backdrop-blur-sm">
-            <span>Ontdek Onze Diensten</span>
-            <i class="fas fa-arrow-down group-hover:translate-y-1 transition-transform"></i>
-          </a>
-          <a href="#contact"
-               class="group border-2 border-white/50 text-white hover:bg-white/90 hover:text-primary px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full font-bold text-base sm:text-lg md:text-xl transition-all duration-300 inline-flex items-center justify-center space-x-2 sm:space-x-3 backdrop-blur-md drop-shadow-lg">
-            <span>Neem Contact Op</span>
-            <i class="fas fa-envelope group-hover:scale-110 transition-transform"></i>
-          </a>
-        </div>
-      </div>
       </div>
     </div>
   </section>
  
-  <!-- DIENSTEN SECTION -->
-  <section class="py-12 md:py-16 relative overflow-hidden" id="about">
-    <!-- Diagonal Stripe Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-primary/8"></div>
-    <div class="absolute inset-0 opacity-40" style="background: repeating-linear-gradient(135deg, transparent, transparent 100px, rgba(65, 117, 128, 0.08) 100px, rgba(65, 117, 128, 0.08) 200px);"></div>
-    
-    <!-- Corner Accents -->
-    <div class="absolute top-0 left-0 w-64 h-64 bg-primary/15 rounded-br-full blur-2xl"></div>
-    <div class="absolute bottom-0 right-0 w-64 h-64 bg-primary/12 rounded-tl-full blur-2xl"></div>
-    
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-     
-      <!-- Section Title -->
-      <div class="text-center mb-8 md:mb-12 max-w-3xl mx-auto scroll-fade-in">
-        <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4 scroll-fade-in-item">
-          🌐 WAT WIJ DOEN
+  <!-- DIENSTEN SECTION — lookbook (DCQ Ons aanbod-stijl) -->
+  <section id="diensten" class="services-storytelling" aria-labelledby="services-heading">
+    <div class="services-intro container mx-auto max-w-7xl px-4 md:px-6">
+      <p class="section-eyebrow">Diensten</p>
+      <h2 id="services-heading" class="section-title">Onze Diensten</h2>
+      <p class="section-lead">Van nauwkeurige opmetingen tot complete werfopvolging: professionele drone-oplossingen voor uw project.</p>
+    </div>
+
+    <div class="services-lookbook">
+      <article class="service-entry service-entry--left" id="inspecties">
+        <div class="service-entry__inner">
+          <div class="service-entry__content">
+            <div class="service-entry__head">
+              <span class="service-entry__index">01</span>
+              <h3 class="service-entry__title">Inspecties</h3>
+            </div>
+            <p class="service-entry__text">Inspecteer moeilijk bereikbare plaatsen zonder risico. Van gebouwen tot industriële installaties leveren wij betrouwbare gegevens waar traditionele methoden falen.</p>
+            <ul class="service-entry__features">
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>100% veilig voor personeel</span></li>
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Hoge-resolutie beelden van dichtbij</span></li>
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Complete visuele documentatie</span></li>
+            </ul>
+          </div>
+          <div class="service-entry__visualWrap">
+            <span class="service-entry__accent" aria-hidden="true"></span>
+            <div class="service-entry__visual">
+              <img src="images/project-1/vuurtoreninspectie.jpg" alt="Inspecties" class="service-entry__img" loading="eager" decoding="async">
+            </div>
+          </div>
         </div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 scroll-fade-in-item">
-          <span class="gradient-text">Onze Diensten</span>
-        </h2>
-        <p class="text-gray-600 text-lg leading-relaxed scroll-fade-in-item">
-          Van nauwkeurige opmetingen tot complete werfopvolging - wij leveren professionele drone-oplossingen die uw project naar een hoger niveau tillen.
-        </p>
-      </div>
- 
-      <!-- Services Container -->
-      <div id="services-container" class="max-w-6xl mx-auto"></div>
- 
+      </article>
+
+      <article class="service-entry service-entry--right" id="monitoring">
+        <div class="service-entry__inner">
+          <div class="service-entry__content">
+            <div class="service-entry__head">
+              <span class="service-entry__index">02</span>
+              <h3 class="service-entry__title">Monitoring</h3>
+            </div>
+            <p class="service-entry__text">Continue monitoring voor waterbeheersing en preventieve inspecties. Drones maken uw processen slimmer, veiliger en efficiënter.</p>
+            <ul class="service-entry__features">
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Continue monitoring mogelijk</span></li>
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Preventieve inspecties</span></li>
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Efficiënte waterbeheersing</span></li>
+            </ul>
+          </div>
+          <div class="service-entry__visualWrap">
+            <span class="service-entry__accent" aria-hidden="true"></span>
+            <div class="service-entry__visual">
+              <img src="images/project-5/waterbeheersingbanner.jpg" alt="Monitoring" class="service-entry__img" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-entry service-entry--left" id="opmetingen">
+        <div class="service-entry__inner">
+          <div class="service-entry__content">
+            <div class="service-entry__head">
+              <span class="service-entry__index">03</span>
+              <h3 class="service-entry__title">Opmetingen</h3>
+            </div>
+            <p class="service-entry__text">Snel, nauwkeurig en kostenefficiënt. Van as-built plannen tot volumeberekeningen: breng uw project in kaart zonder tijd te verliezen.</p>
+            <ul class="service-entry__features">
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>As-built plannen</span></li>
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Oppervlaktebepalingen</span></li>
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Volumeberekeningen</span></li>
+            </ul>
+          </div>
+          <div class="service-entry__visualWrap">
+            <span class="service-entry__accent" aria-hidden="true"></span>
+            <div class="service-entry__visual">
+              <img src="images/project-2/puntenwolk.png" alt="Opmetingen" class="service-entry__img" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-entry service-entry--right" id="plaatsbeschrijving">
+        <div class="service-entry__inner">
+          <div class="service-entry__content">
+            <div class="service-entry__head">
+              <span class="service-entry__index">04</span>
+              <h3 class="service-entry__title">Plaatsbeschrijving</h3>
+            </div>
+            <p class="service-entry__text">Volledige documentatie van de omgeving. Ideaal om de situatie voor en na uw project vast te leggen met gedetailleerde dronebeelden.</p>
+          </div>
+          <div class="service-entry__visualWrap">
+            <span class="service-entry__accent" aria-hidden="true"></span>
+            <div class="service-entry__visual">
+              <img src="images/project-8/foto1.jpg" alt="Plaatsbeschrijving" class="service-entry__img" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-entry service-entry--left" id="visuals">
+        <div class="service-entry__inner">
+          <div class="service-entry__content">
+            <div class="service-entry__head">
+              <span class="service-entry__index">05</span>
+              <h3 class="service-entry__title">Visuals</h3>
+            </div>
+            <p class="service-entry__text">Professionele luchtfoto's en video's die uw visie tot leven brengen. Laat uw project spreken met indrukwekkende beelden.</p>
+            <ul class="service-entry__features">
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Professionele luchtfoto's</span></li>
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Video-opnames</span></li>
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Uw visie tot leven gebracht</span></li>
+            </ul>
+          </div>
+          <div class="service-entry__visualWrap">
+            <span class="service-entry__accent" aria-hidden="true"></span>
+            <div class="service-entry__visual">
+              <img src="images/project-1/vuurtorenfoto.jpg" alt="Visuals" class="service-entry__img" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-entry service-entry--right" id="werfopvolging">
+        <div class="service-entry__inner">
+          <div class="service-entry__content">
+            <div class="service-entry__head">
+              <span class="service-entry__index">06</span>
+              <h3 class="service-entry__title">Werfopvolging</h3>
+            </div>
+            <p class="service-entry__text">Blijf op de hoogte van uw werf. Overzichtelijke kaarten, 3D-modellen en gedetailleerde rapportages geven u volledige controle.</p>
+            <ul class="service-entry__features">
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Overzichtelijke kaarten</span></li>
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>3D-modellen</span></li>
+              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Gedetailleerde rapportages</span></li>
+            </ul>
+          </div>
+          <div class="service-entry__visualWrap">
+            <span class="service-entry__accent" aria-hidden="true"></span>
+            <div class="service-entry__visual">
+              <img src="images/project-4/previewimageproject4.png" alt="Werfopvolging" class="service-entry__img" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
  
   <!-- PROJECTEN SECTION -->
-  <section class="py-16 md:py-24 relative overflow-hidden" id="projecten" style="contain: layout style paint;">
-    <!-- Background Image - Lazy loaded - Optimized -->
-    <div id="projects-bg-image" class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-0" style="transition: opacity 0.5s ease; will-change: opacity;"></div>
+  <section class="projects-section py-14 md:py-20 relative overflow-hidden" id="projecten" style="contain: layout style paint;">
+    <!-- Background Image - Lazy loaded -->
+    <div id="projects-bg-image" class="opacity-0" style="transition: opacity 0.5s ease; will-change: opacity;"></div>
     
-    <!-- Overlay for readability - Removed backdrop-blur for performance -->
-    <div class="absolute inset-0 bg-white/90"></div>
+    <!-- Lighter wash so the photo stays vivid but text stays readable -->
+    <div class="projects-section__wash absolute inset-0"></div>
    
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
      
       <!-- Section Title -->
-      <div class="text-center mb-12 md:mb-16 max-w-3xl mx-auto scroll-fade-in">
-        <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4 scroll-fade-in-item">
-          🗂️ ONZE REALISATIES
-        </div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 scroll-fade-in-item">
-          <span class="gradient-text">Projecten Portfolio</span>
+      <div class="section-header scroll-fade-in">
+        <h2 class="section-title scroll-fade-in-item">
+          Projecten
         </h2>
-        <p class="text-gray-600 text-lg leading-relaxed scroll-fade-in-item">
+        <p class="section-lead scroll-fade-in-item">
           Ontdek onze uitgevoerde projecten en zie wat we voor onze klanten hebben gerealiseerd.
         </p>
       </div>
  
       <!-- Category Filters -->
-      <div class="flex flex-wrap justify-center gap-3 mb-12 scroll-fade-in" id="project-filters">
-        <button class="filter-btn active px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 bg-primary text-white shadow-lg hover:shadow-xl transform hover:scale-105" data-filter="all">
+      <div class="flex flex-wrap justify-center gap-2 mb-8 md:mb-10 scroll-fade-in" id="project-filters">
+        <button class="filter-btn active px-5 py-2 rounded-lg text-sm font-medium transition-colors" data-filter="all">
           Alle Projecten
-             </button>
+        </button>
         <!-- Filters will be dynamically generated -->
-           </div>
+      </div>
 
       <!-- Featured Project Hero - Desktop Only -->
-      <div class="mb-16 scroll-fade-in hidden md:block" id="featured-project-container">
+      <div class="mb-10 md:mb-12 scroll-fade-in hidden md:block" id="featured-project-container">
         <!-- Featured project will be dynamically inserted here -->
          </div>
          
       <!-- Projects Grid - Desktop -->
-      <div class="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="projects-grid">
+      <div class="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6" id="projects-grid">
         <!-- Projects will be dynamically inserted here -->
             </div>
 
@@ -1105,44 +1619,32 @@
         </div>
 
       <!-- Empty State -->
-      <div id="projects-empty" class="hidden text-center py-16">
-        <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
-        <p class="text-gray-500 text-lg">Geen projecten gevonden voor deze categorie</p>
+      <div id="projects-empty" class="hidden text-center py-12">
+        <i class="fas fa-search text-5xl text-gray-300 mb-3"></i>
+        <p class="text-gray-500 section-lead">Geen projecten gevonden voor deze categorie</p>
        </div>
  
     </div>
   </section>
  
   <!-- SAMENWERKINGEN SECTION -->
-  <section class="py-20 md:py-32 relative overflow-hidden" id="customers">
-    <!-- Wave Pattern Background -->
-    <div class="absolute inset-0 bg-gradient-to-b from-primary/10 via-white to-primary/8"></div>
-    <div class="absolute inset-0 opacity-30" style="background-image: 
-      radial-gradient(circle at 20% 50%, rgba(65, 117, 128, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(65, 117, 128, 0.12) 0%, transparent 50%),
-      radial-gradient(circle at 40% 20%, rgba(65, 117, 128, 0.1) 0%, transparent 50%);"></div>
-    
-    <!-- Side Accents -->
-    <div class="absolute top-1/4 left-0 w-32 h-96 bg-primary/10 rounded-r-full blur-xl"></div>
-    <div class="absolute bottom-1/4 right-0 w-32 h-96 bg-primary/10 rounded-l-full blur-xl"></div>
+  <section class="py-14 md:py-20 relative overflow-hidden" id="customers">
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50"></div>
     
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
      
       <!-- Section Title -->
-      <div class="text-center mb-16 max-w-3xl mx-auto scroll-fade-in">
-        <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4 scroll-fade-in-item">
-          🤝 VERTROUWD DOOR
-        </div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 scroll-fade-in-item">
-          <span class="gradient-text">Onze Partners</span>
+      <div class="section-header scroll-fade-in">
+        <h2 class="section-title scroll-fade-in-item">
+          Samenwerkingen
         </h2>
-        <p class="text-gray-600 text-lg leading-relaxed scroll-fade-in-item">
+        <p class="section-lead scroll-fade-in-item">
           Trotse samenwerkingen met toonaangevende bedrijven in de sector.
         </p>
       </div>
  
       <!-- Partners Carousel -->
-      <div class="partners-container py-8">
+      <div class="partners-container py-4 md:py-6">
         <div class="partners-track" id="partners-track">
           <!-- Partners dynamically inserted here -->
         </div>
@@ -1152,205 +1654,82 @@
   </section>
  
   <!-- CONTACT SECTION -->
-  <section class="py-12 md:py-16 bg-gradient-to-b from-white to-gray-100 relative overflow-hidden" id="contact">
-    <!-- Subtle Map Background -->
-    <div class="absolute inset-0 pointer-events-none">
+  <section class="contact-section py-14 md:py-20 relative overflow-hidden" id="contact">
+    <div class="contact-section__bg" aria-hidden="true">
       <img src="images/assets/applemapsmap.png" 
-           alt="Map background" 
-           class="w-full h-full object-cover opacity-[0.7]"
-           style="filter: blur(2px) grayscale(40%) brightness(1.1);"
-           loading="lazy"
-           aria-hidden="true">
-      <!-- Lighter overlay for better text readability while keeping map visible -->
-      <div class="absolute inset-0 bg-gradient-to-b from-white/50 via-white/30 to-gray-100/50"></div>
+           alt="" 
+           class="contact-section__map"
+           loading="lazy">
+      <div class="contact-section__wash"></div>
+      <div class="contact-section__glow contact-section__glow--tl"></div>
+      <div class="contact-section__glow contact-section__glow--br"></div>
     </div>
     
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
      
-      <!-- Section Title -->
-      <div class="text-center mb-8 md:mb-12 max-w-3xl mx-auto scroll-fade-in">
-        <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4 scroll-fade-in-item">
-          👋🏼 NEEM CONTACT OP
-        </div>
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 scroll-fade-in-item">
-          <span class="gradient-text">Klaar om op te stijgen?</span>
+      <div class="section-header scroll-fade-in">
+        <h2 class="section-title scroll-fade-in-item">
+          Contact
         </h2>
-        <p class="text-gray-600 text-lg leading-relaxed scroll-fade-in-item">
-          Contacteer ons en ontdek hoe drones uw project vooruit helpen.
+        <p class="section-lead scroll-fade-in-item">
+          Klaar om op te stijgen? Neem contact op en ontdek hoe drones uw project vooruit helpen.
         </p>
       </div>
  
-       <!-- Main Content Grid - Three Equal Columns -->
-       <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
-       
-        <!-- Contact Info Card (Middle on desktop) - Completely Redesigned -->
-        <div class="order-1 lg:order-2">
-          <div class="bg-white rounded-2xl shadow-xl overflow-hidden h-full flex flex-col border border-gray-100">
-            <!-- Header with Gradient Background -->
-            <div class="bg-gradient-to-br from-primary via-primary to-primary-dark text-white px-4 py-4 relative overflow-hidden">
-              <!-- Decorative Pattern -->
-              <div class="absolute inset-0 opacity-10">
-                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
-              </div>
-              
-              <!-- Profile Section -->
-              <div class="relative z-10 text-center">
-                <div class="inline-block mb-2 relative">
-                  <div class="absolute inset-0 bg-white/20 rounded-full blur-xl"></div>
-                  <img src="images/assets/mdl.webp" alt="Martin de Lobel"
-                       class="relative w-24 h-24 rounded-full object-cover border-4 border-white/40 shadow-2xl"
-                       loading="lazy"
-                       width="96"
-                       height="96">
-                </div>
-                <h3 class="text-base font-bold mb-1">Martin de Lobel</h3>
-                <p class="text-primary-light/90 text-xs leading-tight">Projectcoördinator & UAS Operator</p>
-              </div>
-            </div>
- 
-            <!-- Contact Info Section -->
-            <div class="flex-1 p-4 space-y-2 flex flex-col justify-center">
-              <!-- Location -->
-              <a href="https://maps.google.com/?q=Izegem,Belgium" target="_blank"
-                 class="group flex items-center gap-2.5 p-2.5 bg-gray-50 hover:bg-primary/5 rounded-lg border border-gray-200 hover:border-primary/30 transition-all duration-200">
-                <div class="flex-shrink-0 w-6 h-6 bg-primary/10 group-hover:bg-primary/20 rounded-md flex items-center justify-center transition-colors duration-200" style="width: 24px; height: 24px; min-width: 24px; min-height: 24px;">
-                  <i class="fas fa-map-marker-alt text-primary text-xs"></i>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Locatie</div>
-                  <div class="font-semibold text-xs text-gray-900 group-hover:text-primary transition-colors">Izegem, België</div>
-                </div>
-              </a>
- 
-              <!-- Phone -->
-              <a href="tel:+32491150887"
-                 class="group flex items-center gap-2.5 p-2.5 bg-gray-50 hover:bg-primary/5 rounded-lg border border-gray-200 hover:border-primary/30 transition-all duration-200">
-                <div class="flex-shrink-0 w-6 h-6 bg-primary/10 group-hover:bg-primary/20 rounded-md flex items-center justify-center transition-colors duration-200" style="width: 24px; height: 24px; min-width: 24px; min-height: 24px;">
-                  <i class="fas fa-phone text-primary text-xs"></i>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Telefoon</div>
-                  <div class="font-semibold text-xs text-gray-900 group-hover:text-primary transition-colors">+32 491 150 887</div>
-                </div>
-                <i class="fas fa-external-link-alt text-gray-400 group-hover:text-primary transition-colors text-[10px]"></i>
-              </a>
- 
-              <!-- Email -->
-              <a href="mailto:martinonsite@telenet.be"
-                 class="group flex items-center gap-2.5 p-2.5 bg-gray-50 hover:bg-primary/5 rounded-lg border border-gray-200 hover:border-primary/30 transition-all duration-200">
-                <div class="flex-shrink-0 w-6 h-6 bg-primary/10 group-hover:bg-primary/20 rounded-md flex items-center justify-center transition-colors duration-200" style="width: 24px; height: 24px; min-width: 24px; min-height: 24px;">
-                  <i class="fas fa-envelope text-primary text-xs"></i>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">E-mail</div>
-                  <div class="font-semibold text-xs text-gray-900 group-hover:text-primary transition-colors break-all">martinonsite@telenet.be</div>
-                </div>
-                <i class="fas fa-external-link-alt text-gray-400 group-hover:text-primary transition-colors text-[10px]"></i>
-              </a>
-                </div>
-                </div>
-              </div>
-
-        <!-- Professional Info (Left on desktop) -->
-        <div class="order-2 lg:order-1">
-          <div class="bg-white rounded-2xl shadow-xl p-4 h-full flex flex-col">
-            <!-- Header Section -->
-            <div class="mb-5 text-center mt-2">
-              <h3 class="text-base font-bold text-gray-800 mb-1">Professionale Informatie</h3>
-              <p class="text-gray-600 text-xs leading-tight">Expertise en ervaring</p>
-            </div>
-
-            <!-- Professional Info Section -->
-            <div class="space-y-2 flex-1 flex flex-col justify-center">
-              <!-- Current Position -->
-              <div class="bg-gray-50 rounded-lg p-2.5 border border-gray-100">
-                <div class="flex items-start gap-2.5">
-                  <div class="bg-primary/10 p-1.5 rounded-md flex items-center justify-center flex-shrink-0">
-                    <i class="fas fa-briefcase text-primary text-xs"></i>
-                </div>
-                  <div class="flex-1">
-                    <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Huidige Positie</div>
-                    <div class="font-semibold text-xs text-gray-800 leading-tight">Zelfstandig projectcoördinator & UAS Operator</div>
-                </div>
-              </div>
-            </div>
-
-              <!-- Experience -->
-              <div class="bg-gray-50 rounded-lg p-2.5 border border-gray-100">
-                <div class="flex items-start gap-2.5">
-                  <div class="bg-primary/10 p-1.5 rounded-md flex items-center justify-center flex-shrink-0">
-                    <i class="fas fa-chart-line text-primary text-xs"></i>
-                  </div>
-                  <div class="flex-1">
-                    <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Ervaring</div>
-                    <div class="font-semibold text-xs text-gray-800 leading-tight mb-0.5">Ruim 15 jaar ervaring in projectcoördinatie</div>
-                    <div class="text-[10px] text-gray-600 leading-tight">Focus op sanering en baggerwerken</div>
-                  </div>
+      <div class="max-w-3xl mx-auto scroll-fade-in">
+        <div class="contact-panel flex flex-col md:flex-row gap-8 md:gap-10 items-center md:items-start">
+          
+          <div class="flex-shrink-0 text-center md:text-left">
+            <img src="images/assets/mdl.webp" alt="Martin de Lobel"
+                 class="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover mx-auto md:mx-0 border-2 border-white shadow-md"
+                 loading="lazy"
+                 width="128"
+                 height="128">
+            <h3 class="subheading mt-4">Martin de Lobel</h3>
+            <p class="text-sm text-primary mt-1">Projectcoördinator &amp; UAS Operator</p>
+            <p class="body-text mt-2 max-w-xs mx-auto md:mx-0">
+              Ruim 15 jaar ervaring in projectcoördinatie, fotogrammetrie en werfopvolging.
+            </p>
+            <button type="button" onclick="showCertificatePreview()"
+                    class="mt-4 text-sm text-primary hover:text-primary-dark font-medium underline underline-offset-2 decoration-primary/40 hover:decoration-primary transition-colors">
+              EASA-certificaat bekijken (A1/A3 &amp; A2)
+            </button>
           </div>
-        </div>
- 
-              <!-- Skills -->
-              <div class="bg-gray-50 rounded-lg p-2.5 border border-gray-100">
-                <div class="flex items-start gap-2.5">
-                  <div class="bg-primary/10 p-1.5 rounded-md flex items-center justify-center flex-shrink-0">
-                    <i class="fas fa-cogs text-primary text-xs"></i>
-              </div>
-                  <div class="flex-1">
-                    <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Vaardigheden</div>
-                    <div class="font-semibold text-xs text-gray-800 leading-tight mb-0.5">Van milieuconsultancy tot werfleiding</div>
-                    <div class="text-[10px] text-gray-600 leading-tight">Ervaring in breed scala aan projecten</div>
-                  </div>
-              </div>
-            </div>
- 
-              <!-- Specializations -->
-              <div class="bg-gray-50 rounded-lg p-2.5 border border-gray-100">
-                <div class="flex items-start gap-2.5">
-                  <div class="bg-primary/10 p-1.5 rounded-md flex items-center justify-center flex-shrink-0">
-                    <i class="fas fa-map-marked-alt text-primary text-xs"></i>
-                  </div>
-                  <div class="flex-1">
-                    <div class="text-[10px] text-gray-500 mb-0.5 font-medium uppercase tracking-wide">Specialisaties</div>
-                    <div class="font-semibold text-xs text-gray-800 leading-tight mb-0.5">Fotogrammetrie, 3D-modellering & analyse</div>
-                    <div class="text-[10px] text-gray-600 leading-tight">Werfopvolging, inspecties en monitoring</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Certificate Card (Right on desktop) -->
-        <div class="order-3 lg:order-3">
-          <div class="bg-white rounded-2xl shadow-xl p-4 h-full flex flex-col border border-gray-100">
-            <!-- Header Section -->
-            <div class="mb-4 text-center">
-              <div class="inline-flex items-center justify-center w-12 h-12 bg-yellow-50 rounded-full mb-3 border border-yellow-100">
-                <i class="fas fa-certificate text-yellow-600"></i>
+          <div class="flex-1 w-full space-y-5 md:pt-2">
+            <a href="https://maps.google.com/?q=Izegem,Belgium" target="_blank" rel="noopener noreferrer"
+               class="flex items-center gap-4 group">
+              <span class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </span>
+              <div>
+                <div class="label-text">Locatie</div>
+                <div class="font-medium text-base text-gray-900 group-hover:text-primary transition-colors">Izegem, België</div>
               </div>
-              <h3 class="text-base font-bold text-gray-800 mb-1">EASA Gecertificeerd</h3>
-              <p class="text-gray-600 text-xs leading-tight">Drone Operator A1/A3 & A2</p>
-            </div>
- 
-            <!-- Certificate Preview -->
-            <div class="flex-1 flex items-center justify-center bg-gray-50 rounded-xl p-3 border border-gray-100 min-h-0">
-              <img src="images/certificates/certificaat1.jpg" 
-                   alt="EASA Certificate Preview" 
-                   class="w-full h-auto max-h-52 object-contain rounded-lg shadow-sm cursor-pointer hover:shadow-md transition-all hover:scale-[1.02]"
-                   loading="lazy"
-                   onclick="showCertificatePreview()">
+            </a>
+
+            <a href="tel:+32491150887" class="flex items-center gap-4 group">
+              <span class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </span>
+              <div>
+                <div class="label-text">Telefoon</div>
+                <div class="font-medium text-base text-gray-900 group-hover:text-primary transition-colors">+32 491 150 887</div>
               </div>
- 
-            <!-- View Button -->
-            <div class="mt-3 text-center">
-              <button onclick="showCertificatePreview()" 
-                      class="text-xs text-primary hover:text-primary-dark font-medium transition-colors underline decoration-primary/30 hover:decoration-primary/60">
-                Bekijk volledig certificaat
-              </button>
-               </div>
+            </a>
+
+            <a href="mailto:martinonsite@telenet.be" class="flex items-center gap-4 group">
+              <span class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </span>
+              <div>
+                <div class="label-text">E-mail</div>
+                <div class="font-medium text-base text-gray-900 group-hover:text-primary transition-colors break-all">martinonsite@telenet.be</div>
+              </div>
+            </a>
           </div>
+
         </div>
- 
       </div>
     </div>
   </section>
@@ -1358,14 +1737,14 @@
   <!-- FOOTER -->
   <footer class="bg-gradient-to-br from-gray-900 via-primary-dark to-gray-900 text-white">
     <!-- Main Footer Content -->
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-14">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
         
         <!-- Company Info -->
         <div class="lg:col-span-2">
           <div class="mb-6">
             <img src="images/branding/msonsitelogowhite.png" alt="M&S Onsite" class="h-14 mb-4" loading="lazy">
-            <p class="text-gray-300 leading-relaxed max-w-md">
+            <p class="text-gray-300 text-base md:text-lg leading-relaxed max-w-md">
               Professionele drones, maximale precisie: opmetingen, inspecties en werfopvolging in Benelux.
           </p>
         </div>
@@ -1393,42 +1772,37 @@
 
         <!-- Services -->
         <div class="hidden md:block">
-          <h3 class="text-lg font-semibold mb-4 md:mb-6 text-white">Onze Diensten</h3>
+          <h3 class="text-base font-semibold mb-4 md:mb-5 text-white tracking-wide">Onze Diensten</h3>
           <ul class="space-y-2 md:space-y-3">
-            <li><a href="#about" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Inspecties</a></li>
-            <li><a href="#about" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Monitoring</a></li>
-            <li><a href="#about" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Opmetingen</a></li>
-            <li><a href="#about" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Plaatsbeschrijving</a></li>
-            <li><a href="#about" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Visuals</a></li>
-            <li><a href="#about" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Werfopvolging</a></li>
+            <li><a href="#inspecties" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Inspecties</a></li>
+            <li><a href="#monitoring" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Monitoring</a></li>
+            <li><a href="#opmetingen" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Opmetingen</a></li>
+            <li><a href="#plaatsbeschrijving" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Plaatsbeschrijving</a></li>
+            <li><a href="#visuals" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Visuals</a></li>
+            <li><a href="#werfopvolging" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Werfopvolging</a></li>
           </ul>
         </div>
 
         <!-- Social & Legal -->
         <div>
-          <h3 class="text-lg font-semibold mb-4 md:mb-6 text-white">Volg Ons</h3>
-          <div class="flex space-x-4 mb-4 md:mb-6">
-            <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank"
-               class="bg-white/10 hover:bg-primary-light/20 p-3 rounded-xl transition-all transform hover:scale-110 group">
+          <h3 class="text-base font-semibold mb-4 md:mb-5 text-white tracking-wide">Volg Ons</h3>
+          <div class="flex space-x-4">
+            <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank" rel="noopener noreferrer"
+               class="bg-white/10 hover:bg-primary-light/20 p-3 rounded-xl transition-colors group" aria-label="LinkedIn">
               <i class="fab fa-linkedin text-xl group-hover:text-primary-light"></i>
             </a>
-            <a href="https://www.facebook.com/people/MS-Onsite/61561631330027/" target="_blank"
-               class="bg-white/10 hover:bg-primary-light/20 p-3 rounded-xl transition-all transform hover:scale-110 group">
+            <a href="https://www.facebook.com/people/MS-Onsite/61561631330027/" target="_blank" rel="noopener noreferrer"
+               class="bg-white/10 hover:bg-primary-light/20 p-3 rounded-xl transition-colors group" aria-label="Facebook">
               <i class="fab fa-facebook text-xl group-hover:text-primary-light"></i>
             </a>
-            <a href="https://www.instagram.com/onsite_project_coordination/" target="_blank"
-               class="bg-white/10 hover:bg-primary-light/20 p-3 rounded-xl transition-all transform hover:scale-110 group">
+            <a href="https://www.instagram.com/onsite_project_coordination/" target="_blank" rel="noopener noreferrer"
+               class="bg-white/10 hover:bg-primary-light/20 p-3 rounded-xl transition-colors group" aria-label="Instagram">
               <i class="fab fa-instagram text-xl group-hover:text-primary-light"></i>
             </a>
           </div>
-          
-          <!-- Legal Links 
-          <div class="space-y-2">
-            <p class="text-gray-400 text-xs">BTW: BE 0784.964.976</p>
-          </div> -->
         </div>
-          </div>
-        </div>
+      </div>
+    </div>
  
     <!-- Bottom Bar -->
     <div class="border-t border-white/10">
@@ -1436,7 +1810,7 @@
         <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div class="text-center md:text-left">
             <p class="text-gray-400 text-sm">
-              &copy; 2025 M&S Onsite. Alle rechten voorbehouden.
+              &copy; <span id="copyright-year"></span> M&S Onsite. Alle rechten voorbehouden.
             </p>
             <!-- Legal Links -->
             <div class="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4 mt-2 md:mt-3 text-xs">
@@ -1534,7 +1908,7 @@
   <div id="certificateLightbox" class="fixed inset-0 bg-black/95 z-60 hidden flex items-center justify-center p-4">
     <div class="relative max-w-7xl max-h-full">
       <img src="images/certificates/certificaat1.jpg" 
-           alt="Drone Operator Certificate - Full Size" 
+           alt="Drone Operator Certificate" 
            class="max-w-full max-h-full object-contain rounded-lg"
            loading="lazy">
       <button onclick="closeCertificateLightbox()" 
