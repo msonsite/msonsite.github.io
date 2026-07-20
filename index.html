@@ -528,7 +528,7 @@
        visibility: hidden;
      }
      
-     /* Hide scrollbar for project scroller */
+     /* Hide scrollbar utilities */
      .scrollbar-hide {
        -ms-overflow-style: none;
        scrollbar-width: none;
@@ -536,48 +536,96 @@
     .scrollbar-hide::-webkit-scrollbar {
       display: none;
     }
-    
-    /* Mobile project scroller */
-    #projects-mobile-scroll {
-      scroll-behavior: smooth;
+
+    /* Mobile projects scroller (DCQ-style snap + dots) */
+    .projects-mobile__dots[hidden] {
+      display: none !important;
+    }
+
+    .projects-mobile__dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 0.85rem;
+    }
+
+    .projects-mobile__dot {
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 9999px;
+      background: rgba(65, 117, 128, 0.25);
+      pointer-events: none;
+      transition: width 0.2s ease, background-color 0.2s ease;
+    }
+
+    .projects-mobile__dot.is-active {
+      width: 1rem;
+      background: #417580;
+    }
+
+    .projects-mobile__scroller {
+      --projects-mobile-card-width: min(calc(100vw - 2.5rem), 20rem);
+      overflow-x: auto;
+      overflow-y: hidden;
       -webkit-overflow-scrolling: touch;
       scroll-snap-type: x mandatory;
-      padding-left: calc((100vw - 320px) / 2);
-      padding-right: calc((100vw - 320px) / 2);
+      scrollbar-width: none;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      padding-bottom: 0.25rem;
     }
-    
-    @media (max-width: 640px) {
-      #projects-mobile-scroll {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
+
+    .projects-mobile__scroller:has(.projects-mobile__grid[data-project-count="1"]) {
+      overflow-x: hidden;
+      width: 100%;
+      margin-left: 0;
     }
-    
-    #projects-mobile-scroll::-webkit-scrollbar {
+
+    .projects-mobile__scroller::-webkit-scrollbar {
       display: none;
     }
-    
-    #projects-mobile-grid > div {
+
+    .projects-mobile__grid {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      width: max-content;
+      margin: 0;
+      padding: 0;
+    }
+
+    .projects-mobile__grid[data-project-count="1"] {
+      width: 100%;
+      max-width: var(--projects-mobile-card-width);
+      margin: 0 auto;
+      justify-content: center;
+    }
+
+    /* Spacers i.p.v. padding: voorkomt iOS Safari scroll-snap start-op-einde bug */
+    .projects-mobile__snap-spacer {
+      display: block;
+      flex: 0 0 max(0px, calc((100vw - var(--projects-mobile-card-width)) / 2));
+      width: max(0px, calc((100vw - var(--projects-mobile-card-width)) / 2));
+      height: 1px;
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    .projects-mobile__grid[data-project-count="1"] .projects-mobile__snap-spacer {
+      display: none;
+    }
+
+    .projects-mobile__grid .modern-project-card {
+      flex: 0 0 var(--projects-mobile-card-width);
+      width: var(--projects-mobile-card-width);
       scroll-snap-align: center;
+      scroll-snap-stop: always;
+      margin: 0;
     }
-    
-    /* Smooth scrolling and touch-friendly behavior */
-    .overflow-x-auto {
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-    }
-    
-    /* Snap scrolling for project cards */
-    .overflow-x-auto > div > div {
-      scroll-snap-align: start;
-    }
-    
-    /* Mobile project cards centering */
-    @media (max-width: 1024px) {
-      #projects-mobile-scroll-container {
-        max-width: 400px; /* Slightly wider than card width for better centering */
-      }
+
+    .projects-mobile__grid .modern-project-card + .modern-project-card {
+      margin-left: 0.85rem;
     }
      
      /* Project Filter Buttons */
@@ -1601,22 +1649,14 @@
             </div>
 
       <!-- Projects Horizontal Scroller - Mobile Only -->
-      <div class="md:hidden">
-        <div class="overflow-x-auto pb-4 scrollbar-hide" id="projects-mobile-scroll">
-          <div class="flex min-w-max px-4" id="projects-mobile-grid" style="gap: 1rem;">
+      <div class="projects-mobile md:hidden">
+        <div class="projects-mobile__scroller" id="projects-mobile-scroll">
+          <div class="projects-mobile__grid" id="projects-mobile-grid">
             <!-- Mobile projects will be dynamically inserted here -->
           </div>
         </div>
-        <!-- Mobile Scroll Buttons -->
-        <div class="flex justify-center items-center gap-4 mt-4">
-          <button id="mobile-scroll-left-btn" class="p-2 rounded-full bg-white/95 border border-gray-200 text-primary hover:bg-primary hover:text-white transition-colors duration-200 shadow-sm" style="opacity: 0.5; cursor: not-allowed;" disabled>
-            <i class="fas fa-chevron-left text-sm"></i>
-            </button>
-          <button id="mobile-scroll-right-btn" class="p-2 rounded-full bg-white/95 border border-gray-200 text-primary hover:bg-primary hover:text-white transition-colors duration-200 shadow-sm">
-            <i class="fas fa-chevron-right text-sm"></i>
-            </button>
-          </div>
-        </div>
+        <div class="projects-mobile__dots" id="projects-mobile-dots" aria-hidden="true" hidden></div>
+      </div>
 
       <!-- Empty State -->
       <div id="projects-empty" class="hidden text-center py-12">

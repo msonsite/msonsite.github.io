@@ -332,10 +332,14 @@ function renderProjects() {
   const applyGridContent = () => {
     if (filteredProjects.length === 0) {
       projectsGrid.innerHTML = '';
-      if (projectsMobileGrid) projectsMobileGrid.innerHTML = '';
+      if (projectsMobileGrid) {
+        projectsMobileGrid.innerHTML = '';
+        projectsMobileGrid.removeAttribute('data-project-count');
+      }
       if (projectsEmpty) projectsEmpty.classList.remove('hidden');
       projectsGrid.classList.remove('is-filtering');
       if (projectsMobileGrid) projectsMobileGrid.classList.remove('is-filtering');
+      setupProjectsMobileDots();
       return;
     }
 
@@ -353,9 +357,8 @@ function renderProjects() {
     }
 
     if (projectsMobileGrid) {
-      projectsMobileGrid.innerHTML = filteredProjects.map((project, index) =>
-        createMobileProjectCard(project, index)
-      ).join('');
+      projectsMobileGrid.dataset.projectCount = String(filteredProjects.length);
+      projectsMobileGrid.innerHTML = buildMobileProjectsHTML(filteredProjects);
     }
 
     setTimeout(() => {
@@ -364,6 +367,7 @@ function renderProjects() {
       });
       projectsGrid.classList.remove('is-filtering');
       if (projectsMobileGrid) projectsMobileGrid.classList.remove('is-filtering');
+      setupProjectsMobileDots();
     }, 80);
   };
 
@@ -490,13 +494,12 @@ function renderProjects() {
   }
 }
 
-// Create mobile project card for horizontal scroller - Matching desktop design
+// Create mobile project card for horizontal scroller
 function createMobileProjectCard(project, index) {
   const imageSrc = project.previewImage || project.images[project.previewImageIndex || 0].src;
   
   return `
-    <div class="modern-project-card" onclick="openProjectModal(${project.id})" style="flex-shrink: 0; width: 320px; margin-right: 1rem; animation-delay: ${index * 0.1}s">
-      <!-- Image -->
+    <div class="modern-project-card" onclick="openProjectModal(${project.id})" style="animation-delay: ${index * 0.1}s">
       <div class="project-card-image h-48 overflow-hidden">
         ${project.previewVideo ? `
           <video class="w-full h-full object-cover" autoplay muted loop playsinline>
@@ -506,35 +509,27 @@ function createMobileProjectCard(project, index) {
           <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" loading="lazy" decoding="async" width="320" height="192" fetchpriority="${index < 2 ? 'high' : 'auto'}">
         `}
         <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-        
-        <!-- Badge -->
         <div class="absolute top-4 right-4">
           <span class="project-badge ${project.status === 'Voltooid' ? 'bg-green-500/90 text-white' : 'bg-yellow-500/90 text-white'}">
             ${project.status}
           </span>
         </div>
       </div>
-    
-      <!-- Content -->
       <div class="p-6">
         <div class="flex items-center justify-between mb-3">
           <span class="category-tag">${getProjectCategories(project)[0] || 'Project'}</span>
           <span class="text-lg">${project.flag}</span>
         </div>
-        
         <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
           ${project.title}
         </h3>
-        
         <p class="text-gray-500 text-sm mb-3 flex items-center">
           <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
           ${project.location}
         </p>
-        
         <p class="text-gray-600 text-sm md:text-base leading-relaxed line-clamp-2 mb-4">
           ${project.description}
         </p>
-        
         <div class="flex items-center justify-between pt-4 border-t border-gray-100">
           <span class="text-primary text-sm font-medium">Bekijk details</span>
           <i class="fas fa-arrow-right text-primary group-hover:translate-x-1 transition-transform"></i>
@@ -542,6 +537,139 @@ function createMobileProjectCard(project, index) {
       </div>
     </div>
   `;
+}
+
+function buildMobileProjectsHTML(projectList) {
+  if (!projectList.length) return '';
+  const cards = projectList.map((project, index) => createMobileProjectCard(project, index)).join('');
+  return `
+    <div class="projects-mobile__snap-spacer" aria-hidden="true"></div>
+    ${cards}
+    <div class="projects-mobile__snap-spacer" aria-hidden="true"></div>
+  `;
+}
+
+function getVisuallyCenteredProjectIndex(scroller, cards) {
+  const scrollerRect = scroller.getBoundingClientRect();
+  const midX = scrollerRect.left + scroller.clientWidth / 2;
+  let bestIndex = 0;
+  let bestDistance = Infinity;
+
+  for (let i = 0; i < cards.length; i += 1) {
+    const rect = cards[i].getBoundingClientRect();
+    if (rect.width < 8) continue;
+    const distance = Math.abs(rect.left + rect.width / 2 - midX);
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      bestIndex = i;
+    }
+  }
+
+  return bestIndex;
+}
+
+let projectsMobileDotsCleanup = null;
+
+function setupProjectsMobileDots() {
+  if (typeof projectsMobileDotsCleanup === 'function') {
+    projectsMobileDotsCleanup();
+    projectsMobileDotsCleanup = null;
+  }
+
+  const scroller = document.getElementById('projects-mobile-scroll');
+  const dotsWrap = document.getElementById('projects-mobile-dots');
+  if (!scroller || !dotsWrap) return;
+
+  const cards = Array.from(scroller.querySelectorAll('.modern-project-card'));
+  if (cards.length < 2) {
+    dotsWrap.hidden = true;
+    dotsWrap.replaceChildren();
+    return;
+  }
+
+  const mobileQuery = window.matchMedia('(max-width: 767px)');
+  dotsWrap.hidden = !mobileQuery.matches;
+  dotsWrap.replaceChildren();
+
+  let activeIndex = 0;
+  let syncRaf = null;
+
+  const dots = cards.map((_card, index) => {
+    const dot = document.createElement('span');
+    dot.className = 'projects-mobile__dot' + (index === 0 ? ' is-active' : '');
+    dot.setAttribute('aria-hidden', 'true');
+    dotsWrap.appendChild(dot);
+    return dot;
+  });
+
+  function setActive(nextIndex) {
+    if (nextIndex < 0 || nextIndex >= dots.length || nextIndex === activeIndex) return;
+    dots[activeIndex].classList.remove('is-active');
+    dots[nextIndex].classList.add('is-active');
+    activeIndex = nextIndex;
+  }
+
+  function forceActive(nextIndex) {
+    if (nextIndex < 0 || nextIndex >= dots.length) return;
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('is-active', index === nextIndex);
+    });
+    activeIndex = nextIndex;
+  }
+
+  function syncActiveDot() {
+    if (!mobileQuery.matches) return;
+    setActive(getVisuallyCenteredProjectIndex(scroller, cards));
+  }
+
+  function scheduleSync() {
+    if (syncRaf != null) return;
+    syncRaf = window.requestAnimationFrame(() => {
+      syncRaf = null;
+      syncActiveDot();
+    });
+  }
+
+  function pinToFirstCard() {
+    if (!mobileQuery.matches || !cards[0]) return;
+    scroller.scrollTo({ left: 0, behavior: 'auto' });
+    scroller.scrollLeft = 0;
+    forceActive(0);
+  }
+
+  const onResize = () => {
+    dotsWrap.hidden = !mobileQuery.matches;
+    if (mobileQuery.matches) scheduleSync();
+  };
+
+  const onMediaChange = (event) => {
+    dotsWrap.hidden = !event.matches;
+    if (event.matches) pinToFirstCard();
+  };
+
+  scroller.addEventListener('scroll', scheduleSync, { passive: true });
+  scroller.addEventListener('scrollend', syncActiveDot);
+  window.addEventListener('resize', onResize, { passive: true });
+  if (typeof mobileQuery.addEventListener === 'function') {
+    mobileQuery.addEventListener('change', onMediaChange);
+  }
+
+  pinToFirstCard();
+  requestAnimationFrame(() => {
+    pinToFirstCard();
+    requestAnimationFrame(pinToFirstCard);
+  });
+  setTimeout(pinToFirstCard, 100);
+  setTimeout(syncActiveDot, 250);
+
+  projectsMobileDotsCleanup = () => {
+    scroller.removeEventListener('scroll', scheduleSync);
+    scroller.removeEventListener('scrollend', syncActiveDot);
+    window.removeEventListener('resize', onResize);
+    if (typeof mobileQuery.removeEventListener === 'function') {
+      mobileQuery.removeEventListener('change', onMediaChange);
+    }
+  };
 }
 
 // Initialize projects section
@@ -554,95 +682,16 @@ function initProjectsSection() {
 function waitForProjects() {
   if (typeof projects !== 'undefined' && projects.length > 0) {
     initProjectsSection();
-    initMobileScrollButtons();
   } else {
-    // Wait a bit and try again if projects.js hasn't loaded yet
     setTimeout(waitForProjects, 100);
   }
 }
 
-// Initialize mobile scroll buttons
-function initMobileScrollButtons() {
-  const mobileScrollContainer = document.getElementById('projects-mobile-scroll');
-  const mobileScrollLeftBtn = document.getElementById('mobile-scroll-left-btn');
-  const mobileScrollRightBtn = document.getElementById('mobile-scroll-right-btn');
-  
-  if (!mobileScrollContainer || !mobileScrollLeftBtn || !mobileScrollRightBtn) return;
-  
-  // Scroll functions
-  const scrollAmount = 340; // 320px card + 1rem gap
-  
-  mobileScrollLeftBtn.addEventListener('click', () => {
-    mobileScrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-  });
-  
-  mobileScrollRightBtn.addEventListener('click', () => {
-    mobileScrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-  });
-  
-  // Update button states based on scroll position
-  // Optimized with throttling to prevent scroll lag
-  let updateRafId = null;
-  const updateMobileScrollButtons = () => {
-    // Cancel previous RAF if still pending
-    if (updateRafId !== null) {
-      cancelAnimationFrame(updateRafId);
-    }
-    
-    // Throttle with requestAnimationFrame for smooth updates
-    updateRafId = requestAnimationFrame(() => {
-      // Cache all layout reads in variables first (batch reads)
-      const scrollLeft = mobileScrollContainer.scrollLeft;
-      const scrollWidth = mobileScrollContainer.scrollWidth;
-      const clientWidth = mobileScrollContainer.clientWidth;
-      const maxScroll = scrollWidth - clientWidth;
-      
-      // Calculate button states (no DOM reads after this point)
-      const canScrollLeft = scrollLeft > 10;
-      const canScrollRight = scrollLeft < maxScroll - 10;
-      
-      // Batch all DOM writes together
-      // Left button updates
-      const leftOpacity = canScrollLeft ? '1' : '0.5';
-      const leftDisabled = !canScrollLeft;
-      const leftCursor = canScrollLeft ? 'pointer' : 'not-allowed';
-      
-      // Right button updates
-      const rightOpacity = canScrollRight ? '1' : '0.5';
-      const rightDisabled = !canScrollRight;
-      const rightCursor = canScrollRight ? 'pointer' : 'not-allowed';
-      
-      // Apply all DOM writes in a single batch
-      mobileScrollLeftBtn.style.opacity = leftOpacity;
-      mobileScrollLeftBtn.disabled = leftDisabled;
-      mobileScrollLeftBtn.style.cursor = leftCursor;
-      
-      mobileScrollRightBtn.style.opacity = rightOpacity;
-      mobileScrollRightBtn.disabled = rightDisabled;
-      mobileScrollRightBtn.style.cursor = rightCursor;
-      
-      updateRafId = null;
-    });
-  };
-  
-  // Use passive listener for better scroll performance
-  mobileScrollContainer.addEventListener('scroll', updateMobileScrollButtons, { passive: true });
-  // Defer initial state update to avoid forced reflow after DOM writes
-  requestAnimationFrame(() => {
-    updateMobileScrollButtons();
-  });
-}
-
-// Start initialization
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', waitForProjects);
 } else {
   waitForProjects();
 }
-
-// Removed unused createDesktopProjectCard function - not referenced anywhere
-
-// Old rendering code removed - now using initProjectsSection() instead
 
 // Project Modal Function - Completely Redesigned
 function openProjectModal(projectId) {
