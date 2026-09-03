@@ -1,0 +1,817 @@
+========================================================================
+M&S ONSITE — SITE CONTENT EXPORT
+Bron: msonsite.github.io (huidige website)
+Doel: contentreferentie voor een nieuw websiteontwerp
+========================================================================
+
+Taal: Nederlands (nl)
+Domein: https://www.msonsite.be
+Merk: M&S Onsite
+Sector: Professionele droneservices (Benelux)
+Merkkleuren (referentie): primary #417580 | dark #2d5159 | light #5a9aa8
+
+========================================================================
+1. META / SEO
+========================================================================
+
+Title: M&S Onsite | Droneservices België
+
+Meta description:
+M&S Onsite biedt snelle en nauwkeurige drone-opmetingen, volumeberekeningen, terreinanalyse, werfopvolging en projectmonitoring in Benelux. Veilig, efficiënt en betrouwbaar voor bouw, infrastructuur en logistiek.
+
+Open Graph / Twitter: zelfde title + description
+OG image: https://www.msonsite.be/images/branding/MsOnsite%20LogoSpacing.png
+Schema.org Organization: name M&S Onsite, url https://www.msonsite.be
+
+========================================================================
+2. NAVIGATIE
+========================================================================
+
+Logo alt: M&S Onsite
+Links:
+- Diensten  → #diensten
+- Projecten → #projecten
+- Samenwerkingen → #customers
+- Contact → #contact
+- LinkedIn (CTA) → https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true
+
+========================================================================
+3. HERO
+========================================================================
+
+Media: video videos/musso.mp4 (achtergrond)
+Logo: images/branding/MsOnsite LogoSpacing.png
+
+Headline:
+Drone-oplossingen die werken voor uw projecten
+
+Support:
+Professionele drone-opmetingen, werfopvolging en inspectiediensten in Benelux.
+
+CTA's:
+- Ontdek onze diensten → #diensten
+- Neem contact op → #contact
+
+========================================================================
+4. DIENSTEN (lookbook)
+========================================================================
+
+Eyebrow: Diensten
+Titel: Onze Diensten
+Lead:
+Van een eenmalige inspectie tot langlopende werfopvolging: we leveren beelden en data die u direct kunt gebruiken voor planning, controle en oplevering.
+
+----------------------------------------
+01 Inspecties
+Anker: #inspecties
+Beeld: images/project-1/vuurtoreninspectie.jpg
+
+Daken, gevels, masten of industriële installaties: plaatsen waar stellingen of klimwerk traag en risicovol zijn. Wij vliegen dichtbij, leggen elk detail vast en leveren een overzichtelijke documentatie waarmee u schades en aandachtspunten gericht kunt aanpakken.
+
+Kenmerken:
+  • Geen klimwerk of stellingen nodig
+  • Hoge-resolutie detailbeelden
+  • Duidelijke rapportage voor herstel of oplevering
+
+----------------------------------------
+02 Monitoring
+Anker: #monitoring
+Beeld: images/project-5/waterbeheersingbanner.jpg
+
+Voor waterbeheer, natuurherstel of langlopende werven vliegen we op vaste momenten over hetzelfde gebied. Door beelden naast elkaar te leggen ziet u evolutie in de tijd: waterstanden, begroeiing, erosie of voortgang. Ideaal om beslissingen te baseren op feiten in plaats van aannames.
+
+Kenmerken:
+  • Herhaalde vluchten op vaste intervallen
+  • Vergelijkbare beelden doorheen de tijd
+  • Ondersteuning bij water- en gebiedsbeheer
+
+----------------------------------------
+03 Opmetingen
+Anker: #opmetingen
+Beeld: images/project-2/puntenwolk.png
+
+Stockhopen, terreinen of as-built situaties meten zonder dagenlang met meetstokken te lopen. Met fotogrammetrie leveren we puntenwolken, orthofoto's en volumes die u meteen kunt gebruiken voor planning, facturatie of verdere engineering.
+
+Kenmerken:
+  • As-built plannen en orthofoto's
+  • Oppervlakte- en volumeberekeningen
+  • 3D-modellen klaar voor verdere verwerking
+
+----------------------------------------
+04 Plaatsbeschrijving
+Anker: #plaatsbeschrijving
+Beeld: images/project-8/foto1.jpg
+
+Leg de beginsituatie van een perceel, gevel of omgeving objectief vast vóór werken starten. Na afloop vliegen we opnieuw, zodat u voor en na duidelijk kunt vergelijken: handig bij renovatie, schadeclaims of oplevering.
+
+Kenmerken:
+  • Volledige visuele documentatie
+  • Voor- en navergelijking
+  • Geschikt voor renovatie en oplevering
+
+----------------------------------------
+05 Visuals
+Anker: #visuals
+Beeld: images/project-1/vuurtorenfoto.jpg
+
+Luchtfoto's en video voor communicatie, tenders of stakeholder updates. U krijgt beelden die het project begrijpelijk maken voor klanten, bewoners of bestuurders, zonder technische jargon.
+
+Kenmerken:
+  • Luchtfoto's in hoge resolutie
+  • Video voor presentaties en socials
+  • Sterk in tenders en projectcommunicatie
+
+----------------------------------------
+06 Werfopvolging
+Anker: #werfopvolging
+Beeld: images/project-4/previewimageproject4.png
+
+Houd grote of complexe werven bij zonder elke week zelf ter plaatse te moeten zijn. Periodieke vluchten leveren kaarten, 3D-modellen en rapportages zodat aannemers, studiebureaus en opdrachtgevers dezelfde actuele stand van zaken delen.
+
+Kenmerken:
+  • Actuele overzichtskaarten
+  • 3D-modellen van de werf
+  • Rapportages voor alle partijen
+
+========================================================================
+5. PROJECTEN
+========================================================================
+
+Titel: Projecten
+Lead: Ontdek onze uitgevoerde projecten en zie wat we voor onze klanten hebben gerealiseerd.
+Filter (all): Alle Projecten
+Empty state: Geen projecten gevonden voor deze categorie
+Categorieën (uit data): Inspecties, Monitoring, Opmetingen, Plaatsbeschrijving, Werfopvolging
+UI-labels (cards/modal): Bekijk details | Projectbeschrijving | status badges Voltooid / In uitvoering
+
+----------------------------------------
+PROJECT #1: Vuurtoren Inspectie
+Locatie: Breskens, Nederland 🇳🇱
+Status: Voltooid
+Categorieën: Inspecties
+
+Beschrijving:
+Een historische vuurtoren in Breskens die dringend geïnspecteerd moest worden, maar waar traditionele inspectiemethoden te gevaarlijk waren. Met onze drone vlogen we rondom de toren en legden elk detail vast. De restauratieplanners kregen een complete visuele documentatie die precies liet zien wat er aan de hand was, zonder dat iemand een voet op het dak hoefde te zetten.
+
+Taken / aanpak:
+  • Rondom de vuurtoren vliegen met hoge-resolutie camera's
+  • Elk structureel detail van dichtbij vastleggen
+  • Een complete 360° visuele documentatie samenstellen
+  • Rapportage opstellen die de restauratieplanners direct kunnen gebruiken
+
+Preview video: videos/vuurtoren.mp4
+Beelden:
+  - images/project-1/vuurtorenfoto.jpg
+  - images/project-1/vuurtoreninspectie.jpg
+  - images/project-1/inspectieanalyse2.png
+  - images/project-1/inspectieanalyse1.png
+
+----------------------------------------
+PROJECT #2: Volumetrische Meting
+Locatie: Houthulst, België 🇧🇪
+Status: Voltooid
+Categorieën: Opmetingen
+
+Beschrijving:
+Hoeveel zand ligt er nu eigenlijk op die hoop? In plaats van dagenlang met meetstokken rondlopen, vlogen we er even overheen. Binnen een paar uur had de klant een nauwkeurig 3D-model met exacte volumes. Transport kon direct gepland worden, zonder giswerk.
+
+Taken / aanpak:
+  • Over het materiaal vliegen en honderden foto's maken
+  • Die foto's verwerken tot een nauwkeurige 3D-puntenwolk
+  • Met software de exacte volumes berekenen
+  • Duidelijke rapportage met visualisaties opstellen
+
+Preview image: images/project-2/previewimageproject2.png
+Beelden:
+  - images/project-2/puntenwolk.png
+  - images/project-2/gradientkaart.png
+  - images/project-2/volumeberekeningen.jpg
+
+----------------------------------------
+PROJECT #3: As-Built Plan
+Locatie: Hamme-Mille, België 🇧🇪
+Status: Voltooid
+Categorieën: Opmetingen
+
+Beschrijving:
+Na een bodemsanering lagen er overal sleuven en leidingen door elkaar. De vraag: waar ligt alles precies? We maakten een complete luchtfoto en tekenden alle leidingtracés in. Nu heeft de opdrachtgever een helder plan dat direct gebruikt kan worden voor verdere werkzaamheden of controle.
+
+Taken / aanpak:
+  • Het hele terrein vanuit de lucht fotograferen
+  • De foto's verwerken tot een gedetailleerde 3D-puntenwolk
+  • Alle leidingtracés digitaal intekenen op de luchtfoto
+  • Het plan exporteren naar DXF-formaat voor gebruik in CAD-software
+
+Beelden:
+  - images/project-3/orthofoto.jpg
+  - images/project-3/leidingtrace.jpg
+  - images/project-3/dxf-export.png
+
+----------------------------------------
+PROJECT #4: Bodemsanering
+Locatie: Sint-Truiden, België 🇧🇪
+Status: Voltooid
+Categorieën: Werfopvolging
+
+Beschrijving:
+Tijdens een bodemsanering in Sint-Truiden volgden we het hele proces op. We begonnen met de beginsituatie, vlogen regelmatig over tijdens de werkzaamheden en eindigden met een complete as-built documentatie. Elke fase werd vastgelegd: hoeveel grond werd verplaatst, welke oppervlaktes werden behandeld, en hoe het terrein er uiteindelijk uitzag. De opdrachtgever had zo altijd een actueel beeld van de voortgang.
+
+Taken / aanpak:
+  • Vastleggen van de beginsituatie van het terrein
+  • Regelmatig overvliegen tijdens de saneringswerkzaamheden
+  • 3D-modellen opbouwen van elke fase
+  • Berekenen hoeveel grond verplaatst werd en welke oppervlaktes behandeld werden
+  • Complete as-built documentatie van het eindresultaat
+  • Voortgangsrapportage zodat de opdrachtgever altijd op de hoogte was
+
+Preview image: images/project-4/previewimageproject4.png
+Beelden:
+  - images/project-4/beginsituatie-terrein.png
+  - images/project-4/drone-opmeting-uitvoering.png
+  - images/project-4/puntenwolk-terrein.png
+  - images/project-4/oppervlakteberekeningen.png
+  - images/project-4/volume-analyse.png
+  - images/project-4/eindresultaat.png
+  - images/project-4/asbuilt-plan.png
+
+----------------------------------------
+PROJECT #5: Monitoring Waterbeheersing
+Locatie: Rijmenam, België 🇧🇪
+Status: Voltooid
+Categorieën: Monitoring
+
+Beschrijving:
+Drie maanden lang monitorden we overstromingsgebieden in Rijmenam. Elke paar weken vlogen we over het gebied en zagen we precies hoe het water zich terugtrok. Door de beelden naast elkaar te leggen, ontstond er een duidelijk beeld van de waterdynamiek. Die data hielp bij het nemen van beslissingen over waterbeheer en gebiedsherstel.
+
+Taken / aanpak:
+  • Elke paar weken over de overstromingsgebieden vliegen
+  • De opnames verwerken tot gedetailleerde orthofoto's en 3D-modellen
+  • Analyseren hoe het wateroppervlak veranderde en zich terugtrok
+  • Kaarten en modellen opstellen die helpen bij waterbeheerbeslissingen
+
+Preview image: images/project-5/waterbeheersingbanner.jpg
+Beelden:
+  - images/project-5/2024-02-29-origineel.jpg
+  - images/project-5/2024-02-29-opmeting.jpg
+  - images/project-5/2024-03-25-origineel.jpg
+  - images/project-5/2024-03-25-opmeting.jpg
+  - images/project-5/2024-04-22-origineel.jpg
+  - images/project-5/2024-04-22-opmeting.jpg
+
+----------------------------------------
+PROJECT #6: Dakinspectie
+Locatie: Izegem, België 🇧🇪
+Status: Voltooid
+Categorieën: Inspecties
+
+Beschrijving:
+Een dak inspecteren zonder erop te moeten klimmen? We vlogen er overheen, maakten honderden foto's en stelden daar één scherpe orthofoto van samen. Onze software markeerde automatisch alle probleemzones: losse dakpannen, een beschadigd raam, zelfs nestvorming. De klant kreeg een duidelijk rapport met precies aangegeven wat er moet gebeuren, zonder dat iemand het dak op hoefde.
+
+Taken / aanpak:
+  • Over het dak vliegen en honderden foto's maken
+  • Die foto's samenvoegen tot één scherpe orthofoto van het hele dak
+  • Met 3D-software automatisch alle probleemzones markeren
+  • Een visueel rapport opstellen met duidelijke aanbevelingen
+
+Beelden:
+  - images/project-6/analysezone.png
+  - images/project-6/observatiepunten.png
+  - images/project-6/detail-schouw.png
+  - images/project-6/identificatie-losse-dakpannen.png
+  - images/project-6/detail-nestvorming.png
+  - images/project-6/detail-raam.png
+
+----------------------------------------
+PROJECT #7: Stockdepot Meting
+Locatie: Brugge, België 🇧🇪
+Status: Voltooid
+Categorieën: Opmetingen
+
+Beschrijving:
+Een zand- en grinddepot in Brugge dat regelmatig geïnventariseerd moet worden. In plaats van dagenlang meten, vliegen we er even overheen. Binnen een dag heeft de klant een nauwkeurig overzicht van alle stockvolumes, met duidelijke visualisaties. Zo kunnen ze hun voorraadbeheer en planning veel beter afstemmen.
+
+Taken / aanpak:
+  • Flexibel inplannen wanneer de opmeting het beste uitkomt
+  • Over het hele depot vliegen en alle stocks fotograferen
+  • Voor elke stock het exacte volume berekenen
+  • Een overzichtelijke rapportage opstellen met duidelijke visualisaties
+
+Preview image: images/project-7/header.png
+Beelden:
+  - images/project-7/drone-depot.png
+  - images/project-7/sateliet-volumes.png
+  - images/project-7/volume-rapport.png
+
+----------------------------------------
+PROJECT #8: Plaatsbeschrijving
+Locatie: Kruibeke, België 🇧🇪
+Status: Voltooid
+Categorieën: Plaatsbeschrijving
+
+Beschrijving:
+Voor een plaatsbeschrijving in Kruibeke moest de volledige gevel gedocumenteerd worden. We vlogen systematisch langs de gevel en maakten een grid van hoge-resolutie foto's. Elke steen, elke scheur, elk detail werd vastgelegd in een complete visuele documentatie, perfect geschikt voor renovatieplanning. Na de werkzaamheden kunnen we opnieuw vliegen en direct vergelijken wat er veranderd is.
+
+Taken / aanpak:
+  • De drone positioneren en een systematisch grid instellen
+  • Langs de hele gevel vliegen en hoge-resolutie foto's maken volgens het grid
+  • Alle detailfoto's bundelen in een gestructureerde rapportage
+
+Preview image: images/project-8/project8header.png
+Beelden:
+  - images/project-8/foto1.jpg
+  - images/project-8/foto2.jpg
+  - images/project-8/foto3.jpg
+  - images/project-8/foto4.jpg
+  - images/project-8/foto5.jpg
+  - images/project-8/foto6.jpg
+  - images/project-8/foto7.jpg
+  - images/project-8/foto8.jpg
+  - images/project-8/foto9.jpg
+
+----------------------------------------
+PROJECT #9: Uw volgende project?
+Locatie: België / Nederland 🇧🇪🇳🇱
+Status: Onvoltooid
+
+Beschrijving:
+Heeft u een project waarbij drone-opnames, inspecties of opmetingen kunnen helpen? Wij denken graag mee over de beste aanpak voor uw specifieke situatie. Van eenmalige inspecties tot langdurige monitoring: we passen onze werkwijze aan op wat u nodig heeft.
+
+Taken / aanpak:
+  • Samen uw projectbehoefte bespreken
+  • De beste drone-aanpak voor uw situatie bepalen
+  • Flexibele planning die aansluit op uw werkzaamheden
+  • Duidelijke rapportage die u direct kunt gebruiken
+
+Preview image: images/assets/projectsectionbackground.png
+Beelden:
+  - images/branding/MsOnsite LogoSpacing.png
+
+========================================================================
+6. SAMENWERKINGEN (partners)
+========================================================================
+
+Titel: Samenwerkingen
+Lead: Trotse samenwerkingen met toonaangevende bedrijven in de sector.
+Notitie UI: logo's niet klikbaar op de site; carousel pauzeert niet bij hover.
+
+Partners:
+  • Group De Cloedt
+    URL (data): https://www.groupdecloedt.be/en
+  • Agentschap voor Natuur en Bos
+    URL (data): https://www.natuurenbos.be/
+  • Bioterra
+    URL (data): https://www.groupdecloedt.be/en/about-us/our-infrastructure/bioterra
+  • De Vlaamse Waterweg
+    URL (data): https://www.vlaamsewaterweg.be/nl
+  • Heyrman - De Roeck
+    URL (data): https://www.heyrman-de-roeck.be/
+  • NHM
+    URL (data): https://www.groupdecloedt.be/en/about-us/our-infrastructure/nhm
+  • EVS Infrabouw
+    URL (data): https://www.evsbv.nl/
+
+========================================================================
+7. CONTACT
+========================================================================
+
+Titel: Contact
+Lead: Klaar om op te stijgen? Neem contact op en ontdek hoe drones uw project vooruit helpen.
+Achtergrondbeeld: images/assets/applemapsmap.png
+
+Persoon:
+  Naam: Martin de Lobel
+  Functie: Projectcoördinator & UAS Operator
+  Bio: Ruim 15 jaar ervaring in projectcoördinatie, fotogrammetrie en werfopvolging.
+  Foto: images/assets/mdl.webp
+  Certificaat-CTA: EASA-certificaat bekijken (A1/A3 & A2)
+  Certificaat-modal titel: EASA Vaardigheidsbewijs
+
+Contactgegevens:
+  Locatie: Izegem, België  (maps: https://maps.google.com/?q=Izegem,Belgium)
+  Telefoon: +32 491 150 887
+  E-mail: martinonsite@telenet.be
+
+========================================================================
+8. FOOTER
+========================================================================
+
+Tagline:
+Professionele drones, maximale precisie: opmetingen, inspecties en werfopvolging in Benelux.
+
+Contact herhaling: telefoon, e-mail, Izegem België
+
+Kolom Onze Diensten: Inspecties, Monitoring, Opmetingen, Plaatsbeschrijving, Visuals, Werfopvolging
+
+Volg Ons:
+  LinkedIn: https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true
+  Facebook: https://www.facebook.com/people/MS-Onsite/61561631330027/
+  Instagram: https://www.instagram.com/onsite_project_coordination/
+
+Copyright: © [jaar] M&S Onsite. Alle rechten voorbehouden.
+Legal links: Cookiebeleid | Privacybeleid | Algemene Voorwaarden
+BTW: BE 0784.964.976
+Design by: Sander de Lobel (https://www.linkedin.com/in/sanderdelobel/)
+
+========================================================================
+9. COOKIE BANNER
+========================================================================
+
+Banner-teksten:
+  Deze website gebruikt cookies en maakt gebruik van services van derden voor hosting, beveiliging en content delivery. Door op "Accepteren" te klikken, stemt u in met het gebruik van analytische cookies. Essentiële services werken altijd zonder toestemming.
+  Link: Meer informatie → cookie-policy.html
+  Knoppen: Weigeren | Accepteren
+
+========================================================================
+10. JURIDISCHE PAGINA'S (platte tekst)
+========================================================================
+
+----------------------------------------
+COOKIEBELEID
+Bestand: cookie-policy.html
+----------------------------------------
+
+Terug naar homepage 
+
+Cookiebeleid 
+Laatste update: 15 januari 2025 
+1. Inleiding 
+M&S Onsite ("wij", "ons", "onze") respecteert uw privacy en is toegewijd aan het beschermen van uw persoonlijke gegevens. 
+Dit cookiebeleid legt uit hoe wij cookies gebruiken op onze website www.msonsite.be in overeenstemming met de 
+Belgische wetgeving, met name de Algemene Verordening Gegevensbescherming (AVG/GDPR) en het advies van de Belgische Gegevensbeschermingsautoriteit (GBA). 
+Door onze website te gebruiken, gaat u akkoord met het gebruik van cookies zoals beschreven in dit beleid, tenzij u deze in uw browserinstellingen uitschakelt. 
+
+2. Wat zijn cookies? 
+Cookies zijn kleine tekstbestanden die op uw computer, tablet of mobiele apparaat worden geplaatst wanneer u een website bezoekt. 
+Ze worden door uw browser opgeslagen en bevatten informatie die door de website kan worden gelezen wanneer u deze opnieuw bezoekt. 
+Cookies kunnen verschillende functies hebben, zoals het onthouden van uw voorkeuren, het verbeteren van de gebruikerservaring, 
+of het analyseren van websitebezoek. 
+
+3. Soorten cookies die wij gebruiken 
+3.1 Essentiële cookies 
+Deze cookies zijn noodzakelijk voor het functioneren van de website. Ze stellen u in staat om de website te gebruiken en 
+basisfuncties te benutten. Zonder deze cookies kunnen bepaalde diensten niet worden aangeboden. 
+Session cookies: Worden tijdelijk opgeslagen tijdens uw bezoek en verwijderd wanneer u uw browser sluit 
+Security cookies: Beschermen tegen ongeautoriseerde toegang en helpen bij veiligheidsmaatregelen 
+3.2 Analytische cookies 
+Deze cookies helpen ons begrijpen hoe bezoekers onze website gebruiken door informatie te verzamelen over het aantal bezoekers, 
+de pagina's die worden bekeken en de tijd die op de website wordt doorgebracht. Deze informatie is geanonimiseerd en wordt alleen 
+gebruikt om onze website te verbeteren. 
+Let op: Analytische cookies worden alleen geplaatst na uw expliciete toestemming, zoals vereist door de Belgische GDPR-wetgeving. 
+3.3 Functionele cookies 
+Deze cookies onthouden uw voorkeuren en keuzes (zoals uw taal of regio) om u een meer gepersonaliseerde ervaring te bieden bij toekomstige bezoeken. 
+
+4. Cookies en services van derden 
+Onze website maakt gebruik van verschillende diensten van derden om de functionaliteit en prestaties te verbeteren. 
+Hieronder vindt u een overzicht van de derde partijen die mogelijk toegang hebben tot bepaalde gegevens tijdens uw bezoek: 
+4.1 GitHub Pages (Hosting) 
+Onze website wordt gehost op GitHub Pages. GitHub kan basis toegangsinformatie verzamelen (zoals IP-adressen, 
+bezoektijden) voor technische doeleinden en beveiliging. Deze gegevens worden gebruikt voor de operationele 
+werking van de hostingdienst. Voor meer informatie, zie het GitHub Privacy Statement . 
+4.2 Cloudflare (CDN en DDoS-beveiliging) 
+Onze website maakt gebruik van Cloudflare voor content delivery (CDN) en DDoS-beveiliging. Cloudflare kan technische 
+gegevens verzamelen zoals IP-adressen, browsertypen, en verzoeken aan onze server. Deze gegevens worden gebruikt voor 
+de levering van content, beveiliging en het analyseren van websiteverkeer. Voor meer informatie, zie het Cloudflare Privacy Policy . 
+Belangrijk: Cloudflare-analytics kunnen cookies of andere trackingtechnologieën gebruiken. 
+Als u Cloudflare-analytics wilt weigeren, neem dan contact met ons op. 
+
+4.3 Font Awesome (via Cloudflare CDN) 
+Wij gebruiken Font Awesome iconen die worden geleverd via Cloudflare CDN (cdnjs.cloudflare.com). 
+Deze service kan technische gegevens zoals IP-adressen en verzoeken verzamelen voor de levering van icon fonts. 
+Font Awesome zelf verzamelt geen persoonlijke identificeerbare informatie via onze implementatie. 
+Voor meer informatie, zie het Font Awesome Privacy Policy . 
+4.4 Tailwind CSS (via Fastly CDN) 
+Wij gebruiken Tailwind CSS dat wordt geleverd via Fastly CDN (cdn.tailwindcss.com). 
+Fastly kan technische gegevens verzamelen zoals IP-adressen en verzoeken voor de levering van CSS-bestanden. 
+Deze gegevens worden gebruikt voor content delivery en prestaties. Voor meer informatie, zie het Fastly Privacy Policy . 
+4.5 Categorisering 
+De bovenstaande services kunnen worden gecategoriseerd als volgt: 
+Essentieel: GitHub Pages, Cloudflare (basis CDN/beveiliging), Font Awesome, Tailwind CSS, noodzakelijk voor websitefunctionaliteit 
+Analytisch: Cloudflare Analytics (indien geactiveerd), vereist toestemming 
+Wij zorgen ervoor dat alle analytische functies van deze services alleen worden geactiveerd na uw expliciete toestemming, 
+zoals vereist door de Belgische GDPR-wetgeving. 
+
+5. Cookie toestemming 
+In overeenstemming met de Belgische GDPR-wetgeving en de richtlijnen van de Gegevensbeschermingsautoriteit (GBA): 
+Wij vragen uw expliciete toestemming voor alle niet-essentiële cookies via onze cookiebanner 
+U heeft het recht om uw toestemming te geven of te weigeren 
+Uw keuze wordt opgeslagen in uw browser (localStorage) voor een periode van 12 maanden 
+U kunt uw keuze op elk moment wijzigen door uw browserinstellingen aan te passen of contact met ons op te nemen 
+Essentiële cookies worden geplaatst zonder toestemming, aangezien deze noodzakelijk zijn voor de werking van de website. 
+
+6. Cookies beheren 
+U heeft volledige controle over cookies. U kunt cookies op verschillende manieren beheren: 
+6.1 Via de cookiebanner 
+Bij uw eerste bezoek aan onze website verschijnt er een cookiebanner waarin u kunt kiezen om cookies te accepteren of te weigeren. 
+6.2 Via uw browserinstellingen 
+U kunt cookies ook beheren via de instellingen van uw browser. Hieronder vindt u links naar instructies voor de meest gebruikte browsers: 
+Google Chrome 
+Mozilla Firefox 
+Safari 
+Microsoft Edge 
+Let op: Het uitschakelen van cookies kan de functionaliteit van onze website beïnvloeden. 
+Sommige functies werken mogelijk niet correct als cookies zijn uitgeschakeld. 
+
+7. Bewaartermijn 
+Cookies worden bewaard voor verschillende periodes, afhankelijk van het type: 
+Session cookies: Worden automatisch verwijderd wanneer u uw browser sluit 
+Persistent cookies: Blijven op uw apparaat staan totdat ze verlopen of u ze verwijdert 
+Cookie toestemming: Uw keuze wordt 12 maanden bewaard 
+
+8. Vragen over cookies? 
+Als u vragen heeft over ons gebruik van cookies of dit cookiebeleid, neem dan contact met ons op: 
+M&S Onsite martinonsite@telenet.be +32 491 150 887 Izegem, België 
+
+9. Wijzigingen in dit beleid 
+Wij kunnen dit cookiebeleid van tijd tot tijd bijwerken om te reflecteren op wijzigingen in onze praktijken of om andere 
+operationele, juridische of regelgevende redenen. Wij raden u aan dit beleid periodiek te bekijken. De datum van de laatste 
+update staat bovenaan deze pagina. 
+
+Terug naar homepage 
+
+© M&S Onsite. Alle rechten voorbehouden. 
+Cookiebeleid | Privacybeleid | Algemene Voorwaarden
+
+
+----------------------------------------
+PRIVACYBELEID
+Bestand: privacy-policy.html
+----------------------------------------
+
+Terug naar homepage 
+
+Privacybeleid 
+Laatste update: 15 januari 2025 
+1. Inleiding 
+M&S Onsite ("wij", "ons", "onze") respecteert uw privacy en verbindt zich ertoe uw persoonlijke gegevens te beschermen. 
+Dit privacybeleid legt uit hoe wij persoonlijke gegevens verzamelen, gebruiken, delen en beschermen wanneer u onze website www.msonsite.be bezoekt of onze diensten gebruikt. 
+Wij voldoen aan de Algemene Verordening Gegevensbescherming (AVG/GDPR) en de Belgische wetgeving inzake gegevensbescherming. 
+Wij zijn geregistreerd als verwerkingsverantwoordelijke bij de Belgische Gegevensbeschermingsautoriteit (GBA). 
+Door onze website te gebruiken, gaat u akkoord met de praktijken die in dit privacybeleid zijn beschreven. 
+
+2. Gegevensverantwoordelijke 
+De verantwoordelijke voor de verwerking van uw persoonlijke gegevens is: 
+M&S Onsite BTW-nummer: BE 0784.964.976 martinonsite@telenet.be +32 491 150 887 Izegem, België 
+
+3. Welke persoonlijke gegevens verzamelen wij? 
+Wij verzamelen alleen persoonlijke gegevens die nodig zijn voor het verlenen van onze diensten of die u vrijwillig aan ons verstrekt: 
+3.1 Gegevens die u vrijwillig verstrekt 
+Contactgegevens: Naam, e-mailadres, telefoonnummer wanneer u contact met ons opneemt 
+Communicatiegegevens: Berichten die u via ons contactformulier of WhatsApp verstuurt 
+Bedrijfsgegevens: Bedrijfsnaam, functie (indien van toepassing) 
+3.2 Automatisch verzamelde gegevens 
+Technische gegevens: IP-adres, browsertype, besturingssysteem, apparaatinformatie 
+Gebruiksgegevens: Pagina's die u bezoekt, tijdstip van bezoek, klikgedrag (alleen met toestemming) 
+Cookie-gegevens: Zie ons cookiebeleid 
+
+4. Waarom verzamelen wij uw gegevens? 
+Wij gebruiken uw persoonlijke gegevens alleen voor de volgende doeleinden: 
+Dienstverlening: Het beantwoorden van uw vragen en het verlenen van onze droneservices 
+Communicatie: Het voeren van correspondentie met u over onze diensten 
+Rechtsgeldigheid: Het nakomen van onze wettelijke verplichtingen en het beheren van contractuele relaties 
+Websiteverbetering: Het analyseren van websitegebruik om onze diensten te verbeteren (alleen met toestemming) 
+Beveiliging: Het beschermen van onze website tegen fraude en misbruik 
+Belangrijk: Wij gebruiken uw gegevens niet voor marketingdoeleinden zonder uw expliciete toestemming, 
+en wij verkopen uw gegevens nooit aan derden. 
+
+5. Juridische basis voor gegevensverwerking 
+In overeenstemming met de AVG/GDPR verwerken wij uw persoonlijke gegevens op basis van: 
+Toestemming: Wanneer u expliciet akkoord gaat met de verwerking (bijv. cookies voor analytics) 
+Contractuele noodzaak: Voor de uitvoering van overeenkomsten of het verlenen van diensten 
+Wettelijke verplichting: Om te voldoen aan toepasselijke wetgeving (bijv. belastingwetgeving) 
+Gerechtvaardigd belang: Voor de beveiliging van onze website en het voorkomen van fraude 
+
+6. Delen van gegevens met derden 
+Wij verkopen uw persoonlijke gegevens niet. Wij delen uw gegevens alleen in de volgende gevallen: 
+Dienstverleners: Gekwalificeerde derden die ons helpen bij de werking van onze website (bijv. hosting providers), 
+die gebonden zijn aan strikte vertrouwelijkheids- en gegevensbeschermingsovereenkomsten 
+Wettelijke verplichting: Indien vereist door wetgeving, gerechtelijke bevelen of overheidsinstanties 
+Met uw toestemming: In andere gevallen alleen met uw expliciete toestemming 
+Alle derden waarmee wij gegevens delen, zijn verplicht om passende technische en organisatorische maatregelen te treffen 
+om uw gegevens te beschermen. 
+6.1 Specifieke diensten van derden 
+Onze website maakt gebruik van de volgende diensten van derden die mogelijk toegang hebben tot bepaalde technische gegevens: 
+GitHub Pages 
+Doel: Website hosting Gegevens: IP-adressen, toegangslogboeken, technische servergegevens Juridische basis: Gerechtvaardigd belang (hosting noodzakelijk voor websitefunctionaliteit) Meer informatie: GitHub Privacy Statement 
+
+Cloudflare 
+Doel: Content Delivery Network (CDN) en DDoS-beveiliging Gegevens: IP-adressen, browsertypen, verzoeken aan onze server, mogelijk analytics (met toestemming) Juridische basis: Gerechtvaardigd belang (beveiliging en content delivery) / Toestemming (analytics) Meer informatie: Cloudflare Privacy Policy 
+
+Font Awesome (via Cloudflare CDN) 
+Doel: Levering van icon fonts Gegevens: IP-adressen, technische verzoeken via CDN Juridische basis: Gerechtvaardigd belang (essentiële websitefunctionaliteit) Meer informatie: Font Awesome Privacy Policy 
+
+Tailwind CSS (via Fastly CDN) 
+Doel: Levering van CSS-styling Gegevens: IP-adressen, technische verzoeken via CDN Juridische basis: Gerechtvaardigd belang (essentiële websitefunctionaliteit) Meer informatie: Fastly Privacy Policy 
+
+Belangrijk: De meeste van deze services verzamelen alleen technische/operationale gegevens die nodig 
+zijn voor de levering van hun diensten. Geen van deze services verwerkt persoonlijke gegevens voor marketingdoeleinden 
+zonder uw expliciete toestemming. Analytische functies (zoals Cloudflare Analytics) worden alleen geactiveerd na uw 
+toestemming via onze cookiebanner. 
+
+7. Bewaartermijn 
+Wij bewaren uw persoonlijke gegevens alleen zolang als nodig is voor de doeleinden waarvoor zij zijn verzameld: 
+Contactgegevens: Tot 3 jaar na het laatste contact, tenzij u verzoekt om eerder verwijdering 
+Contractuele gegevens: In overeenstemming met wettelijke bewaarplichten (minimaal 7 jaar voor boekhoudkundige documenten) 
+Cookie-gegevens: Zie ons cookiebeleid 
+Marketingtoestemming: Totdat u uw toestemming intrekt 
+Na de bewaartermijn worden uw gegevens veilig verwijderd of geanonimiseerd. 
+
+8. Beveiliging van gegevens 
+Wij nemen passende technische en organisatorische maatregelen om uw persoonlijke gegevens te beschermen tegen ongeautoriseerde toegang, 
+verlies, vernietiging of wijziging: 
+Versleuteling van gegevens in transit (HTTPS/SSL) 
+Beveiligde servers en hostingomgevingen 
+Beperkte toegang tot persoonlijke gegevens (principe van minimale toegang) 
+Regelmatige beveiligingsupdates en monitoring 
+Back-up procedures voor gegevensherstel 
+Ondanks onze inspanningen kan geen enkele methode van transmissie of opslag 100% veilig zijn. 
+Indien er een inbreuk op de gegevensbeveiliging plaatsvindt, zullen wij u en de toezichthoudende autoriteit binnen 72 uur inlichten, 
+zoals vereist door de AVG. 
+
+9. Uw rechten 
+Onder de AVG/GDPR heeft u de volgende rechten met betrekking tot uw persoonlijke gegevens: 
+Recht op inzage 
+U heeft het recht om toegang te krijgen tot uw persoonlijke gegevens en om te weten hoe wij deze gebruiken. 
+
+Recht op rectificatie 
+U kunt onjuiste of onvolledige gegevens laten corrigeren. 
+
+Recht op gegevenswissing ("recht om vergeten te worden") 
+U kunt vragen om verwijdering van uw gegevens, behalve wanneer wij wettelijk verplicht zijn deze te bewaren. 
+
+Recht op beperking van de verwerking 
+U kunt verzoeken om de verwerking van uw gegevens te beperken onder bepaalde omstandigheden. 
+
+Recht op gegevensoverdraagbaarheid 
+U kunt uw gegevens in een gestructureerd, machineleesbaar formaat ontvangen. 
+
+Recht van bezwaar 
+U kunt bezwaar maken tegen de verwerking van uw gegevens voor bepaalde doeleinden (bijv. direct marketing). 
+
+Recht om toestemming in te trekken 
+Wanneer verwerking gebaseerd is op toestemming, kunt u deze op elk moment intrekken. 
+
+Om een van deze rechten uit te oefenen, neem contact met ons op via martinonsite@telenet.be . 
+Wij reageren binnen 30 dagen op uw verzoek. 
+
+10. Internationale gegevensoverdrachten 
+Uw persoonlijke gegevens worden primair verwerkt en opgeslagen binnen de Europese Economische Ruimte (EER). 
+Indien wij gegevens buiten de EER overdragen, zorgen wij ervoor dat passende beveiligingsmaatregelen worden getroffen, 
+zoals standaard contractuele clausules goedgekeurd door de Europese Commissie. 
+
+11. Contact en klachten 
+Voor vragen, verzoeken of klachten met betrekking tot dit privacybeleid of de verwerking van uw persoonlijke gegevens, 
+kunt u contact met ons opnemen: 
+M&S Onsite martinonsite@telenet.be +32 491 150 887 Izegem, België 
+
+U heeft ook het recht om een klacht in te dienen bij de Belgische Gegevensbeschermingsautoriteit (GBA) als u van mening bent dat 
+de verwerking van uw persoonlijke gegevens niet in overeenstemming is met de AVG: 
+Gegevensbeschermingsautoriteit (GBA) Drukpersstraat 35 1000 Brussel België www.gegevensbeschermingsautoriteit.be contact@apd-gba.be 
+
+12. Wijzigingen in dit beleid 
+Wij kunnen dit privacybeleid van tijd tot tijd bijwerken om te reflecteren op wijzigingen in onze praktijken, 
+wettelijke vereisten of om andere operationele, juridische of regelgevende redenen. Wij raden u aan dit beleid periodiek te bekijken. 
+De datum van de laatste update staat bovenaan deze pagina. Belangrijke wijzigingen zullen wij u melden via een opvallende mededeling op onze website. 
+
+Terug naar homepage 
+
+© M&S Onsite. Alle rechten voorbehouden. 
+Cookiebeleid | Privacybeleid | Algemene Voorwaarden
+
+
+----------------------------------------
+ALGEMENE VOORWAARDEN
+Bestand: terms-and-conditions.html
+----------------------------------------
+
+Terug naar homepage 
+
+Algemene Voorwaarden 
+Laatste update: 15 januari 2025 
+1. Inleiding 
+Deze algemene voorwaarden ("Voorwaarden") zijn van toepassing op alle diensten die worden aangeboden door M&S Onsite 
+("wij", "ons", "onze") via onze website www.msonsite.be en bij de verkoop van onze droneservices. 
+Door gebruik te maken van onze website of door onze diensten te bestellen, gaat u akkoord met deze algemene voorwaarden. 
+Indien u niet akkoord gaat met deze voorwaarden, verzoeken wij u om onze diensten niet te gebruiken. 
+
+2. Bedrijfsgegevens 
+M&S Onsite BTW-nummer: BE 0784.964.976 martinonsite@telenet.be +32 491 150 887 Izegem, België 
+
+3. Diensten 
+M&S Onsite biedt professionele droneservices aan, waaronder maar niet beperkt tot: 
+Drone-opmetingen met fotogrammetrie 
+Volumeberekeningen 
+Werfopvolging 
+Inspecties (gebouwen, industriële installaties) 
+Professionele luchtfoto's en video's 
+Plaatsbeschrijvingen 
+Monitoring voor waterbeheersing 
+As-built plannen 
+Alle diensten worden uitgevoerd door gecertificeerde EASA drone operators in overeenstemming met de Belgische en Europese regelgeving. 
+
+4. Offertes en bestellingen 
+4.1 Offertes 
+Alle offertes zijn vrijblijvend, tenzij uitdrukkelijk anders vermeld. Offertes zijn 30 dagen geldig vanaf de datum van uitgifte, 
+tenzij anders aangegeven. 
+4.2 Bestellingen 
+Een bestelling wordt bindend wanneer deze schriftelijk door de opdrachtgever wordt bevestigd of wanneer M&S Onsite 
+schriftelijk bevestigt dat de bestelling is geaccepteerd. Wij behouden ons het recht voor om bestellingen te weigeren 
+zonder opgaaf van redenen. 
+4.3 Wijzigingen 
+Wijzigingen in de opdracht na acceptatie kunnen leiden tot aanpassing van de prijs en leveringstermijn. 
+Wijzigingen worden schriftelijk bevestigd. 
+
+5. Prijzen en betaling 
+5.1 Prijzen 
+Alle prijzen zijn exclusief BTW, tenzij anders vermeld. Prijzen zijn onderhevig aan wijzigingen. 
+De prijs zoals vermeld in de geaccepteerde offerte of bestelbevestiging is bindend. 
+5.2 Betaling 
+Tenzij anders overeengekomen, zijn de volgende betalingsvoorwaarden van toepassing: 
+Voor opdrachten boven € 1.000: 50% voorschot bij opdrachtbevestiging, 50% bij oplevering 
+Voor opdrachten onder € 1.000: betaling binnen 30 dagen na factuurdatum 
+Alle facturen zijn betaalbaar binnen 30 dagen na factuurdatum, tenzij anders overeengekomen 
+Bij niet-betaling binnen de betaaltermijn is de opdrachtgever automatisch in verzuim zonder ingebrekestelling. 
+In dat geval is een rentevergoeding verschuldigd van 1% per maand over het openstaande bedrag. 
+
+6. Uitvoering van diensten 
+6.1 Leveringstermijn 
+Leveringstermijnen zijn indicatief en vormen geen essentiële verplichting, tenzij schriftelijk anders overeengekomen. 
+Vertraging in de levering geeft geen recht op schadevergoeding of opzegging van de overeenkomst, tenzij de vertraging 
+onredelijk is. 
+6.2 Weersomstandigheden 
+Dronevluchten zijn afhankelijk van geschikte weersomstandigheden. M&S Onsite is niet aansprakelijk voor vertragingen 
+veroorzaakt door ongunstige weersomstandigheden, luchtruimbeperkingen of andere omstandigheden buiten onze controle. 
+6.3 Toegang en medewerking 
+De opdrachtgever zorgt voor onbelemmerde toegang tot de werf of locatie en verleent alle nodige medewerking. 
+Kosten als gevolg van gebrek aan toegang of medewerking komen voor rekening van de opdrachtgever. 
+
+7. Intellectueel eigendom 
+Tenzij anders overeengekomen, blijven alle intellectuele eigendomsrechten (inclusief maar niet beperkt tot foto's, 
+video's, 3D-modellen, puntenwolken, kaarten en rapporten) eigendom van M&S Onsite tot volledige betaling van de factuur. 
+Na volledige betaling krijgt de opdrachtgever gebruiksrechten voor de specifieke doeleinden zoals overeengekomen in de offerte. 
+Herverkoop of hergebruik voor andere projecten vereist schriftelijke toestemming en kan aanvullende kosten met zich meebrengen. 
+M&S Onsite behoudt het recht om anonieme gegevens te gebruiken voor marketing- of technische verbeteringsdoeleinden, 
+behoudens privacywetgeving. 
+
+8. Garantie en aansprakelijkheid 
+8.1 Garantie 
+M&S Onsite garandeert dat diensten worden uitgevoerd volgens de normen van de branche en in overeenstemming met de overeengekomen specificaties. 
+Klachten moeten schriftelijk worden gemeld binnen 14 dagen na oplevering van de dienst. 
+8.2 Aansprakelijkheid 
+De aansprakelijkheid van M&S Onsite is beperkt tot de waarde van de desbetreffende opdracht, behalve in geval van opzet of zware fout. 
+M&S Onsite is niet aansprakelijk voor indirecte schade, gevolgschade, winstderving of gemist voordeel. 
+M&S Onsite is volledig verzekerd voor alle drone-operaties conform de geldende regelgeving. 
+
+9. Overmacht 
+M&S Onsite is niet aansprakelijk voor het niet nakomen van verplichtingen als gevolg van omstandigheden buiten redelijke controle, 
+waaronder maar niet beperkt tot: ongunstige weersomstandigheden, luchtruimbeperkingen, natuurrampen, oorlog, terrorisme, pandemieën, 
+stakingen, of overheidsbesluiten. In geval van overmacht kunnen termijnen worden verlengd zonder aansprakelijkheid. 
+
+10. Annulering en opzegging 
+10.1 Annulering door opdrachtgever 
+Annulering van een opdracht moet schriftelijk plaatsvinden. In geval van annulering door de opdrachtgever zijn de volgende kosten verschuldigd: 
+Bij annulering meer dan 48 uur voor de geplande uitvoering: 25% van de overeengekomen prijs 
+Bij annulering minder dan 48 uur voor de geplande uitvoering: 50% van de overeengekomen prijs 
+Bij annulering op de dag van uitvoering: 100% van de overeengekomen prijs 
+Alle gemaakte kosten (reiskosten, voorbereiding, etc.) zijn steeds verschuldigd 
+10.2 Opzegging door M&S Onsite 
+M&S Onsite behoudt zich het recht voor om een overeenkomst op te zeggen in geval van niet-betaling, 
+gebrek aan medewerking, of andere gerechtvaardigde redenen, zonder aansprakelijkheid voor schade. 
+
+11. Toepasselijk recht en geschillen 
+Op deze algemene voorwaarden en alle overeenkomsten is uitsluitend Belgisch recht van toepassing. 
+Alle geschillen die voortvloeien uit of verband houden met deze voorwaarden of de diensten van M&S Onsite zullen, 
+voor zover mogelijk, in eerste instantie via onderhandeling worden opgelost. Indien dit niet tot een oplossing leidt, 
+is de bevoegde rechter de rechter van het gerechtelijk arrondissement waarin M&S Onsite is gevestigd. 
+
+12. Algemene bepalingen 
+Indien een bepaling van deze voorwaarden nietig of vernietigbaar wordt geacht, blijven de overige bepalingen volledig van kracht. 
+De nietig of vernietigbaar geachte bepaling wordt vervangen door een geldige bepaling die het dichtst bij de bedoeling van de oorspronkelijke bepaling komt. 
+M&S Onsite behoudt zich het recht voor om deze algemene voorwaarden te wijzigen. Wijzigingen worden van kracht na publicatie op onze website. 
+Bestaande overeenkomsten blijven onderworpen aan de voorwaarden zoals deze golden ten tijde van het sluiten van de overeenkomst. 
+
+13. Contact 
+Voor vragen over deze algemene voorwaarden kunt u contact met ons opnemen: 
+M&S Onsite martinonsite@telenet.be +32 491 150 887 Izegem, België 
+
+Terug naar homepage 
+
+© M&S Onsite. Alle rechten voorbehouden. 
+Cookiebeleid | Privacybeleid | Algemene Voorwaarden
+
+
+========================================================================
+11. MEDIA-INVENTARIS (belangrijkste assets)
+========================================================================
+
+Branding:
+  - images/branding/MsOnsite LogoSpacing.png
+  - images/branding/msonsitelogowhite.png
+Hero video: videos/musso.mp4
+Contact map: images/assets/applemapsmap.png
+Teamfoto: images/assets/mdl.webp
+Projectachtergrond: images/assets/projectsectionbackground.png
+Overige projectmedia: zie sectie PROJECTEN
+
+========================================================================
+EINDE EXPORT
+========================================================================

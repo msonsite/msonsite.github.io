@@ -1,2004 +1,595 @@
 <!DOCTYPE html>
-<html lang="nl" class="scroll-smooth">
-<!-- Website Update - Fully SEO Optimized with Tailwind CSS -->
+<html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
- 
-  <!-- Title & Description -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>M&S Onsite | Droneservices België</title>
-  <meta name="description" content="M&S Onsite biedt snelle en nauwkeurige drone-opmetingen, volumeberekeningen, terreinanalyse, werfopvolging en projectmonitoring in Benelux. Veilig, efficiënt en betrouwbaar voor bouw, infrastructuur en logistiek.">
-  <meta name="author" content="M&S Onsite">
- 
-  <!-- Open Graph (Facebook, LinkedIn, WhatsApp, etc.) -->
-  <meta property="og:title" content="M&S Onsite | Droneservices België">
-  <meta property="og:description" content="M&S Onsite biedt snelle en nauwkeurige drone-opmetingen, volumeberekeningen, terreinanalyse, werfopvolging en projectmonitoring in Benelux. Veilig, efficiënt en betrouwbaar voor bouw, infrastructuur en logistiek.">
-  <meta property="og:image" content="https://www.msonsite.be/images/branding/MsOnsite%20LogoSpacing.png">
-  <meta property="og:url" content="https://www.msonsite.be">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="M&S Onsite">
- 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="M&S Onsite | Droneservices België">
-  <meta name="twitter:description" content="M&S Onsite biedt snelle en nauwkeurige drone-opmetingen, volumeberekeningen, terreinanalyse, werfopvolging en projectmonitoring in Benelux. Veilig, efficiënt en betrouwbaar voor bouw, infrastructuur en logistiek.">
-  <meta name="twitter:image" content="https://www.msonsite.be/images/branding/MsOnsite%20LogoSpacing.png">
- 
-  <!-- JSON-LD Structured Data -->
+  <meta name="description" content="M&S Onsite biedt snelle en nauwkeurige drone-opmetingen, volumeberekeningen, terreinanalyse, werfopvolging en projectmonitoring in Benelux. Veilig, efficiënt en betrouwbaar voor bouw, infrastructuur en logistiek." />
+  <meta property="og:title" content="M&S Onsite | Droneservices België" />
+  <meta property="og:description" content="M&S Onsite biedt snelle en nauwkeurige drone-opmetingen, volumeberekeningen, terreinanalyse, werfopvolging en projectmonitoring in Benelux. Veilig, efficiënt en betrouwbaar voor bouw, infrastructuur en logistiek." />
+  <meta property="og:image" content="images/branding/MsOnsite%20LogoSpacing.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.msonsite.be" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="favicon/site.webmanifest" />
+  <meta name="theme-color" content="#417580" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "M&S Onsite",
     "url": "https://www.msonsite.be",
-    "logo": "https://www.msonsite.be/images/branding/MsOnsite%20LogoSpacing.png"
+    "logo": "https://www.msonsite.be/images/branding/MsOnsite%20LogoSpacing.png",
+    "email": "martinonsite@telenet.be",
+    "telephone": "+32491150887",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Izegem",
+      "addressCountry": "BE"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/m-s-onsite/",
+      "https://www.facebook.com/people/MS-Onsite/61561631330027/",
+      "https://www.instagram.com/onsite_project_coordination/"
+    ]
   }
   </script>
- 
-  <!-- Preconnect to CDNs for faster loading - Critical for render performance -->
-  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  
-  <!-- DNS Prefetch for additional performance -->
-  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-  <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
-  
-  <!-- Preload critical Font Awesome fonts for faster loading -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
-  
-  <!-- Critical CSS - Inline for above-the-fold content (Navigation + Hero) -->
-  <style id="critical-css">
-    /* Reset & Base */
-    *,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
-    ::before,::after{--tw-content:''}
-    html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-feature-settings:normal;font-variation-settings:normal;scroll-padding-top:6rem}
-    body{margin:0;line-height:inherit;background-color:#f9fafb;color:#1f2937}
-    
-    /* Critical Tailwind Utilities for Above-the-Fold */
-    .fixed{position:fixed}
-    .absolute{position:absolute}
-    .relative{position:relative}
-    .inset-0{top:0;right:0;bottom:0;left:0}
-    .top-0{top:0}
-    .left-0{left:0}
-    .right-0{right:0}
-    .bottom-0{bottom:0}
-    .z-10{z-index:10}
-    .z-50{z-index:50}
-    .flex{display:flex}
-    .hidden{display:none}
-    .flex-col{flex-direction:column}
-    .items-center{align-items:center}
-    .justify-between{justify-content:space-between}
-    .justify-center{justify-content:center}
-    .text-center{text-align:center}
-    .w-full{width:100%}
-    .h-full{height:100%}
-    .h-10{height:2.5rem}
-    .h-12{height:3rem}
-    .h-14{height:3.5rem}
-    .h-16{height:4rem}
-    .h-20{height:5rem}
-    .h-24{height:6rem}
-    .h-28{height:7rem}
-    .h-\[85vh\]{height:85vh}
-    .overflow-hidden{overflow:hidden}
-    .mx-auto{margin-left:auto;margin-right:auto}
-    .px-4{padding-left:1rem;padding-right:1rem}
-    .py-3{padding-top:0.75rem;padding-bottom:0.75rem}
-    .py-4{padding-top:1rem;padding-bottom:1rem}
-    .py-5{padding-top:1.25rem;padding-bottom:1.25rem}
-    .pt-20{padding-top:5rem}
-    .pt-32{padding-top:8rem}
-    .space-x-8> :not([hidden])~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}
-    .space-y-3> :not([hidden])~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}
-    .space-y-4> :not([hidden])~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}
-    .space-y-6> :not([hidden])~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}
-    .space-y-8> :not([hidden])~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}
-    .space-x-1> :not([hidden])~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.25rem * var(--tw-space-x-reverse));margin-left:calc(0.25rem * calc(1 - var(--tw-space-x-reverse)))}
-    .space-x-2> :not([hidden])~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}
-    .space-x-3> :not([hidden])~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}
-    .text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity))}
-    .text-gray-50{--tw-text-opacity:1;color:rgb(249 250 251 / var(--tw-text-opacity))}
-    .text-gray-100{--tw-text-opacity:1;color:rgb(243 244 246 / var(--tw-text-opacity))}
-    .text-gray-200{--tw-text-opacity:1;color:rgb(229 231 235 / var(--tw-text-opacity))}
-    .text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity))}
-    .text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity))}
-    .bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity))}
-    .bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}
-    .bg-white\/20{background-color:rgb(255 255 255 / 0.2)}
-    .bg-white\/95{background-color:rgb(255 255 255 / 0.95)}
-    .bg-green-400{--tw-bg-opacity:1;background-color:rgb(74 222 128 / var(--tw-bg-opacity))}
-    .bg-black\/40{background-color:rgb(0 0 0 / 0.4)}
-    .bg-black\/30{background-color:rgb(0 0 0 / 0.3)}
-    .bg-black\/50{background-color:rgb(0 0 0 / 0.5)}
-    .border-b{border-bottom-width:1px}
-    .border-white\/20{border-color:rgb(255 255 255 / 0.2)}
-    .border-white\/30{border-color:rgb(255 255 255 / 0.3)}
-    .border-white\/50{border-color:rgb(255 255 255 / 0.5)}
-    .border-2{border-width:2px}
-    .rounded-full{border-radius:9999px}
-    .shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-box-shadow, 0 0 #0000), var(--tw-shadow)}
-    .shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-box-shadow, 0 0 #0000), var(--tw-shadow)}
-    .drop-shadow-lg{--tw-drop-shadow:drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}
-    .drop-shadow-2xl{--tw-drop-shadow:drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}
-    .drop-shadow-md{--tw-drop-shadow:drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}
-    .backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}
-    .backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}
-    .font-medium{font-weight:500}
-    .font-semibold{font-weight:600}
-    .font-bold{font-weight:700}
-    .text-sm{font-size:0.875rem;line-height:1.25rem}
-    .text-base{font-size:1rem;line-height:1.5rem}
-    .text-lg{font-size:1.125rem;line-height:1.75rem}
-    .text-xl{font-size:1.25rem;line-height:1.75rem}
-    .text-2xl{font-size:1.5rem;line-height:2rem}
-    .leading-relaxed{line-height:1.625}
-    .max-w-4xl{max-width:56rem}
-    .max-w-6xl{max-width:72rem}
-    .w-2{width:0.5rem}
-    .w-3{width:0.75rem}
-    .w-6{width:1.5rem}
-    .w-8{width:2rem}
-    .h-2{height:0.5rem}
-    .h-3{height:0.75rem}
-    .h-6{height:1.5rem}
-    .h-8{height:2rem}
-    .p-1{padding:0.25rem}
-    .gap-3{gap:0.75rem}
-    .gap-4{gap:1rem}
-    .gap-6{gap:1.5rem}
-    .inline-block{display:inline-block}
-    .inline-flex{display:inline-flex}
-    .block{display:block}
-    .object-cover{object-fit:cover}
-    .transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}
-    .transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}
-    .transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}
-    .duration-300{transition-duration:300ms}
-    .animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-    
-    /* Container */
-    .container{width:100%;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem}
-    @media (min-width:640px){.container{padding-left:1.5rem;padding-right:1.5rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:px-8{padding-left:2rem;padding-right:2rem}.sm\:py-4{padding-top:1rem;padding-bottom:1rem}.sm\:py-6{padding-top:1.5rem;padding-bottom:1.5rem}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:h-12{height:3rem}.sm\:h-20{height:5rem}.sm\:h-24{height:6rem}.sm\:space-x-2> :not([hidden])~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.sm\:space-x-3> :not([hidden])~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.sm\:space-y-4> :not([hidden])~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.sm\:space-y-6> :not([hidden])~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.sm\:flex-row{flex-direction:row}.sm\:inline{display:inline}.sm\:hidden{display:none}.sm\:pt-12{padding-top:3rem}.sm\:pt-32{padding-top:8rem}.sm\:gap-4{gap:1rem}}
-    @media (min-width:768px){.md\:px-8{padding-left:2rem;padding-right:2rem}.md\:px-10{padding-left:2.5rem;padding-right:2.5rem}.md\:py-4{padding-top:1rem;padding-bottom:1rem}.md\:py-5{padding-top:1.25rem;padding-bottom:1.25rem}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}.md\:h-14{height:3.5rem}.md\:h-24{height:6rem}.md\:space-y-8> :not([hidden])~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.md\:gap-6{gap:1.5rem}.md\:pt-6{padding-top:1.5rem}.md\:pt-8{padding-top:2rem}}
-    @media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}.lg\:h-24{height:6rem}.lg\:flex{display:flex}.lg\:hidden{display:none}}
-    @media (min-width:1280px){.xl\:h-28{height:7rem}}
-    
-    /* Custom Styles */
-    .glass{background:rgba(255,255,255,0.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-    :root{--primary:#417580;--primary-dark:#2d5159;--primary-light:#5a9aa8}
-    .text-primary{color:var(--primary)}
-    .text-primary-light{color:var(--primary-light)}
-    .bg-primary{background-color:var(--primary)}
-    .bg-primary-dark{background-color:var(--primary-dark)}
-    .bg-primary-light{background-color:var(--primary-light)}
-    .hover\:text-primary:hover{color:var(--primary)}
-    
-    /* Shared type scale */
-    .section-header{text-align:center;max-width:36rem;margin-left:auto;margin-right:auto;margin-bottom:2rem}
-    .section-eyebrow{font-size:0.875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);margin:0 0 0.5rem}
-    .section-title{font-size:1.875rem;font-weight:700;letter-spacing:-0.02em;line-height:1.15;color:var(--primary);margin:0 0 0.75rem}
-    .section-lead{font-size:1.125rem;line-height:1.65;color:#4b5563;margin:0}
-    .body-text{font-size:1rem;line-height:1.65;color:#4b5563}
-    .subheading{font-size:1.25rem;font-weight:700;line-height:1.25;color:#111827;margin:0}
-    .label-text{font-size:0.75rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#6b7280}
-    .meta-text{font-size:0.875rem;line-height:1.5;color:#6b7280}
-    @media (min-width:768px){
-      .section-header{margin-bottom:2.5rem}
-      .section-title{font-size:2.25rem}
-      .body-text{font-size:1.125rem}
-      .subheading{font-size:1.5rem}
-    }
-    @media (min-width:1024px){
-      .section-title{font-size:3rem}
-    }
-    .hover\:bg-white:hover{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity))}
-    .hover\:bg-white\/90:hover{background-color:rgb(255 255 255 / 0.9)}
-    .hover\:text-primary:hover{color:var(--primary)}
-    .hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(1.05) scaleY(1.05)}
-    .group:hover .group-hover\:translate-y-1{--tw-translate-y:0.25rem;transform:translate(var(--tw-translate-x), 0.25rem) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}
-    .group:hover .group-hover\:scale-110{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(1.1) scaleY(1.1)}
-    .bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}
-    .bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}
-    .from-black\/30{--tw-gradient-from:rgb(0 0 0 / 0.3);--tw-gradient-to:rgb(0 0 0 / 0);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}
-    .via-transparent{--tw-gradient-to:transparent;--tw-gradient-stops:var(--tw-gradient-from), transparent, var(--tw-gradient-to)}
-    .to-black\/50{--tw-gradient-to:rgb(0 0 0 / 0.5)}
-    .to-primary-dark{--tw-gradient-to:var(--primary-dark)}
-    .fade-in-up{animation:fadeInUp 0.6s ease-out}
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-    
-    /* Font Awesome font-face rules with font-display: swap for optimal loading */
-    @font-face {
-      font-family: 'Font Awesome 6 Free';
-      font-style: normal;
-      font-weight: 900;
-      font-display: swap;
-      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2') format('woff2');
-      unicode-range: U+F000-F8FF;
-    }
-    
-    @font-face {
-      font-family: 'Font Awesome 6 Brands';
-      font-style: normal;
-      font-weight: 400;
-      font-display: swap;
-      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2');
-      unicode-range: U+F000-F8FF;
-    }
-    
-    /* Ensure icons remain visible during font loading */
-    .fa, .fas, .far, .fal, .fad, .fab {
-      font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands', sans-serif;
-      font-style: normal;
-      font-variant: normal;
-      text-rendering: auto;
-      line-height: 1;
-    }
-  </style>
-  
-  <!-- Tailwind CSS - Load asynchronously after critical CSS to avoid render-blocking -->
-  <script>
-    // Set Tailwind config before async load
-    window.tailwindConfig = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#417580',
-            'primary-dark': '#2d5159',
-            'primary-light': '#5a9aa8',
-          }
-        }
-      }
-    };
-    
-    // Load Tailwind asynchronously - non-blocking
-    (function() {
-      const script = document.createElement('script');
-      script.src = 'https://cdn.tailwindcss.com/3.4.17';
-      script.async = true;
-      script.onload = function() {
-        // Apply config after Tailwind loads
-        if (window.tailwind && window.tailwindConfig) {
-          tailwind.config = window.tailwindConfig;
-        }
-      };
-      document.head.appendChild(script);
-    })();
-  </script>
- 
-  <!-- Font Awesome - Load asynchronously to not block rendering -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'; this.onload=null;">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
- 
-  <!-- Favicon - Google Search compliant -->
-  <link rel="icon" href="/favicon.ico">
-  <!-- Additional favicon sizes for comprehensive browser support -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
-  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/favicon/web-app-manifest-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/favicon/web-app-manifest-512x512.png">
-  <link rel="manifest" href="/favicon/site.webmanifest">
- 
-   <!-- Critical Resource Preloading -->
-   <link rel="preload" href="images/branding/MsOnsite LogoSpacing.png" as="image" type="image/png" fetchpriority="high">
-   
-   <!-- Note: Video preloading removed - too heavy, browser will handle it efficiently -->
- 
-  <!-- Non-Critical CSS - Load asynchronously -->
-  <style>
-    /* Partner Carousel Styles */
-    .partners-container {
-      overflow: hidden;
-      position: relative;
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      margin-right: calc(-50vw + 50%);
-      /* Optimize for scrolling performance */
-      will-change: contents;
-      contain: layout style paint;
-    }
-    
-    .partners-track {
-      display: flex;
-      animation: scroll-infinite 30s linear infinite;
-      width: max-content;
-      /* GPU acceleration for smooth animation */
-      will-change: transform;
-      transform: translateZ(0);
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-    
-    .partners-track.paused {
-      animation-play-state: paused;
-    }
-    
-    .partners-track.resumed {
-      animation-play-state: running;
-    }
-    
-    .partner-item {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 1.25rem;
-      will-change: transform;
-      transform: translateZ(0);
-    }
-
-    @media (min-width: 768px) {
-      .partner-item {
-        padding: 0 1.75rem;
-      }
-    }
-
-    .partner-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 8.5rem;
-      height: 3.75rem;
-      padding: 0.5rem 0.75rem;
-    }
-
-    @media (min-width: 768px) {
-      .partner-logo {
-        width: 10rem;
-        height: 4.25rem;
-        padding: 0.625rem 0.875rem;
-      }
-    }
-
-    .partner-logo img {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      display: block;
-    }
-    
-    /* Seamless infinite scroll animation - GPU accelerated */
-    @keyframes scroll-infinite {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-      100% {
-        transform: translate3d(-50%, 0, 0);
-      }
-    }
-    
-    /* Mobile optimization */
-    @media (max-width: 768px) {
-      .partners-track {
-        animation-duration: 25s;
-      }
-    }
-   
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-   
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translate3d(0, 30px, 0);
-      }
-      to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-      }
-    }
-   
-    .animate-float {
-      animation: float 3s ease-in-out infinite;
-    }
-   
-    .fade-in-up {
-      animation: fadeInUp 0.6s ease-out;
-    }
-    
-    /* Enhanced Service Card Animations */
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.05); }
-    }
-    
-    .animate-pulse-glow {
-      animation: pulseGlow 4s ease-in-out infinite;
-    }
-    
-    /* Staggered animation delays for service cards */
-    .service-card-1 { animation-delay: 0ms; }
-    .service-card-2 { animation-delay: 150ms; }
-    .service-card-3 { animation-delay: 300ms; }
-    .service-card-4 { animation-delay: 450ms; }
-    .service-card-5 { animation-delay: 600ms; }
-    .service-card-6 { animation-delay: 750ms; }
-
-    /* Drone Animation */
-    @keyframes droneFly {
-      0% { transform: translateX(-100px) translateY(0px) rotate(0deg); }
-      25% { transform: translateX(50px) translateY(-30px) rotate(5deg); }
-      50% { transform: translateX(200px) translateY(0px) rotate(0deg); }
-      75% { transform: translateX(50px) translateY(30px) rotate(-5deg); }
-      100% { transform: translateX(-100px) translateY(0px) rotate(0deg); }
-    }
-
-    @keyframes droneHover {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      25% { transform: translateY(-10px) rotate(2deg); }
-      50% { transform: translateY(-5px) rotate(0deg); }
-      75% { transform: translateY(-15px) rotate(-2deg); }
-    }
-
-    @keyframes droneRotors {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .animate-drone-fly {
-      animation: droneFly 20s ease-in-out infinite;
-    }
-
-    .animate-drone-hover {
-      animation: droneHover 3s ease-in-out infinite;
-    }
-
-    .animate-rotors {
-      animation: droneRotors 0.1s linear infinite;
-    }
-   
-    /* Smooth scrolling offset for fixed navbar */
-    html {
-      scroll-padding-top: 6rem;
-    }
- 
-    /* Enhanced floating animation */
-    .animate-float {
-      animation: float 6s ease-in-out infinite;
-    }
-   
-    /* Gradient text */
-    .gradient-text {
-      background: linear-gradient(135deg, #417580 0%, #5a9aa8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-   
-    /* Glassmorphism effect */
-    .glass {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-     
-     
-     /* Lazy loading for images */
-     img.lazy {
-       opacity: 0;
-       transition: opacity 0.3s;
-     }
-     
-     img.lazy.loaded {
-       opacity: 1;
-     }
-     
-     /* Scroll fade-in animations for section titles - Optimized */
-     .scroll-fade-in-item {
-       opacity: 0;
-       transform: translateY(20px);
-       transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-       will-change: opacity, transform;
-     }
-     
-     .scroll-fade-in-item.visible {
-       opacity: 1;
-       transform: translateY(0);
-       will-change: auto;
-     }
-     
-     /* Staggered animation delays for items within the same container */
-     .scroll-fade-in-item:nth-child(1) {
-       transition-delay: 0ms;
-     }
-     
-     .scroll-fade-in-item:nth-child(2) {
-       transition-delay: 150ms;
-     }
-     
-     .scroll-fade-in-item:nth-child(3) {
-       transition-delay: 300ms;
-     }
-     
-     /* Preload critical resources */
-     .preload-critical {
-       position: absolute;
-       top: -9999px;
-       left: -9999px;
-       visibility: hidden;
-     }
-     
-     /* Hide scrollbar utilities */
-     .scrollbar-hide {
-       -ms-overflow-style: none;
-       scrollbar-width: none;
-     }
-    .scrollbar-hide::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* Mobile projects scroller (DCQ-style snap + dots) */
-    .projects-mobile__dots[hidden] {
-      display: none !important;
-    }
-
-    .projects-mobile__dots {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      margin-top: 0.85rem;
-    }
-
-    .projects-mobile__dot {
-      width: 0.4rem;
-      height: 0.4rem;
-      border-radius: 9999px;
-      background: rgba(65, 117, 128, 0.25);
-      pointer-events: none;
-      transition: width 0.2s ease, background-color 0.2s ease;
-    }
-
-    .projects-mobile__dot.is-active {
-      width: 1rem;
-      background: #417580;
-    }
-
-    .projects-mobile__scroller {
-      --projects-mobile-card-width: min(calc(100vw - 2.5rem), 20rem);
-      overflow-x: auto;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-      width: 100vw;
-      margin-left: calc(50% - 50vw);
-      padding-bottom: 0.25rem;
-    }
-
-    .projects-mobile__scroller:has(.projects-mobile__grid[data-project-count="1"]) {
-      overflow-x: hidden;
-      width: 100%;
-      margin-left: 0;
-    }
-
-    .projects-mobile__scroller::-webkit-scrollbar {
-      display: none;
-    }
-
-    .projects-mobile__grid {
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: stretch;
-      width: max-content;
-      margin: 0;
-      padding: 0;
-    }
-
-    .projects-mobile__grid[data-project-count="1"] {
-      width: 100%;
-      max-width: var(--projects-mobile-card-width);
-      margin: 0 auto;
-      justify-content: center;
-    }
-
-    /* Spacers i.p.v. padding: voorkomt iOS Safari scroll-snap start-op-einde bug */
-    .projects-mobile__snap-spacer {
-      display: block;
-      flex: 0 0 max(0px, calc((100vw - var(--projects-mobile-card-width)) / 2));
-      width: max(0px, calc((100vw - var(--projects-mobile-card-width)) / 2));
-      height: 1px;
-      pointer-events: none;
-      visibility: hidden;
-    }
-
-    .projects-mobile__grid[data-project-count="1"] .projects-mobile__snap-spacer {
-      display: none;
-    }
-
-    .projects-mobile__grid .modern-project-card {
-      flex: 0 0 var(--projects-mobile-card-width);
-      width: var(--projects-mobile-card-width);
-      scroll-snap-align: center;
-      scroll-snap-stop: always;
-      margin: 0;
-    }
-
-    .projects-mobile__grid .modern-project-card + .modern-project-card {
-      margin-left: 0.85rem;
-    }
-     
-     /* Project Filter Buttons */
-     .filter-btn {
-       background: white;
-       color: #417580;
-       border: 1px solid #e5e7eb;
-       cursor: pointer;
-       border-radius: 0.5rem;
-     }
-     
-     .filter-btn:hover {
-       border-color: #417580;
-       color: #417580;
-     }
-     
-     .filter-btn.active {
-       background: #417580;
-       color: white;
-       border-color: #417580;
-     }
-     
-     /* Featured Project Hero - Optimized for scroll performance */
-     .featured-project {
-       position: relative;
-       border-radius: 2rem;
-       overflow: hidden;
-       cursor: pointer;
-       transition: transform 0.3s ease, box-shadow 0.3s ease;
-       background: linear-gradient(135deg, #417580 0%, #2d5561 100%);
-       box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-       backface-visibility: hidden;
-     }
-     
-     .featured-project:hover {
-       will-change: transform;
-       transform: translateY(-6px);
-       box-shadow: 0 20px 40px -12px rgba(65, 117, 128, 0.25);
-     }
-     
-     .featured-project:not(:hover) {
-       will-change: auto;
-     }
-     
-     .featured-project > div {
-       height: 100%;
-     }
-     
-     /* Modern Project Card - Optimized for scroll performance */
-     .modern-project-card {
-       background: white;
-       border-radius: 1.5rem;
-       overflow: hidden;
-       cursor: pointer;
-       transition: transform 0.3s ease, box-shadow 0.3s ease;
-       border: 1px solid #e5e7eb;
-       opacity: 0;
-       transform: translateY(20px);
-       animation: fadeInUp 0.5s ease forwards;
-       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-       /* Only use will-change on hover to avoid creating composite layers for all cards */
-       backface-visibility: hidden;
-     }
-     
-     .modern-project-card.visible {
-       opacity: 1;
-       transform: translateY(0);
-     }
-     
-     .modern-project-card:hover {
-       will-change: transform;
-       transform: translateY(-6px);
-       box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.12);
-       border-color: #417580;
-     }
-     
-     .modern-project-card:not(:hover) {
-       will-change: auto;
-     }
-     
-     /* Mobile card improvements - matching desktop design */
-     @media (max-width: 768px) {
-       #projects-mobile-grid .modern-project-card {
-         background: white;
-         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-         border: 1px solid #e5e7eb;
-       }
-       
-       #projects-mobile-grid .modern-project-card:hover {
-         transform: translateY(-4px);
-         box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.12);
-         border-color: #417580;
-       }
-       
-       .modern-project-card .project-card-image {
-         border-top-left-radius: 1.5rem;
-         border-top-right-radius: 1.5rem;
-       }
-     }
-     
-     @keyframes fadeInUp {
-       to {
-         opacity: 1;
-         transform: translateY(0);
-       }
-     }
-     
-     /* Optimize animations for scroll performance */
-     .modern-project-card {
-       contain: layout style paint;
-     }
-     
-     /* Remove will-change after animation completes */
-     .modern-project-card.visible {
-       will-change: auto;
-     }
-     
-     @media (prefers-reduced-motion: reduce) {
-       .modern-project-card,
-       .featured-project,
-       .scroll-fade-in-item {
-         animation: none;
-         transition: none;
-       }
-     }
-     
-     /* Optimize animations for scroll performance */
-     .modern-project-card {
-       contain: layout style paint;
-     }
-     
-     @media (prefers-reduced-motion: reduce) {
-       .modern-project-card,
-       .featured-project,
-       .scroll-fade-in-item {
-         animation: none;
-         transition: none;
-       }
-     }
-     
-     /* Project Card Image */
-     .project-card-image {
-       position: relative;
-       overflow: hidden;
-       background: #f3f4f6;
-     }
-     
-     .project-card-image img,
-     .project-card-image video {
-       transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-     }
-     
-     .modern-project-card:hover .project-card-image img,
-     .modern-project-card:hover .project-card-image video {
-       transform: scale(1.1);
-     }
-     
-     /* Project Card Badge */
-     .project-badge {
-       position: absolute;
-       top: 1rem;
-       right: 1rem;
-       padding: 0.5rem 1rem;
-       border-radius: 9999px;
-       font-size: 0.75rem;
-       font-weight: 600;
-       backdrop-filter: blur(10px);
-       z-index: 10;
-     }
-     
-     /* Category Tag */
-     .category-tag {
-       display: inline-flex;
-       align-items: center;
-       padding: 0.375rem 0.75rem;
-       border-radius: 0.5rem;
-       font-size: 0.75rem;
-       font-weight: 500;
-       background: #f0f9ff;
-       color: #417580;
-     }
-     
-     /* Featured project badge alignment - ensure same height */
-     .featured-project .category-tag,
-     .featured-project .project-badge {
-       display: inline-flex;
-       align-items: center;
-       line-height: 1;
-       vertical-align: middle;
-     }
-     
-     .featured-project .project-badge {
-       position: static;
-     }
-     
-     /* Grid Animation Stagger */
-     .modern-project-card:nth-child(1) { animation-delay: 0.1s; }
-     .modern-project-card:nth-child(2) { animation-delay: 0.2s; }
-     .modern-project-card:nth-child(3) { animation-delay: 0.3s; }
-     .modern-project-card:nth-child(4) { animation-delay: 0.4s; }
-     .modern-project-card:nth-child(5) { animation-delay: 0.5s; }
-     .modern-project-card:nth-child(6) { animation-delay: 0.6s; }
-     .modern-project-card:nth-child(7) { animation-delay: 0.7s; }
-     
-     /* Line clamp utilities */
-     .line-clamp-1 {
-       display: -webkit-box;
-       -webkit-line-clamp: 1;
-       line-clamp: 1;
-       -webkit-box-orient: vertical;
-       overflow: hidden;
-     }
-     
-    .line-clamp-3 {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    /* Design Signature Animations */
-    @keyframes penWrite {
-      0%, 100% { 
-        transform: translateY(0px) rotate(0deg);
-        opacity: 0.8;
-      }
-      25% { 
-        transform: translateY(-1px) rotate(2deg);
-        opacity: 1;
-      }
-      50% { 
-        transform: translateY(0px) rotate(0deg);
-        opacity: 0.9;
-      }
-      75% { 
-        transform: translateY(1px) rotate(-1deg);
-        opacity: 0.85;
-      }
-    }
-    
-    @keyframes gradientSweep {
-      0% { 
-        transform: translateX(-100%);
-        opacity: 0;
-      }
-      50% { 
-        opacity: 1;
-      }
-      100% { 
-        transform: translateX(100%);
-        opacity: 0;
-      }
-    }
-    
-    @keyframes signatureGlow {
-      0%, 100% { 
-        box-shadow: 0 0 0 rgba(65, 117, 128, 0);
-      }
-      50% { 
-        box-shadow: 0 0 8px rgba(65, 117, 128, 0.3);
-      }
-    }
-    
-    @keyframes letterReveal {
-      0% { 
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      100% { 
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    /* Design signature styles */
-    .design-pen-icon {
-      animation: penWrite 3s ease-in-out infinite;
-    }
-    
-    .design-signature-link {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .design-signature-link:hover {
-      animation: signatureGlow 2s ease-in-out infinite;
-    }
-    
-    .animate-gradient-sweep {
-      animation: gradientSweep 0.8s ease-out;
-    }
-    
-    /* Letter-by-letter reveal on hover */
-    .design-signature-link:hover span {
-      animation: letterReveal 0.6s ease-out;
-    }
-    
-    /* Subtle floating effect for the pen */
-    .design-pen-icon::after {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: 50%;
-      width: 2px;
-      height: 2px;
-      background: linear-gradient(45deg, transparent, rgba(65, 117, 128, 0.4), transparent);
-      border-radius: 50%;
-      transform: translateX(-50%);
-      animation: penWrite 3s ease-in-out infinite;
-      animation-delay: 0.5s;
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .design-pen-icon {
-        animation-duration: 4s;
-      }
-      
-      .design-signature-link:hover {
-        animation-duration: 3s;
-      }
-    }
-
-    /* GDPR Cookie Banner Styles */
-    #cookie-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
-      background: rgba(45, 81, 89, 0.98);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
-      transform: translateY(0);
-      transition: transform 0.3s ease-in-out;
-    }
-    
-    #cookie-banner.hidden {
-      transform: translateY(100%);
-    }
-    
-    @media (max-width: 768px) {
-      #cookie-banner {
-        padding: 1rem;
-      }
-    }
-
-    /* Diensten — lookbook (DCQ Ons aanbod-stijl, M&S teal) */
-    .services-storytelling {
-      background: #f9fafb;
-      overflow: visible;
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .services-intro {
-      text-align: center;
-      padding: 2.5rem 1rem 0.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .services-intro {
-        padding: 3.25rem 1.5rem 1.5rem;
-      }
-    }
-
-    .services-intro .section-lead {
-      max-width: 36rem;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .services-lookbook {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .service-entry {
-      position: relative;
-      color: #111827;
-      background: #f9fafb;
-      scroll-margin-top: 6rem;
-    }
-
-    .service-entry:nth-child(even) {
-      background: #f3f4f6;
-    }
-
-    .service-entry__inner {
-      max-width: 72rem;
-      margin: 0 auto;
-      padding: 1.5rem 1rem 2.25rem;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-      align-items: center;
-    }
-
-    @media (min-width: 768px) {
-      .service-entry__inner {
-        padding: 2.75rem 1.5rem;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 2.5rem;
-      }
-
-      .service-entry--left .service-entry__content {
-        order: 1;
-      }
-
-      .service-entry--left .service-entry__visualWrap {
-        order: 2;
-      }
-
-      .service-entry--right .service-entry__content {
-        order: 2;
-        text-align: right;
-      }
-
-      .service-entry--right .service-entry__visualWrap {
-        order: 1;
-      }
-
-      .service-entry--right .service-entry__head {
-        justify-content: flex-end;
-      }
-
-      .service-entry--right .service-entry__text,
-      .service-entry--right .service-entry__features {
-        margin-left: auto;
-      }
-
-      .service-entry--right .service-entry__feature {
-        justify-content: flex-end;
-      }
-    }
-
-    .service-entry__content {
-      min-width: 0;
-    }
-
-    .service-entry__head {
-      display: flex;
-      align-items: baseline;
-      gap: 0.65rem 0.85rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .service-entry__index {
-      font-size: 1.125rem;
-      font-weight: 700;
-      line-height: 1;
-      letter-spacing: 0.02em;
-      color: #417580;
-      flex-shrink: 0;
-    }
-
-    .service-entry__title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin: 0;
-      color: #111827;
-    }
-
-    @media (min-width: 768px) {
-      .service-entry__title {
-        font-size: 1.5rem;
-      }
-    }
-
-    .service-entry__visualWrap {
-      position: relative;
-      width: 100%;
-      justify-self: stretch;
-      z-index: 0;
-      margin-top: 0.35rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .service-entry__accent {
-      position: absolute;
-      width: 42%;
-      height: 48%;
-      max-width: 11rem;
-      max-height: 10rem;
-      background: #417580;
-      border-radius: 0.65rem;
-      opacity: 0.9;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .service-entry--left .service-entry__accent {
-      left: -0.55rem;
-      bottom: -0.55rem;
-    }
-
-    .service-entry--right .service-entry__accent {
-      right: -0.55rem;
-      bottom: -0.55rem;
-    }
-
-    .service-entry__visual {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      height: 13rem;
-      background: #e5e7eb;
-      border-radius: 0.5rem;
-      z-index: 1;
-    }
-
-    @media (min-width: 768px) {
-      .service-entry__visual {
-        height: 19rem;
-      }
-    }
-
-    .service-entry__img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .service-entry:hover .service-entry__img {
-      transform: scale(1.04);
-    }
-
-    .service-entry__text {
-      font-size: 1rem;
-      line-height: 1.65;
-      margin: 0 0 1rem;
-      max-width: 36rem;
-      color: #4b5563;
-    }
-
-    @media (min-width: 768px) {
-      .service-entry__text {
-        font-size: 1.125rem;
-      }
-    }
-
-    .service-entry__features {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      max-width: 36rem;
-    }
-
-    .service-entry__feature {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      font-size: 0.875rem;
-      color: #374151;
-    }
-
-    .service-entry__feature i {
-      color: #417580;
-      font-size: 0.875rem;
-      flex-shrink: 0;
-    }
-
-    @media (min-width: 768px) {
-      .service-entry__feature {
-        font-size: 1rem;
-      }
-
-      .service-entry__feature i {
-        font-size: 1rem;
-      }
-    }
-
-    @media (max-width: 1023px) {
-      .service-entry__accent {
-        display: none;
-      }
-    }
-
-    @media (max-width: 767px) {
-      .service-entry__visualWrap {
-        order: -1;
-      }
-    }
-
-    /* Contact section atmosphere */
-    .contact-section {
-      background: #e8f1f3;
-    }
-
-    .contact-section__bg {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .contact-section__map {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      opacity: 0.55;
-      filter: saturate(1.15) contrast(1.05) brightness(1.05);
-      transform: scale(1.02);
-    }
-
-    .contact-section__wash {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg, rgba(65, 117, 128, 0.28) 0%, rgba(232, 241, 243, 0.55) 42%, rgba(90, 154, 168, 0.22) 100%),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(232, 241, 243, 0.55) 100%);
-    }
-
-    .contact-section__glow {
-      position: absolute;
-      width: min(28rem, 70vw);
-      height: min(28rem, 70vw);
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.45;
-    }
-
-    .contact-section__glow--tl {
-      top: -8rem;
-      left: -6rem;
-      background: rgba(90, 154, 168, 0.55);
-    }
-
-    .contact-section__glow--br {
-      right: -8rem;
-      bottom: -10rem;
-      background: rgba(65, 117, 128, 0.4);
-    }
-
-    .contact-panel {
-      padding: 1.75rem 1.5rem;
-      background: rgba(255, 255, 255, 0.78);
-      border: 1px solid rgba(65, 117, 128, 0.12);
-      border-radius: 1rem;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 12px 40px rgba(45, 81, 89, 0.08);
-    }
-
-    @media (min-width: 768px) {
-      .contact-panel {
-        padding: 2.25rem 2.5rem;
-      }
-    }
-
-    .contact-icon {
-      flex-shrink: 0;
-      width: 2.5rem;
-      height: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 0.65rem;
-      background: rgba(65, 117, 128, 0.1);
-      color: #417580;
-      transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    .group:hover .contact-icon {
-      background: rgba(65, 117, 128, 0.18);
-    }
-
-    /* Projecten section background */
-    .projects-section {
-      background: #eef4f5;
-    }
-
-    .projects-section__wash {
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(238, 244, 245, 0.62) 55%, rgba(255, 255, 255, 0.7) 100%),
-        linear-gradient(135deg, rgba(65, 117, 128, 0.12) 0%, transparent 50%, rgba(90, 154, 168, 0.1) 100%);
-      pointer-events: none;
-    }
-
-    #projects-bg-image {
-      position: absolute;
-      inset: 0;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-    }
-
-    #featured-project-container {
-      overflow: hidden;
-      transition: max-height 0.45s ease, opacity 0.35s ease, margin 0.45s ease, padding 0.45s ease;
-    }
-
-    #featured-project-container.is-collapsed {
-      max-height: 0 !important;
-      opacity: 0;
-      margin-bottom: 0 !important;
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-      pointer-events: none;
-    }
-
-    #projects-grid,
-    #projects-mobile-grid {
-      transition: opacity 0.25s ease;
-    }
-
-    #projects-grid.is-filtering,
-    #projects-mobile-grid.is-filtering {
-      opacity: 0.35;
-    }
-  </style>
 </head>
- 
-<body class="bg-gray-50 text-gray-800">
- 
-  <!-- NAVIGATION -->
-  <nav class="fixed top-0 left-0 right-0 glass shadow-lg z-50 border-b border-white/20">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-3 sm:py-4 md:py-5">
-       
-        <!-- Logo -->
-        <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" class="flex items-center transform hover:scale-105 transition duration-300">
-          <img src="images/branding/MsOnsite LogoSpacing.png" alt="M&S Onsite" class="h-10 sm:h-12 md:h-14" loading="eager" fetchpriority="high">
+<body>
+  <header class="site-header" id="site-header">
+    <div class="container nav-inner">
+      <a href="#top" class="nav-logo" aria-label="M&S Onsite, terug naar boven">
+        <img class="nav-logo-light" src="images/branding/msonsitelogowhite.png" alt="" width="120" height="82" decoding="async" />
+        <img class="nav-logo-dark" src="images/branding/MsOnsite%20LogoSpacing.png" alt="M&S Onsite" width="120" height="82" decoding="async" />
+      </a>
+      <nav class="nav-links" id="nav-links" aria-label="Hoofdnavigatie">
+        <a href="#diensten" class="nav-link">Diensten</a>
+        <a href="#projecten" class="nav-link">Projecten</a>
+        <a href="#customers" class="nav-link">Samenwerkingen</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" class="nav-link nav-cta" target="_blank" rel="noopener noreferrer">
+          LinkedIn
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </a>
- 
-        <!-- Mobile menu button -->
-        <button id="mobile-menu-btn" class="lg:hidden text-gray-700 hover:text-primary focus:outline-none p-1">
-          <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
- 
-        <!-- Desktop Navigation -->
-        <div class="hidden lg:flex items-center space-x-8">
-          <a href="#diensten" class="text-gray-700 hover:text-primary transition duration-300 font-medium relative group">
-            Diensten
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#projecten" class="text-gray-700 hover:text-primary transition duration-300 font-medium relative group">
-            Projecten
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#customers" class="text-gray-700 hover:text-primary transition duration-300 font-medium relative group">
-            Samenwerkingen
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#contact" class="text-gray-700 hover:text-primary transition duration-300 font-medium relative group">
-            Contact
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank" rel="noopener noreferrer"
-             class="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-lg transition-colors flex items-center gap-2 text-sm font-medium">
-            <span>LinkedIn</span>
-            <i class="fab fa-linkedin"></i>
-          </a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="nav-links">
+        <span class="nav-toggle-bars" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero" aria-label="Introductie">
+      <div class="hero-media">
+        <video autoplay muted loop playsinline poster="images/assets/heroframe.png" aria-hidden="true">
+          <source src="videos/musso.webm" type="video/webm" />
+          <source src="videos/musso.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <img class="hero-brand" src="images/branding/msonsitelogowhite.png" alt="M&S Onsite" width="280" height="120" />
+        <h1 class="hero-title">Drone-oplossingen die werken voor uw projecten</h1>
+        <p class="hero-support">Professionele drone-opmetingen, werfopvolging en inspecties in de Benelux.</p>
+        <div class="hero-actions">
+          <a href="#diensten" class="btn btn-primary">Ontdek onze diensten <span class="arrow" aria-hidden="true">→</span></a>
+          <a href="#contact" class="btn btn-ghost">Neem contact op</a>
         </div>
       </div>
- 
-      <!-- Mobile Navigation -->
-      <div id="mobile-menu" class="hidden lg:hidden pb-4">
-        <div class="flex flex-col space-y-3">
-          <a href="#diensten" class="text-gray-700 hover:text-primary transition duration-300 font-medium py-2">Diensten</a>
-          <a href="#projecten" class="text-gray-700 hover:text-primary transition duration-300 font-medium py-2">Projecten</a>
-          <a href="#customers" class="text-gray-700 hover:text-primary transition duration-300 font-medium py-2">Samenwerkingen</a>
-          <a href="#contact" class="text-gray-700 hover:text-primary transition duration-300 font-medium py-2">Contact</a>
-          <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank" rel="noopener noreferrer"
-             class="bg-primary hover:bg-primary-dark text-white px-4 py-3 rounded-lg transition-colors inline-flex items-center justify-center gap-2 text-sm font-medium">
-            <span>LinkedIn</span>
-            <i class="fab fa-linkedin"></i>
-          </a>
+      <div class="hero-scroll" aria-hidden="true">
+        <span class="hero-scroll-line"></span>
+        Scroll
+      </div>
+    </section>
+
+    <!-- DIENSTEN -->
+    <section class="diensten" id="diensten">
+      <div class="container">
+        <header class="section-header reveal">
+          <span class="eyebrow">Diensten</span>
+          <h2 class="section-title">Onze Diensten</h2>
+          <p class="section-lead">Van een eenmalige inspectie tot langlopende werfopvolging. U krijgt beelden en data die meteen bruikbaar zijn voor planning, controle en oplevering.</p>
+        </header>
+
+        <div class="diensten-list">
+          <article class="dienst reveal" id="inspecties">
+            <div class="dienst-media">
+              <img src="images/project-1/vuurtoreninspectie.jpg" alt="Drone-inspectie van een historische vuurtoren" loading="lazy" width="800" height="600" />
+            </div>
+            <div class="dienst-copy">
+              <span class="dienst-num">01</span>
+              <h3 class="dienst-title">Inspecties</h3>
+              <p class="dienst-body">Daken, gevels, masten of industriële installaties: plekken waar stellingen of klimwerk traag en risicovol zijn. Wij vliegen dichtbij, leggen elk detail vast en bezorgen u een overzichtelijke documentatie. Zo kunt u schades en aandachtspunten gericht aanpakken.</p>
+              <p class="dienst-highlight">Veilig inspecteren zonder stellingen of klimwerk.</p>
+              <ul class="dienst-features">
+                <li>Geen klimwerk of stellingen nodig</li>
+                <li>Hoge-resolutie detailbeelden</li>
+                <li>Duidelijke rapportage voor herstel of oplevering</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="dienst reveal" id="monitoring">
+            <div class="dienst-media">
+              <img src="images/project-5/waterbeheersingbanner.jpg" alt="Luchtbeeld van waterbeheersing en monitoring" loading="lazy" width="800" height="600" />
+            </div>
+            <div class="dienst-copy">
+              <span class="dienst-num">02</span>
+              <h3 class="dienst-title">Monitoring</h3>
+              <p class="dienst-body">Voor waterbeheer, natuurherstel of langlopende werven vliegen we op vaste momenten over hetzelfde gebied. Legt u de beelden naast elkaar, dan ziet u meteen hoe waterstanden, begroeiing, erosie of voortgang evolueren. Handig om beslissingen te steunen op feiten, niet op aannames.</p>
+              <ul class="dienst-features">
+                <li>Herhaalde vluchten op vaste intervallen</li>
+                <li>Vergelijkbare beelden doorheen de tijd</li>
+                <li>Ondersteuning bij water- en gebiedsbeheer</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="dienst reveal" id="opmetingen">
+            <div class="dienst-media">
+              <img src="images/project-2/puntenwolk.png" alt="3D-puntenwolk van een volumetrische meting" loading="lazy" width="800" height="600" />
+            </div>
+            <div class="dienst-copy">
+              <span class="dienst-num">03</span>
+              <h3 class="dienst-title">Opmetingen</h3>
+              <p class="dienst-body">Stockhopen, terreinen of as-built situaties meten, zonder dagenlang met meetstokken te lopen. Via fotogrammetrie leveren we puntenwolken, orthofoto's en volumes die u meteen kunt gebruiken voor planning, facturatie of verdere engineering.</p>
+              <ul class="dienst-features">
+                <li>As-built plannen en orthofoto's</li>
+                <li>Oppervlakte- en volumeberekeningen</li>
+                <li>3D-modellen klaar voor verdere verwerking</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="dienst reveal" id="plaatsbeschrijving">
+            <div class="dienst-media">
+              <img src="images/project-8/foto1.jpg" alt="Hoge-resolutie geveldokumentatie voor plaatsbeschrijving" loading="lazy" width="800" height="600" />
+            </div>
+            <div class="dienst-copy">
+              <span class="dienst-num">04</span>
+              <h3 class="dienst-title">Plaatsbeschrijving</h3>
+              <p class="dienst-body">Leg de beginsituatie van een perceel, gevel of omgeving objectief vast vóór de werken starten. Nadien vliegen we opnieuw, zodat u voor en na duidelijk kunt vergelijken. Handig bij renovatie, schadeclaims of oplevering.</p>
+              <ul class="dienst-features">
+                <li>Volledige visuele documentatie</li>
+                <li>Voor- en navergelijking</li>
+                <li>Geschikt voor renovatie en oplevering</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="dienst reveal" id="visuals">
+            <div class="dienst-media">
+              <img src="images/project-1/vuurtorenfoto.jpg" alt="Professionele luchtfoto van een vuurtoren" loading="lazy" width="800" height="600" />
+            </div>
+            <div class="dienst-copy">
+              <span class="dienst-num">05</span>
+              <h3 class="dienst-title">Visuals</h3>
+              <p class="dienst-body">Luchtfoto's en video voor communicatie, tenders of updates naar stakeholders. U krijgt beelden die het project begrijpelijk maken voor klanten, bewoners of bestuurders, zonder technisch jargon.</p>
+              <ul class="dienst-features">
+                <li>Luchtfoto's in hoge resolutie</li>
+                <li>Video voor presentaties en socials</li>
+                <li>Sterk in tenders en projectcommunicatie</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="dienst reveal" id="werfopvolging">
+            <div class="dienst-media">
+              <img src="images/project-4/previewimageproject4.png" alt="Overzichtskaart van werfopvolging bij bodemsanering" loading="lazy" width="800" height="600" />
+            </div>
+            <div class="dienst-copy">
+              <span class="dienst-num">06</span>
+              <h3 class="dienst-title">Werfopvolging</h3>
+              <p class="dienst-body">Houd grote of complexe werven bij zonder elke week zelf ter plaatse te moeten zijn. Periodieke vluchten leveren kaarten, 3D-modellen en rapportages. Zo delen aannemers, studiebureaus en opdrachtgevers dezelfde actuele stand van zaken.</p>
+              <ul class="dienst-features">
+                <li>Actuele overzichtskaarten</li>
+                <li>3D-modellen van de werf</li>
+                <li>Rapportages voor alle partijen</li>
+              </ul>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-  </nav>
- 
-  <!-- HERO SECTION -->
-  <section id="banner" class="relative h-[92vh] overflow-hidden bg-gradient-to-br from-slate-900 via-primary-dark to-primary">
-    <video 
-      autoplay 
-      muted 
-      loop 
-      playsinline
-      class="absolute inset-0 w-full h-full object-cover"
-    >
-      <source src="videos/musso.mp4" type="video/mp4">
-    </video>
-   
-    <div class="absolute inset-0 bg-black/40"></div>
-    <div class="absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-black/50"></div>
-   
-    <div class="relative z-10 h-full flex flex-col justify-center">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-white py-8 sm:py-12 pt-20 sm:pt-32">
-        <div class="max-w-3xl mx-auto space-y-5 sm:space-y-6 fade-in-up">
-          <img src="images/branding/MsOnsite LogoSpacing.png" 
-               alt="M&S Onsite" 
-               class="h-16 sm:h-20 md:h-24 lg:h-28 mx-auto drop-shadow-2xl"
-               loading="eager"
-               fetchpriority="high"
-               decoding="async">
-          <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight drop-shadow-lg">
-            Drone-oplossingen die werken voor uw projecten
-          </h1>
-          <p class="text-base sm:text-lg text-gray-200 leading-relaxed drop-shadow-md max-w-2xl mx-auto">
-            Professionele drone-opmetingen, werfopvolging en inspectiediensten in Benelux.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-1">
-            <a href="#diensten"
-               class="bg-white text-primary hover:bg-gray-100 px-8 py-3.5 rounded-lg font-semibold text-base transition-colors inline-flex items-center gap-2">
-              <span>Ontdek onze diensten</span>
-              <i class="fas fa-arrow-down text-sm"></i>
-            </a>
-            <a href="#contact"
-               class="border border-white/60 text-white hover:bg-white/10 px-8 py-3.5 rounded-lg font-semibold text-base transition-colors inline-flex items-center gap-2">
-              <span>Neem contact op</span>
-            </a>
+    </section>
+
+    <!-- VALUE PANEL -->
+    <section class="value-panel-wrap" aria-label="Waarom M&amp;S Onsite">
+      <div class="container">
+        <div class="value-panel reveal">
+          <div class="value-panel-inner">
+            <span class="eyebrow">Aanpak</span>
+            <h2 class="section-title">Scherp. Veilig. Meetbaar.</h2>
+            <p class="section-lead">Wij vliegen waar het telt, en leveren beelden en data die meteen in uw planning, controle of oplevering passen.</p>
+            <div class="value-perks">
+              <div class="value-perk">
+                <h3>Veilig dichtbij</h3>
+                <p>Inspecties zonder stellingen of klimwerk. Minder risico, sneller resultaat op plekken die moeilijk bereikbaar zijn.</p>
+              </div>
+              <div class="value-perk">
+                <h3>Data die werkt</h3>
+                <p>Orthofoto’s, volumes en 3D-modellen die u meteen kunt gebruiken. Geen ruwe dump, wel bruikbare output.</p>
+              </div>
+              <div class="value-perk">
+                <h3>Heldere opvolging</h3>
+                <p>Herhaalde vluchten en duidelijke rapportage, zodat iedereen dezelfde actuele stand van zaken deelt.</p>
+              </div>
+            </div>
+            <div class="value-panel-actions">
+              <a href="#projecten" class="btn btn-primary">Bekijk projecten <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="#contact" class="btn btn-outline">Neem contact op</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
- 
-  <!-- DIENSTEN SECTION — lookbook (DCQ Ons aanbod-stijl) -->
-  <section id="diensten" class="services-storytelling" aria-labelledby="services-heading">
-    <div class="services-intro container mx-auto max-w-7xl px-4 md:px-6">
-      <p class="section-eyebrow">Diensten</p>
-      <h2 id="services-heading" class="section-title">Onze Diensten</h2>
-      <p class="section-lead">Van nauwkeurige opmetingen tot complete werfopvolging: professionele drone-oplossingen voor uw project.</p>
-    </div>
+    </section>
 
-    <div class="services-lookbook">
-      <article class="service-entry service-entry--left" id="inspecties">
-        <div class="service-entry__inner">
-          <div class="service-entry__content">
-            <div class="service-entry__head">
-              <span class="service-entry__index">01</span>
-              <h3 class="service-entry__title">Inspecties</h3>
+    <!-- PROJECTEN -->
+    <section class="projecten" id="projecten">
+      <div class="container">
+        <header class="section-header reveal">
+          <span class="eyebrow">Portfolio</span>
+          <h2 class="section-title">Projecten</h2>
+          <p class="section-lead">Blader door uitgevoerde opdrachten. Eén project tegelijk, met alle details in één klik.</p>
+        </header>
+
+        <div class="project-filters reveal" role="group" aria-label="Filter projecten">
+          <button class="filter-btn is-active" data-filter="all">Alle</button>
+          <button class="filter-btn" data-filter="Inspecties">Inspecties</button>
+          <button class="filter-btn" data-filter="Monitoring">Monitoring</button>
+          <button class="filter-btn" data-filter="Opmetingen">Opmetingen</button>
+          <button class="filter-btn" data-filter="Plaatsbeschrijving">Plaatsbeschrijving</button>
+          <button class="filter-btn" data-filter="Werfopvolging">Werfopvolging</button>
+        </div>
+
+        <div class="project-showcase reveal" id="project-showcase">
+          <div class="showcase-stage">
+            <div class="showcase-media" id="showcase-media" aria-live="polite"></div>
+            <div class="showcase-panel">
+              <div class="showcase-panel-top">
+                <span class="showcase-count" id="showcase-count"></span>
+                <div class="showcase-nav" aria-label="Projectnavigatie">
+                  <button type="button" class="showcase-nav-btn" id="showcase-prev" aria-label="Vorig project">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                  </button>
+                  <button type="button" class="showcase-nav-btn" id="showcase-next" aria-label="Volgend project">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="showcase-meta" id="showcase-meta"></div>
+              <h3 class="showcase-title" id="showcase-title"></h3>
+              <p class="showcase-excerpt" id="showcase-excerpt"></p>
+              <div class="showcase-actions">
+                <button type="button" class="btn btn-primary" id="showcase-action">Bekijk details</button>
+              </div>
             </div>
-            <p class="service-entry__text">Inspecteer moeilijk bereikbare plaatsen zonder risico. Van gebouwen tot industriële installaties leveren wij betrouwbare gegevens waar traditionele methoden falen.</p>
-            <ul class="service-entry__features">
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>100% veilig voor personeel</span></li>
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Hoge-resolutie beelden van dichtbij</span></li>
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Complete visuele documentatie</span></li>
-            </ul>
           </div>
-          <div class="service-entry__visualWrap">
-            <span class="service-entry__accent" aria-hidden="true"></span>
-            <div class="service-entry__visual">
-              <img src="images/project-1/vuurtoreninspectie.jpg" alt="Inspecties" class="service-entry__img" loading="eager" decoding="async">
-            </div>
+
+          <div class="showcase-rail-wrap">
+            <div class="showcase-rail" id="showcase-rail" role="listbox" aria-label="Kies een project"></div>
           </div>
         </div>
-      </article>
 
-      <article class="service-entry service-entry--right" id="monitoring">
-        <div class="service-entry__inner">
-          <div class="service-entry__content">
-            <div class="service-entry__head">
-              <span class="service-entry__index">02</span>
-              <h3 class="service-entry__title">Monitoring</h3>
-            </div>
-            <p class="service-entry__text">Continue monitoring voor waterbeheersing en preventieve inspecties. Drones maken uw processen slimmer, veiliger en efficiënter.</p>
-            <ul class="service-entry__features">
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Continue monitoring mogelijk</span></li>
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Preventieve inspecties</span></li>
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Efficiënte waterbeheersing</span></li>
-            </ul>
+        <p class="projects-empty" id="projects-empty">Geen projecten gevonden voor deze categorie</p>
+      </div>
+    </section>
+
+    <!-- VOOR / NA -->
+    <section class="compare" id="vergelijking">
+      <div class="container">
+        <header class="section-header reveal">
+          <span class="eyebrow">Resultaat</span>
+          <h2 class="section-title">Voor en na in beeld</h2>
+          <p class="section-lead">Sleep de lijn om te vergelijken. Zo ziet u meteen wat herhaalde vluchten en opmetingen opleveren.</p>
+        </header>
+
+        <div class="compare-tabs reveal" role="tablist" aria-label="Kies een vergelijking">
+          <button type="button" class="compare-tab is-active" role="tab" aria-selected="true" data-compare="water">Waterbeheer</button>
+          <button type="button" class="compare-tab" role="tab" aria-selected="false" data-compare="sanering">Bodemsanering</button>
+          <button type="button" class="compare-tab" role="tab" aria-selected="false" data-compare="analyse">Analyse</button>
+        </div>
+
+        <div
+          class="ba-slider reveal"
+          id="ba-slider"
+          role="img"
+          aria-label="Vergelijkingsbeeld. Sleep horizontaal om voor en na te vergelijken."
+        >
+          <div class="ba-layer ba-after" id="ba-after">
+            <img src="images/project-5/2024-04-22-origineel.jpg" alt="" width="1200" height="900" draggable="false" />
           </div>
-          <div class="service-entry__visualWrap">
-            <span class="service-entry__accent" aria-hidden="true"></span>
-            <div class="service-entry__visual">
-              <img src="images/project-5/waterbeheersingbanner.jpg" alt="Monitoring" class="service-entry__img" loading="lazy" decoding="async">
-            </div>
+          <div class="ba-layer ba-before" id="ba-before">
+            <img src="images/project-5/2024-02-29-origineel.jpg" alt="" width="1200" height="900" draggable="false" />
+          </div>
+          <span class="ba-label ba-label-before" id="ba-label-before">Februari</span>
+          <span class="ba-label ba-label-after" id="ba-label-after">April</span>
+          <div class="ba-handle" id="ba-handle" aria-hidden="true">
+            <span class="ba-knob">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <path d="M8 12H4m0 0l3-3M4 12l3 3M16 12h4m0 0l-3-3m3 3l-3 3" />
+              </svg>
+            </span>
           </div>
         </div>
-      </article>
 
-      <article class="service-entry service-entry--left" id="opmetingen">
-        <div class="service-entry__inner">
-          <div class="service-entry__content">
-            <div class="service-entry__head">
-              <span class="service-entry__index">03</span>
-              <h3 class="service-entry__title">Opmetingen</h3>
-            </div>
-            <p class="service-entry__text">Snel, nauwkeurig en kostenefficiënt. Van as-built plannen tot volumeberekeningen: breng uw project in kaart zonder tijd te verliezen.</p>
-            <ul class="service-entry__features">
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>As-built plannen</span></li>
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Oppervlaktebepalingen</span></li>
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Volumeberekeningen</span></li>
-            </ul>
-          </div>
-          <div class="service-entry__visualWrap">
-            <span class="service-entry__accent" aria-hidden="true"></span>
-            <div class="service-entry__visual">
-              <img src="images/project-2/puntenwolk.png" alt="Opmetingen" class="service-entry__img" loading="lazy" decoding="async">
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-entry service-entry--right" id="plaatsbeschrijving">
-        <div class="service-entry__inner">
-          <div class="service-entry__content">
-            <div class="service-entry__head">
-              <span class="service-entry__index">04</span>
-              <h3 class="service-entry__title">Plaatsbeschrijving</h3>
-            </div>
-            <p class="service-entry__text">Volledige documentatie van de omgeving. Ideaal om de situatie voor en na uw project vast te leggen met gedetailleerde dronebeelden.</p>
-          </div>
-          <div class="service-entry__visualWrap">
-            <span class="service-entry__accent" aria-hidden="true"></span>
-            <div class="service-entry__visual">
-              <img src="images/project-8/foto1.jpg" alt="Plaatsbeschrijving" class="service-entry__img" loading="lazy" decoding="async">
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-entry service-entry--left" id="visuals">
-        <div class="service-entry__inner">
-          <div class="service-entry__content">
-            <div class="service-entry__head">
-              <span class="service-entry__index">05</span>
-              <h3 class="service-entry__title">Visuals</h3>
-            </div>
-            <p class="service-entry__text">Professionele luchtfoto's en video's die uw visie tot leven brengen. Laat uw project spreken met indrukwekkende beelden.</p>
-            <ul class="service-entry__features">
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Professionele luchtfoto's</span></li>
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Video-opnames</span></li>
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Uw visie tot leven gebracht</span></li>
-            </ul>
-          </div>
-          <div class="service-entry__visualWrap">
-            <span class="service-entry__accent" aria-hidden="true"></span>
-            <div class="service-entry__visual">
-              <img src="images/project-1/vuurtorenfoto.jpg" alt="Visuals" class="service-entry__img" loading="lazy" decoding="async">
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="service-entry service-entry--right" id="werfopvolging">
-        <div class="service-entry__inner">
-          <div class="service-entry__content">
-            <div class="service-entry__head">
-              <span class="service-entry__index">06</span>
-              <h3 class="service-entry__title">Werfopvolging</h3>
-            </div>
-            <p class="service-entry__text">Blijf op de hoogte van uw werf. Overzichtelijke kaarten, 3D-modellen en gedetailleerde rapportages geven u volledige controle.</p>
-            <ul class="service-entry__features">
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Overzichtelijke kaarten</span></li>
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>3D-modellen</span></li>
-              <li class="service-entry__feature"><i class="fas fa-check-circle" aria-hidden="true"></i><span>Gedetailleerde rapportages</span></li>
-            </ul>
-          </div>
-          <div class="service-entry__visualWrap">
-            <span class="service-entry__accent" aria-hidden="true"></span>
-            <div class="service-entry__visual">
-              <img src="images/project-4/previewimageproject4.png" alt="Werfopvolging" class="service-entry__img" loading="lazy" decoding="async">
-            </div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
- 
-  <!-- PROJECTEN SECTION -->
-  <section class="projects-section py-14 md:py-20 relative overflow-hidden" id="projecten" style="contain: layout style paint;">
-    <!-- Background Image - Lazy loaded -->
-    <div id="projects-bg-image" class="opacity-0" style="transition: opacity 0.5s ease; will-change: opacity;"></div>
-    
-    <!-- Lighter wash so the photo stays vivid but text stays readable -->
-    <div class="projects-section__wash absolute inset-0"></div>
-   
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-     
-      <!-- Section Title -->
-      <div class="section-header scroll-fade-in">
-        <h2 class="section-title scroll-fade-in-item">
-          Projecten
-        </h2>
-        <p class="section-lead scroll-fade-in-item">
-          Ontdek onze uitgevoerde projecten en zie wat we voor onze klanten hebben gerealiseerd.
+        <p class="compare-caption reveal" id="compare-caption">
+          Monitoring waterbeheersing in Rijmenam: dezelfde locatie in februari en april. Zo ziet u hoe het water zich terugtrekt.
         </p>
       </div>
- 
-      <!-- Category Filters -->
-      <div class="flex flex-wrap justify-center gap-2 mb-8 md:mb-10 scroll-fade-in" id="project-filters">
-        <button class="filter-btn active px-5 py-2 rounded-lg text-sm font-medium transition-colors" data-filter="all">
-          Alle Projecten
-        </button>
-        <!-- Filters will be dynamically generated -->
-      </div>
+    </section>
 
-      <!-- Featured Project Hero - Desktop Only -->
-      <div class="mb-10 md:mb-12 scroll-fade-in hidden md:block" id="featured-project-container">
-        <!-- Featured project will be dynamically inserted here -->
-         </div>
-         
-      <!-- Projects Grid - Desktop -->
-      <div class="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6" id="projects-grid">
-        <!-- Projects will be dynamically inserted here -->
+    <!-- SAMENWERKINGEN -->
+    <section class="customers" id="customers">
+      <div class="container">
+        <header class="section-header reveal">
+          <span class="eyebrow">Partners</span>
+          <h2 class="section-title">Samenwerkingen</h2>
+          <p class="section-lead">Bedrijven waarmee we graag samenwerken in bouw, infrastructuur en natuur.</p>
+        </header>
+
+        <ul class="partners-grid reveal" aria-label="Partners">
+          <li class="partner-item">
+            <div class="partner-logo">
+              <img src="images/customers/groupdecloedt.png" alt="" width="160" height="64" loading="lazy" />
             </div>
+            <span class="partner-name">Group De Cloedt</span>
+          </li>
+          <li class="partner-item">
+            <div class="partner-logo">
+              <img src="images/customers/agentschapnatuur.png" alt="" width="160" height="64" loading="lazy" />
+            </div>
+            <span class="partner-name">Agentschap Natuur en Bos</span>
+          </li>
+          <li class="partner-item">
+            <div class="partner-logo">
+              <img src="images/customers/bioterra.png" alt="" width="160" height="64" loading="lazy" />
+            </div>
+            <span class="partner-name">Bioterra</span>
+          </li>
+          <li class="partner-item">
+            <div class="partner-logo">
+              <img src="images/customers/vlaamsewaterweg.png" alt="" width="160" height="64" loading="lazy" />
+            </div>
+            <span class="partner-name">De Vlaamse Waterweg</span>
+          </li>
+          <li class="partner-item">
+            <div class="partner-logo">
+              <img src="images/customers/hdr.png" alt="" width="160" height="64" loading="lazy" />
+            </div>
+            <span class="partner-name">Heyrman De Roeck</span>
+          </li>
+          <li class="partner-item">
+            <div class="partner-logo">
+              <img src="images/customers/nhm.webp" alt="" width="160" height="64" loading="lazy" />
+            </div>
+            <span class="partner-name">NHM</span>
+          </li>
+          <li class="partner-item">
+            <div class="partner-logo">
+              <img src="images/customers/evsinfrabouw.jpeg" alt="" width="160" height="64" loading="lazy" />
+            </div>
+            <span class="partner-name">EVS Infrabouw</span>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-      <!-- Projects Horizontal Scroller - Mobile Only -->
-      <div class="projects-mobile md:hidden">
-        <div class="projects-mobile__scroller" id="projects-mobile-scroll">
-          <div class="projects-mobile__grid" id="projects-mobile-grid">
-            <!-- Mobile projects will be dynamically inserted here -->
+    <!-- CTA BAND -->
+    <section class="cta-band" aria-label="Call to action">
+      <div class="container">
+        <div class="cta-band-inner reveal">
+          <span class="eyebrow cta-eyebrow">Volgende stap</span>
+          <h2 class="section-title">Klaar voor scherpere projectinzichten?</h2>
+          <p class="section-lead">Of het nu om een eenmalige inspectie of langlopende monitoring gaat: we denken graag mee over de aanpak die bij uw werf past.</p>
+          <div class="cta-band-actions">
+            <a href="#contact" class="btn btn-primary">Neem contact op <span class="arrow" aria-hidden="true">→</span></a>
+            <a href="https://wa.me/32491150887" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">WhatsApp</a>
           </div>
         </div>
-        <div class="projects-mobile__dots" id="projects-mobile-dots" aria-hidden="true" hidden></div>
       </div>
+    </section>
 
-      <!-- Empty State -->
-      <div id="projects-empty" class="hidden text-center py-12">
-        <i class="fas fa-search text-5xl text-gray-300 mb-3"></i>
-        <p class="text-gray-500 section-lead">Geen projecten gevonden voor deze categorie</p>
-       </div>
- 
-    </div>
-  </section>
- 
-  <!-- SAMENWERKINGEN SECTION -->
-  <section class="py-14 md:py-20 relative overflow-hidden" id="customers">
-    <div class="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50"></div>
-    
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-     
-      <!-- Section Title -->
-      <div class="section-header scroll-fade-in">
-        <h2 class="section-title scroll-fade-in-item">
-          Samenwerkingen
-        </h2>
-        <p class="section-lead scroll-fade-in-item">
-          Trotse samenwerkingen met toonaangevende bedrijven in de sector.
-        </p>
-      </div>
- 
-      <!-- Partners Carousel -->
-      <div class="partners-container py-4 md:py-6">
-        <div class="partners-track" id="partners-track">
-          <!-- Partners dynamically inserted here -->
-        </div>
-      </div>
- 
-    </div>
-  </section>
- 
-  <!-- CONTACT SECTION -->
-  <section class="contact-section py-14 md:py-20 relative overflow-hidden" id="contact">
-    <div class="contact-section__bg" aria-hidden="true">
-      <img src="images/assets/applemapsmap.png" 
-           alt="" 
-           class="contact-section__map"
-           loading="lazy">
-      <div class="contact-section__wash"></div>
-      <div class="contact-section__glow contact-section__glow--tl"></div>
-      <div class="contact-section__glow contact-section__glow--br"></div>
-    </div>
-    
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-     
-      <div class="section-header scroll-fade-in">
-        <h2 class="section-title scroll-fade-in-item">
-          Contact
-        </h2>
-        <p class="section-lead scroll-fade-in-item">
-          Klaar om op te stijgen? Neem contact op en ontdek hoe drones uw project vooruit helpen.
-        </p>
-      </div>
- 
-      <div class="max-w-3xl mx-auto scroll-fade-in">
-        <div class="contact-panel flex flex-col md:flex-row gap-8 md:gap-10 items-center md:items-start">
-          
-          <div class="flex-shrink-0 text-center md:text-left">
-            <img src="images/assets/mdl.webp" alt="Martin de Lobel"
-                 class="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover mx-auto md:mx-0 border-2 border-white shadow-md"
-                 loading="lazy"
-                 width="128"
-                 height="128">
-            <h3 class="subheading mt-4">Martin de Lobel</h3>
-            <p class="text-sm text-primary mt-1">Projectcoördinator &amp; UAS Operator</p>
-            <p class="body-text mt-2 max-w-xs mx-auto md:mx-0">
-              Ruim 15 jaar ervaring in projectcoördinatie, fotogrammetrie en werfopvolging.
-            </p>
-            <button type="button" onclick="showCertificatePreview()"
-                    class="mt-4 text-sm text-primary hover:text-primary-dark font-medium underline underline-offset-2 decoration-primary/40 hover:decoration-primary transition-colors">
-              EASA-certificaat bekijken (A1/A3 &amp; A2)
-            </button>
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="contact-bg" aria-hidden="true"></div>
+      <div class="container">
+        <header class="section-header reveal">
+          <span class="eyebrow">Contact</span>
+          <h2 class="section-title">Laten we even praten</h2>
+          <p class="section-lead">Vertel ons wat u nodig heeft. Dan kijken we samen hoe drones uw project vooruit kunnen helpen.</p>
+        </header>
+
+        <div class="contact-grid">
+          <div class="contact-person reveal">
+            <div class="contact-photo-wrap">
+              <img class="contact-photo" src="images/assets/mdl.webp" alt="Martin de Lobel" width="320" height="320" loading="lazy" />
+            </div>
+            <div class="contact-person-info">
+              <h3>Martin de Lobel</h3>
+              <p class="contact-role">Projectcoördinator &amp; UAS Operator</p>
+              <p class="contact-bio">Ruim 15 jaar ervaring in projectcoördinatie, fotogrammetrie en werfopvolging.</p>
+              <button class="btn btn-outline" type="button" id="open-cert">EASA-certificaat bekijken (A1/A3 &amp; A2)</button>
+            </div>
           </div>
 
-          <div class="flex-1 w-full space-y-5 md:pt-2">
-            <a href="https://maps.google.com/?q=Izegem,Belgium" target="_blank" rel="noopener noreferrer"
-               class="flex items-center gap-4 group">
-              <span class="contact-icon">
-                <i class="fas fa-map-marker-alt"></i>
+          <div class="contact-details reveal reveal-delay-1">
+            <div class="contact-item">
+              <span class="contact-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-4.5 7-11a7 7 0 10-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
               </span>
-              <div>
-                <div class="label-text">Locatie</div>
-                <div class="font-medium text-base text-gray-900 group-hover:text-primary transition-colors">Izegem, België</div>
+              <div class="contact-item-text">
+                <span class="contact-item-label">Locatie</span>
+                <a href="https://maps.google.com/?q=Izegem,Belgium" target="_blank" rel="noopener noreferrer">Izegem, België</a>
               </div>
-            </a>
-
-            <a href="tel:+32491150887" class="flex items-center gap-4 group">
-              <span class="contact-icon">
-                <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-item">
+              <span class="contact-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8 9.5a16 16 0 006.5 6.5l1.1-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg>
               </span>
-              <div>
-                <div class="label-text">Telefoon</div>
-                <div class="font-medium text-base text-gray-900 group-hover:text-primary transition-colors">+32 491 150 887</div>
+              <div class="contact-item-text">
+                <span class="contact-item-label">Telefoon</span>
+                <a href="tel:+32491150887">+32 491 150 887</a>
               </div>
-            </a>
-
-            <a href="mailto:martinonsite@telenet.be" class="flex items-center gap-4 group">
-              <span class="contact-icon">
-                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-item">
+              <span class="contact-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
               </span>
-              <div>
-                <div class="label-text">E-mail</div>
-                <div class="font-medium text-base text-gray-900 group-hover:text-primary transition-colors break-all">martinonsite@telenet.be</div>
+              <div class="contact-item-text">
+                <span class="contact-item-label">E-mail</span>
+                <a href="mailto:martinonsite@telenet.be">martinonsite@telenet.be</a>
               </div>
-            </a>
+            </div>
+            <div class="contact-item contact-item-whatsapp">
+              <span class="contact-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </span>
+              <div class="contact-item-text">
+                <span class="contact-item-label">WhatsApp</span>
+                <a
+                  class="whatsapp-btn"
+                  href="https://wa.me/32491150887"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Stuur een bericht
+                  <span class="arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
           </div>
-
         </div>
       </div>
-    </div>
-  </section>
- 
-  <!-- FOOTER -->
-  <footer class="bg-gradient-to-br from-gray-900 via-primary-dark to-gray-900 text-white">
-    <!-- Main Footer Content -->
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-14">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
-        
-        <!-- Company Info -->
-        <div class="lg:col-span-2">
-          <div class="mb-6">
-            <img src="images/branding/msonsitelogowhite.png" alt="M&S Onsite" class="h-14 mb-4" loading="lazy">
-            <p class="text-gray-300 text-base md:text-lg leading-relaxed max-w-md">
-              Professionele drones, maximale precisie: opmetingen, inspecties en werfopvolging in Benelux.
-          </p>
-        </div>
- 
-          <!-- Contact Info -->
-          <div class="space-y-2 md:space-y-3">
-            <div class="flex items-center space-x-3">
-              <i class="fas fa-phone text-primary-light w-5"></i>
-              <a href="tel:+32491150887" class="text-gray-300 hover:text-white transition-colors">
-                +32 491 150 887
-              </a>
-            </div>
-            <div class="flex items-center space-x-3">
-              <i class="fas fa-envelope text-primary-light w-5"></i>
-              <a href="mailto:martinonsite@telenet.be" class="text-gray-300 hover:text-white transition-colors break-all">
-                martinonsite@telenet.be
-              </a>
-            </div>
-            <div class="flex items-center space-x-3">
-              <i class="fas fa-map-marker-alt text-primary-light w-5"></i>
-              <span class="text-gray-300">Izegem, België</span>
-            </div>
-          </div>
-        </div>
+    </section>
+  </main>
 
-        <!-- Services -->
-        <div class="hidden md:block">
-          <h3 class="text-base font-semibold mb-4 md:mb-5 text-white tracking-wide">Onze Diensten</h3>
-          <ul class="space-y-2 md:space-y-3">
-            <li><a href="#inspecties" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Inspecties</a></li>
-            <li><a href="#monitoring" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Monitoring</a></li>
-            <li><a href="#opmetingen" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Opmetingen</a></li>
-            <li><a href="#plaatsbeschrijving" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Plaatsbeschrijving</a></li>
-            <li><a href="#visuals" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Visuals</a></li>
-            <li><a href="#werfopvolging" class="text-gray-300 hover:text-primary-light transition-colors text-sm">Werfopvolging</a></li>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/branding/msonsitelogowhite.png" alt="M&S Onsite" width="140" height="60" />
+          <p class="footer-tagline">Professionele droneservices voor opmetingen, inspecties en werfopvolging in de Benelux.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+32491150887">+32 491 150 887</a></li>
+            <li><a href="mailto:martinonsite@telenet.be">martinonsite@telenet.be</a></li>
+            <li><a href="https://maps.google.com/?q=Izegem,Belgium" target="_blank" rel="noopener noreferrer">Izegem, België</a></li>
           </ul>
         </div>
-
-        <!-- Social & Legal -->
-        <div>
-          <h3 class="text-base font-semibold mb-4 md:mb-5 text-white tracking-wide">Volg Ons</h3>
-          <div class="flex space-x-4">
-            <a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank" rel="noopener noreferrer"
-               class="bg-white/10 hover:bg-primary-light/20 p-3 rounded-xl transition-colors group" aria-label="LinkedIn">
-              <i class="fab fa-linkedin text-xl group-hover:text-primary-light"></i>
-            </a>
-            <a href="https://www.facebook.com/people/MS-Onsite/61561631330027/" target="_blank" rel="noopener noreferrer"
-               class="bg-white/10 hover:bg-primary-light/20 p-3 rounded-xl transition-colors group" aria-label="Facebook">
-              <i class="fab fa-facebook text-xl group-hover:text-primary-light"></i>
-            </a>
-            <a href="https://www.instagram.com/onsite_project_coordination/" target="_blank" rel="noopener noreferrer"
-               class="bg-white/10 hover:bg-primary-light/20 p-3 rounded-xl transition-colors group" aria-label="Instagram">
-              <i class="fab fa-instagram text-xl group-hover:text-primary-light"></i>
-            </a>
-          </div>
+        <div class="footer-col">
+          <h4>Onze Diensten</h4>
+          <ul>
+            <li><a href="#inspecties">Inspecties</a></li>
+            <li><a href="#monitoring">Monitoring</a></li>
+            <li><a href="#opmetingen">Opmetingen</a></li>
+            <li><a href="#plaatsbeschrijving">Plaatsbeschrijving</a></li>
+            <li><a href="#visuals">Visuals</a></li>
+            <li><a href="#werfopvolging">Werfopvolging</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Volg Ons</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/company/m-s-onsite/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://www.facebook.com/people/MS-Onsite/61561631330027/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a href="https://www.instagram.com/onsite_project_coordination/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          </ul>
         </div>
       </div>
-    </div>
- 
-    <!-- Bottom Bar -->
-    <div class="border-t border-white/10">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
-        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div class="text-center md:text-left">
-            <p class="text-gray-400 text-sm">
-              &copy; <span id="copyright-year"></span> M&S Onsite. Alle rechten voorbehouden.
-            </p>
-            <!-- Legal Links -->
-            <div class="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4 mt-2 md:mt-3 text-xs">
-              <a href="cookie-policy.html" class="text-gray-400 hover:text-primary-light transition-colors">Cookiebeleid</a>
-              <span class="text-gray-500">|</span>
-              <a href="privacy-policy.html" class="text-gray-400 hover:text-primary-light transition-colors">Privacybeleid</a>
-              <span class="text-gray-500">|</span>
-              <a href="terms-and-conditions.html" class="text-gray-400 hover:text-primary-light transition-colors">Algemene Voorwaarden</a>
-            </div>
-            <!-- BTW Number - Subtle -->
-            <div class="mt-2 md:mt-3">
-              <p class="text-gray-400 text-xs opacity-70">BTW: BE 0784.964.976</p>
-            </div>
-          </div>
-          <div class="text-center md:text-right">
-            <p class="text-gray-400 text-sm flex items-center justify-center md:justify-end space-x-2">
-              <span class="design-signature-container relative inline-flex items-center">
-                <!-- Animated Pen Icon -->
-                <div class="design-pen-icon relative">
-                  <i class="fa-solid fa-bicycle text-primary-light/80 text-xs"></i>
-                </div>
-                <span class="text-gray-400">Design by</span>
-                <a href="https://www.linkedin.com/in/sanderdelobel/" target="_blank" 
-                   class="design-signature-link text-primary-light hover:text-white transition-all duration-300 font-medium relative group">
-                  <span class="relative z-10">Sander de Lobel</span>
-                  <!-- Animated underline -->
-                  <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-light to-primary transition-all duration-500 group-hover:w-full"></div>
-                  <!-- Gradient sweep effect -->
-                  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-gradient-sweep transition-opacity duration-300"></div>
-                </a>
-              </span>
-            </p>
-          </div>
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          <span>&copy; <span id="year"></span> M&S Onsite. Alle rechten voorbehouden.</span>
+          <a href="cookie-policy.html">Cookiebeleid</a>
+          <a href="privacy-policy.html">Privacybeleid</a>
+          <a href="terms-and-conditions.html">Algemene Voorwaarden</a>
+        </div>
+        <div class="footer-meta">
+          <span>BTW: BE 0784.964.976</span>
+          <span>Design by <a href="https://www.linkedin.com/in/sanderdelobel/" target="_blank" rel="noopener noreferrer">Sander de Lobel</a></span>
         </div>
       </div>
     </div>
   </footer>
-  
-  <!-- GDPR Cookie Banner -->
-  <div id="cookie-banner" class="hidden">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex-1 text-white">
-          <p class="text-sm sm:text-base leading-relaxed">
-            <i class="fas fa-cookie-bite mr-2 text-primary-light"></i>
-            Deze website gebruikt cookies en maakt gebruik van services van derden voor hosting, beveiliging en content delivery. Door op "Accepteren" te klikken, stemt u in met het gebruik van 
-            analytische cookies. Essentiële services werken altijd zonder toestemming. 
-            <a href="cookie-policy.html" class="text-primary-light hover:text-primary underline font-medium ml-1">
-              Meer informatie
-            </a>
-          </p>
-        </div>
-        <div class="flex gap-3 sm:gap-4">
-          <button id="cookie-decline" 
-                  class="px-4 sm:px-6 py-2 sm:py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors text-sm sm:text-base">
-            Weigeren
-          </button>
-          <button id="cookie-accept" 
-                  class="px-4 sm:px-6 py-2 sm:py-3 bg-primary hover:bg-primary-dark text-white rounded-lg font-medium transition-colors text-sm sm:text-base">
-            Accepteren
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Certificate Modal -->
-  <div id="certificateModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
-      <!-- Modal Header -->
-      <div class="flex items-center justify-between p-6 border-b border-gray-200">
-        <div>
-          <h3 class="text-xl font-bold text-gray-800">EASA Vaardigheidsbewijs</h3>
-          <p class="text-sm text-gray-600">Categorie A1/A3 & A2</p>
-        </div>
-        <button onclick="closeCertificateModal()" class="text-gray-400 hover:text-gray-600 transition-colors">
-          <i class="fas fa-times text-2xl"></i>
-        </button>
-      </div>
-      
-      <!-- Modal Content -->
-      <div class="p-6">
-        <div class="text-center">
-          <img src="images/certificates/certificaat1.jpg" 
-               alt="Drone Operator Certificate" 
-               class="max-w-full h-auto rounded-lg shadow-lg mx-auto cursor-zoom-in"
-               loading="lazy"
-               onclick="openCertificateLightbox()">
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Certificate Lightbox -->
-  <div id="certificateLightbox" class="fixed inset-0 bg-black/95 z-60 hidden flex items-center justify-center p-4">
-    <div class="relative max-w-7xl max-h-full">
-      <img src="images/certificates/certificaat1.jpg" 
-           alt="Drone Operator Certificate" 
-           class="max-w-full max-h-full object-contain rounded-lg"
-           loading="lazy">
-      <button onclick="closeCertificateLightbox()" 
-              class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors bg-black/50 rounded-full p-2">
-        <i class="fas fa-times text-xl"></i>
+
+  <!-- Project Modal -->
+  <div class="modal" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-dialog project-dialog">
+      <button class="modal-close" type="button" aria-label="Sluiten" data-close-modal>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
       </button>
+
+      <div class="project-dialog-layout">
+        <div class="modal-gallery">
+          <div class="modal-gallery-main" id="modal-gallery-main"></div>
+          <div class="modal-gallery-controls">
+            <button type="button" class="modal-gallery-nav" id="modal-gallery-prev" aria-label="Vorig beeld">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <span class="modal-gallery-counter" id="modal-gallery-counter"></span>
+            <button type="button" class="modal-gallery-nav" id="modal-gallery-next" aria-label="Volgend beeld">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+          <div class="modal-thumbs" id="modal-thumbs"></div>
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-meta" id="modal-meta"></div>
+          <h2 class="modal-title" id="modal-title"></h2>
+          <p class="modal-desc" id="modal-desc"></p>
+          <div class="modal-approach">
+            <h3 class="modal-subtitle">Aanpak</h3>
+            <ol class="modal-tasks" id="modal-tasks"></ol>
+          </div>
+          <a href="#contact" class="btn btn-primary modal-contact-btn">Neem contact op</a>
+        </div>
+      </div>
     </div>
   </div>
- 
-  <!-- JAVASCRIPT -->
-  <!-- Register Service Worker for caching -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        // Register with cache-busting parameter to force update
-        navigator.serviceWorker.register('/sw.js?v=2.2').then((registration) => {
-          console.log('Service Worker registered');
-          
-          // Check for updates every time the page loads
-          registration.update();
-          
-          // Listen for updates
-          registration.addEventListener('updatefound', () => {
-            const newWorker = registration.installing;
-            newWorker.addEventListener('statechange', () => {
-              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                // New service worker available, reload page
-                console.log('New service worker available, reloading...');
-                window.location.reload();
-              }
-            });
-          });
-        }).catch(() => {
-          // Silently fail if service worker registration fails
-        });
-      });
-    }
-  </script>
-  
-  <!-- Load Projects Data - Defer to not block rendering -->
-  <script src="js/projects.js?v=2.2" defer></script>
-  
-  <!-- Load Partners Data - Defer to not block rendering -->
-  <script src="js/partners.js?v=2.2" defer></script>
-  
-  <!-- Main JavaScript - Defer to not block rendering -->
-  <script src="js/main.js?v=2.2" defer></script>
-  
-  <!-- Cookie Banner JavaScript - Defer to not block rendering -->
-  <script src="js/cookie-banner.js?v=2.2" defer></script>
-  
-  <!-- Inline script removed - all JavaScript moved to external files -->
- 
+
+  <!-- Certificate Modal -->
+  <div class="modal cert-modal" id="cert-modal" role="dialog" aria-modal="true" aria-labelledby="cert-title" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-dialog cert-dialog">
+      <button class="modal-close" type="button" aria-label="Sluiten" data-close-modal>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="cert-dialog-inner">
+        <p class="eyebrow">Certificering</p>
+        <h2 id="cert-title">EASA Vaardigheidsbewijs</h2>
+        <p class="cert-note">A1/A3 &amp; A2, Martin de Lobel</p>
+        <div class="cert-frame">
+          <img src="images/certificates/certificaat1.jpg" alt="EASA certificaat A1/A3 en A2 van Martin de Lobel" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookievoorkeuren" hidden>
+    <p>
+      Deze website gebruikt cookies en diensten van derden voor hosting, beveiliging en content delivery. Klikt u op "Accepteren", dan gaat u akkoord met analytische cookies. Essentiële diensten werken altijd, ook zonder toestemming.
+      <a href="cookie-policy.html">Meer informatie</a>
+    </p>
+    <div class="cookie-actions">
+      <button type="button" class="btn btn-outline" id="cookie-reject">Weigeren</button>
+      <button type="button" class="btn btn-primary" id="cookie-accept">Accepteren</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

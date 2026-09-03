@@ -1,1070 +1,761 @@
-   
-   // Intersection Observer for lazy loading videos in project cards
-   // Only for cards that are not immediately visible
-  // Optimized with reduced rootMargin to prevent excessive checks
-   if ('IntersectionObserver' in window) {
-     const videoObserver = new IntersectionObserver((entries, observer) => {
-       entries.forEach(entry => {
-         if (entry.isIntersecting) {
-           const container = entry.target;
-           const img = container.querySelector('img[data-video-src]');
-           const video = container.querySelector('video');
-           
-           if (img && video && video.dataset.loaded !== 'true') {
-             // Load video when in viewport
-             video.preload = 'auto';
-             video.load();
-             video.dataset.loaded = 'true';
-             
-             // Once video can play, show it and hide image
-             video.addEventListener('canplay', function() {
-               video.classList.remove('hidden');
-               if (img) img.style.opacity = '0';
-               setTimeout(() => {
-                 if (img) img.style.display = 'none';
-               }, 300);
-             }, { once: true });
-             
-             observer.unobserve(container);
-           }
-         }
-       });
-     }, {
-      rootMargin: '200px' // Reduced from 500px to prevent excessive checks during scroll
-     });
+/* M&S Onsite portfolio interactions */
 
-     // Observe all project cards with videos, but load first 3 immediately
-     setTimeout(() => {
-       document.querySelectorAll('[data-video-src]').forEach((img, index) => {
-         const container = img.closest('.relative');
-         if (container) {
-           // Load first 3 videos immediately (likely visible)
-           if (index < 3) {
-             const video = container.querySelector('video');
-             if (video && video.dataset.loaded !== 'true') {
-               video.preload = 'auto';
-               video.load();
-               video.dataset.loaded = 'true';
-               
-               video.addEventListener('canplay', function() {
-                 video.classList.remove('hidden');
-                 const img = container.querySelector('img[data-video-src]');
-                 if (img) img.style.opacity = '0';
-                 setTimeout(() => {
-                   if (img) img.style.display = 'none';
-                 }, 300);
-               }, { once: true });
-             }
-           } else {
-             // Use observer for the rest with larger rootMargin
-             videoObserver.observe(container);
-           }
-         }
-       });
-     }, 0); // Load immediately, no delay
-   }
-   
-   // Scroll fade-in animations for section titles - Optimized with throttling
-   if ('IntersectionObserver' in window) {
-     const scrollFadeObserver = new IntersectionObserver((entries, observer) => {
-       entries.forEach(entry => {
-         if (entry.isIntersecting) {
-           const container = entry.target;
-           const items = container.querySelectorAll('.scroll-fade-in-item');
-           // Use requestAnimationFrame to batch DOM updates
-           requestAnimationFrame(() => {
-             items.forEach(item => {
-               item.classList.add('visible');
-             });
-           });
-           observer.unobserve(container);
-         }
-       });
-     }, {
-       rootMargin: '50px', // Reduced from -100px to trigger earlier but less aggressively
-       threshold: 0.01 // Lower threshold for better performance
-     });
-     
-     // Observe all section titles with scroll-fade-in class
-     document.querySelectorAll('.scroll-fade-in').forEach(section => {
-       scrollFadeObserver.observe(section);
-     });
-   }
- 
-// Mobile Menu Toggle
-document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-  document.getElementById('mobile-menu').classList.toggle('hidden');
+const projects = [
+  {
+    id: 1,
+    title: "Vuurtoren Inspectie",
+    location: "Breskens, Nederland",
+    status: "Voltooid",
+    categories: ["Inspecties"],
+    description:
+      "Een historische vuurtoren in Breskens die dringend geïnspecteerd moest worden, maar waar traditionele inspectiemethoden te gevaarlijk waren. Met onze drone vlogen we rondom de toren en legden elk detail vast. De restauratieplanners kregen een complete visuele documentatie die precies liet zien wat er aan de hand was, zonder dat iemand een voet op het dak hoefde te zetten.",
+    tasks: [
+      "Rondom de vuurtoren vliegen met hoge-resolutie camera's",
+      "Elk structureel detail van dichtbij vastleggen",
+      "Een complete 360° visuele documentatie samenstellen",
+      "Rapportage opstellen die de restauratieplanners direct kunnen gebruiken",
+    ],
+    previewVideo: "videos/vuurtoren.mp4",
+    images: [
+      "images/project-1/vuurtorenfoto.jpg",
+      "images/project-1/vuurtoreninspectie.jpg",
+      "images/project-1/inspectieanalyse2.png",
+      "images/project-1/inspectieanalyse1.png",
+    ],
+  },
+  {
+    id: 2,
+    title: "Volumetrische Meting",
+    location: "Houthulst, België",
+    status: "Voltooid",
+    categories: ["Opmetingen"],
+    description:
+      "Hoeveel zand ligt er nu eigenlijk op die hoop? In plaats van dagenlang met meetstokken rondlopen, vlogen we er even overheen. Binnen een paar uur had de klant een nauwkeurig 3D-model met exacte volumes. Transport kon direct gepland worden, zonder giswerk.",
+    tasks: [
+      "Over het materiaal vliegen en honderden foto's maken",
+      "Die foto's verwerken tot een nauwkeurige 3D-puntenwolk",
+      "Met software de exacte volumes berekenen",
+      "Duidelijke rapportage met visualisaties opstellen",
+    ],
+    preview: "images/project-2/previewimageproject2.png",
+    images: [
+      "images/project-2/puntenwolk.png",
+      "images/project-2/gradientkaart.png",
+      "images/project-2/volumeberekeningen.jpg",
+    ],
+  },
+  {
+    id: 3,
+    title: "As-Built Plan",
+    location: "Hamme-Mille, België",
+    status: "Voltooid",
+    categories: ["Opmetingen"],
+    description:
+      "Na een bodemsanering lagen er overal sleuven en leidingen door elkaar. De vraag: waar ligt alles precies? We maakten een complete luchtfoto en tekenden alle leidingtracés in. Nu heeft de opdrachtgever een helder plan dat direct gebruikt kan worden voor verdere werkzaamheden of controle.",
+    tasks: [
+      "Het hele terrein vanuit de lucht fotograferen",
+      "De foto's verwerken tot een gedetailleerde 3D-puntenwolk",
+      "Alle leidingtracés digitaal intekenen op de luchtfoto",
+      "Het plan exporteren naar DXF-formaat voor gebruik in CAD-software",
+    ],
+    preview: "images/project-3/orthofoto.jpg",
+    images: [
+      "images/project-3/orthofoto.jpg",
+      "images/project-3/leidingtrace.jpg",
+      "images/project-3/dxf-export.png",
+    ],
+  },
+  {
+    id: 4,
+    title: "Bodemsanering",
+    location: "Sint-Truiden, België",
+    status: "Voltooid",
+    categories: ["Werfopvolging"],
+    description:
+      "Tijdens een bodemsanering in Sint-Truiden volgden we het hele proces op. We begonnen met de beginsituatie, vlogen regelmatig over tijdens de werkzaamheden en eindigden met een complete as-built documentatie. Elke fase werd vastgelegd: hoeveel grond werd verplaatst, welke oppervlaktes werden behandeld, en hoe het terrein er uiteindelijk uitzag. De opdrachtgever had zo altijd een actueel beeld van de voortgang.",
+    tasks: [
+      "Vastleggen van de beginsituatie van het terrein",
+      "Regelmatig overvliegen tijdens de saneringswerkzaamheden",
+      "3D-modellen opbouwen van elke fase",
+      "Berekenen hoeveel grond verplaatst werd en welke oppervlaktes behandeld werden",
+      "Complete as-built documentatie van het eindresultaat",
+      "Voortgangsrapportage zodat de opdrachtgever altijd op de hoogte was",
+    ],
+    preview: "images/project-4/previewimageproject4.png",
+    images: [
+      "images/project-4/beginsituatie-terrein.png",
+      "images/project-4/drone-opmeting-uitvoering.png",
+      "images/project-4/puntenwolk-terrein.png",
+      "images/project-4/oppervlakteberekeningen.png",
+      "images/project-4/volume-analyse.png",
+      "images/project-4/eindresultaat.png",
+      "images/project-4/asbuilt-plan.png",
+    ],
+  },
+  {
+    id: 5,
+    title: "Monitoring Waterbeheersing",
+    location: "Rijmenam, België",
+    status: "Voltooid",
+    categories: ["Monitoring"],
+    description:
+      "Drie maanden lang monitorden we overstromingsgebieden in Rijmenam. Elke paar weken vlogen we over het gebied en zagen we precies hoe het water zich terugtrok. Door de beelden naast elkaar te leggen, ontstond er een duidelijk beeld van de waterdynamiek. Die data hielp bij het nemen van beslissingen over waterbeheer en gebiedsherstel.",
+    tasks: [
+      "Elke paar weken over de overstromingsgebieden vliegen",
+      "De opnames verwerken tot gedetailleerde orthofoto's en 3D-modellen",
+      "Analyseren hoe het wateroppervlak veranderde en zich terugtrok",
+      "Kaarten en modellen opstellen die helpen bij waterbeheerbeslissingen",
+    ],
+    preview: "images/project-5/waterbeheersingbanner.jpg",
+    images: [
+      "images/project-5/2024-02-29-origineel.jpg",
+      "images/project-5/2024-02-29-opmeting.jpg",
+      "images/project-5/2024-03-25-origineel.jpg",
+      "images/project-5/2024-03-25-opmeting.jpg",
+      "images/project-5/2024-04-22-origineel.jpg",
+      "images/project-5/2024-04-22-opmeting.jpg",
+    ],
+  },
+  {
+    id: 6,
+    title: "Dakinspectie",
+    location: "Izegem, België",
+    status: "Voltooid",
+    categories: ["Inspecties"],
+    description:
+      "Een dak inspecteren zonder erop te moeten klimmen? We vlogen er overheen, maakten honderden foto's en stelden daar één scherpe orthofoto van samen. Onze software markeerde automatisch alle probleemzones: losse dakpannen, een beschadigd raam, zelfs nestvorming. De klant kreeg een duidelijk rapport met precies aangegeven wat er moet gebeuren, zonder dat iemand het dak op hoefde.",
+    tasks: [
+      "Over het dak vliegen en honderden foto's maken",
+      "Die foto's samenvoegen tot één scherpe orthofoto van het hele dak",
+      "Met 3D-software automatisch alle probleemzones markeren",
+      "Een visueel rapport opstellen met duidelijke aanbevelingen",
+    ],
+    preview: "images/project-6/analysezone.png",
+    images: [
+      "images/project-6/analysezone.png",
+      "images/project-6/observatiepunten.png",
+      "images/project-6/detail-schouw.png",
+      "images/project-6/identificatie-losse-dakpannen.png",
+      "images/project-6/detail-nestvorming.png",
+      "images/project-6/detail-raam.png",
+    ],
+  },
+  {
+    id: 7,
+    title: "Stockdepot Meting",
+    location: "Brugge, België",
+    status: "Voltooid",
+    categories: ["Opmetingen"],
+    description:
+      "Een zand- en grinddepot in Brugge dat regelmatig geïnventariseerd moet worden. In plaats van dagenlang meten, vliegen we er even overheen. Binnen een dag heeft de klant een nauwkeurig overzicht van alle stockvolumes, met duidelijke visualisaties. Zo kunnen ze hun voorraadbeheer en planning veel beter afstemmen.",
+    tasks: [
+      "Flexibel inplannen wanneer de opmeting het beste uitkomt",
+      "Over het hele depot vliegen en alle stocks fotograferen",
+      "Voor elke stock het exacte volume berekenen",
+      "Een overzichtelijke rapportage opstellen met duidelijke visualisaties",
+    ],
+    preview: "images/project-7/header.png",
+    images: [
+      "images/project-7/drone-depot.png",
+      "images/project-7/sateliet-volumes.png",
+      "images/project-7/volume-rapport.png",
+    ],
+  },
+  {
+    id: 8,
+    title: "Plaatsbeschrijving",
+    location: "Kruibeke, België",
+    status: "Voltooid",
+    categories: ["Plaatsbeschrijving"],
+    description:
+      "Voor een plaatsbeschrijving in Kruibeke moest de volledige gevel gedocumenteerd worden. We vlogen systematisch langs de gevel en maakten een grid van hoge-resolutie foto's. Elke steen, elke scheur, elk detail werd vastgelegd in een complete visuele documentatie, perfect geschikt voor renovatieplanning. Na de werkzaamheden kunnen we opnieuw vliegen en direct vergelijken wat er veranderd is.",
+    tasks: [
+      "De drone positioneren en een systematisch grid instellen",
+      "Langs de hele gevel vliegen en hoge-resolutie foto's maken volgens het grid",
+      "Alle detailfoto's bundelen in een gestructureerde rapportage",
+    ],
+    preview: "images/project-8/project8header.png",
+    images: [
+      "images/project-8/foto1.jpg",
+      "images/project-8/foto2.jpg",
+      "images/project-8/foto3.jpg",
+      "images/project-8/foto4.jpg",
+      "images/project-8/foto5.jpg",
+      "images/project-8/foto6.jpg",
+      "images/project-8/foto7.jpg",
+      "images/project-8/foto8.jpg",
+      "images/project-8/foto9.jpg",
+    ],
+  },
+  {
+    id: 9,
+    title: "Uw volgende project?",
+    location: "België / Nederland",
+    status: "Open",
+    categories: [],
+    description:
+      "Heeft u een project waarbij drone-opnames, inspecties of opmetingen kunnen helpen? Wij denken graag mee over de beste aanpak voor uw situatie. Van eenmalige inspecties tot langdurige monitoring: we passen onze werkwijze aan op wat u nodig heeft.",
+    tasks: [
+      "Samen uw projectbehoefte bespreken",
+      "De beste drone-aanpak voor uw situatie bepalen",
+      "Flexibele planning die aansluit op uw werkzaamheden",
+      "Duidelijke rapportage die u direct kunt gebruiken",
+    ],
+    preview: "images/assets/projectsectionbackground.png",
+    images: ["images/branding/MsOnsite%20LogoSpacing.png"],
+    cta: true,
+  },
+];
+
+/* --------------------------------------------------------------------------
+   DOM refs
+   -------------------------------------------------------------------------- */
+
+const header = document.getElementById("site-header");
+const navToggle = document.getElementById("nav-toggle");
+const navLinks = document.getElementById("nav-links");
+const projectsEmpty = document.getElementById("projects-empty");
+const projectShowcase = document.getElementById("project-showcase");
+const showcaseMedia = document.getElementById("showcase-media");
+const showcaseCount = document.getElementById("showcase-count");
+const showcaseMeta = document.getElementById("showcase-meta");
+const showcaseTitle = document.getElementById("showcase-title");
+const showcaseExcerpt = document.getElementById("showcase-excerpt");
+const showcaseAction = document.getElementById("showcase-action");
+const showcaseRail = document.getElementById("showcase-rail");
+const showcasePrev = document.getElementById("showcase-prev");
+const showcaseNext = document.getElementById("showcase-next");
+const projectModal = document.getElementById("project-modal");
+const certModal = document.getElementById("cert-modal");
+const cookieBanner = document.getElementById("cookie-banner");
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* --------------------------------------------------------------------------
+   Header scroll + mobile nav
+   -------------------------------------------------------------------------- */
+
+function updateHeader() {
+  header.classList.toggle("is-scrolled", window.scrollY > 40);
+}
+
+window.addEventListener("scroll", updateHeader, { passive: true });
+updateHeader();
+
+navToggle.addEventListener("click", () => {
+  const open = header.classList.toggle("menu-open");
+  document.body.classList.toggle("menu-open", open);
+  navToggle.setAttribute("aria-expanded", String(open));
+  navToggle.setAttribute("aria-label", open ? "Menu sluiten" : "Menu openen");
 });
- 
-// Close mobile menu when clicking a link
-document.querySelectorAll('#mobile-menu a').forEach(link => {
-  link.addEventListener('click', function() {
-    document.getElementById('mobile-menu').classList.add('hidden');
+
+navLinks.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    header.classList.remove("menu-open");
+    document.body.classList.remove("menu-open");
+    navToggle.setAttribute("aria-expanded", "false");
+    navToggle.setAttribute("aria-label", "Menu openen");
   });
 });
- 
-// Parallax effect for floating elements
-// Optimized scroll handler with requestAnimationFrame throttling to prevent lag
-let scrollRafId = null;
-window.addEventListener('scroll', function() {
-  // Cancel previous RAF if still pending
-  if (scrollRafId !== null) {
-    cancelAnimationFrame(scrollRafId);
-  }
-  
-  // Throttle with requestAnimationFrame for smooth 60fps updates
-  scrollRafId = requestAnimationFrame(() => {
-  const scrollY = window.scrollY;
-  const floatingElements = document.querySelectorAll('.animate-float');
-    
-    // Batch DOM reads and writes to prevent forced reflows
-  floatingElements.forEach((element, index) => {
-    const speed = 0.5 + (index * 0.1);
-    const yPos = -(scrollY * speed);
-    element.style.transform = `translateY(${yPos}px)`;
-  });
-    
-    scrollRafId = null;
-});
-}, { passive: true }); // Use passive listener for better scroll performance
- 
-// Services section is now static HTML in index.html - no JavaScript needed for rendering
-// Simple fade-in animation for services section header - Identical to "ons-aanbod"
-if ('IntersectionObserver' in window) {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+/* --------------------------------------------------------------------------
+   Scroll reveal
+   -------------------------------------------------------------------------- */
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
       }
     });
-  }, observerOptions);
+  },
+  { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+);
 
-  document.querySelectorAll('.fade-in').forEach(el => {
-    observer.observe(el);
-  });
-}
- 
-// Projects data is loaded from js/projects.js
-// The projects array is now defined in a separate file for easier maintenance
- 
-// Projects Section - New Grid Layout
-const projectsGrid = document.getElementById('projects-grid');
-const projectsMobileGrid = document.getElementById('projects-mobile-grid');
-const featuredProjectContainer = document.getElementById('featured-project-container');
-const projectFiltersContainer = document.getElementById('project-filters');
-const projectsEmpty = document.getElementById('projects-empty');
-let currentFilter = 'all';
+document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 
-// Get unique categories from projects
-function getUniqueCategories() {
-  const allCategories = [];
-  projects.forEach(project => {
-    if (project.categories && Array.isArray(project.categories)) {
-      allCategories.push(...project.categories);
-    }
-  });
-  return [...new Set(allCategories)].sort();
+/* --------------------------------------------------------------------------
+   Projects showcase
+   -------------------------------------------------------------------------- */
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
-// Get project categories (always returns an array)
-function getProjectCategories(project) {
-  return project.categories && Array.isArray(project.categories) ? project.categories : [];
-}
+let filteredProjects = [];
+let activeIndex = 0;
 
-// Create filter buttons
-function renderFilters() {
-  if (!projectFiltersContainer) return;
-  
-  const categories = getUniqueCategories();
-  const filtersHTML = categories.map(category => `
-    <button class="filter-btn px-5 py-2 rounded-lg text-sm font-medium transition-colors" data-filter="${category}">
-      ${category}
-    </button>
-  `).join('');
-  
-  projectFiltersContainer.innerHTML = `
-    <button class="filter-btn active px-5 py-2 rounded-lg text-sm font-medium transition-colors" data-filter="all">
-      Alle Projecten
-    </button>
-    ${filtersHTML}
-  `;
-  
-  // Add event listeners
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentFilter = btn.dataset.filter;
-      renderProjects();
-    });
+function getFiltered(filter = "all") {
+  return projects.filter((p) => {
+    if (filter === "all") return true;
+    if (p.cta) return true;
+    return p.categories.includes(filter);
   });
 }
 
-// Create featured project hero
-function createFeaturedProject(project) {
-  const imageSrc = project.previewImage || project.images[project.previewImageIndex || 0].src;
-  
-  return `
-    <div class="featured-project group" onclick="openProjectModal(${project.id})">
-      <div class="grid md:grid-cols-2 gap-0 h-full min-h-[400px] md:min-h-[500px]">
-        <!-- Image/Video Section -->
-        <div class="relative overflow-hidden h-full">
-          ${project.previewVideo ? `
-            <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-         <source src="${project.previewVideo}" type="video/mp4">
-       </video>
-          ` : `
-            <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" loading="eager" fetchpriority="high" decoding="async" width="800" height="500">
-          `}
-          <div class="absolute inset-0 bg-gradient-to-r from-primary/15 via-primary/8 to-transparent"></div>
-          
-          <!-- Badge - Status only (category tag removed) -->
-          <div class="absolute top-6 right-6 z-10 pointer-events-none">
-            <span class="project-badge ${project.status === 'Voltooid' ? 'bg-green-500/90 text-white' : 'bg-yellow-500/90 text-white'} pointer-events-auto">
-       ${project.status}
-       </span>
-          </div>
-   </div>
- 
-        <!-- Content Section -->
-        <div class="p-8 md:p-12 flex flex-col justify-center text-white bg-gradient-to-br from-primary to-primary-dark h-full">
-          <div class="flex items-center gap-2 mb-4 text-white/80">
-            <span class="text-2xl">${project.flag}</span>
-            <span class="text-sm font-medium">${project.location}</span>
-          </div>
-          <h3 class="text-xl md:text-2xl font-bold mb-4 group-hover:text-primary-light transition-colors">
-            ${project.title}
-          </h3>
-          <p class="text-white/90 text-base md:text-lg leading-relaxed mb-6 line-clamp-3">
-            ${project.description}
-          </p>
-          <div class="flex flex-wrap gap-2 mb-6">
-            ${project.tasks.slice(0, 3).map(task => `
-              <span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm">${task}</span>
-            `).join('')}
-            ${project.tasks.length > 3 ? `<span class="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm">+${project.tasks.length - 3} meer</span>` : ''}
-          </div>
-          <div class="flex items-center gap-2 text-white/80 group-hover:text-white transition-colors">
-            <span class="font-medium">Bekijk details</span>
-            <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
+function projectThumb(p) {
+  if (p.cta) return null;
+  if (p.preview) return p.preview;
+  if (p.images && p.images.length) return p.images[0];
+  return "images/assets/projectsectionbackground.png";
 }
 
-// Create modern project card
-function createModernProjectCard(project, index) {
-  const imageSrc = project.previewImage || project.images[project.previewImageIndex || 0].src;
-  
-  return `
-    <div class="modern-project-card" onclick="openProjectModal(${project.id})" style="animation-delay: ${index * 0.1}s">
-      <!-- Image -->
-      <div class="project-card-image h-48 overflow-hidden">
-        ${project.previewVideo ? `
-          <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-            <source src="${project.previewVideo}" type="video/mp4">
-          </video>
-        ` : `
-          <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" loading="lazy" decoding="async" width="400" height="192" fetchpriority="${index < 3 ? 'high' : 'auto'}">
-        `}
-        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-        
-        <!-- Badge -->
-        <div class="absolute top-4 right-4">
-          <span class="project-badge ${project.status === 'Voltooid' ? 'bg-green-500/90 text-white' : 'bg-yellow-500/90 text-white'}">
-            ${project.status}
-     </span>
-       </div>
-     </div>
-    
-      <!-- Content -->
-      <div class="p-6">
-        <div class="flex items-center justify-between mb-3">
-          <span class="category-tag">${getProjectCategories(project)[0] || 'Project'}</span>
-          <span class="text-lg">${project.flag}</span>
-        </div>
-        
-        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-       ${project.title}
-     </h3>
-        
-        <p class="text-gray-500 text-sm mb-3 flex items-center">
-          <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
-          ${project.location}
-        </p>
-        
-        <p class="text-gray-600 text-sm md:text-base leading-relaxed line-clamp-2 mb-4">
-       ${project.description}
-     </p>
-        
-        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-          <span class="text-primary text-sm font-medium">Bekijk details</span>
-          <i class="fas fa-arrow-right text-primary group-hover:translate-x-1 transition-transform"></i>
-         </div>
-       </div>
-         </div>
-  `;
-}
-
-// Render projects based on filter
-let projectsHasRendered = false;
-
-function renderProjects() {
-  if (!projectsGrid || !featuredProjectContainer) return;
-  
-  const filteredProjects = currentFilter === 'all' 
-    ? projects 
-    : projects.filter(p => {
-        const projectCategories = getProjectCategories(p);
-        return projectCategories.includes(currentFilter);
-      });
-
-  const showFeatured = currentFilter === 'all' && filteredProjects.length > 0 && window.innerWidth >= 768;
-  const hasFeaturedContent = featuredProjectContainer.innerHTML.trim().length > 0;
-
-  const applyGridContent = () => {
-    if (filteredProjects.length === 0) {
-      projectsGrid.innerHTML = '';
-      if (projectsMobileGrid) {
-        projectsMobileGrid.innerHTML = '';
-        projectsMobileGrid.removeAttribute('data-project-count');
+function renderRail() {
+  showcaseRail.innerHTML = filteredProjects
+    .map((p, i) => {
+      if (p.cta) {
+        return `
+          <button type="button" class="rail-item is-cta${i === activeIndex ? " is-active" : ""}" data-index="${i}" role="option" aria-selected="${i === activeIndex}" aria-label="${escapeHtml(p.title)}">
+            <div class="rail-item-media"><span>Start</span></div>
+            <span class="rail-item-label">${escapeHtml(p.title)}</span>
+          </button>
+        `;
       }
-      if (projectsEmpty) projectsEmpty.classList.remove('hidden');
-      projectsGrid.classList.remove('is-filtering');
-      if (projectsMobileGrid) projectsMobileGrid.classList.remove('is-filtering');
-      setupProjectsMobileDots();
-      return;
-    }
 
-    if (projectsEmpty) projectsEmpty.classList.add('hidden');
+      const thumb = projectThumb(p);
+      return `
+        <button type="button" class="rail-item${i === activeIndex ? " is-active" : ""}" data-index="${i}" role="option" aria-selected="${i === activeIndex}" aria-label="${escapeHtml(p.title)}">
+          <div class="rail-item-media">
+            <img src="${thumb}" alt="" loading="lazy" width="160" height="110" />
+          </div>
+          <span class="rail-item-label">${escapeHtml(p.title)}</span>
+        </button>
+      `;
+    })
+    .join("");
 
-    if (showFeatured) {
-      const gridProjects = filteredProjects.slice(1);
-      projectsGrid.innerHTML = gridProjects.map((project, index) =>
-        createModernProjectCard(project, index)
-      ).join('');
-    } else {
-      projectsGrid.innerHTML = filteredProjects.map((project, index) =>
-        createModernProjectCard(project, index)
-      ).join('');
-    }
-
-    if (projectsMobileGrid) {
-      projectsMobileGrid.dataset.projectCount = String(filteredProjects.length);
-      projectsMobileGrid.innerHTML = buildMobileProjectsHTML(filteredProjects);
-    }
-
-    setTimeout(() => {
-      document.querySelectorAll('.modern-project-card').forEach(card => {
-        card.classList.add('visible');
-      });
-      projectsGrid.classList.remove('is-filtering');
-      if (projectsMobileGrid) projectsMobileGrid.classList.remove('is-filtering');
-      setupProjectsMobileDots();
-    }, 80);
-  };
-
-  const finishFeaturedCollapse = () => {
-    featuredProjectContainer.innerHTML = '';
-    featuredProjectContainer.classList.add('is-collapsed');
-    featuredProjectContainer.style.maxHeight = '';
-    featuredProjectContainer.style.opacity = '';
-  };
-
-  const expandFeatured = (html, animate) => {
-    featuredProjectContainer.classList.remove('is-collapsed');
-    featuredProjectContainer.innerHTML = html;
-
-    if (!animate) {
-      featuredProjectContainer.style.maxHeight = '';
-      featuredProjectContainer.style.opacity = '';
-      return;
-    }
-
-    featuredProjectContainer.style.maxHeight = '0px';
-    featuredProjectContainer.style.opacity = '0';
-
-    requestAnimationFrame(() => {
-      featuredProjectContainer.style.maxHeight = featuredProjectContainer.scrollHeight + 'px';
-      featuredProjectContainer.style.opacity = '1';
+  showcaseRail.querySelectorAll(".rail-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      selectProject(Number(item.dataset.index));
     });
+  });
 
-    const onEnd = (e) => {
-      if (e.propertyName !== 'max-height') return;
-      featuredProjectContainer.style.maxHeight = '';
-      featuredProjectContainer.removeEventListener('transitionend', onEnd);
-    };
-    featuredProjectContainer.addEventListener('transitionend', onEnd);
-  };
-
-  const collapseFeatured = (animate) => {
-    if (!hasFeaturedContent || featuredProjectContainer.classList.contains('is-collapsed')) {
-      finishFeaturedCollapse();
-      return;
-    }
-
-    if (!animate) {
-      finishFeaturedCollapse();
-      return;
-    }
-
-    featuredProjectContainer.style.maxHeight = featuredProjectContainer.scrollHeight + 'px';
-    featuredProjectContainer.style.opacity = '1';
-
-    requestAnimationFrame(() => {
-      featuredProjectContainer.classList.add('is-collapsed');
-      featuredProjectContainer.style.maxHeight = '0px';
-      featuredProjectContainer.style.opacity = '0';
-    });
-
-    let finished = false;
-    const complete = () => {
-      if (finished) return;
-      finished = true;
-      featuredProjectContainer.removeEventListener('transitionend', onEnd);
-      finishFeaturedCollapse();
-    };
-    const onEnd = (e) => {
-      if (e.propertyName !== 'max-height') return;
-      complete();
-    };
-    featuredProjectContainer.addEventListener('transitionend', onEnd);
-    setTimeout(complete, 500);
-  };
-
-  const animate = projectsHasRendered;
-  projectsHasRendered = true;
-
-  if (animate) {
-    projectsGrid.classList.add('is-filtering');
-    if (projectsMobileGrid) projectsMobileGrid.classList.add('is-filtering');
+  const active = showcaseRail.querySelector(".rail-item.is-active");
+  if (active) {
+    const left = active.offsetLeft - (showcaseRail.clientWidth - active.clientWidth) / 2;
+    showcaseRail.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
   }
+}
 
-  if (showFeatured) {
-    expandFeatured(createFeaturedProject(filteredProjects[0]), animate && !hasFeaturedContent);
+function updateShowcase() {
+  const p = filteredProjects[activeIndex];
+  if (!p) return;
+
+  const total = filteredProjects.length;
+  showcaseCount.textContent = `${String(activeIndex + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+
+  showcasePrev.disabled = total <= 1;
+  showcaseNext.disabled = total <= 1;
+
+  const statusClass = p.cta || p.status === "Open" || p.status === "Onvoltooid" ? "open" : "";
+  const statusLabel = p.cta ? "Open" : p.status;
+  const cats = p.categories.length ? p.categories.join(" · ") : "Nieuwe opdracht";
+
+  showcaseMeta.innerHTML = `
+    <span class="project-status ${statusClass}">${escapeHtml(statusLabel)}</span>
+    <span>${escapeHtml(p.location)}</span>
+    <span>${escapeHtml(cats)}</span>
+  `;
+  showcaseTitle.textContent = p.title;
+
+  const excerpt =
+    p.description.length > 220 ? `${p.description.slice(0, 217)}…` : p.description;
+  showcaseExcerpt.textContent = excerpt;
+
+  showcaseAction.textContent = p.cta ? "Neem contact op" : "Bekijk details";
+
+  showcaseMedia.classList.remove("is-fading");
+  void showcaseMedia.offsetWidth;
+  showcaseMedia.classList.add("is-fading");
+
+  if (p.cta) {
+    showcaseMedia.innerHTML = `<img src="images/assets/projectsectionbackground.png" alt="" />`;
+  } else if (p.previewVideo) {
+    showcaseMedia.innerHTML = `<video src="${p.previewVideo}" muted loop playsinline autoplay></video>`;
   } else {
-    collapseFeatured(animate);
+    showcaseMedia.innerHTML = `<img src="${projectThumb(p)}" alt="${escapeHtml(p.title)}" />`;
   }
 
-  applyGridContent();
-  
-  // Optimize image loading on mobile with Intersection Observer
-  if (window.innerWidth <= 768 && 'IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          if (img.loading === 'lazy' && img.complete === false) {
-            img.loading = 'eager';
-            const src = img.src;
-            img.src = '';
-            img.src = src;
-          }
-          const allImages = Array.from(document.querySelectorAll('.modern-project-card img, [onclick*="openProjectModal"] img'));
-          const currentIndex = allImages.indexOf(img);
-          const nextImages = allImages.slice(currentIndex + 1, currentIndex + 4);
-          nextImages.forEach(nextImg => {
-            if (nextImg.loading === 'lazy') {
-              const preloadImg = new Image();
-              preloadImg.src = nextImg.src;
-            }
-          });
-          imageObserver.unobserve(img);
-        }
-      });
-    }, {
-      rootMargin: '400px',
-      threshold: 0.01
-    });
-    
-    setTimeout(() => {
-      document.querySelectorAll('.modern-project-card img, [onclick*="openProjectModal"] img').forEach(img => {
-        if (img.loading === 'lazy') {
-          imageObserver.observe(img);
-        }
-      });
-    }, 200);
-  }
+  renderRail();
 }
 
-// Create mobile project card for horizontal scroller
-function createMobileProjectCard(project, index) {
-  const imageSrc = project.previewImage || project.images[project.previewImageIndex || 0].src;
-  
-  return `
-    <div class="modern-project-card" onclick="openProjectModal(${project.id})" style="animation-delay: ${index * 0.1}s">
-      <div class="project-card-image h-48 overflow-hidden">
-        ${project.previewVideo ? `
-          <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-            <source src="${project.previewVideo}" type="video/mp4">
-          </video>
-        ` : `
-          <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" loading="lazy" decoding="async" width="320" height="192" fetchpriority="${index < 2 ? 'high' : 'auto'}">
-        `}
-        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-        <div class="absolute top-4 right-4">
-          <span class="project-badge ${project.status === 'Voltooid' ? 'bg-green-500/90 text-white' : 'bg-yellow-500/90 text-white'}">
-            ${project.status}
-          </span>
-        </div>
-      </div>
-      <div class="p-6">
-        <div class="flex items-center justify-between mb-3">
-          <span class="category-tag">${getProjectCategories(project)[0] || 'Project'}</span>
-          <span class="text-lg">${project.flag}</span>
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
-          ${project.title}
-        </h3>
-        <p class="text-gray-500 text-sm mb-3 flex items-center">
-          <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
-          ${project.location}
-        </p>
-        <p class="text-gray-600 text-sm md:text-base leading-relaxed line-clamp-2 mb-4">
-          ${project.description}
-        </p>
-        <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-          <span class="text-primary text-sm font-medium">Bekijk details</span>
-          <i class="fas fa-arrow-right text-primary group-hover:translate-x-1 transition-transform"></i>
-        </div>
-      </div>
-    </div>
-  `;
+function selectProject(index) {
+  if (!filteredProjects.length) return;
+  activeIndex = ((index % filteredProjects.length) + filteredProjects.length) % filteredProjects.length;
+  updateShowcase();
 }
 
-function buildMobileProjectsHTML(projectList) {
-  if (!projectList.length) return '';
-  const cards = projectList.map((project, index) => createMobileProjectCard(project, index)).join('');
-  return `
-    <div class="projects-mobile__snap-spacer" aria-hidden="true"></div>
-    ${cards}
-    <div class="projects-mobile__snap-spacer" aria-hidden="true"></div>
-  `;
+function setFilter(filter) {
+  filteredProjects = getFiltered(filter);
+  const empty = !filteredProjects.some((p) => !p.cta) && filter !== "all";
+
+  projectsEmpty.classList.toggle("is-visible", empty);
+  projectShowcase.classList.toggle("is-hidden", empty);
+
+  if (empty) return;
+
+  activeIndex = 0;
+  updateShowcase();
 }
 
-function getVisuallyCenteredProjectIndex(scroller, cards) {
-  const scrollerRect = scroller.getBoundingClientRect();
-  const midX = scrollerRect.left + scroller.clientWidth / 2;
-  let bestIndex = 0;
-  let bestDistance = Infinity;
+showcasePrev.addEventListener("click", () => selectProject(activeIndex - 1));
+showcaseNext.addEventListener("click", () => selectProject(activeIndex + 1));
 
-  for (let i = 0; i < cards.length; i += 1) {
-    const rect = cards[i].getBoundingClientRect();
-    if (rect.width < 8) continue;
-    const distance = Math.abs(rect.left + rect.width / 2 - midX);
-    if (distance < bestDistance) {
-      bestDistance = distance;
-      bestIndex = i;
-    }
-  }
-
-  return bestIndex;
-}
-
-let projectsMobileDotsCleanup = null;
-
-function setupProjectsMobileDots() {
-  if (typeof projectsMobileDotsCleanup === 'function') {
-    projectsMobileDotsCleanup();
-    projectsMobileDotsCleanup = null;
-  }
-
-  const scroller = document.getElementById('projects-mobile-scroll');
-  const dotsWrap = document.getElementById('projects-mobile-dots');
-  if (!scroller || !dotsWrap) return;
-
-  const cards = Array.from(scroller.querySelectorAll('.modern-project-card'));
-  if (cards.length < 2) {
-    dotsWrap.hidden = true;
-    dotsWrap.replaceChildren();
+showcaseAction.addEventListener("click", () => {
+  const p = filteredProjects[activeIndex];
+  if (!p) return;
+  if (p.cta) {
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
     return;
   }
+  openProjectModal(p);
+});
 
-  const mobileQuery = window.matchMedia('(max-width: 767px)');
-  dotsWrap.hidden = !mobileQuery.matches;
-  dotsWrap.replaceChildren();
+/* Swipe on media (mobile) */
+let touchStartX = 0;
+showcaseMedia.addEventListener(
+  "touchstart",
+  (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  },
+  { passive: true }
+);
+showcaseMedia.addEventListener(
+  "touchend",
+  (e) => {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(dx) < 50) return;
+    selectProject(dx < 0 ? activeIndex + 1 : activeIndex - 1);
+  },
+  { passive: true }
+);
 
-  let activeIndex = 0;
-  let syncRaf = null;
-
-  const dots = cards.map((_card, index) => {
-    const dot = document.createElement('span');
-    dot.className = 'projects-mobile__dot' + (index === 0 ? ' is-active' : '');
-    dot.setAttribute('aria-hidden', 'true');
-    dotsWrap.appendChild(dot);
-    return dot;
+document.querySelectorAll(".filter-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("is-active"));
+    btn.classList.add("is-active");
+    setFilter(btn.dataset.filter);
   });
+});
 
-  function setActive(nextIndex) {
-    if (nextIndex < 0 || nextIndex >= dots.length || nextIndex === activeIndex) return;
-    dots[activeIndex].classList.remove('is-active');
-    dots[nextIndex].classList.add('is-active');
-    activeIndex = nextIndex;
-  }
+setFilter("all");
 
-  function forceActive(nextIndex) {
-    if (nextIndex < 0 || nextIndex >= dots.length) return;
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('is-active', index === nextIndex);
-    });
-    activeIndex = nextIndex;
-  }
+/* --------------------------------------------------------------------------
+   Project modal
+   -------------------------------------------------------------------------- */
 
-  function syncActiveDot() {
-    if (!mobileQuery.matches) return;
-    setActive(getVisuallyCenteredProjectIndex(scroller, cards));
-  }
+let activeMediaIndex = 0;
+let activeProject = null;
+const modalGalleryPrev = document.getElementById("modal-gallery-prev");
+const modalGalleryNext = document.getElementById("modal-gallery-next");
+const modalGalleryCounter = document.getElementById("modal-gallery-counter");
 
-  function scheduleSync() {
-    if (syncRaf != null) return;
-    syncRaf = window.requestAnimationFrame(() => {
-      syncRaf = null;
-      syncActiveDot();
-    });
-  }
+function setGalleryMedia(project, index) {
+  activeMediaIndex = index;
+  const main = document.getElementById("modal-gallery-main");
+  const total = project.images.length;
+  const src = project.images[index];
 
-  function pinToFirstCard() {
-    if (!mobileQuery.matches || !cards[0]) return;
-    scroller.scrollTo({ left: 0, behavior: 'auto' });
-    scroller.scrollLeft = 0;
-    forceActive(0);
-  }
-
-  const onResize = () => {
-    dotsWrap.hidden = !mobileQuery.matches;
-    if (mobileQuery.matches) scheduleSync();
-  };
-
-  const onMediaChange = (event) => {
-    dotsWrap.hidden = !event.matches;
-    if (event.matches) pinToFirstCard();
-  };
-
-  scroller.addEventListener('scroll', scheduleSync, { passive: true });
-  scroller.addEventListener('scrollend', syncActiveDot);
-  window.addEventListener('resize', onResize, { passive: true });
-  if (typeof mobileQuery.addEventListener === 'function') {
-    mobileQuery.addEventListener('change', onMediaChange);
-  }
-
-  pinToFirstCard();
-  requestAnimationFrame(() => {
-    pinToFirstCard();
-    requestAnimationFrame(pinToFirstCard);
-  });
-  setTimeout(pinToFirstCard, 100);
-  setTimeout(syncActiveDot, 250);
-
-  projectsMobileDotsCleanup = () => {
-    scroller.removeEventListener('scroll', scheduleSync);
-    scroller.removeEventListener('scrollend', syncActiveDot);
-    window.removeEventListener('resize', onResize);
-    if (typeof mobileQuery.removeEventListener === 'function') {
-      mobileQuery.removeEventListener('change', onMediaChange);
-    }
-  };
-}
-
-// Initialize projects section
-function initProjectsSection() {
-  renderFilters();
-  renderProjects();
-}
-
-// Initialize when projects are loaded
-function waitForProjects() {
-  if (typeof projects !== 'undefined' && projects.length > 0) {
-    initProjectsSection();
+  if (index === 0 && project.previewVideo) {
+    main.innerHTML = `<video src="${project.previewVideo}" controls playsinline autoplay muted loop></video>`;
   } else {
-    setTimeout(waitForProjects, 100);
-  }
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', waitForProjects);
-} else {
-  waitForProjects();
-}
-
-// Project Modal Function - Completely Redesigned
-function openProjectModal(projectId) {
-  const project = projects.find(p => p.id === projectId);
-  if (!project) return;
-
-  // Preload modal images immediately when modal opens
-  if (project.images && project.images.length > 0) {
-    project.images.forEach((img, index) => {
-      if (index < 6) { // Preload first 6 images immediately
-        const preloadImg = new Image();
-        preloadImg.src = img.src;
-      }
-    });
+    main.innerHTML = `<img src="${src}" alt="${escapeHtml(project.title)}, beeld ${index + 1}" />`;
   }
 
-  const modal = document.createElement('div');
-  modal.className = 'fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 md:p-8';
-  modal.style.cssText = 'animation: fadeIn 0.2s ease-out; will-change: opacity;';
-  modal.onclick = function(e) {
-    if (e.target === modal) {
- closeProjectModal();
-    }
-  };
-  
-  modal.innerHTML = `
-    <div class="bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[95vh] overflow-hidden flex flex-col" style="animation: slideUp 0.3s ease-out;">
-      <!-- Clean Header with Close Button -->
-      <div class="flex items-center justify-between p-6 md:p-8 border-b border-gray-100 relative">
-        <div class="flex-1 min-w-0">
-          <div class="flex items-center gap-3 mb-3 flex-wrap">
-            <span class="category-tag flex-shrink-0">${getProjectCategories(project)[0] || 'Project'}</span>
-       </div>
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">${project.title}</h2>
-          <div class="flex items-center gap-2 text-gray-600">
-            <span class="text-xl">${project.flag}</span>
-            <span class="text-sm md:text-base font-medium">${project.location}</span>
-          </div>
-        </div>
-        <button onclick="closeProjectModal()" class="ml-6 p-2 rounded-full hover:bg-gray-100 text-gray-500 hover:text-gray-700 transition-colors" aria-label="Sluiten">
-          <i class="fas fa-times text-xl"></i>
-     </button>
- </div>
- 
-      <!-- Scrollable Content Area -->
-      <div class="flex-1 overflow-y-auto" style="scrollbar-width: thin; scrollbar-color: #e5e7eb transparent; will-change: scroll-position; transform: translateZ(0); -webkit-overflow-scrolling: touch;">
-        <div class="p-6 md:p-12 space-y-12">
-          
-          <!-- Project Description Section -->
-          <section>
-            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Projectbeschrijving</h3>
-            <p class="text-base md:text-lg text-gray-700 leading-relaxed max-w-4xl">${project.description}</p>
-          </section>
-          
-          <!-- Tasks Section -->
-          <section>
-            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Uitgevoerde opdrachten</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-       ${project.tasks.map(task => `
-                <div class="flex items-start p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-primary/30 hover:bg-primary/5 transition-colors duration-200">
-                  <div class="flex-shrink-0 mt-0.5">
-                    <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
-                      <i class="fas fa-check text-primary text-sm"></i>
-                    </div>
-                  </div>
-                  <p class="ml-4 text-base text-gray-700 leading-relaxed">${task}</p>
-                </div>
-       `).join('')}
-       </div>
-          </section>
-          
-          <!-- Images Gallery Section -->
-          ${project.id !== 9 ? `
-          <section>
-            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Projectbeelden</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-       ${project.images.map((img, index) => `
-                <div class="group relative bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-primary/50 shadow-sm hover:shadow-lg transition-colors duration-200 cursor-pointer" onclick="openImageLightbox('${img.src}', '${img.alt || ''}')" style="will-change: transform;">
-                  <div class="relative aspect-video overflow-hidden bg-gray-100">
-             <img src="${img.src}" alt="${img.alt || ''}" 
-                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                         loading="eager"
-                         decoding="async"
-                         fetchpriority="${index < 6 ? 'high' : 'auto'}"
-                         style="will-change: transform; transform: translateZ(0);">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                    <div class="absolute top-4 right-4 bg-white/90 rounded-full p-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-lg">
-                      <i class="fas fa-expand text-primary text-sm"></i>
-     </div>
-       </div>
-                  ${img.caption ? `
-                    <div class="p-4 md:p-5">
-                      <p class="text-sm md:text-base font-medium text-gray-800 group-hover:text-primary transition-colors leading-relaxed">${img.caption}</p>
-     </div>
-                  ` : ''}
-       </div>
-       `).join('')}
-     </div>
-          </section>
-          ` : ''}
-          
-       </div>
-     </div>
-       </div>
-    
-    <style>
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-      @keyframes slideUp {
-        from { 
-          opacity: 0;
-          transform: translateY(20px) scale(0.95);
-        }
-        to { 
-          opacity: 1;
-          transform: translateY(0) scale(1);
-        }
-      }
-      .fixed.inset-0::-webkit-scrollbar {
-        width: 8px;
-      }
-      .fixed.inset-0::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      .fixed.inset-0::-webkit-scrollbar-thumb {
-        background: #e5e7eb;
-        border-radius: 4px;
-      }
-      .fixed.inset-0::-webkit-scrollbar-thumb:hover {
-        background: #d1d5db;
-      }
-    </style>
-  `;
-  
-  document.body.appendChild(modal);
-  
-  // Prevent body scroll when modal is open - simpler approach without position:fixed
-  const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
-  modal.dataset.scrollY = scrollY;
-  
-  // Prevent scrolling without changing position - this prevents jump
-  document.body.style.overflow = 'hidden';
-  document.documentElement.style.overflow = 'hidden';
-  
-  // Store current scroll position in data attribute for restoration
-  document.body.dataset.modalScrollY = scrollY;
-}
+  modalGalleryCounter.textContent = `${String(index + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
+  modalGalleryPrev.disabled = total <= 1;
+  modalGalleryNext.disabled = total <= 1;
 
-// Close Modal Function
-function closeProjectModal() {
-  const modal = document.querySelector('.fixed.inset-0.bg-black\\/70') || document.querySelector('.fixed.inset-0.bg-black\\/80');
-  if (modal) {
-    // Get stored scroll position
-    const scrollY = modal.dataset.scrollY ? parseInt(modal.dataset.scrollY) : 
-                    (document.body.dataset.modalScrollY ? parseInt(document.body.dataset.modalScrollY) : 0);
-    
-    // Fade out modal first
-    modal.style.opacity = '0';
-    modal.style.transition = 'opacity 0.15s ease-out';
-    
-    // Wait for fade, then restore everything
-    setTimeout(() => {
-      // Restore overflow styles
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-      
-      // Remove data attribute
-      delete document.body.dataset.modalScrollY;
-      
-      // Remove modal from DOM
-    modal.remove();
-      
-      // Restore scroll position synchronously - no delay, no animation
-      // Set scroll position directly on both elements to prevent any jump
-      document.documentElement.scrollTop = scrollY;
-      document.body.scrollTop = scrollY;
-      
-      // Also use scrollTo as backup
-      if (window.scrollTo) {
-        window.scrollTo(0, scrollY);
-      }
-    }, 150); // Match fade duration
-  }
-}
-
-// Image Lightbox Function
-function openImageLightbox(src, alt) {
-  const lightbox = document.createElement('div');
-  lightbox.className = 'fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4';
-  lightbox.onclick = function(e) {
-    if (e.target === lightbox) {
- closeImageLightbox();
-    }
-  };
-  lightbox.innerHTML = `
-    <div class="relative max-w-4xl max-h-full">
- <img src="${src}" alt="${alt}" class="max-w-full max-h-full object-contain rounded-lg" loading="eager">
- <button onclick="closeImageLightbox()" 
-         class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors">
-   <i class="fas fa-times text-2xl"></i>
- </button>
-    </div>
-  `;
-  
-  document.body.appendChild(lightbox);
-}
-
-// Close Image Lightbox Function
-function closeImageLightbox() {
-  const lightbox = document.querySelector('.fixed.inset-0.bg-black\\/90');
-  if (lightbox) {
-    lightbox.remove();
-  }
-}
-
-
- // Contact Info Toggle Function - Removed as cards are now always visible
-
- // Certificate Preview Functions
- function showCertificatePreview() {
-   const modal = document.getElementById('certificateModal');
-   if (modal) {
-modal.classList.remove('hidden');
-modal.style.display = 'flex';
-document.body.style.overflow = 'hidden';
-   }
- }
- 
- 
- function closeCertificateModal() {
-   const modal = document.getElementById('certificateModal');
-   if (modal) {
-modal.classList.add('hidden');
-modal.style.display = 'none';
-document.body.style.overflow = 'auto';
-   }
- }
-
- function openCertificateLightbox() {
-   document.getElementById('certificateLightbox').classList.remove('hidden');
- }
-
- function closeCertificateLightbox() {
-   document.getElementById('certificateLightbox').classList.add('hidden');
- }
-
- // Close modals when clicking outside
- document.getElementById('certificateModal').addEventListener('click', function(e) {
-   if (e.target === this) {
-closeCertificateModal();
-   }
- });
-
- document.getElementById('certificateLightbox').addEventListener('click', function(e) {
-   if (e.target === this) {
-closeCertificateLightbox();
-   }
- });
-
- // Close modals with Escape key
- document.addEventListener('keydown', function(e) {
-   if (e.key === 'Escape') {
-closeCertificateModal();
-closeCertificateLightbox();
-   }
- });
- 
-// Partners data is loaded from partners.js
- 
-// Simple Infinite Carousel Implementation
-function initInfiniteCarousel() {
- const partnersTrack = document.getElementById('partners-track');
- if (!partnersTrack) return;
- 
- // Preload partner images for better performance
- if (typeof partners !== 'undefined' && partners.length > 0) {
-   partners.forEach((partner, index) => {
-     if (index < 4) { // Preload first 4 logos immediately
-       const preloadImg = new Image();
-       preloadImg.src = partner.img;
-     }
-   });
- }
- 
- // Function to create partner HTML (trust logos, not linked)
- function createPartnerHTML() {
-   return partners.map((partner, index) => `
-<div class="partner-item">
-  <div class="partner-logo">
-    <img src="${partner.img}" alt="${partner.alt}" loading="${index < 4 ? 'eager' : 'lazy'}" decoding="async" fetchpriority="${index < 2 ? 'high' : 'auto'}" width="160" height="72">
-  </div>
-</div>
-  `).join('');
- }
- 
- // Initial render
- const partnerHTML = createPartnerHTML();
- partnersTrack.innerHTML = partnerHTML + partnerHTML;
- 
- // Handle window resize to re-render
- let resizeTimeout;
- window.addEventListener('resize', function() {
-   clearTimeout(resizeTimeout);
-   resizeTimeout = setTimeout(function() {
-const newPartnerHTML = createPartnerHTML();
-partnersTrack.innerHTML = newPartnerHTML + newPartnerHTML;
-   }, 250); // Debounce resize events
- });
-   }
-
-// Initialize the carousel
-initInfiniteCarousel();
-
-// Lazy load projects section background image - Optimized
-function initProjectsBackground() {
-  const projectsSection = document.getElementById('projecten');
-  const bgImageDiv = document.getElementById('projects-bg-image');
-  
-  if (!projectsSection || !bgImageDiv) return;
-  
-  // Create image element for preloading
-  const img = new Image();
-  let loaded = false;
-  
-  // Intersection Observer to load when section is near viewport
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !loaded) {
-        loaded = true;
-        // Start loading the image
-        img.src = 'images/assets/projectsectionbackground.png';
-        
-        // Once loaded, apply to background and fade in
-        img.onload = function() {
-          requestAnimationFrame(() => {
-            bgImageDiv.style.backgroundImage = `url('${img.src}')`;
-            bgImageDiv.style.opacity = '1';
-          });
-        };
-        
-        // Stop observing after loading starts
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    rootMargin: '100px', // Reduced from 200px
-    threshold: 0.01
+  document.querySelectorAll(".modal-thumb").forEach((thumb, i) => {
+    thumb.classList.toggle("is-active", i === index);
   });
-  
-  observer.observe(projectsSection);
+
+  const activeThumb = document.querySelector(".modal-thumb.is-active");
+  if (activeThumb) {
+    const thumbs = document.getElementById("modal-thumbs");
+    const left = activeThumb.offsetLeft - (thumbs.clientWidth - activeThumb.clientWidth) / 2;
+    thumbs.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
+  }
 }
 
-// Initialize background loading
-initProjectsBackground();
+function openProjectModal(project) {
+  activeProject = project;
+  const meta = document.getElementById("modal-meta");
+  const title = document.getElementById("modal-title");
+  const desc = document.getElementById("modal-desc");
+  const tasks = document.getElementById("modal-tasks");
+  const thumbs = document.getElementById("modal-thumbs");
 
-// Removed unused project scroller functionality - elements don't exist in HTML
- 
-// WhatsApp Form Submit - Removed as form was replaced with professional info
+  const chips = [
+    `<span class="modal-chip status">${escapeHtml(project.status)}</span>`,
+    `<span class="modal-chip">${escapeHtml(project.location)}</span>`,
+    ...project.categories.map((c) => `<span class="modal-chip">${escapeHtml(c)}</span>`),
+  ];
+  meta.innerHTML = chips.join("");
 
-// Auto-update copyright year
-const copyrightYearEl = document.getElementById('copyright-year');
-if (copyrightYearEl) {
-  copyrightYearEl.textContent = new Date().getFullYear();
+  title.textContent = project.title;
+  desc.textContent = project.description;
+  tasks.innerHTML = project.tasks.map((t) => `<li>${escapeHtml(t)}</li>`).join("");
+
+  thumbs.innerHTML = project.images
+    .map(
+      (src, i) => `
+      <button type="button" class="modal-thumb${i === 0 ? " is-active" : ""}" data-index="${i}" aria-label="Beeld ${i + 1}">
+        <img src="${src}" alt="" loading="lazy" />
+      </button>
+    `
+    )
+    .join("");
+
+  thumbs.querySelectorAll(".modal-thumb").forEach((thumb) => {
+    thumb.addEventListener("click", () => {
+      setGalleryMedia(project, Number(thumb.dataset.index));
+    });
+  });
+
+  setGalleryMedia(project, 0);
+  openModal(projectModal);
 }
 
-// Expose functions for onclick handlers
-window.openProjectModal = openProjectModal;
-window.closeProjectModal = closeProjectModal;
-window.openImageLightbox = openImageLightbox;
-window.closeImageLightbox = closeImageLightbox;
-window.showCertificatePreview = showCertificatePreview;
-window.closeCertificateModal = closeCertificateModal;
-window.openCertificateLightbox = openCertificateLightbox;
-window.closeCertificateLightbox = closeCertificateLightbox;
+modalGalleryPrev.addEventListener("click", () => {
+  if (!activeProject) return;
+  const next = (activeMediaIndex - 1 + activeProject.images.length) % activeProject.images.length;
+  setGalleryMedia(activeProject, next);
+});
+
+modalGalleryNext.addEventListener("click", () => {
+  if (!activeProject) return;
+  const next = (activeMediaIndex + 1) % activeProject.images.length;
+  setGalleryMedia(activeProject, next);
+});
+
+document.querySelectorAll(".modal-contact-btn").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    closeModal(projectModal);
+    setTimeout(() => {
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+    }, 280);
+  });
+});
+
+function openModal(modal) {
+  modal.hidden = false;
+  requestAnimationFrame(() => modal.classList.add("is-open"));
+  document.body.classList.add("modal-open");
+}
+
+function closeModal(modal) {
+  modal.classList.remove("is-open");
+  document.body.classList.remove("modal-open");
+  setTimeout(() => {
+    modal.hidden = true;
+    const video = modal.querySelector("video");
+    if (video) {
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
+    }
+  }, 300);
+}
+
+document.querySelectorAll("[data-close-modal]").forEach((el) => {
+  el.addEventListener("click", () => {
+    const modal = el.closest(".modal");
+    if (modal) closeModal(modal);
+  });
+});
+
+document.addEventListener("keydown", (e) => {
+  if (projectModal.classList.contains("is-open") && activeProject) {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      const next = (activeMediaIndex - 1 + activeProject.images.length) % activeProject.images.length;
+      setGalleryMedia(activeProject, next);
+      return;
+    }
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      const next = (activeMediaIndex + 1) % activeProject.images.length;
+      setGalleryMedia(activeProject, next);
+      return;
+    }
+  }
+
+  if (e.key === "Escape") {
+    if (projectModal.classList.contains("is-open")) closeModal(projectModal);
+    if (certModal.classList.contains("is-open")) closeModal(certModal);
+  }
+});
+
+document.getElementById("open-cert").addEventListener("click", () => {
+  openModal(certModal);
+});
+
+/* --------------------------------------------------------------------------
+   Cookie consent
+   -------------------------------------------------------------------------- */
+
+const COOKIE_KEY = "ms_onsite_cookie_consent";
+
+function showCookieBanner() {
+  cookieBanner.hidden = false;
+  requestAnimationFrame(() => cookieBanner.classList.add("is-visible"));
+}
+
+function hideCookieBanner(value) {
+  localStorage.setItem(COOKIE_KEY, value);
+  cookieBanner.classList.remove("is-visible");
+  setTimeout(() => {
+    cookieBanner.hidden = true;
+  }, 400);
+}
+
+if (!localStorage.getItem(COOKIE_KEY)) {
+  setTimeout(showCookieBanner, 800);
+}
+
+document.getElementById("cookie-accept").addEventListener("click", () => {
+  hideCookieBanner("accepted");
+});
+
+document.getElementById("cookie-reject").addEventListener("click", () => {
+  hideCookieBanner("rejected");
+});
+
+/* --------------------------------------------------------------------------
+   Before / after compare slider
+   -------------------------------------------------------------------------- */
+
+const comparePairs = {
+  water: {
+    before: "images/project-5/2024-02-29-origineel.jpg",
+    after: "images/project-5/2024-04-22-origineel.jpg",
+    beforeLabel: "Februari",
+    afterLabel: "April",
+    caption:
+      "Monitoring waterbeheersing in Rijmenam: dezelfde locatie in februari en april. Zo ziet u hoe het water zich terugtrekt.",
+  },
+  sanering: {
+    before: "images/project-4/beginsituatie-terrein.png",
+    after: "images/project-4/eindresultaat.png",
+    beforeLabel: "Begin",
+    afterLabel: "Eind",
+    caption:
+      "Bodemsanering in Sint-Truiden: van beginsituatie tot eindresultaat. Duidelijke voortgang vanaf dezelfde hoogte.",
+  },
+  analyse: {
+    before: "images/project-5/2024-02-29-origineel.jpg",
+    after: "images/project-5/2024-02-29-opmeting.jpg",
+    beforeLabel: "Luchtbeeld",
+    afterLabel: "Analyse",
+    caption:
+      "Van luchtbeeld naar bruikbare analyse: het overstromingsgebied wordt afgebakend op dezelfde opname.",
+  },
+};
+
+const baSlider = document.getElementById("ba-slider");
+const baBefore = document.getElementById("ba-before");
+const baAfter = document.getElementById("ba-after");
+const baHandle = document.getElementById("ba-handle");
+const baLabelBefore = document.getElementById("ba-label-before");
+const baLabelAfter = document.getElementById("ba-label-after");
+const compareCaption = document.getElementById("compare-caption");
+
+function setBaPosition(pct) {
+  if (!baBefore || !baHandle) return;
+  const clamped = Math.min(Math.max(pct, 0), 100);
+  baBefore.style.clipPath = `inset(0 ${100 - clamped}% 0 0)`;
+  baHandle.style.left = `${clamped}%`;
+}
+
+function loadComparePair(key) {
+  const pair = comparePairs[key];
+  if (!pair || !baBefore || !baAfter) return;
+
+  const beforeImg = baBefore.querySelector("img");
+  const afterImg = baAfter.querySelector("img");
+  if (beforeImg) beforeImg.src = pair.before;
+  if (afterImg) afterImg.src = pair.after;
+
+  if (baLabelBefore) baLabelBefore.textContent = pair.beforeLabel;
+  if (baLabelAfter) baLabelAfter.textContent = pair.afterLabel;
+  if (compareCaption) compareCaption.textContent = pair.caption;
+
+  setBaPosition(50);
+}
+
+if (baSlider) {
+  setBaPosition(50);
+
+  let dragging = false;
+
+  function pctFromEvent(e) {
+    const rect = baSlider.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    return ((clientX - rect.left) / rect.width) * 100;
+  }
+
+  baSlider.addEventListener("mousedown", (e) => {
+    dragging = true;
+    setBaPosition(pctFromEvent(e));
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (dragging) setBaPosition(pctFromEvent(e));
+  });
+
+  window.addEventListener("mouseup", () => {
+    dragging = false;
+  });
+
+  baSlider.addEventListener(
+    "touchstart",
+    (e) => {
+      dragging = true;
+      setBaPosition(pctFromEvent(e));
+    },
+    { passive: true }
+  );
+
+  baSlider.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!dragging) return;
+      e.preventDefault();
+      setBaPosition(pctFromEvent(e));
+    },
+    { passive: false }
+  );
+
+  window.addEventListener("touchend", () => {
+    dragging = false;
+  });
+
+  baSlider.addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    e.preventDefault();
+    const current = parseFloat(baHandle.style.left) || 50;
+    setBaPosition(current + (e.key === "ArrowRight" ? 4 : -4));
+  });
+
+  baSlider.tabIndex = 0;
+}
+
+document.querySelectorAll(".compare-tab").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".compare-tab").forEach((tab) => {
+      tab.classList.remove("is-active");
+      tab.setAttribute("aria-selected", "false");
+    });
+    btn.classList.add("is-active");
+    btn.setAttribute("aria-selected", "true");
+    loadComparePair(btn.dataset.compare);
+  });
+});
