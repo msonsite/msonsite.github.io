@@ -242,20 +242,47 @@ function updateHeader() {
 window.addEventListener("scroll", updateHeader, { passive: true });
 updateHeader();
 
+let menuScrollY = 0;
+
+function isMenuOpen() {
+  return header.classList.contains("menu-open");
+}
+
+function openMenu() {
+  menuScrollY = window.scrollY || window.pageYOffset || 0;
+  header.classList.add("menu-open");
+  document.body.classList.add("menu-open");
+  document.body.style.top = `-${menuScrollY}px`;
+  navToggle.setAttribute("aria-expanded", "true");
+  navToggle.setAttribute("aria-label", "Menu sluiten");
+}
+
+function closeMenu() {
+  if (!isMenuOpen()) return;
+  header.classList.remove("menu-open");
+  document.body.classList.remove("menu-open");
+  document.body.style.top = "";
+  window.scrollTo(0, menuScrollY);
+  navToggle.setAttribute("aria-expanded", "false");
+  navToggle.setAttribute("aria-label", "Menu openen");
+}
+
 navToggle.addEventListener("click", () => {
-  const open = header.classList.toggle("menu-open");
-  document.body.classList.toggle("menu-open", open);
-  navToggle.setAttribute("aria-expanded", String(open));
-  navToggle.setAttribute("aria-label", open ? "Menu sluiten" : "Menu openen");
+  if (isMenuOpen()) closeMenu();
+  else openMenu();
 });
 
 navLinks.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
-    header.classList.remove("menu-open");
-    document.body.classList.remove("menu-open");
-    navToggle.setAttribute("aria-expanded", "false");
-    navToggle.setAttribute("aria-label", "Menu openen");
+    closeMenu();
   });
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && isMenuOpen()) {
+    closeMenu();
+    navToggle.focus();
+  }
 });
 
 /* --------------------------------------------------------------------------
@@ -545,15 +572,22 @@ document.querySelectorAll(".modal-contact-btn").forEach((btn) => {
   });
 });
 
+let modalScrollY = 0;
+
 function openModal(modal) {
+  if (typeof closeMenu === "function") closeMenu();
+  modalScrollY = window.scrollY || window.pageYOffset || 0;
   modal.hidden = false;
   requestAnimationFrame(() => modal.classList.add("is-open"));
   document.body.classList.add("modal-open");
+  document.body.style.top = `-${modalScrollY}px`;
 }
 
 function closeModal(modal) {
   modal.classList.remove("is-open");
   document.body.classList.remove("modal-open");
+  document.body.style.top = "";
+  window.scrollTo(0, modalScrollY);
   setTimeout(() => {
     modal.hidden = true;
     const video = modal.querySelector("video");
