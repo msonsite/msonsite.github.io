@@ -2615,6 +2615,41 @@ ul {
 }
 
 /* --------------------------------------------------------------------------
+   LinkedIn embed (below contact)
+   -------------------------------------------------------------------------- */
+
+.linkedin-embed {
+  padding: clamp(2.5rem, 5vw, 3.75rem) 0 clamp(3rem, 6vw, 4.5rem);
+  background: var(--paper);
+}
+
+.linkedin-embed .container {
+  display: flex;
+  justify-content: center;
+}
+
+.linkedin-embed-frame {
+  width: min(100%, 360px);
+  aspect-ratio: 504 / 874;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-soft);
+  background: var(--white);
+  box-shadow: var(--shadow-soft);
+  container-type: inline-size;
+}
+
+.linkedin-embed-frame iframe {
+  display: block;
+  width: 504px;
+  height: 874px;
+  border: 0;
+  background: var(--white);
+  transform-origin: top left;
+  transform: scale(calc(100cqi / 504px));
+}
+
+/* --------------------------------------------------------------------------
    Mobile refinements
    -------------------------------------------------------------------------- */
 
