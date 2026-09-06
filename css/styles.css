@@ -2619,24 +2619,20 @@ ul {
    -------------------------------------------------------------------------- */
 
 .linkedin-embed {
-  padding: clamp(2.5rem, 5vw, 3.75rem) 0 clamp(3rem, 6vw, 4.5rem);
+  padding: clamp(3.75rem, 7vw, 5.5rem) 0;
   background: var(--paper);
 }
 
-.linkedin-embed .container {
-  display: flex;
-  justify-content: center;
-}
-
 .linkedin-embed-frame {
-  width: min(100%, 360px);
-  aspect-ratio: 504 / 874;
-  overflow: hidden;
+  width: 504px;
+  max-width: 100%;
+  margin-inline: auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border: 1px solid var(--line);
   border-radius: var(--radius-soft);
   background: var(--white);
   box-shadow: var(--shadow-soft);
-  container-type: inline-size;
 }
 
 .linkedin-embed-frame iframe {
@@ -2645,8 +2641,6 @@ ul {
   height: 874px;
   border: 0;
   background: var(--white);
-  transform-origin: top left;
-  transform: scale(calc(100cqi / 504px));
 }
 
 /* --------------------------------------------------------------------------
