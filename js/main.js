@@ -359,7 +359,15 @@ function sizeLinkedInEmbed() {
   if (!frame) return;
   const width = frame.getBoundingClientRect().width;
   if (!width) return;
-  frame.style.setProperty("--li-scale", String(Math.min(1, width / 504)));
+  const scale = Math.min(1, width / 504);
+  frame.style.setProperty("--li-scale", String(scale));
+
+  const gallery = document.querySelector(".linkedin-gallery");
+  if (gallery && getComputedStyle(gallery).display !== "none") {
+    gallery.style.height = `${874 * scale}px`;
+  } else if (gallery) {
+    gallery.style.height = "";
+  }
 }
 
 sizeLinkedInEmbed();
