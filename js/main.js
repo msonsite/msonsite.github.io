@@ -354,6 +354,21 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 
+function sizeLinkedInEmbed() {
+  const frame = document.querySelector(".linkedin-embed-frame");
+  if (!frame) return;
+  const width = frame.getBoundingClientRect().width;
+  if (!width) return;
+  frame.style.setProperty("--li-scale", String(Math.min(1, width / 504)));
+}
+
+sizeLinkedInEmbed();
+window.addEventListener("resize", sizeLinkedInEmbed);
+if ("ResizeObserver" in window) {
+  const frame = document.querySelector(".linkedin-embed-frame");
+  if (frame) new ResizeObserver(sizeLinkedInEmbed).observe(frame);
+}
+
 /* --------------------------------------------------------------------------
    Projects showcase
    -------------------------------------------------------------------------- */

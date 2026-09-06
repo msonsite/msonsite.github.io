@@ -2624,11 +2624,11 @@ ul {
 }
 
 .linkedin-embed-frame {
-  width: 504px;
-  max-width: 100%;
+  --li-scale: 1;
+  width: min(100%, 504px);
+  height: calc(874px * var(--li-scale));
   margin-inline: auto;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-soft);
   background: var(--white);
@@ -2641,6 +2641,14 @@ ul {
   height: 874px;
   border: 0;
   background: var(--white);
+  transform: scale(var(--li-scale));
+  transform-origin: top left;
+}
+
+@media (max-width: 800px) {
+  .linkedin-embed {
+    padding: 3.5rem 0;
+  }
 }
 
 /* --------------------------------------------------------------------------
