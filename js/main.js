@@ -262,9 +262,20 @@ function closeMenu() {
   header.classList.remove("menu-open");
   document.body.classList.remove("menu-open");
   document.body.style.top = "";
-  window.scrollTo(0, menuScrollY);
+  restoreScrollY(menuScrollY);
   navToggle.setAttribute("aria-expanded", "false");
   navToggle.setAttribute("aria-label", "Menu openen");
+}
+
+function restoreScrollY(y) {
+  const html = document.documentElement;
+  const previous = html.style.scrollBehavior;
+  html.style.scrollBehavior = "auto";
+  window.scrollTo(0, y);
+  requestAnimationFrame(() => {
+    window.scrollTo(0, y);
+    html.style.scrollBehavior = previous;
+  });
 }
 
 navToggle.addEventListener("click", () => {
@@ -490,7 +501,7 @@ function setGalleryMedia(project, index) {
   const src = project.images[index];
 
   if (index === 0 && project.previewVideo) {
-    main.innerHTML = `<video src="${project.previewVideo}" controls playsinline autoplay muted loop></video>`;
+    main.innerHTML = `<video src="${project.previewVideo}" controls playsinline muted loop preload="metadata"></video>`;
   } else {
     main.innerHTML = `<img src="${src}" alt="${escapeHtml(project.title)}, beeld ${index + 1}" />`;
   }
@@ -562,32 +573,69 @@ modalGalleryNext.addEventListener("click", () => {
   setGalleryMedia(activeProject, next);
 });
 
+/* Swipe through modal gallery on mobile */
+let modalTouchStartX = 0;
+const modalGalleryMain = document.getElementById("modal-gallery-main");
+modalGalleryMain.addEventListener(
+  "touchstart",
+  (e) => {
+    modalTouchStartX = e.changedTouches[0].screenX;
+  },
+  { passive: true }
+);
+modalGalleryMain.addEventListener(
+  "touchend",
+  (e) => {
+    if (!activeProject || activeProject.images.length < 2) return;
+    const dx = e.changedTouches[0].screenX - modalTouchStartX;
+    if (Math.abs(dx) < 45) return;
+    const next =
+      dx < 0
+        ? (activeMediaIndex + 1) % activeProject.images.length
+        : (activeMediaIndex - 1 + activeProject.images.length) % activeProject.images.length;
+    setGalleryMedia(activeProject, next);
+  },
+  { passive: true }
+);
+
 document.querySelectorAll(".modal-contact-btn").forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
     closeModal(projectModal);
     setTimeout(() => {
       document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
-    }, 280);
+    }, 320);
   });
 });
 
 let modalScrollY = 0;
+let modalTrigger = null;
 
 function openModal(modal) {
   if (typeof closeMenu === "function") closeMenu();
+  modalTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
   modalScrollY = window.scrollY || window.pageYOffset || 0;
   modal.hidden = false;
   requestAnimationFrame(() => modal.classList.add("is-open"));
   document.body.classList.add("modal-open");
   document.body.style.top = `-${modalScrollY}px`;
+  const closeBtn = modal.querySelector(".modal-close");
+  if (closeBtn instanceof HTMLElement) {
+    closeBtn.focus({ preventScroll: true });
+  }
 }
 
 function closeModal(modal) {
+  const y = modalScrollY;
+  const trigger = modalTrigger;
   modal.classList.remove("is-open");
   document.body.classList.remove("modal-open");
   document.body.style.top = "";
-  window.scrollTo(0, modalScrollY);
+  restoreScrollY(y);
+  if (trigger && document.contains(trigger)) {
+    trigger.focus({ preventScroll: true });
+  }
+  modalTrigger = null;
   setTimeout(() => {
     modal.hidden = true;
     const video = modal.querySelector("video");
