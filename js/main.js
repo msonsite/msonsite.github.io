@@ -257,14 +257,19 @@ function openMenu() {
   navToggle.setAttribute("aria-label", "Menu sluiten");
 }
 
-function closeMenu() {
-  if (!isMenuOpen()) return;
+function unlockMenu() {
+  if (!isMenuOpen()) return false;
   header.classList.remove("menu-open");
   document.body.classList.remove("menu-open");
   document.body.style.top = "";
-  restoreScrollY(menuScrollY);
   navToggle.setAttribute("aria-expanded", "false");
   navToggle.setAttribute("aria-label", "Menu openen");
+  return true;
+}
+
+function closeMenu() {
+  if (!unlockMenu()) return;
+  restoreScrollY(menuScrollY);
 }
 
 function restoreScrollY(y) {
@@ -278,14 +283,49 @@ function restoreScrollY(y) {
   });
 }
 
+function scrollToSection(id) {
+  const target =
+    !id || id === "top"
+      ? document.getElementById("top") || document.body
+      : document.getElementById(id);
+  if (!target) return;
+
+  const html = document.documentElement;
+  const previous = html.style.scrollBehavior;
+  html.style.scrollBehavior = "auto";
+  window.scrollTo(0, menuScrollY);
+  html.style.scrollBehavior = previous;
+
+  requestAnimationFrame(() => {
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
 navToggle.addEventListener("click", () => {
   if (isMenuOpen()) closeMenu();
   else openMenu();
 });
 
 navLinks.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    closeMenu();
+  link.addEventListener("click", (e) => {
+    const href = link.getAttribute("href") || "";
+    if (!href.startsWith("#")) {
+      closeMenu();
+      return;
+    }
+
+    e.preventDefault();
+    const id = href.slice(1);
+    if (unlockMenu()) {
+      scrollToSection(id);
+    } else {
+      const target =
+        !id || id === "top"
+          ? document.getElementById("top") || document.body
+          : document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    history.pushState(null, "", href);
   });
 });
 
