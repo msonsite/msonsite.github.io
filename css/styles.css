@@ -1621,8 +1621,7 @@ ul {
   min-width: 0;
   min-height: 0;
   overflow: hidden;
-  background:
-    linear-gradient(165deg, var(--white) 0%, var(--paper-warm) 100%);
+  background: var(--paper);
 }
 
 .modal-body-main {
@@ -1639,7 +1638,7 @@ ul {
   flex: 0 0 auto;
   padding: 1rem clamp(1.5rem, 3vw, 2.35rem) clamp(1.25rem, 3vw, 2rem);
   border-top: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--paper);
 }
 
 .modal-meta {
