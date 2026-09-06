@@ -1457,6 +1457,7 @@ ul {
   flex-direction: column;
   height: min(92vh, 860px);
   max-height: min(92vh, 860px);
+  background: var(--paper);
 }
 
 .modal.is-open .modal-dialog {
