@@ -2625,7 +2625,7 @@ ul {
 
 .linkedin-embed-frame {
   --li-scale: 1;
-  width: min(100%, 504px);
+  width: min(100%, 420px);
   height: calc(874px * var(--li-scale));
   margin-inline: auto;
   overflow: hidden;
